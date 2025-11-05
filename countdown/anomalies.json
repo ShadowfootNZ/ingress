@@ -18,14 +18,14 @@
         "date": "2025-11-05T17:00:00Z",
         "city": "Test",
         "country": "Test",
-        "timezone": "New Zealand/Auckland"
+        "timezone": "Pacific/Auckland"
       },
       {
         "date": "2025-10-25T14:00:00NZDT",
         "winner": "enlightened",
         "city": "Wellington",
         "country": "New Zealand",
-        "timezone": "New Zealand/Auckland"
+        "timezone": "Pacific/Auckland"
       },
       {
         "date": "2025-10-25",
