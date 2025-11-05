@@ -46,6 +46,7 @@ a:hover {
 }
 
 .anomaly {
+  flex: 1 1 600px;
   max-width: 500px;                 /* optional limit to prevent over-stretching */
   box-sizing: border-box;
   position: relative;
@@ -135,7 +136,7 @@ a:hover {
 }
 
 .user-time {
-  font-size: 0.9em;
+  font-size: 0.8em;
   opacity: 0.8;
 }
 

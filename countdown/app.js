@@ -136,7 +136,7 @@ function renderAnomalies(anomalies) {
       const validBadges = validateSeriesLogos(a["series-logos"]);
       if (validBadges.length) {
         const badges = validBadges
-          .map(name => `<img src="img/${name}.png" alt="${a.series} badge" class="series-badge">`)
+          .map(name => `<img src="img/${name}" alt="${a.series} badge" class="series-badge">`)
           .join("");
         html += `<div class="series-badges">${badges}</div>`;
       }
