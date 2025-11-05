@@ -30,12 +30,11 @@ async function loadAnomalies() {
     
       if (isTest) {
         const nowLocal = DateTime.local();
-        const oneMinuteLater = nowLocal.plus({ minutes: 1 });
-    
+  
         list.push({
           series: "Local Test",
           "series-logos": [],
-          date: oneMinuteLater.toISO({ suppressMilliseconds: true }),
+          date: nowLocal.toISO({ suppressMilliseconds: true }),
           city: "Test City",
           country: "Test Country",
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
