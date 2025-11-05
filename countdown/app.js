@@ -62,7 +62,34 @@ function renderAnomalies(anomalies) {
   // Drop invalid or unparsable dates
   .filter(a => a.utcDate)
   // Sort chronologically by UTC milliseconds
-  .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
+  .sort((a, b) => {
+    const now = DateTime.now();
+    const today = now.startOf('day');
+  
+    const aLocal = a.utcDate.setZone(a.timezone);
+    const bLocal = b.utcDate.setZone(b.timezone);
+  
+    const aStart = aLocal.startOf('day');
+    const bStart = bLocal.startOf('day');
+  
+    const aEnd = aLocal.plus({ hours: 3 }); // assumes 3-hour event
+    const bEnd = bLocal.plus({ hours: 3 });
+  
+    // Helper: classify each anomaly
+    const classify = (start, end) => {
+      if (end < today) return 4;                     // older
+      if (end >= today && end < now) return 1;       // just-finished today
+      if (start <= now && end >= now) return 2;      // active today
+      if (start > now) return 3;                     // upcoming
+      return 5;                                      // fallback
+    };
+  
+    const aRank = classify(aStart, aEnd);
+    const bRank = classify(bStart, bEnd);
+  
+    if (aRank !== bRank) return aRank - bRank;       // sort by category
+    return a.utcDate.toMillis() - b.utcDate.toMillis(); // tie-breaker by time
+  });
 
   if (!upcoming.length) {
     errorEl.textContent = "No upcoming or current anomalies found.";
@@ -74,6 +101,8 @@ function renderAnomalies(anomalies) {
       const eventLocal = a.utcDate.setZone(a.timezone);
       const userLocal  = a.utcDate.setZone(DateTime.local().zoneName);
       const hasTime    = a.date.includes("T");
+      // Determine if event is before today
+      const isPast = eventLocal.startOf('day') < DateTime.now().setZone(a.timezone).startOf('day');
   
       // sanitize external URLs before use
       const resUrl = sanitizeUrl(a["url-res"]);
@@ -115,11 +144,14 @@ function renderAnomalies(anomalies) {
               ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
             </h2>
             <div class="time-info">
-              ${hasTime
-                ? `<div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
+            ${hasTime
+              ? isPast
+                ? `<div class="local-time"><strong>Local Date:</strong> ${eventLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</div>
+                   <div class="user-time">(${userLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)})</div>`
+                : `<div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
                    <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)})</div>`
-                : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`}
-            </div>
+              : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`}
+          </div>
             <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>
           </div>
  
