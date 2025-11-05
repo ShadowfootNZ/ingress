@@ -7,7 +7,13 @@
       "Beta_gold.png"
     ],
     "sites": [
-          {
+      {
+        "date": "2025-11-06T09:00:00",
+        "city": "Test City",
+        "country": "Test Country",
+        "timezone": "Pacific/Auckland"
+      },
+      {
         "date": "2025-10-18T14:00:00",
         "winner": "resistance",
         "city": "Valencia",
