@@ -41,22 +41,24 @@ function renderAnomalies(anomalies) {
 
   // Filter + sort
   const upcoming = anomalies
-    .map(a => {
+  .map(a => {
     let dateStr = a.date;
-    // if date has no time, append midnight UTC so it becomes valid ISO
+    // If no time is specified, assume midnight local time
     if (!dateStr.includes('T')) {
-      dateStr = `${dateStr}T00:00:00Z`;
+      dateStr = `${dateStr}T00:00:00`;
     }
-    return { 
+    // Interpret in its local timezone
+    const localDate = DateTime.fromISO(dateStr, { zone: a.timezone });
+    return {
       ...a,
-      utcDate: DateTime.fromISO(dateStr, { zone: 'utc' })
+      utcDate: localDate.toUTC() // store in UTC for sorting and countdowns
     };
   })
-    // drop invalid dates
-    .filter(a => a.utcDate && a.utcDate.isValid)
-    // compare milliseconds rather than DateTime objects
-    .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
-
+  // Drop invalid or unparsable dates
+  .filter(a => a.utcDate && a.utcDate.isValid)
+  // Sort chronologically by UTC milliseconds
+  .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
+  
   if (!upcoming.length) {
     errorEl.textContent = "No upcoming or current anomalies found.";
     return;
