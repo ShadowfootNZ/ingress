@@ -42,13 +42,16 @@ function renderAnomalies(anomalies) {
   // Filter + sort
   const upcoming = anomalies
     .map(a => ({ ...a, utcDate: DateTime.fromISO(a.date, { zone: 'utc' }) }))
+    // drop invalid dates
+    .filter(a => a.utcDate && a.utcDate.isValid)
     .filter(a => {
       const hasTime = a.date.includes("T");
       const endTime = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
       // keep current day or future anomalies, or within 6 hours post-event
       return endTime.plus({ hours: 6 }) >= now;
     })
-    .sort((a, b) => a.utcDate - b.utcDate);
+    // compare milliseconds rather than DateTime objects
+    .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
 
   if (!upcoming.length) {
     errorEl.textContent = "No upcoming or current anomalies found.";
@@ -58,111 +61,118 @@ function renderAnomalies(anomalies) {
   upcoming.forEach(a => {
     try {
       const eventLocal = a.utcDate.setZone(a.timezone);
-      const userLocal = a.utcDate.setZone(DateTime.local().zoneName);
-      const hasTime = a.date.includes("T");
-
-      const anomalyEl = document.createElement("div");
-      anomalyEl.className = "anomaly";
-
-      const eventEnd = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
-      const sameDay = a.utcDate.hasSame(now, 'day');
-
-      // Determine display state
-      let state = "future";
-      if (sameDay) {
-        if (hasTime) {
-          if (now < a.utcDate) state = "today-upcoming";
-          else if (now >= a.utcDate && now <= eventEnd) state = "active";
-          else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
-        } else {
-          state = "today-upcoming";
-        }
-      }
-
-      // Apply style class
-      if (state === "active") anomalyEl.classList.add("pulse");
-      else if (state === "today-upcoming") anomalyEl.classList.add("highlight-today");
-      else if (state === "today-complete") anomalyEl.classList.add("dim");
-
-      // Build HTML content
-      const countdownEl = document.createElement("div");
-      countdownEl.className = "countdown";
-      countdownEl.id = `cd-${a.series.replace(/\s+/g,'')}-${a.city.replace(/\s+/g,'')}`;
-
+      const userLocal  = a.utcDate.setZone(DateTime.local().zoneName);
+      const hasTime    = a.date.includes("T");
+  
+      // sanitize external URLs before use
+      const resUrl = sanitizeUrl(a["url-res"]);
+      const enlUrl = sanitizeUrl(a["url-enl"]);
+      const pageUrl = sanitizeUrl(a.url);
+       const winner   = (a.winner || "").toLowerCase(); // "resistance" | "enlightened" | ""
+  
+       // timing windows
+       const eventEnd = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
+      const sameDay  = a.utcDate.hasSame(now, 'day');
+  
+       // state flags
+       const isActive = hasTime && now >= a.utcDate && now <= eventEnd;
+       const isPrep   = !isActive && !!resUrl && !!enlUrl; // both sides organising
+       let state = "future";
+       if (sameDay) {
+         if (hasTime) {
+           if (now < a.utcDate) state = "today-upcoming";
+           else if (isActive)    state = "active";
+           else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
+         } else {
+           state = "today-upcoming";
+         }
+       }
+  
+       // build card
+       const anomalyEl = document.createElement("div");
+       anomalyEl.className = "anomaly border-default";
+ 
       let html = `
-      <div class="anomaly-inner">
-        <div class="side res-side">
-          ${a["url-res"] ? `<img src="../img/resistance.svg" alt="Resistance Logo" class="faction-logo">` : ""}
-        </div>
-    
-        <div class="center-content">
-        <div class="series">
-        ${a.series}
-      </div>
-          <h2 class="location">
-            ${a.url 
-              ? `<a href="${a.url}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` 
-              : `${a.city}, ${a.country}` }
-          </h2>
-
-          <div class="time-info">
-            <div class="local-time"><strong>Local Time:</strong> ${eventLocal.toFormat("dd LLLL yyyy HH:mm")}</div>
-            <div class="user-time">(${userLocal.toFormat("dd LLLL yyyy HH:mm Z")})</div>
-            <div class="countdown" id="cd-${a.series.replace(/\s+/g,'')}-${a.city.replace(/\s+/g,'')}"></div>
+        <div class="anomaly-inner">
+          <div class="side res-side">
+            ${resUrl ? `<img src="${resUrl.endsWith('.svg') ? resUrl : '../img/resistance.svg'}" alt="Resistance Logo" class="faction-logo">` : ""}
+          </div>
+ 
+          <div class="center-content">
+            <div class="series">${a.series}</div>
+            <h2 class="location">
+              ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
+            </h2>
+            <div class="time-info">
+              <div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
+              <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)})</div>
+            </div>
+            <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>
+          </div>
+ 
+          <div class="side enl-side">
+            ${enlUrl ? `<img src="${enlUrl.endsWith('.svg') ? enlUrl : '../img/enlightened.svg'}" alt="Enlightened Logo" class="faction-logo">` : ""}
           </div>
         </div>
-    
-        <div class="side enl-side">
-          ${a["url-enl"] ? `<img src="../img/enlightened.svg" alt="Enlightened Logo" class="faction-logo">` : ""}
-        </div>
-      </div>
-    `;
-    
-    // Add optional series badge images if available
-    if (a["series-logos"] && Array.isArray(a["series-logos"])) {
-      const badges = a["series-logos"]
-        .map(name => `<img src="img/${name}.svg" alt="${a.series} badge" class="series-badge">`)
-        .join("");
-      html += `<div class="series-badges">${badges}</div>`;
-    }
-
-      anomalyEl.innerHTML = html;
-      //anomalyEl.appendChild(countdownEl);
-      container.appendChild(anomalyEl);
-
-      // Countdown updater with cleanup
-      const tick = () => {
-        const nowUtc = DateTime.utc();
-        const diff = a.utcDate.diff(nowUtc, ['days','hours','minutes','seconds']);
-        if (diff.valueOf() <= 0 && state !== "active") {
-          countdownEl.textContent = "In progress or complete";
-          // Clear interval when countdown is complete
-          intervals.forEach(interval => clearInterval(interval));
-          return;
-        }
-        const d = Math.floor(diff.days);
-        const h = String(Math.floor(diff.hours)).padStart(2,"0");
-        const m = String(Math.floor(diff.minutes)).padStart(2,"0");
-        const s = String(Math.floor(diff.seconds)).padStart(2,"0");
-        countdownEl.textContent = hasTime
-          ? `${d}d ${h}h ${m}m ${s}s`
-          : `in ${d} day${d !== 1 ? "s" : ""}`;
-      };
-      
-      tick();
-      const interval = setInterval(tick, 1000);
-      intervals.add(interval);
-
-      // Cleanup on page unload
-      window.addEventListener('unload', () => {
-        intervals.forEach(interval => clearInterval(interval));
-      });
-    } catch (err) {
-      console.error(`Error rendering anomaly ${a.city}:`, err);
-      // Skip this anomaly but continue with others
-    }
+      `;
+   
+      const validBadges = validateSeriesLogos(a["series-logos"]);
+      if (validBadges.length) {
+        const badges = validBadges
+          .map(name => `<img src="img/${name}.svg" alt="${a.series} badge" class="series-badge">`)
+          .join("");
+        html += `<div class="series-badges">${badges}</div>`;
+      }
+ 
+       anomalyEl.innerHTML = html;
+       container.appendChild(anomalyEl);
+ 
+       // apply border classes in priority order
+       if (isActive) {
+         anomalyEl.classList.replace('border-default', 'border-active');
+       } else if (winner === 'resistance') {
+         anomalyEl.classList.replace('border-default', 'border-res');
+       } else if (winner === 'enlightened') {
+         anomalyEl.classList.replace('border-default', 'border-enl');
+       } else if (isPrep) {
+         anomalyEl.classList.replace('border-default', 'border-prep');
+       }
+       if (state === "today-upcoming") anomalyEl.classList.add("highlight-today");
+       if (state === "today-complete")  anomalyEl.classList.add("dim");
+ 
+       // grab the rendered countdown div
+       const countdownEl = anomalyEl.querySelector('.countdown');
+ 
+       // countdown updater (no duplicate element)
+       const tick = () => {
+         const nowUtc = DateTime.utc();
+         const diff = a.utcDate.diff(nowUtc, ['days','hours','minutes','seconds']);
+         if (diff.valueOf() <= 0 && !isActive) {
+           countdownEl.textContent = "In progress or complete";
+           return;
+         }
+         const d = Math.floor(diff.days);
+         const h = String(Math.floor(diff.hours)).padStart(2,"0");
+         const m = String(Math.floor(diff.minutes)).padStart(2,"0");
+         const s = String(Math.floor(diff.seconds)).padStart(2,"0");
+         countdownEl.textContent = hasTime
+           ? `${d}d ${h}h ${m}m ${s}s`
+           : `in ${d} day${d !== 1 ? "s" : ""}`;
+       };
+       tick();
+       const interval = setInterval(tick, 1000);
+       intervals.add(interval);
+     } catch (err) {
+       console.error(`Error rendering anomaly ${a.city}:`, err);
+     }
+   });
+ 
+  // register unload listener once (cleanup all intervals)
+  window.addEventListener('unload', () => {
+    intervals.forEach(i => clearInterval(i));
+    intervals.clear();
   });
-
+ 
   // Sanitize URLs before use
   function sanitizeUrl(url) {
     if (!url) return '';
@@ -173,15 +183,15 @@ function renderAnomalies(anomalies) {
       return '';
     }
   }
-
-  // Validate series-logos
-  function validateSeriesLogos(logos) {
-    if (!Array.isArray(logos)) return [];
-    return logos.filter(logo => 
-      typeof logo === 'string' && 
-      /^[a-zA-Z0-9-_]+$/.test(logo)
-    );
-  }
-}
-
-loadAnomalies();
+ 
+   // Validate series-logos
+   function validateSeriesLogos(logos) {
+     if (!Array.isArray(logos)) return [];
+     return logos.filter(logo => 
+       typeof logo === 'string' && 
+       /^[a-zA-Z0-9-_]+$/.test(logo)
+     );
+   }
+ }
+ 
+ loadAnomalies();

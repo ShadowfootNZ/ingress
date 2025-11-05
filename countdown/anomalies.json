@@ -8,6 +8,20 @@
     ],
     "sites": [
       {
+        "date": "2025-10-25T14:00:00NZDT",
+        "winner": "enlightened",
+        "city": "Wellington",
+        "country": "New Zealand",
+        "timezone": "New Zealand/Auckland"
+      },
+      {
+        "date": "2025-10-25",
+        "winner": "enlightened",
+        "city": "Houston, TX",
+        "country": "USA",
+        "timezone": "America/Houston"
+      },
+      {
         "date": "2025-11-15T17:00:00Z",
         "city": "Taoyuan",
         "country": "Taiwan",
