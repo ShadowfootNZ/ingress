@@ -55,8 +55,8 @@ a:hover {
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--res-blue) 15%, transparent) 0%,
-    transparent 5%,
-    transparent 95%,
+    transparent 15%,
+    transparent 85%,
     color-mix(in srgb, var(--enl-green) 15%, transparent) 100%
   );
   box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
