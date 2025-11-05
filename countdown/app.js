@@ -69,48 +69,50 @@ function renderAnomalies(anomalies) {
     return;
   }
 
-  upcoming.forEach(a => {
+  let previousSeries = null;
+  upcoming.forEach((a, index) => {
     try {
+      // ✅ Insert series break when the series changes (except before the first)
       if (index > 0 && a.series !== previousSeries) {
         const hr = document.createElement('div');
         hr.className = 'series-break';
         container.appendChild(hr);
       }
       previousSeries = a.series;
+
       const eventLocal = a.utcDate.setZone(a.timezone);
       const userLocal  = a.utcDate.setZone(DateTime.local().zoneName);
       const hasTime    = a.date.includes("T");
-      // Determine if event is before today
-      const isPast = eventLocal.startOf('day') < DateTime.now().setZone(a.timezone).startOf('day');
-  
+      const isPast     = eventLocal.startOf('day') < DateTime.now().setZone(a.timezone).startOf('day');
+
       // sanitize external URLs before use
       const resUrl = sanitizeUrl(a["url-res"]);
       const enlUrl = sanitizeUrl(a["url-enl"]);
       const pageUrl = sanitizeUrl(a.url);
-       const winner   = (a.winner || "").toLowerCase(); // "resistance" | "enlightened" | ""
+      const winner   = (a.winner || "").toLowerCase(); // "resistance" | "enlightened" | ""
   
-       // timing windows
-       const eventEnd = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
+      // timing windows
+      const eventEnd = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
       const sameDay  = a.utcDate.hasSame(now, 'day');
   
-       // state flags
-       const isActive = hasTime && now >= a.utcDate && now <= eventEnd;
-       const isPrep   = !isActive && !!resUrl && !!enlUrl; // both sides organising
-       let state = "future";
-       if (sameDay) {
-         if (hasTime) {
-           if (now < a.utcDate) state = "today-upcoming";
-           else if (isActive)    state = "active";
-           else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
-         } else {
-           state = "today-upcoming";
-         }
-       }
-  
-       // build card
-       const anomalyEl = document.createElement("div");
-       anomalyEl.className = "anomaly border-default";
- 
+      // state flags
+      const isActive = hasTime && now >= a.utcDate && now <= eventEnd;
+      const isPrep   = !isActive && !!resUrl && !!enlUrl; // both sides organising
+      let state = "future";
+      if (sameDay) {
+        if (hasTime) {
+          if (now < a.utcDate) state = "today-upcoming";
+          else if (isActive)    state = "active";
+          else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
+        } else {
+          state = "today-upcoming";
+        }
+      }
+
+      // build card
+      const anomalyEl = document.createElement("div");
+      anomalyEl.className = "anomaly border-default";
+
       let html = `
         <div class="anomaly-inner">
           <div class="side res-side">
@@ -235,12 +237,22 @@ function renderAnomalies(anomalies) {
  
    // Validate series-logos
    function validateSeriesLogos(logos) {
-     if (!Array.isArray(logos)) return [];
-     return logos.filter(logo => 
-       typeof logo === 'string' && 
-       /^[a-zA-Z0-9-_]+$/.test(logo)
-     );
-   }
+    if (!Array.isArray(logos)) {
+      console.warn("Expected series-logos to be an array, got:", logos);
+      return [];
+    }
+  
+    console.log("Raw series-logos input:", logos);
+  
+    const valid = logos.filter(logo =>
+      typeof logo === 'string' &&
+      /^[a-zA-Z0-9-_.]+$/.test(logo) // note: added '.' if filenames include extensions
+    );
+  
+    console.log("Validated series-logos output:", valid);
+  
+    return valid;
+  }
  }
  
  loadAnomalies();
