@@ -122,6 +122,19 @@ a:hover {
   margin-bottom: 0.4em;
   color: var(--neutral);
 }
+.series-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  flex-wrap: wrap;
+}
+
+.series-badge {
+  height: 1.5em;
+  width: auto;
+  vertical-align: middle;
+}
 
 .time-info {
   margin-top: 0.4em;

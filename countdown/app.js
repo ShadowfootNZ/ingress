@@ -115,41 +115,45 @@ function renderAnomalies(anomalies) {
       anomalyEl.className = "anomaly border-default";
 
       let html = `
-        <div class="anomaly-inner">
-          <div class="side res-side">
-            ${resUrl ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer"><img src="${(resUrl.endsWith('.webp')) ? resUrl : '../img/resistance.webp'}" alt="Resistance Logo" class="faction-logo"></a>` : ""}
-          </div>
- 
-          <div class="center-content">
+      <div class="anomaly-inner">
+        <div class="side res-side">
+          ${resUrl ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer"><img src="${(resUrl.endsWith('.webp')) ? resUrl : '../img/resistance.webp'}" alt="Resistance Logo" class="faction-logo"></a>` : ""}
+        </div>
+    
+        <div class="center-content">
+          <div class="series-line">
             <div class="series">${a.series}</div>
-            <h2 class="location">
-              ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
-            </h2>
-            <div class="time-info">
+            ${(() => {
+              const validBadges = validateSeriesLogos(a["series-logos"]);
+              console.log(`Badges for ${a.series}:`, validBadges);
+              if (!validBadges.length) return "";
+              return validBadges
+                .map(name => `<img src="img/${name}" alt="${a.series} badge" class="series-badge">`)
+                .join("");
+            })()}
+          </div>
+    
+          <h2 class="location">
+            ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
+          </h2>
+    
+          <div class="time-info">
             ${hasTime
               ? isPast
-                ? `<div class="local-time"> ${eventLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</div>`
+                ? `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</div>`
                 : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
-                   <div class="user-time">${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} <span class="tz-label">(${DateTime.local().zoneName}</span>)</div>`
+                   <div class="user-time">${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} <span class="tz-label">(${DateTime.local().zoneName})</span></div>`
               : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`}
           </div>
-            <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>
-          </div>
- 
-          <div class="side enl-side">
-            ${enlUrl ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer"><img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}" alt="Enlightened Logo" class="faction-logo"></a>` : ""}
-          </div>
+    
+          <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>
         </div>
-      `;
-   
-      const validBadges = validateSeriesLogos(a["series-logos"]);
-      console.log(`Badges for ${a.series}:`, validBadges);
-      if (validBadges.length) {
-        const badges = validBadges
-          .map(name => `<img src="img/${name}" alt="${a.series} badge" class="series-badge">`)
-          .join("");
-        html += `<div class="series-badges">${badges}</div>`;
-      }
+    
+        <div class="side enl-side">
+          ${enlUrl ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer"><img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}" alt="Enlightened Logo" class="faction-logo"></a>` : ""}
+        </div>
+      </div>
+    `;
  
        anomalyEl.innerHTML = html;
        container.appendChild(anomalyEl);
@@ -243,15 +247,10 @@ function renderAnomalies(anomalies) {
       return [];
     }
   
-    console.log("Raw series-logos input:", logos);
-  
     const valid = logos.filter(logo =>
       typeof logo === 'string' &&
       /^[a-zA-Z0-9-_.]+$/.test(logo) // note: added '.' if filenames include extensions
     );
-  
-    console.log("Validated series-logos output:", valid);
-  
     return valid;
   }
  }
