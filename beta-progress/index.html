@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-clR_mQwVZhIZ4R7WXWQAQ.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+
+  <title>Ingress +β progress tracker</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; margin: 0; flex-direction: column;
+    }
+    /* Default green Ingress glow */
+    .card {
+      background: #111;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 1em rgba(40,244,40,0.5);  
+      border: 2px solid #1f1f1f;
+    }
+
+    /* Tier overlays: combine green base with accent rim */
+    .card.bronze {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(212,112,66,0.5) inset;
+      border-color: #D47042;
+    }
+
+    .card.silver {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(210,212,214,0.5) inset;
+      border-color: #D2D4D6;
+    }
+
+    .card.gold {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(232,165,0,0.5) inset;
+      border-color: #E8A500;
+    }
+
+    input {
+      width: 10em; font-size: 1.1em;
+      /* Set a fixed height and include padding in that height for both controls */
+      height: 2.6em;
+      box-sizing: border-box;
+      padding: 0 0.6em;
+      margin: 0.5em 0;
+      border-radius: 6px; border: none; text-align: center;
+    }
+    button {
+      background: #28f428; color: #000; border: none;
+      height: 2.6em;
+      box-sizing: border-box;
+      padding: 0 1.2em; /* horizontal padding only, vertical space defined by height */
+      font-weight: 600; border-radius: 6px;
+      cursor: pointer; margin-top: 0.5em;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .result { margin-top: 1em; text-align: left; }
+    .accent { color: #28f428; }
+    .warn { color: #ff0028; }
+
+    .result ul { list-style: none; padding: 0; margin: 0; }
+    .result li { display: flex; align-items: center; gap: 0.6em; margin: 0.4em 0; }
+    .tier-label { display: flex; align-items: center; gap: 0.4em; flex-wrap: wrap; }
+    .result img.target-icon { width: 64px; height: auto; display: inline-block; }
+    .warn { white-space: nowrap; color: #ff0028; }
+
+    .info-link { font-size: 1em; margin-top: 0.25em; color: #9ba1ff; }
+    .info-link a { color: inherit; text-decoration: underline; }
+
+    .checkmark {
+      color: #28f428;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-left: 0.2em;
+      vertical-align: middle;
+    }
+
+    /* Agent badge bottom right of card */
+    .agent-badge {
+      position: absolute;
+      right: 0.2em;
+      bottom: 0.2em;
+      color: #28f428;
+      font-size: 0.9em;
+      padding: 0.4em 0.5em;
+      text-decoration: none;
+      font-family: inherit;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" style="position:relative;">
+    <h2>Ingress +β Progress</h2>
+    <p>Daily Bounties: <span class="accent">6 × 10 tokens = 60 tokens/day</span></p>
+    <p>Days remaining: <span class="accent" id="daysRemaining">—</span>
+      (ends <span class="accent" id="endDateDisplay">—</span>)</p>
+    <p>Remaining bounty tokens available: <span class="accent" id="remainingTokens">—</span></p>
+    <input type="number" id="score" placeholder="Current tokens"  min="0" step="10">
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="result"></div>
+    <p class="info-link"><a href="https://ingress.com/en/news/2025-plusbeta" target="_blank" rel="noopener noreferrer">+β anomaly season overview</a></p>
+    <div class="agent-badge">@ShadowfootNZ</div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'ingress-beta-last-score';
+    const tiers = { bronze: 3000, silver: 6000, gold: 9000 };
+    const endDate = new Date('2025-12-14T23:59:59');
+    const startDate = new Date('2025-10-01T00:00:00');
+
+    function formatDate(d) {
+      const opts = { day: '2-digit', month: 'short', year: 'numeric' };
+      // undefined => use the runtime's default locale; alternatively use navigator.language
+      return d.toLocaleDateString(undefined, opts);
+    }
+
+    // Map tiers to the provided icon filenames (files should be in the same folder)
+    const icons = {
+      bronze: 'beta bronze.png',
+      silver: 'beta silver.png',
+      gold: 'beta gold.png'
+    };
+
+    function calculate() {
+      const inputEl = document.getElementById('score');
+      const rawValue = inputEl.value.trim();
+      if (rawValue === '') {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        localStorage.setItem(STORAGE_KEY, rawValue);
+      }
+      const score = Math.max(0, parseInt(rawValue) || 0);
+
+      const today = new Date();
+      const msPerDay = 1000 * 60 * 60 * 24;
+      const rawDays = Math.ceil((endDate - today) / msPerDay);
+      const daysLeft = Math.max(0, rawDays - 1);
+      const totalDays = Math.ceil((endDate - startDate) / (1000*60*60*24)) + 1;
+      const availableTokens = daysLeft * 60;
+      document.getElementById('daysRemaining').textContent = daysLeft;
+      document.getElementById('remainingTokens').textContent = availableTokens;
+      document.getElementById('endDateDisplay').textContent = formatDate(endDate);
+      
+      let html = `<h3>Targets</h3><ul>`;
+      
+      for (const [tier, value] of Object.entries(tiers)) {
+        const tokensNeeded = value - score;
+        if (tokensNeeded <= 0) {
+          html += `<li><img class="target-icon" src="${encodeURI(icons[tier])}" alt="${tier} icon"><div class="tier-label">${tier.toUpperCase()} (${value}): <span class="checkmark">&#10003;</span></div></li>`;
+        } else {
+          const daysNeeded = Math.ceil(tokensNeeded / 60);
+          const daysClass = daysNeeded > daysLeft ? ' class="warn"' : '';
+          html += `<li><img class="target-icon" src="${encodeURI(icons[tier])}" alt="${tier} icon"><div class="tier-label">${tier.toUpperCase()} (${value}): <span class="warn">${tokensNeeded}</span> tokens short <span${daysClass}>(${daysNeeded} days)</span></div></li>`;
+        }
+      }
+
+      html += `</ul>`;
+      const cardEl = document.querySelector('.card');
+      cardEl.classList.remove('bronze','silver','gold');
+
+      if (score >= tiers.gold) {
+        cardEl.classList.add('gold');
+      } else if (score >= tiers.silver) {
+        cardEl.classList.add('silver');
+      } else if (score >= tiers.bronze) {
+        cardEl.classList.add('bronze');
+      }
+
+      document.getElementById('result').innerHTML = html;
+    }
+
+    // Trigger calculate() when Enter is pressed in the input
+    const scoreInput = document.getElementById('score');
+    scoreInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault(); 
+        calculate();
+      }
+    });
+
+    // Recalculate automatically when the number changes (including step arrows)
+    scoreInput.addEventListener('input', calculate);
+
+    // Calculate once when the page loads so days remaining & remaining tokens are shown immediately
+    window.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored !== null) {
+        document.getElementById('score').value = stored;
+      }
+      calculate();
+    });
+  </script>
+</body>
+</html> 

@@ -2,18 +2,16 @@
 
 A growing collection of web apps supporting the global Ingress community, though sometimes with an Enlightened point-of-view.
 
----
-
-## 🛰 Ingress Anomaly Countdown
-
+## Ingress Anomaly Countdown
 Track upcoming and active Ingress anomalies with real-time countdowns, local times, and event details.  
-🔗 [View the Countdown](https://shadowfootnz.github.io/ingress/countdown/). 
+[View the Countdown](https://shadowfootnz.github.io/ingress/countdown/)  
 Please let me know of public team sites for these, for the team logo to link to.
 
-## Ingress +β Progress Tracker
+## Ingress +β Progress Tracker  
+A small, client-side progress tracker for the Ingress +β event.  
+[+Beta Progress](https://shadowfootnz.github.io/ingress/beta-progress/)  
+Enter your current score and the page will show days remaining, remaining bounty points, and how far you are from Bronze / Silver / Gold targets.  
 
-A small, client-side progress tracker for the Ingress +β event. Enter your current score and the page will show days remaining, remaining bounty points, and how far you are from Bronze / Silver / Gold targets.  
-🔗 [+Beta Progress](https://shadowfootnz.github.io/ingress/beta-progress/)
 ---
 
 ### Feedback and Contributions
