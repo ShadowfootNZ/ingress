@@ -88,14 +88,6 @@ a:hover {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
 }
 
-.res-side .faction-logo {
-  fill: var(--res-blue);
-}
-
-.enl-side .faction-logo {
-  fill: var(--enl-green);
-}
-
 .center-content {
   flex: 1;
   text-align: center;
@@ -318,5 +310,11 @@ a:hover {
     max-width: 100%;
     margin: 1.5em 0;
     padding: 1em
+  }
+  .side {
+    flex: 0 0 3.5em;
+  }
+  .faction-logo {
+    width: 2.5em;
   }
 }
