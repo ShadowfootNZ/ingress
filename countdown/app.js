@@ -98,8 +98,10 @@ function renderAnomalies(anomalies) {
               ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
             </h2>
             <div class="time-info">
-              <div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
-              <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)})</div>
+              ${hasTime
+                ? `<div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
+                   <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)})</div>`
+                : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`}
             </div>
             <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>
           </div>
@@ -137,25 +139,35 @@ function renderAnomalies(anomalies) {
        // grab the rendered countdown div
        const countdownEl = anomalyEl.querySelector('.countdown');
  
-       // countdown updater (no duplicate element)
-       const tick = () => {
-         const nowUtc = DateTime.utc();
-         const diff = a.utcDate.diff(nowUtc, ['days','hours','minutes','seconds']);
-         if (diff.valueOf() <= 0 && !isActive) {
-           countdownEl.textContent = "In progress or complete";
-           return;
+       // If start time has passed, do not create a timer.
+       const startPassed = now >= a.utcDate;
+       if (startPassed) {
+         if (winner === 'resistance' || winner === 'enlightened') {
+           const winnerText = winner.toUpperCase();
+           countdownEl.textContent = winnerText;
+           // apply winner colour class: 'res' or 'enl'
+           countdownEl.classList.add(winner === 'resistance' ? 'res' : 'enl');
          }
-         const d = Math.floor(diff.days);
-         const h = String(Math.floor(diff.hours)).padStart(2,"0");
-         const m = String(Math.floor(diff.minutes)).padStart(2,"0");
-         const s = String(Math.floor(diff.seconds)).padStart(2,"0");
-         countdownEl.textContent = hasTime
-           ? `${d}d ${h}h ${m}m ${s}s`
-           : `in ${d} day${d !== 1 ? "s" : ""}`;
-       };
-       tick();
-       const interval = setInterval(tick, 1000);
-       intervals.add(interval);
+       } else {
+         // countdown updater (future events only)
+         const tick = () => {
+           const nowUtc = DateTime.utc();
+           const diff = a.utcDate.diff(nowUtc, ['days','hours','minutes','seconds']);
+           if (diff.valueOf() <= 0 && !isActive) {
+             return;
+           }
+           const d = Math.floor(diff.days);
+           const h = String(Math.floor(diff.hours)).padStart(2,"0");
+           const m = String(Math.floor(diff.minutes)).padStart(2,"0");
+           const s = String(Math.floor(diff.seconds)).padStart(2,"0");
+           countdownEl.textContent = hasTime
+             ? `${d}d ${h}h ${m}m ${s}s`
+             : `in ${d} day${d !== 1 ? "s" : ""}`;
+         };
+         tick();
+         const interval = setInterval(tick, 1000);
+         intervals.add(interval);
+       }
      } catch (err) {
        console.error(`Error rendering anomaly ${a.city}:`, err);
      }
