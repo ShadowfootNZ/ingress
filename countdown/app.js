@@ -4,7 +4,16 @@ async function loadAnomalies() {
   try {
     const res = await fetch('anomalies.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const anomalies = await res.json();
+    const data = await res.json();
+
+    // Flatten into a list of anomalies with series carried through
+    const anomalies = data.flatMap(seriesObj =>
+      seriesObj.sites.map(site => ({
+        series: seriesObj.series,
+        ...site
+      }))
+    );
+
     renderAnomalies(anomalies);
   } catch (err) {
     document.getElementById('error').textContent =
@@ -19,14 +28,14 @@ function renderAnomalies(anomalies) {
   errorEl.textContent = "";
 
   const now = DateTime.utc();
-  const startOfToday = now.startOf('day');
 
+  // Filter + sort
   const upcoming = anomalies
     .map(a => ({ ...a, utcDate: DateTime.fromISO(a.date, { zone: 'utc' }) }))
     .filter(a => {
       const hasTime = a.date.includes("T");
       const endTime = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
-      // keep events from today onward or within 6 hours after ending
+      // keep current day or future anomalies, or within 6 hours post-event
       return endTime.plus({ hours: 6 }) >= now;
     })
     .sort((a, b) => a.utcDate - b.utcDate);
@@ -47,17 +56,24 @@ function renderAnomalies(anomalies) {
     const eventEnd = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
     const sameDay = a.utcDate.hasSame(now, 'day');
 
+    // Determine display state
     let state = "future";
-    if (sameDay && hasTime) {
-      if (now < a.utcDate) state = "today-upcoming";
-      else if (now >= a.utcDate && now <= eventEnd) state = "active";
-      else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
+    if (sameDay) {
+      if (hasTime) {
+        if (now < a.utcDate) state = "today-upcoming";
+        else if (now >= a.utcDate && now <= eventEnd) state = "active";
+        else if (now > eventEnd && now <= eventEnd.plus({ hours: 6 })) state = "today-complete";
+      } else {
+        state = "today-upcoming";
+      }
     }
 
+    // Apply style class
     if (state === "active") anomalyEl.classList.add("pulse");
     else if (state === "today-upcoming") anomalyEl.classList.add("highlight-today");
     else if (state === "today-complete") anomalyEl.classList.add("dim");
 
+    // Build HTML content
     const countdownEl = document.createElement("div");
     countdownEl.className = "countdown";
     countdownEl.id = `cd-${a.series.replace(/\s+/g,'')}-${a.city.replace(/\s+/g,'')}`;
@@ -71,14 +87,22 @@ function renderAnomalies(anomalies) {
         <div><strong>Your Time:</strong> ${userLocal.toFormat("yyyy-LL-dd HH:mm z")}</div>
       </div>
     `;
-    if (a.irl) {
-      html += `<a class="irl-link" href="${a.irl}" target="_blank" rel="noopener noreferrer">More details</a>`;
+
+    // Add faction or Niantic URLs if present
+    const links = [];
+    if (a["url-res"]) links.push(`<a href="${a["url-res"]}" target="_blank" rel="noopener noreferrer" class="res-link">Resistance</a>`);
+    if (a["url-enl"]) links.push(`<a href="${a["url-enl"]}" target="_blank" rel="noopener noreferrer" class="enl-link">Enlightened</a>`);
+    if (a["url-niantic"]) links.push(`<a href="${a["url-niantic"]}" target="_blank" rel="noopener noreferrer" class="niantic-link">Niantic</a>`);
+
+    if (links.length) {
+      html += `<div class="links">${links.join(" | ")}</div>`;
     }
 
     anomalyEl.innerHTML = html;
     anomalyEl.appendChild(countdownEl);
     container.appendChild(anomalyEl);
 
+    // Countdown updater
     const tick = () => {
       const nowUtc = DateTime.utc();
       const diff = a.utcDate.diff(nowUtc, ['days','hours','minutes','seconds']);
@@ -98,6 +122,5 @@ function renderAnomalies(anomalies) {
     setInterval(tick, 1000);
   });
 }
-
 
 loadAnomalies();

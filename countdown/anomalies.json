@@ -1,25 +1,64 @@
 [
   {
-    "series": "Echo Anomaly",
-    "date": "2025-12-06T11:00:00Z",
-    "city": "Tokyo",
-    "country": "Japan",
-    "timezone": "Asia/Tokyo",
-    "irl": "https://community.ingress.com/en/discussion/echo-tokyo"
+    "series": "+Beta",
+    "sites": [
+      {
+        "date": "2025-11-15T17:00:00Z",
+        "city": "Taoyuan",
+        "country": "Taiwan",
+        "timezone": "Asia/Taipei",
+        "url-res": "https://enlightened.rocks/TaoyuanQ4",
+        "url-enl": "https://register.taoyuan.willbe.blue/"
+      },
+      {
+        "date": "2025-11-15T15:00:00Z",
+        "city": "The Hague",
+        "country": "Netherlands",
+        "timezone": "Europe/Amsterdam",
+        "url-res": "https://anomalythehague.com/",
+        "url-enl": "https://enlightened.rocks/thehague"
+      }
+    ]
   },
   {
-    "series": "Echo Anomaly",
-    "date": "2026-02-15T17:00:00Z",
-    "city": "San Francisco",
-    "country": "USA",
-    "timezone": "America/Los_Angeles"
-  },
-  {
-    "series": "Echo Anomaly",
-    "date": "2026-03-20T15:00:00Z",
-    "city": "Warsaw",
-    "country": "Poland",
-    "timezone": "Europe/Warsaw",
-    "irl": "https://community.ingress.com/en/discussion/echo-warsaw"
+    "series": "Q1 2026",
+    "sites": [
+      {
+        "date": "2026-02-28",
+        "city": "Charlotte, NC",
+        "country": "USA",
+        "timezone": "America/New_York"
+      },
+      {
+        "date": "2026-02-28",
+        "city": "Lisbon",
+        "country": "Portugal",
+        "timezone": "Europe/Lisbon"
+      },
+      {
+        "date": "2026-03-14",
+        "city": "Hong Kong",
+        "country": "China",
+        "timezone": "Asia/Hong_Kong"
+      },
+      {
+        "date": "2026-03-14",
+        "city": "Zagreb",
+        "country": "Croatia",
+        "timezone": "Europe/Zagreb"
+      },
+      {
+        "date": "2026-03-21",
+        "city": "Hyderabad, Telangana",
+        "country": "India",
+        "timezone": "Asia/Kolkata"
+      },
+      {
+        "date": "2026-03-21",
+        "city": "Buenos Aires",
+        "country": "Argentina",
+        "timezone": "America/Argentina/Buenos_Aires"
+      }
+    ]
   }
 ]
