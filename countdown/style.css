@@ -44,42 +44,106 @@ a:hover {
 }
 
 .anomaly {
-  background: #111;
-  border-radius: 10px;
-  padding: 1.2em 1.5em;
-  border-left: 6px solid transparent;
-  box-shadow: 0 0 15px var(--xf-teal);
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5em 0;
+  padding: 1.5em;
+  border-radius: 10px;
+  color: var(--text-light);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--res-blue) 35%, transparent) 0%,
+    transparent 20%,
+    transparent 80%,
+    color-mix(in srgb, var(--enl-green) 35%, transparent) 100%
+  );
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Dual Ingress accent */
-.anomaly::before,
-.anomaly::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 3px;
+.anomaly-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
-.anomaly::before { left: 0; background: var(--enl-green); }
-.anomaly::after  { left: 3px; background: var(--res-blue); }
+
+.side {
+  flex: 0 0 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faction-logo {
+  width: 3.5em;
+  height: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+}
+
+.center-content {
+  flex: 1;
+  text-align: center;
+  padding: 0 1em;
+}
+
+.location {
+  font-size: 1.4em;
+  margin: 0.2em 0;
+  opacity: 0.9;
+}
+
+.location a {
+  color: var(--xf-teal);
+  text-decoration: none;
+}
+
+.location a:hover {
+  text-decoration: underline;
+}
+
+.series {
+  font-size: 1em;
+  margin-bottom: 0.4em;
+  color: var(--xf-teal);
+}
+
+.time-info {
+  margin-top: 0.4em;
+  font-size: 0.9em;
+  opacity: 0.85;
+  line-height: 1.4em;
+}
+
+.local-time {
+  font-size: 1.1em;
+  color: var(--text-light);
+}
+
+.user-time {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.series-badges {
+  margin-top: 0.8em;
+  display: flex;
+  justify-content: center;
+  gap: 0.6em;
+}
+
+.series-badge {
+  width: 2em;
+  height: auto;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.4));
+}
 
 .anomaly h2 {
   margin: 0 0 0.3em;
   font-size: 1.4em;
   color: var(--xf-teal);
-}
-
-.location {
-  font-size: 1.1em;
-  opacity: 0.9;
-  margin-bottom: 0.5em;
-}
-
-.time-info {
-  font-size: 0.9em;
-  opacity: 0.85;
-  line-height: 1.4em;
 }
 
 .countdown {

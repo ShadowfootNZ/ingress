@@ -1,6 +1,11 @@
 [
   {
     "series": "+Beta",
+    "series-logos": [
+      "beta_bronze.png",
+      "beta_silver.png",
+      "beta_gold.png"
+    ],
     "sites": [
       {
         "date": "2025-11-15T17:00:00Z",
