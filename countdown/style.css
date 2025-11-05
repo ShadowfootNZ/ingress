@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-  color: var(--xf-teal);
+  color: var(--neutral);
   margin-bottom: 0.5em;
   text-align: center;
 }
@@ -109,7 +109,7 @@ a:hover {
 }
 
 .location a {
-  color: var(--xf-teal);
+  color: var(--neutral);
   text-decoration: none;
 }
 
@@ -120,7 +120,7 @@ a:hover {
 .series {
   font-size: 1em;
   margin-bottom: 0.4em;
-  color: var(--xf-teal);
+  color: var(--neutral);
 }
 
 .time-info {
@@ -156,7 +156,7 @@ a:hover {
 .anomaly h2 {
   margin: 0 0 0.3em;
   font-size: 1.4em;
-  color: var(--xf-teal);
+  color: var(--neutral);
 }
 
 .countdown {
