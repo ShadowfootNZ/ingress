@@ -1,0 +1,115 @@
+:root {
+  --enl-green: #00ff9c;
+  --res-blue: #00c4ff;
+  --xf-teal: #00ffd0;
+  --machine-red: #ff3355;
+  --bg-dark: #0a0a0a;
+  --text-light: #e0e0e0;
+}
+
+body {
+  font-family: "Rajdhani", sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2em 1em;
+}
+
+h1 {
+  color: var(--xf-teal);
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.anomaly-list {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.anomaly {
+  background: #111;
+  border-radius: 10px;
+  padding: 1.2em 1.5em;
+  border-left: 6px solid transparent;
+  box-shadow: 0 0 15px rgba(0,255,200,0.1);
+  position: relative;
+}
+
+/* Dual Ingress accent */
+.anomaly::before,
+.anomaly::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+.anomaly::before { left: 0; background: var(--enl-green); }
+.anomaly::after  { left: 3px; background: var(--res-blue); }
+
+.anomaly h2 {
+  margin: 0 0 0.3em;
+  font-size: 1.4em;
+  color: var(--xf-teal);
+}
+
+.location {
+  font-size: 1.1em;
+  opacity: 0.9;
+  margin-bottom: 0.5em;
+}
+
+.time-info {
+  font-size: 0.9em;
+  opacity: 0.85;
+  line-height: 1.4em;
+}
+
+.countdown {
+  font-size: 1.3em;
+  margin-top: 0.6em;
+  color: var(--enl-green);
+}
+
+.error {
+  color: var(--machine-red);
+  text-align: center;
+  margin-top: 2em;
+}
+
+.irl-link {
+  display: inline-block;
+  margin-top: 0.6em;
+  font-size: 0.9em;
+  color: var(--res-blue);
+  text-decoration: underline;
+}
+.irl-link:hover { color: var(--enl-green); }
+
+/* Animation states */
+@keyframes tealPulse {
+  0%,100% { box-shadow: 0 0 15px rgba(0,255,200,0.2); }
+  50%     { box-shadow: 0 0 35px rgba(0,255,200,0.8); }
+}
+.anomaly.pulse {
+  animation: tealPulse 2s ease-in-out infinite;
+}
+
+.anomaly.highlight-today {
+  box-shadow: 0 0 25px rgba(0,255,200,0.4);
+  border: 1px solid var(--xf-teal);
+}
+
+.anomaly.dim {
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0,255,200,0.15);
+  border: 1px solid #2a2a2a;
+}

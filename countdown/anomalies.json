@@ -1,0 +1,25 @@
+[
+  {
+    "series": "Echo Anomaly",
+    "date": "2025-12-06T11:00:00Z",
+    "city": "Tokyo",
+    "country": "Japan",
+    "timezone": "Asia/Tokyo",
+    "irl": "https://community.ingress.com/en/discussion/echo-tokyo"
+  },
+  {
+    "series": "Echo Anomaly",
+    "date": "2026-02-15T17:00:00Z",
+    "city": "San Francisco",
+    "country": "USA",
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "series": "Echo Anomaly",
+    "date": "2026-03-20T15:00:00Z",
+    "city": "Warsaw",
+    "country": "Poland",
+    "timezone": "Europe/Warsaw",
+    "irl": "https://community.ingress.com/en/discussion/echo-warsaw"
+  }
+]
