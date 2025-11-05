@@ -17,6 +17,7 @@ async function loadAnomalies() {
       }
       return seriesObj.sites.map(site => ({
         series: seriesObj.series,
+        "series-logos": seriesObj["series-logos"] || [],
         ...site
       }));
     });
