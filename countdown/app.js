@@ -44,12 +44,6 @@ function renderAnomalies(anomalies) {
     .map(a => ({ ...a, utcDate: DateTime.fromISO(a.date, { zone: 'utc' }) }))
     // drop invalid dates
     .filter(a => a.utcDate && a.utcDate.isValid)
-    .filter(a => {
-      const hasTime = a.date.includes("T");
-      const endTime = hasTime ? a.utcDate.plus({ hours: 3 }) : a.utcDate.endOf('day');
-      // keep current day or future anomalies, or within 6 hours post-event
-      return endTime.plus({ hours: 6 }) >= now;
-    })
     // compare milliseconds rather than DateTime objects
     .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
 
@@ -95,7 +89,7 @@ function renderAnomalies(anomalies) {
       let html = `
         <div class="anomaly-inner">
           <div class="side res-side">
-            ${resUrl ? `<img src="${resUrl.endsWith('.svg') ? resUrl : '../img/resistance.svg'}" alt="Resistance Logo" class="faction-logo">` : ""}
+            ${resUrl ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer"><img src="${(resUrl.endsWith('.webp')) ? resUrl : '../img/resistance.webp'}" alt="Resistance Logo" class="faction-logo"></a>` : ""}
           </div>
  
           <div class="center-content">
@@ -111,7 +105,7 @@ function renderAnomalies(anomalies) {
           </div>
  
           <div class="side enl-side">
-            ${enlUrl ? `<img src="${enlUrl.endsWith('.svg') ? enlUrl : '../img/enlightened.svg'}" alt="Enlightened Logo" class="faction-logo">` : ""}
+            ${enlUrl ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer"><img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}" alt="Enlightened Logo" class="faction-logo"></a>` : ""}
           </div>
         </div>
       `;
@@ -119,7 +113,7 @@ function renderAnomalies(anomalies) {
       const validBadges = validateSeriesLogos(a["series-logos"]);
       if (validBadges.length) {
         const badges = validBadges
-          .map(name => `<img src="img/${name}.svg" alt="${a.series} badge" class="series-badge">`)
+          .map(name => `<img src="img/${name}.png" alt="${a.series} badge" class="series-badge">`)
           .join("");
         html += `<div class="series-badges">${badges}</div>`;
       }
