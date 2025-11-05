@@ -42,21 +42,19 @@ a:hover {
   justify-content: center;     /* centre rows horizontally */
   gap: 1.5em;
   padding: 1em;
-  max-width: 1300px;           /* roughly fits 3 cards per row */
   margin: 0 auto;              /* centres the flex container itself */
 }
 
 .anomaly {
-  flex: 1 1 calc(33.333% - 1.5em);  /* 3 per row with gap compensation */
-  max-width: 400px;                 /* optional limit to prevent over-stretching */
+  max-width: 500px;                 /* optional limit to prevent over-stretching */
   box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1.5em 0;
+  margin: 1.5em;
   padding: 1.5em;
-  border-radius: 10px;
+  border-radius: 20px;
   color: var(--text-light);
   background: linear-gradient(
     90deg,
