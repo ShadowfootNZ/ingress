@@ -92,27 +92,28 @@ function renderAnomalies(anomalies) {
       let html = `
       <div class="anomaly-inner">
         <div class="side res-side">
-          ${a["url-res"] ? `<img src="../img/res-logo.svg" alt="Resistance Logo" class="faction-logo">` : ""}
+          ${a["url-res"] ? `<img src="../img/resistance.svg" alt="Resistance Logo" class="faction-logo">` : ""}
         </div>
     
         <div class="center-content">
+        <div class="series">
+        ${a.series}
+      </div>
           <h2 class="location">
             ${a.url 
               ? `<a href="${a.url}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` 
               : `${a.city}, ${a.country}` }
           </h2>
-          <div class="series">
-            ${a.series}
-          </div>
+
           <div class="time-info">
-            <div class="local-time"><strong>Local Time:</strong> ${eventLocal.toFormat("yyyy-LL-dd HH:mm z")}</div>
-            <div class="user-time">Your Time: ${userLocal.toFormat("yyyy-LL-dd HH:mm z")}</div>
+            <div class="local-time"><strong>Local Time:</strong> ${eventLocal.toFormat("dd LLLL yyyy HH:mm")}</div>
+            <div class="user-time">(${userLocal.toFormat("dd LLLL yyyy HH:mm Z")})</div>
+            <div class="countdown" id="cd-${a.series.replace(/\s+/g,'')}-${a.city.replace(/\s+/g,'')}"></div>
           </div>
-          <div class="countdown" id="cd-${a.series.replace(/\s+/g,'')}-${a.city.replace(/\s+/g,'')}"></div>
         </div>
     
         <div class="side enl-side">
-          ${a["url-enl"] ? `<img src="../img/enl-logo.svg" alt="Enlightened Logo" class="faction-logo">` : ""}
+          ${a["url-enl"] ? `<img src="../img/enlightened.svg" alt="Enlightened Logo" class="faction-logo">` : ""}
         </div>
       </div>
     `;
