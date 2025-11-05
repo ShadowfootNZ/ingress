@@ -146,10 +146,9 @@ function renderAnomalies(anomalies) {
             <div class="time-info">
             ${hasTime
               ? isPast
-                ? `<div class="local-time"><strong>Local Date:</strong> ${eventLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</div>
-                   <div class="user-time">(${userLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)})</div>`
-                : `<div class="local-time"><strong>Local Time:</strong> ${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
-                   <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)})</div>`
+                ? `<div class="local-time"> ${eventLocal.toLocaleString(DateTime.DATE_MED_WITH_WEEKDAY)}</div>`
+                : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)}</div>
+                   <div class="user-time">(${userLocal.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY)} <span class="tz-label">(${DateTime.local().zoneName})</span>)</div>`
               : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`}
           </div>
             <div class="countdown" id="cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}"></div>

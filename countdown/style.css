@@ -37,14 +37,19 @@ a:hover {
 }
 
 .anomaly-list {
-  width: 100%;
-  max-width: 720px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;             /* allow wrapping to new rows */
+  justify-content: center;     /* centre rows horizontally */
   gap: 1.5em;
+  padding: 1em;
+  max-width: 1300px;           /* roughly fits 3 cards per row */
+  margin: 0 auto;              /* centres the flex container itself */
 }
 
 .anomaly {
+  flex: 1 1 calc(33.333% - 1.5em);  /* 3 per row with gap compensation */
+  max-width: 400px;                 /* optional limit to prevent over-stretching */
+  box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: center;
