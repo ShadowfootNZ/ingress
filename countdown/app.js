@@ -127,7 +127,7 @@ function renderAnomalies(anomalies) {
     }
 
       anomalyEl.innerHTML = html;
-      anomalyEl.appendChild(countdownEl);
+      //anomalyEl.appendChild(countdownEl);
       container.appendChild(anomalyEl);
 
       // Countdown updater with cleanup

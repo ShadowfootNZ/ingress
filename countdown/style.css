@@ -2,7 +2,7 @@
   --enl-green: #28f428;
   --res-blue: #00c4ff;
   --xf-teal: #14DC94;
-  --machine-red: #ff0028;
+  --machina-red: #ff0028;
   --bg-dark: #0a0a0a;
   --text-light: #e0e0e0;
 }
@@ -55,8 +55,8 @@ a:hover {
   background: linear-gradient(
     90deg,
     color-mix(in srgb, var(--res-blue) 15%, transparent) 0%,
-    transparent 20%,
-    transparent 80%,
+    transparent 5%,
+    transparent 95%,
     color-mix(in srgb, var(--enl-green) 15%, transparent) 100%
   );
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
@@ -149,7 +149,7 @@ a:hover {
 .countdown {
   font-size: 1.3em;
   margin-top: 0.6em;
-  color: var(--enl-green);
+  color: var(--enl-machina-red);
 }
 
 /* Faction and source variants */
