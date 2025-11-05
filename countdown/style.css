@@ -59,7 +59,7 @@ a:hover {
     transparent 95%,
     color-mix(in srgb, var(--enl-green) 15%, transparent) 100%
   );
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
 }
 
 .anomaly-inner {
@@ -81,6 +81,14 @@ a:hover {
   height: auto;
   opacity: 0.9;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
+}
+
+.res-side .faction-logo {
+  fill: var(--res-blue);
+}
+
+.enl-side .faction-logo {
+  fill: var(--enl-green);
 }
 
 .center-content {
