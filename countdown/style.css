@@ -193,14 +193,67 @@ a:hover {
   color: var(--machina-red);
 }
 
+.series-break {
+  flex-basis: 100%;     /* forces a new row */
+  height: 1px;
+  margin: 1em 0;
+  background: linear-gradient(
+    to right,
+    var(--res-blue),
+    var(--xf-teal),
+    var(--enl-green)
+  );
+}
+
 /* Animation states */
 
-@keyframes activePulse {
+/* @keyframes activePulse {
   0%, 100%   { box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 70%, transparent); }
   25%        { box-shadow: 0 0 5px transparent; }
   50%        { box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 70%, transparent); }
   75%        { box-shadow: 0 0 5px transparent; }
+} */
+/* @keyframes activePulse {
+  0%, 40% {
+    box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 75%, transparent);
+  }
+  45%, 55% {
+    box-shadow: 0 0 10px color-mix(in srgb, var(--res-blue) 10%, transparent);
+  }
+  60%, 100% {
+    box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 75%, transparent);
+  }
+} */
+@keyframes activePulse {
+  /* 1️⃣ Strong blue left, weak green right */
+  0%, 24% {
+    box-shadow:
+      -20px 0 30px -5px color-mix(in srgb, var(--res-blue) 90%, var(--xf-teal) 10%),
+      20px 0 20px -5px color-mix(in srgb, var(--enl-green) 30%, var(--xf-teal) 10%);
+  }
+
+  /* 2️⃣ Weak blue left, strong green right */
+  25%, 49% {
+    box-shadow:
+      -20px 0 20px -5px color-mix(in srgb, var(--res-blue) 30%, var(--xf-teal) 10%),
+      20px 0 30px -5px color-mix(in srgb, var(--enl-green) 90%, var(--xf-teal) 10%);
+  }
+
+  /* 3️⃣ Strong green left, weak blue right */
+  50%, 74% {
+    box-shadow:
+      -20px 0 30px -5px color-mix(in srgb, var(--enl-green) 90%, var(--xf-teal) 10%),
+      20px 0 20px -5px color-mix(in srgb, var(--res-blue) 30%, var(--xf-teal) 10%);
+  }
+
+  /* 4️⃣ Weak green left, strong blue right */
+  75%, 100% {
+    box-shadow:
+      -20px 0 20px -5px color-mix(in srgb, var(--enl-green) 30%, var(--xf-teal) 10%),
+      20px 0 30px -5px color-mix(in srgb, var(--res-blue) 90%, var(--xf-teal) 10%);
+  }
 }
+
 @keyframes prepPulse {
   0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
   12%  { box-shadow: 0 0 5px transparent; }
@@ -225,7 +278,7 @@ a:hover {
 }
 
 .anomaly.border-active {
-  animation: activePulse 2s ease-in-out infinite;
+  animation: activePulse 6s ease-in-out infinite;
 }
 @media (max-width: 900px) {
   .anomaly { flex: 1 1 calc(50% - 1.5em); }  /* 2 per row */

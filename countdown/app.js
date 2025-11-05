@@ -71,6 +71,12 @@ function renderAnomalies(anomalies) {
 
   upcoming.forEach(a => {
     try {
+      if (index > 0 && a.series !== previousSeries) {
+        const hr = document.createElement('div');
+        hr.className = 'series-break';
+        container.appendChild(hr);
+      }
+      previousSeries = a.series;
       const eventLocal = a.utcDate.setZone(a.timezone);
       const userLocal  = a.utcDate.setZone(DateTime.local().zoneName);
       const hasTime    = a.date.includes("T");
