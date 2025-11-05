@@ -76,13 +76,17 @@
         "date": "2026-02-28",
         "city": "Lisbon",
         "country": "Portugal",
-        "timezone": "Europe/Lisbon"
+        "timezone": "Europe/Lisbon",
+        "url-res": "https://anomalylisbon.com/",
+        "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026"
       },
       {
         "date": "2026-03-14",
         "city": "Hong Kong",
         "country": "China",
-        "timezone": "Asia/Hong_Kong"
+        "timezone": "Asia/Hong_Kong",
+        "url-res": "https://www.willbe.blue/anomalies-events/",
+        "url-enl": "https://enl.rocks/-m4F1"
       },
       {
         "date": "2026-03-14",
