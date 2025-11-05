@@ -25,6 +25,15 @@ h1 {
   margin-bottom: 0.5em;
   text-align: center;
 }
+/* General link style */
+a {
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 .anomaly-list {
   width: 100%;
@@ -39,7 +48,7 @@ h1 {
   border-radius: 10px;
   padding: 1.2em 1.5em;
   border-left: 6px solid transparent;
-  box-shadow: 0 0 15px rgba(0,255,200,0.1);
+  box-shadow: 0 0 15px var(--xf-teal);
   position: relative;
 }
 
@@ -79,26 +88,33 @@ h1 {
   color: var(--enl-green);
 }
 
-.error {
-  color: var(--machine-red);
-  text-align: center;
-  margin-top: 2em;
+/* Faction and source variants */
+.enl {
+  color: var(--enl-green);
 }
 
-.irl-link {
-  display: inline-block;
-  margin-top: 0.6em;
-  font-size: 0.9em;
+.res {
   color: var(--res-blue);
-  text-decoration: underline;
 }
-.irl-link:hover { color: var(--enl-green); }
+
+.niantic {
+  color: var(--xf-teal);
+}
+
+.error {
+  color: var(--machine-red);
+}
 
 /* Animation states */
 @keyframes tealPulse {
-  0%,100% { box-shadow: 0 0 15px rgba(0,255,200,0.2); }
-  50%     { box-shadow: 0 0 35px rgba(0,255,200,0.8); }
+  0%, 100% {
+    box-shadow: 0 0 15px color-mix(in srgb, var(--xf-teal) 20%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 35px color-mix(in srgb, var(--xf-teal) 80%, transparent);
+  }
 }
+
 .anomaly.pulse {
   animation: tealPulse 2s ease-in-out infinite;
 }

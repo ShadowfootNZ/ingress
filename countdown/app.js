@@ -90,9 +90,10 @@ function renderAnomalies(anomalies) {
 
     // Add faction or Niantic URLs if present
     const links = [];
-    if (a["url-res"]) links.push(`<a href="${a["url-res"]}" target="_blank" rel="noopener noreferrer" class="res-link">Resistance</a>`);
-    if (a["url-enl"]) links.push(`<a href="${a["url-enl"]}" target="_blank" rel="noopener noreferrer" class="enl-link">Enlightened</a>`);
-    if (a["url-niantic"]) links.push(`<a href="${a["url-niantic"]}" target="_blank" rel="noopener noreferrer" class="niantic-link">Niantic</a>`);
+    if (a["url-res"]) links.push(`<a href="${a["url-res"]}" target="_blank" rel="noopener noreferrer" class="res">Resistance</a>`);
+    if (a["url-enl"]) links.push(`<a href="${a["url-enl"]}" target="_blank" rel="noopener noreferrer" class="enl">Enlightened</a>`);
+    if (a["url-niantic"]) links.push(`<a href="${a["url-niantic"]}" target="_blank" rel="noopener noreferrer" class="niantic">Niantic</a>`);
+
 
     if (links.length) {
       html += `<div class="links">${links.join(" | ")}</div>`;
@@ -116,7 +117,7 @@ function renderAnomalies(anomalies) {
       const s = String(Math.floor(diff.seconds)).padStart(2,"0");
       countdownEl.textContent = hasTime
         ? `${d}d ${h}h ${m}m ${s}s`
-        : `${d} day${d !== 1 ? "s" : ""} remaining`;
+        : `in ${d} day${d !== 1 ? "s" : ""}`;
     };
     tick();
     setInterval(tick, 1000);
