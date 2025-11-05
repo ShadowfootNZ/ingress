@@ -15,6 +15,6 @@ Enter your current score and the page will show days remaining, remaining bounty
 ---
 
 ### Feedback and Contributions
-Use [GitHub Issues](https://github.com/ShadowfootNZ/ingress/issues) or [@shadowfoot.bsky.social](https://bsky.app/profile/shadowfoot.bsky.social) to let me know.
+Use [GitHub Issues](https://github.com/ShadowfootNZ/ingress) or [@shadowfoot.bsky.social](https://bsky.app/profile/shadowfoot.bsky.social) to let me know.
 
 Contributions, suggestions, and corrections are always welcome.
