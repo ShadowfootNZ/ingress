@@ -1,0 +1,24 @@
+# Node modules (if you ever use Node or build tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS and editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Build output (if you later add bundling/minification)
+dist/
+build/
+
+# Logs or temporary data
+*.log
+*.tmp
+*.cache
+*.bak
+
+# Environment or credentials
+.env
+.env.local
+auth.json
