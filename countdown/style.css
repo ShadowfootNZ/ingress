@@ -1,6 +1,7 @@
 :root {
   --enl-green: #28f428;
   --res-blue: #00c4ff;
+  --neutral: #cccccc;
   --xf-teal: #14DC94;
   --machina-red: #ff0028;
   --bg-dark: #0a0a0a;
@@ -8,7 +9,7 @@
 }
 
 body {
-  font-family: "Rajdhani", sans-serif;
+  font-family: sans-serif;
   background: var(--bg-dark);
   color: var(--text-light);
   display: flex;
@@ -201,11 +202,11 @@ a:hover {
   12%  { box-shadow: 0 0 5px transparent; }
   25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green) 70%, transparent); }
   37%  { box-shadow: 0 0 5px transparent; }
-  50%  { box-shadow: 0 0 25px color-mix(in srgb, var(--machina-red) 70%, transparent); }
+  50%  { box-shadow: 0 0 25px color-mix(in srgb, var(--neutral) 70%, transparent); }
   62%  { box-shadow: 0 0 5px transparent; }
   75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue) 70%, transparent); }
   87%  { box-shadow: 0 0 5px transparent; }
-  100% { box-shadow: 0 0 25px color-mix(in srgb, var(--machina-red) 70%, transparent); }
+  100% { box-shadow: 0 0 25px color-mix(in srgb, var(--neutral) 70%, transparent); }
 }
 @keyframes redPulse {
   0%,100% { box-shadow: 0 0 10px color-mix(in srgb, var(--machina-red) 20%, transparent); }
