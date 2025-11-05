@@ -40,7 +40,7 @@ async function loadAnomalies() {
           timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         });
     
-        console.log("✅ Added local test anomaly:", oneMinuteLater.toISO());
+        console.log("✅ Added local test anomaly:", nowLocal.toISO());
       }
     
       return list;
