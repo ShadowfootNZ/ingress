@@ -121,6 +121,9 @@ function renderAnomalies(anomalies) {
         </div>
     
         <div class="center-content">
+          <h2 class="location">
+            ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
+          </h2>
           <div class="series-line">
             <div class="series">${a.series}</div>
             ${(() => {
@@ -132,10 +135,7 @@ function renderAnomalies(anomalies) {
                 .join("");
             })()}
           </div>
-    
-          <h2 class="location">
-            ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
-          </h2>
+
     
           <div class="time-info">
             ${hasTime

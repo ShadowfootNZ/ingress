@@ -132,8 +132,8 @@ a:hover {
 
 .series-badge {
   height: 1.5em;
-  width: auto;
-  vertical-align: middle;
+  width: 1.5em;
+  margin-bottom: 0.4em;
 }
 
 .time-info {
@@ -160,15 +160,10 @@ a:hover {
   gap: 0.6em;
 }
 
-.series-badge {
-  width: 2em;
-  height: auto;
-  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.4));
-}
 
 .anomaly h2 {
   margin: 0 0 0.3em;
-  font-size: 1.4em;
+  font-size: 1.5em;
   color: var(--neutral);
 }
 
@@ -212,7 +207,7 @@ a:hover {
 }
 
 .feedback a {
-  color: var(--machina-red);
+  color: var(--xf-teal);
   text-decoration: none;
   font-weight: 600;
 }
