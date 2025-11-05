@@ -2,7 +2,7 @@ const { DateTime } = luxon;
 
 async function loadAnomalies() {
   try {
-    const res = await fetch('anomalies.json');
+    const res = await fetch(`anomalies.json?ts=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     
@@ -11,16 +11,41 @@ async function loadAnomalies() {
     }
 
     // Flatten into a list of anomalies with series carried through
-    const anomalies = data.flatMap(seriesObj => {
-      if (!Array.isArray(seriesObj.sites)) {
-        throw new Error(`Invalid sites data for series ${seriesObj.series}`);
+    const anomalies = (() => {
+      // Start with real data
+      let list = data.flatMap(seriesObj => {
+        if (!Array.isArray(seriesObj.sites)) {
+          throw new Error(`Invalid sites data for series ${seriesObj.series}`);
+        }
+        return seriesObj.sites.map(site => ({
+          series: seriesObj.series,
+          "series-logos": seriesObj["series-logos"] || [],
+          ...site
+        }));
+      });
+    
+      // Check for ?test=true in the URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const isTest = urlParams.get('test') === 'true';
+    
+      if (isTest) {
+        const nowLocal = DateTime.local();
+        const oneMinuteLater = nowLocal.plus({ minutes: 1 });
+    
+        list.push({
+          series: "Local Test",
+          "series-logos": [],
+          date: oneMinuteLater.toISO({ suppressMilliseconds: true }),
+          city: "Test City",
+          country: "Test Country",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+        });
+    
+        console.log("✅ Added local test anomaly:", oneMinuteLater.toISO());
       }
-      return seriesObj.sites.map(site => ({
-        series: seriesObj.series,
-        "series-logos": seriesObj["series-logos"] || [],
-        ...site
-      }));
-    });
+    
+      return list;
+    })();
 
     renderAnomalies(anomalies);
   } catch (err) {
