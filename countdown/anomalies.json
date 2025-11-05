@@ -8,20 +8,20 @@
     ],
     "sites": [
           {
-        "date": "2025-10-18T14:00:00Z",
+        "date": "2025-10-18T14:00:00",
         "winner": "resistance",
         "city": "Valencia",
         "country": "Spain",
         "timezone": "Europe/Madrid"
       },
        {
-        "date": "2025-11-06T02:00:00Z",
+        "date": "2025-11-05T08:00:00",
         "city": "Test",
         "country": "Test",
         "timezone": "Pacific/Auckland"
       },
       {
-        "date": "2025-10-25T14:00:00NZDT",
+        "date": "2025-10-25T14:00:00",
         "winner": "enlightened",
         "city": "Wellington",
         "country": "New Zealand",
@@ -35,7 +35,7 @@
         "timezone": "America/Houston"
       },
       {
-        "date": "2025-11-15T17:00:00Z",
+        "date": "2025-11-15T17:00:00",
         "city": "Taoyuan",
         "country": "Taiwan",
         "timezone": "Asia/Taipei",
@@ -43,7 +43,7 @@
         "url-enl": "https://register.taoyuan.willbe.blue/"
       },
       {
-        "date": "2025-11-15T15:00:00Z",
+        "date": "2025-11-15T15:00:00",
         "city": "The Hague",
         "country": "Netherlands",
         "timezone": "Europe/Amsterdam",

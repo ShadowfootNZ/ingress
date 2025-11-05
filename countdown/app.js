@@ -41,7 +41,17 @@ function renderAnomalies(anomalies) {
 
   // Filter + sort
   const upcoming = anomalies
-    .map(a => ({ ...a, utcDate: DateTime.fromISO(a.date, { zone: 'utc' }) }))
+    .map(a => {
+    let dateStr = a.date;
+    // if date has no time, append midnight UTC so it becomes valid ISO
+    if (!dateStr.includes('T')) {
+      dateStr = `${dateStr}T00:00:00Z`;
+    }
+    return { 
+      ...a,
+      utcDate: DateTime.fromISO(dateStr, { zone: 'utc' })
+    };
+  })
     // drop invalid dates
     .filter(a => a.utcDate && a.utcDate.isValid)
     // compare milliseconds rather than DateTime objects
@@ -160,9 +170,24 @@ function renderAnomalies(anomalies) {
            const h = String(Math.floor(diff.hours)).padStart(2,"0");
            const m = String(Math.floor(diff.minutes)).padStart(2,"0");
            const s = String(Math.floor(diff.seconds)).padStart(2,"0");
-           countdownEl.textContent = hasTime
-             ? `${d}d ${h}h ${m}m ${s}s`
-             : `in ${d} day${d !== 1 ? "s" : ""}`;
+           // Simplified countdown display
+           if (diff.valueOf() <= 0 && !isActive) return;
+           
+           const totalSeconds = diff.as('seconds');
+           const days = Math.floor(totalSeconds / 86400);
+           const hours = Math.floor((totalSeconds % 86400) / 3600);
+           const minutes = Math.floor((totalSeconds % 3600) / 60);
+           
+           let display = '';
+           if (days >= 1) {
+             display = `${days} day${days !== 1 ? 's' : ''}`;
+           } else if (hours >= 1) {
+             display = `${hours} hour${hours !== 1 ? 's' : ''}`;
+           } else {
+             display = `${minutes} minute${minutes !== 1 ? 's' : ''}`;
+           }
+           
+           countdownEl.textContent = `in ${display}`;
          };
          tick();
          const interval = setInterval(tick, 1000);
