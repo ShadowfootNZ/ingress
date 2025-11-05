@@ -124,17 +124,21 @@ function renderAnomalies(anomalies) {
           <h2 class="location">
             ${pageUrl ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${a.city}, ${a.country}</a>` : `${a.city}, ${a.country}`}
           </h2>
-          <div class="series-line">
-            <div class="series">${a.series}</div>
-            ${(() => {
-              const validBadges = validateSeriesLogos(a["series-logos"]);
-              console.log(`Badges for ${a.series}:`, validBadges);
-              if (!validBadges.length) return "";
-              return validBadges
-                .map(name => `<img src="img/${name}" alt="${a.series} badge" class="series-badge">`)
-                .join("");
-            })()}
-          </div>
+          <div class="series-block">
+          <div class="series">${a.series}</div>
+          ${(() => {
+            const validBadges = validateSeriesLogos(a["series-logos"]);
+            console.log(`Badges for ${a.series}:`, validBadges);
+            if (!validBadges.length) return "";
+            return `
+              <div class="series-badges">
+                ${validBadges
+                  .map(name => `<img src="img/${name}" alt="${a.series} badge" class="series-badge">`)
+                  .join("")}
+              </div>
+            `;
+          })()}
+        </div>
 
     
           <div class="time-info">

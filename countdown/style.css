@@ -109,9 +109,17 @@ a:hover {
   text-decoration: underline;
 }
 
+.series-block {
+  display: flex;
+  flex-direction: column; /* stack series name and badges */
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
 .series {
   font-size: 1.5em;
   color: var(--neutral);
+  margin-bottom: 0.2em;
 }
 .series-line {
   display: flex;
@@ -124,6 +132,7 @@ a:hover {
 .series-badge {
   height: 1.5em;
   width: 1.5em;
+  vertical-align: middle;
 }
 
 .time-info {
@@ -144,10 +153,10 @@ a:hover {
 }
 
 .series-badges {
-  margin-top: 0.8em;
   display: flex;
-  justify-content: center;
   gap: 0.6em;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 
