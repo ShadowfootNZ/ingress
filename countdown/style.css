@@ -191,9 +191,9 @@ a:hover {
 /* Animation states */
 
 @keyframes activePulse {
-  0%, 100%   { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green) 70%, transparent); }
+  0%, 100%   { box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 70%, transparent); }
   25%        { box-shadow: 0 0 5px transparent; }
-  50%        { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue) 70%, transparent); }
+  50%        { box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 70%, transparent); }
   75%        { box-shadow: 0 0 5px transparent; }
 }
 @keyframes prepPulse {
