@@ -228,3 +228,10 @@ a:hover {
 .anomaly.border-active {
   animation: activePulse 2s ease-in-out infinite;
 }
+@media (max-width: 900px) {
+  .anomaly { flex: 1 1 calc(50% - 1.5em); }  /* 2 per row */
+}
+
+@media (max-width: 600px) {
+  .anomaly { flex: 1 1 100%; }               /* 1 per row */
+}
