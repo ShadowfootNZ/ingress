@@ -65,7 +65,7 @@
     "series": "+Gamma",
     "sites": [
       {
-        "date": "2026-02-28",
+        "date": "2026-02-28T14:00:00",
         "city": "Charlotte, NC",
         "country": "USA",
         "timezone": "America/New_York",
@@ -73,7 +73,7 @@
         "url-enl": "https://enl.rocks/-scrA"
       },
       {
-        "date": "2026-02-28",
+        "date": "2026-02-28T14:00:00",
         "city": "Lisbon",
         "country": "Portugal",
         "timezone": "Europe/Lisbon",
@@ -81,7 +81,7 @@
         "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026"
       },
       {
-        "date": "2026-03-14",
+        "date": "2026-03-14T14:00:00",
         "city": "Hong Kong",
         "country": "China",
         "timezone": "Asia/Hong_Kong",
@@ -89,20 +89,20 @@
         "url-enl": "https://enl.rocks/-m4F1"
       },
       {
-        "date": "2026-03-14",
+        "date": "2026-03-14T14:00:00",
         "city": "Zagreb",
         "country": "Croatia",
         "timezone": "Europe/Zagreb",
         "url-enl": "https://enl.rocks/-1uzd"
       },
       {
-        "date": "2026-03-21",
+        "date": "2026-03-21T14:00:00",
         "city": "Hyderabad, Telangana",
         "country": "India",
         "timezone": "Asia/Kolkata"
       },
       {
-        "date": "2026-03-21",
+        "date": "2026-03-21T14:00:00",
         "city": "Buenos Aires",
         "country": "Argentina",
         "timezone": "America/Argentina/Buenos_Aires"
