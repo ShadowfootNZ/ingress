@@ -44,7 +44,7 @@
         "url-enl": "https://enl.rocks/HoustonQ4"
       },
       {
-        "date": "2025-11-15T17:00:00",
+        "date": "2025-11-15T14:00:00",
         "city": "Taoyuan",
         "country": "Taiwan",
         "timezone": "Asia/Taipei",
@@ -52,7 +52,7 @@
         "url-enl": "https://enlightened.rocks/TaoyuanQ4"
       },
       {
-        "date": "2025-11-15T15:00:00",
+        "date": "2025-11-15T14:00:00",
         "city": "The Hague",
         "country": "Netherlands",
         "timezone": "Europe/Amsterdam",
@@ -62,7 +62,7 @@
     ]
   },
   {
-    "series": "Q1 2026",
+    "series": "+Gamma",
     "sites": [
       {
         "date": "2026-02-28",
@@ -92,7 +92,8 @@
         "date": "2026-03-14",
         "city": "Zagreb",
         "country": "Croatia",
-        "timezone": "Europe/Zagreb"
+        "timezone": "Europe/Zagreb",
+        "url-enl": "https://enl.rocks/-1uzd"
       },
       {
         "date": "2026-03-21",
