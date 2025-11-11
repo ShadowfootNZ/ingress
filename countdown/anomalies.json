@@ -105,7 +105,8 @@
         "date": "2026-03-21T14:00:00",
         "city": "Buenos Aires",
         "country": "Argentina",
-        "timezone": "America/Argentina/Buenos_Aires"
+        "timezone": "America/Argentina/Buenos_Aires",
+        "url-enl": "https://enlightened.rocks/anomaly/BA2026"
       }
     ]
   }
