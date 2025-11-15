@@ -45,6 +45,7 @@
       },
       {
         "date": "2025-11-15T14:00:00",
+        "winner": "enlightened",
         "city": "Taoyuan",
         "country": "Taiwan",
         "timezone": "Asia/Taipei",
@@ -53,6 +54,7 @@
       },
       {
         "date": "2025-11-15T14:00:00",
+        "winner": "enlightened",
         "city": "The Hague",
         "country": "Netherlands",
         "timezone": "Europe/Amsterdam",
