@@ -80,9 +80,10 @@ async function loadAnomalies() {
       : `rgba(0,196,255,${0.3 + 0.7 * scale})`;
   }
 
-  // Group anomalies by location
+  // Group anomalies by location with normalization
   const grouped = anomalies.reduce((acc, a) => {
     if (!a.location?.lat || !a.location?.lng) return acc;
+    
     const key = `${a.city}, ${a.country}`;
     acc[key] = acc[key] || [];
     acc[key].push(a);
