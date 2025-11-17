@@ -62,11 +62,13 @@ async function loadAnomalies() {
     const event = new Date(dateStr).getTime();
     const now = Date.now();
     const diff = (now - event) / (1000 * 60 * 60 * 24); // days ago
-
-    if (diff < 365) return 18;
-    if (diff < 730) return 14;
-    if (diff < 1095) return 10;
-    return 6;
+  
+    if (diff < 365) return 20;    // last year
+    if (diff < 730) return 16;    // 1-2 years
+    if (diff < 1460) return 11;   // 2-4 years
+    if (diff < 2920) return 8;    // 4-8 years
+    if (diff < 4380) return 6;    // 8-12 years
+    return 4;                     // older than 12 years
   }
 
   // Colour for win/loss
@@ -99,14 +101,19 @@ async function loadAnomalies() {
       const enl = parseInt(a.score?.enl ?? 0);
       const res = parseInt(a.score?.res ?? 0);
       const rad = radiusForDate(a.date);
-
-      const options = {
-        radius: rad,
-        fillColor: resultColour(enl, res),
-        fillOpacity: 0.7,
-        color: resultColour(enl, res),
-        weight: 2,
-      };
+      const winnerColour = enl === res
+      ? colour.tie
+      : enl > res
+        ? colour.enl
+        : colour.res;
+    
+    const options = {
+      radius: rad,
+      fillColor: resultColour(enl, res),
+      fillOpacity: 0.7,
+      color: winnerColour, // outline color
+      weight: 2,
+    };
 
       const circle = L.circleMarker([lat, lng], options);
 
