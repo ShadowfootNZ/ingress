@@ -1,0 +1,35 @@
+anomaly-map/
+│
+├── data/
+│   ├── historical.json        ← generated from spreadsheet
+│   ├── future.json            ← pulled from your countdown JSON
+│   ├── cities-cache.json      ← geocoder cache (optional)
+│   └── schema/                ← JSON schema definitions
+│       └── anomaly.schema.json
+│
+├── scripts/
+│   ├── import/
+│   │   └── import-from-sheets.js   ← pulls & converts spreadsheet → historical.json
+│   ├── util/
+│   │   └── geocode.js              ← lightweight geocoder, cached
+│   └── build.js                    ← builds data, merges future+historical, minifies
+│
+├── public/
+│   ├── index.html                  ← main map UI
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   ├── app.js                  ← map logic, marker logic, scaling
+│   │   ├── layers.js               ← ENL/RES/TIE/FUTURE layers
+│   │   ├── renderer.js             ← colours, scaling by score, date weighting
+│   │   └── util.js                 ← shared helpers
+│   ├── img/
+│   │   ├── enl.png
+│   │   ├── res.png
+│   │   ├── teal.png
+│   │   └── machina.png             ← future anomalies
+│   └── lib/
+│       └── leaflet/                ← include leaflet locally or via CDN
+│
+├── README.md
+└── package.json

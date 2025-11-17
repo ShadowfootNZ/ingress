@@ -1,0 +1,15 @@
+{
+  "type": "historical",
+  "series": "Abaddon",
+  "date": "2015-11-14",
+  "city": "Pittsburgh",
+  "region": "Pennsylvania",
+  "country": "United States",
+  "winner": "enl",
+  "score": {
+    "enl": 449,
+    "res": 344
+  },
+  "lat": 40.4406,
+  "lng": -79.9959
+}
