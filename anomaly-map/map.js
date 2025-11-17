@@ -127,7 +127,7 @@ async function loadAnomalies() {
               (evt) => `
             <div>
               <strong>${evt.series}</strong><br>
-              ${evt.date}<br>
+              ${new Date(evt.date).toLocaleDateString()}<br>
               ${
                 (() => {
                   const enlScore = evt.score?.enl ?? '-';
