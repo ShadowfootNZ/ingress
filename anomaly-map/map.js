@@ -169,22 +169,24 @@ async function loadAnomalies() {
   const seriesYears = {};
   anomalies.forEach(a => {
     if (!a.series) return;
-    const y = new Date(a.date).getFullYear();
-    if (!seriesYears[a.series]) seriesYears[a.series] = new Set();
-    seriesYears[a.series].add(y);
+    const ts = new Date(a.date).getTime();
+    if (!seriesYears[a.series]) seriesYears[a.series] = [];
+    seriesYears[a.series].push(ts);
   });
 
   /* Insert series options with year or year-range */
   [...seriesSet]
     .sort((a, b) => {
-      const yearsA = [...(seriesYears[a] || [])];
-      const yearsB = [...(seriesYears[b] || [])];
-      const maxA = Math.max(...yearsA);
-      const maxB = Math.max(...yearsB);
-      return maxB - maxA;   // newest series first
+      const datesA = seriesYears[a] || [];
+      const datesB = seriesYears[b] || [];
+      const maxA = Math.max(...datesA);
+      const maxB = Math.max(...datesB);
+      return maxB - maxA;
     })
     .forEach(s => {
-    const years = [...(seriesYears[s] || [])].sort((a,b) => a - b);
+      const years = [...new Set(seriesYears[s].map(ts =>
+        new Date(ts).getFullYear()
+      ))].sort((a,b) => a - b);
     let label = s;
 
     if (years.length === 1) {
