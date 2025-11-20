@@ -161,17 +161,18 @@ async function loadAnomalies() {
   const seriesSet = new Set();
 
   anomalies.forEach(a => {
-    if (a.series) seriesSet.add(a.series);
+    if (a.series && a.type) seriesSet.add(`${a.series} (${a.type})`);
   });
 
   const seriesSel = document.getElementById('series-filter');
   /* Build a map: series → list of years */
   const seriesYears = {};
   anomalies.forEach(a => {
-    if (!a.series) return;
+    if (!a.series || !a.type) return;
+    const key = `${a.series} (${a.type})`;
     const ts = new Date(a.date).getTime();
-    if (!seriesYears[a.series]) seriesYears[a.series] = [];
-    seriesYears[a.series].push(ts);
+    if (!seriesYears[key]) seriesYears[key] = [];
+    seriesYears[key].push(ts);
   });
 
   /* Insert series options with year or year-range */
@@ -190,7 +191,7 @@ async function loadAnomalies() {
     let label = s;
 
     if (years.length === 1) {
-      label = `${s} (${years[0]})`;
+      label = `${years[0]} ${s}`;
     } else if (years.length > 1) {
       const first = years[0];
       const last = years[years.length - 1];
@@ -262,7 +263,7 @@ async function loadAnomalies() {
               .map(
                 (evt) => `
               <div>
-                <strong>${evt.series}</strong><br>
+                <strong>${evt.series} (${evt.type})</strong><br>
                 ${new Date(evt.date).toLocaleDateString()}<br>
                 ${
                   (() => {
@@ -284,7 +285,13 @@ async function loadAnomalies() {
                   
                   return `${enlMarkup} — ${resMarkup}`;
                   })()
-                }<br><br>
+                }<br>
+                ${
+                  evt.info && evt.info.trim()
+                    ? `<div class="evt-info">${evt.info.trim()}</div>`
+                    : ''
+                }
+                <br>
               </div>
             `
               )
@@ -313,9 +320,10 @@ async function loadAnomalies() {
     }
   });
 
-  if (newest && newest.series) {
+  if (newest && newest.series && newest.type) {
+    const key = `${newest.series} (${newest.type})`;
     [...seriesSel.options].forEach(opt => {
-      opt.selected = (opt.value === newest.series);
+      opt.selected = (opt.value === key);
     });
   }
   applyFilters();  // apply the new pre-selected filter immediately
@@ -324,7 +332,8 @@ async function loadAnomalies() {
     const selectedSeries = [...seriesSel.selectedOptions].map(opt => opt.value);
 
     anomalies.forEach(a => {
-      a._visible = selectedSeries.length === 0 || selectedSeries.includes(a.series);
+      const key = `${a.series} (${a.type})`;
+      a._visible = selectedSeries.length === 0 || selectedSeries.includes(key);
     });
 
     renderMap();

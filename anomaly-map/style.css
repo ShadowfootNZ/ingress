@@ -208,7 +208,7 @@ h4 {
   color: #ffffff;            /* brighten on hover */
 }
 #series-filter {
-  height: 160px;        /* shows many more series */
+  height: 360px;        /* shows many more series */
   min-height: 160px;
   overflow-y: auto;
   background: #222;
