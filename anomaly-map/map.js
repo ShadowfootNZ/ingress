@@ -161,7 +161,9 @@ async function loadAnomalies() {
   const seriesSet = new Set();
 
   anomalies.forEach(a => {
-    if (a.series && a.type) seriesSet.add(`${a.series} (${a.type})`);
+    if (!a.series || !a.type) return;
+    if (!a.location || a.location.lat == null || a.location.lng == null) return;
+      seriesSet.add(`${a.series} (${a.type})`);
   });
 
   const seriesSel = document.getElementById('series-filter');
@@ -169,6 +171,7 @@ async function loadAnomalies() {
   const seriesYears = {};
   anomalies.forEach(a => {
     if (!a.series || !a.type) return;
+    if (!a.location || a.location.lat == null || a.location.lng == null) return;
     const key = `${a.series} (${a.type})`;
     const ts = new Date(a.date).getTime();
     if (!seriesYears[key]) seriesYears[key] = [];
