@@ -60,8 +60,8 @@
     "type": "Modern Anomaly",
     "series": "Recursion",
     "date": "2014-02-22",
-    "city": "Bangalore",
-    "state": "n/a",
+    "city": "Bengaluru",
+    "state": "Karnataka",
     "country": "India",
     "location": {
       "lat": 12.9767936,
@@ -80,7 +80,7 @@
     "series": "Recursion",
     "date": "2014-02-22",
     "city": "Hyderabad",
-    "state": "n/a",
+    "state": "Telangana",
     "country": "India",
     "location": {
       "lat": 17.360589,
@@ -98,8 +98,8 @@
     "type": "Modern Anomaly",
     "series": "Recursion",
     "date": "2014-02-22",
-    "city": "New Delhi",
-    "state": "n/a",
+    "city": "Delhi",
+    "state": "NCT of Delhi",
     "country": "India",
     "location": {
       "lat": 28.6419258,
@@ -3918,7 +3918,7 @@
     "series": "Aegis Nova",
     "date": "2016-06-25",
     "city": "Hyderabad",
-    "state": "n/a",
+    "state": "Telangana",
     "country": "India",
     "location": {
       "lat": 17.360589,
@@ -4260,7 +4260,7 @@
     "series": "Via Lux",
     "date": "2016-09-24",
     "city": "Mumbai",
-    "state": "n/a",
+    "state": "Maharashtra",
     "country": "India",
     "location": {
       "lat": 19.054999,
@@ -4925,7 +4925,7 @@
     "series": "EXO5",
     "date": "2017-11-04",
     "city": "Chennai",
-    "state": "n/a",
+    "state": "Tamil Nadu",
     "country": "India",
     "location": {
       "lat": 13.0836939,
@@ -5780,7 +5780,7 @@
     "series": "Darsana Prime",
     "date": "2019-02-23",
     "city": "Pune",
-    "state": "n/a",
+    "state": "Maharashtra",
     "country": "India",
     "location": {
       "lat": 18.5213738,
@@ -16419,8 +16419,8 @@
     "type": "Modern Anomaly",
     "series": "Kureze Effect",
     "date": "2022-02-19",
-    "city": "DL",
-    "state": "Delhi",
+    "city": "Delhi",
+    "state": "NCT of Delhi",
     "country": "India",
     "location": {
       "lat": 28.6328027,
@@ -30062,7 +30062,7 @@
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Delhi",
-    "state": "n/a",
+    "state": "NCT of Delhi",
     "country": "India",
     "location": {
       "lat": 28.6328027,
@@ -31125,7 +31125,7 @@
     "type": "Modern Anomaly",
     "series": "Erased Memories",
     "date": "2024-11-23",
-    "city": "Lucknow, Uttar Pradesh, India",
+    "city": "Lucknow",
     "state": "Uttar Pradesh",
     "country": "India",
     "location": {

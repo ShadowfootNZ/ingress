@@ -14,9 +14,31 @@
 <body>
 
 <div id="map"></div>
+<div id="info-panel">
+  <h3>Ingress Anomaly Map</h3>
+  <button id="info-minimise">-</button>
+  <div id="info-content">
+    <div id="filters">
+      <label>Series:
+        <select id="series-filter" multiple>
+
+        </select>
+      </label>
+    </div>
+
+    <p>Colour intensity shows the margin of the win. Recent events are larger.</p>
+
+    <p>
+      Data courtesy of <a href="https://linktr.ee/ingressanomalystats" target="_blank">Ingress Anomaly Stats</a> 
+    </p>
+
+    <!-- <hr>
+    <button id="debug-toggle">Show loaded details</button>
+    <div id="debug-output" style="display:none;"></div> -->
+  </div>
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script type="module" src="map.js"></script>
-
 </body>
 </html>
