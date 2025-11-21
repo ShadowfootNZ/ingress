@@ -218,11 +218,12 @@ h4 {
   border-radius: 4px;
 }
 
-/* iOS / iPadOS: prevent giant full‑screen select UI */
+/* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {
   #series-filter {
-    font-size: 14px;
-    height: 160px;      /* tighter, avoids iOS expanding it */
-    min-height: 120px;
+    max-height: 1.8em !important;   /* roughly one line */
+    height: 1.8em !important;
+    min-height: 1.8em !important;
+    overflow-y: auto;
   }
 }
