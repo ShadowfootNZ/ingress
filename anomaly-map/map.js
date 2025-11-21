@@ -167,7 +167,7 @@ async function loadAnomalies() {
   });
 
   const seriesSel = document.getElementById('series-filter');
-  /* Build a map: series → list of years */
+
   const seriesYears = {};
   anomalies.forEach(a => {
     if (!a.series || !a.type) return;
@@ -206,7 +206,15 @@ async function loadAnomalies() {
       `<option value="${s}">${label}</option>`
     );
   });
-
+  // Adjust height based on the number of entries (Option B)
+  const optionCount = seriesSel.options.length;
+  const rowHeight = 22;                   // approx height per <option>
+  const maxAllowed = window.innerHeight * 0.5;
+  
+  const ideal = optionCount * rowHeight;
+  
+  seriesSel.style.height =
+    Math.min(Math.max(ideal, 80), maxAllowed) + 'px';
   const grouped = {};
 
   function renderMap() {
