@@ -102,8 +102,8 @@
     "state": "NCT of Delhi",
     "country": "India",
     "location": {
-      "lat": 28.6419258,
-      "lng": 77.2217499
+      "lat": 28.6328027,
+      "lng": 77.2197713
     },
     "score": {
       "enl": 143,
@@ -592,12 +592,12 @@
     "type": "Anomaly",
     "series": "Interitus",
     "date": "2014-04-26",
-    "city": "Colarado Springs",
-    "state": "Colarado",
+    "city": "Colorado Springs",
+    "state": "Colorado",
     "country": "United States",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 38.8339578,
+      "lng": -104.825348
     },
     "score": {
       "enl": 347,
@@ -29468,7 +29468,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Halifax",
@@ -29486,7 +29487,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Recife",
@@ -29504,7 +29506,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Concepción",
@@ -29522,7 +29525,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Dearborn",
@@ -29540,7 +29544,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Montreal",
@@ -29558,7 +29563,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "San Juan",
@@ -29576,7 +29582,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Baton Rouge",
@@ -29594,7 +29601,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Chiclayo",
@@ -29612,7 +29620,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Duluth",
@@ -29630,7 +29639,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Iquitos",
@@ -29648,7 +29658,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Medellín",
@@ -29666,7 +29677,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Fort Collins",
@@ -29684,7 +29696,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Guatemala City",
@@ -29702,7 +29715,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Monterrey",
@@ -29720,7 +29734,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "San José",
@@ -29738,7 +29753,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Saskatoon",
@@ -29756,7 +29772,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Las Vegas",
@@ -29774,7 +29791,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-24",
     "city": "Honolulu",
@@ -29792,7 +29810,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Hamilton",
@@ -29810,7 +29829,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Melbourne",
@@ -29828,7 +29848,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Townsville",
@@ -29846,7 +29867,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Busan",
@@ -29864,7 +29886,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Gwangju",
@@ -29882,7 +29905,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Cebu City",
@@ -29900,7 +29924,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Chiayi City",
@@ -29918,7 +29943,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Kota Kinabalu",
@@ -29936,7 +29962,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Yilan",
@@ -29954,7 +29981,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Chiang Mai",
@@ -29972,7 +30000,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Hanoi",
@@ -29990,7 +30019,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Malang City",
@@ -30008,7 +30038,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Colombo",
@@ -30026,7 +30057,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Delhi",
@@ -30044,7 +30076,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Hyderabad",
@@ -30062,7 +30095,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Pune",
@@ -30080,7 +30114,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-08-31",
     "city": "Astana",
@@ -30098,7 +30133,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Batumi",
@@ -30116,7 +30152,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Antalya",
@@ -30134,7 +30171,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Brașov",
@@ -30152,7 +30190,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Klaipėda",
@@ -30170,7 +30209,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Sofia",
@@ -30188,7 +30228,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Turku",
@@ -30206,7 +30247,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Varna",
@@ -30224,7 +30266,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Bergen",
@@ -30242,7 +30285,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Bordeaux",
@@ -30260,7 +30304,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Bratislava",
@@ -30278,7 +30323,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Centurion",
@@ -30296,7 +30342,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Elche",
@@ -30314,7 +30361,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Naples",
@@ -30332,7 +30380,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Nice",
@@ -30350,7 +30399,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Novi Sad",
@@ -30368,7 +30418,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Pilsen",
@@ -30386,7 +30437,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Rzeszów",
@@ -30404,7 +30456,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Dublin",
@@ -30422,7 +30475,8 @@
     "details": "Shared Memories",
     "info": ""
   },
-  {"type": "Shards",
+  {
+    "type": "Shards",
     "series": "Shared Memories",
     "date": "2024-09-14",
     "city": "Edinburgh",
@@ -30938,12 +30992,12 @@
     "type": "Shards",
     "series": "Erased Memories",
     "date": "2024-11-23",
-    "city": "Toyama, Japan",
+    "city": "Toyama",
     "state": "n/a",
     "country": "Japan",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 36.6468015,
+      "lng": 137.2183531
     },
     "score": {
       "enl": 5,
@@ -31075,8 +31129,8 @@
     "state": "Uttar Pradesh",
     "country": "India",
     "location": {
-      "lat": null,
-      "lng": null
+      "lat": 26.8381,
+      "lng": 80.9346001
     },
     "score": {
       "enl": 3,
@@ -32434,5 +32488,1050 @@
     "winner": "resistance",
     "details": "plusAlpha",
     "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-08-16",
+    "city": "Melaka",
+    "state": "Malacca",
+    "country": "Malaysia",
+    "location": {
+      "lat": 2.3293744,
+      "lng": 102.2880962
+    },
+    "score": {
+      "enl": 159.9,
+      "res": 140.1
+    },
+    "winner": "enlightened",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-08-16",
+    "city": "Portland",
+    "state": "Oregon",
+    "country": "United States",
+    "location": {
+      "lat": 45.5202471,
+      "lng": -122.674194
+    },
+    "score": {
+      "enl": 181.5,
+      "res": 118.5
+    },
+    "winner": "enlightened",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-08-23",
+    "city": "Gothenburg",
+    "state": "Västra Götaland",
+    "country": "Sweden",
+    "location": {
+      "lat": 57.7072326,
+      "lng": 11.9670171
+    },
+    "score": {
+      "enl": 124.2,
+      "res": 175.8
+    },
+    "winner": "resistance",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-08-23",
+    "city": "Quebec City",
+    "state": "Quebec",
+    "country": "Canada",
+    "location": {
+      "lat": 46.8137431,
+      "lng": -71.2084061
+    },
+    "score": {
+      "enl": 185.3,
+      "res": 114.7
+    },
+    "winner": "enlightened",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-09-20",
+    "city": "Denpasar City",
+    "state": "Bali",
+    "country": "Indonesia",
+    "location": {
+      "lat": -8.6735843,
+      "lng": 115.1771125
+    },
+    "score": {
+      "enl": 145,
+      "res": 155
+    },
+    "winner": "resistance",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Delta",
+    "date": "2025-09-20",
+    "city": "Cambridge",
+    "state": "England",
+    "country": "United Kingdom",
+    "location": {
+      "lat": 52.2055314,
+      "lng": 0.1186637
+    },
+    "score": {
+      "enl": 153.2,
+      "res": 146.8
+    },
+    "winner": "enlightened",
+    "details": "+Delta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Theta",
+    "date": "2025-06-14",
+    "city": "Perth",
+    "state": "Western Australia",
+    "country": "Australia",
+    "location": {
+      "lat": -31.9558967,
+      "lng": 115.8605784
+    },
+    "score": {
+      "enl": 156.2,
+      "res": 93.8
+    },
+    "winner": "enlightened",
+    "details": "+Theta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Theta",
+    "date": "2025-06-14",
+    "city": "Chemnitz",
+    "state": "Saxony",
+    "country": "Germany",
+    "location": {
+      "lat": 50.8323531,
+      "lng": 12.918914
+    },
+    "score": {
+      "enl": 119,
+      "res": 131
+    },
+    "winner": "resistance",
+    "details": "+Theta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Theta",
+    "date": "2025-05-17",
+    "city": "Manila",
+    "state": "Metro Manila",
+    "country": "Philippines",
+    "location": {
+      "lat": 14.5904492,
+      "lng": 120.9803621
+    },
+    "score": {
+      "enl": 178.3,
+      "res": 71.7
+    },
+    "winner": "enlightened",
+    "details": "+Theta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Theta",
+    "date": "2025-05-17",
+    "city": "Providence",
+    "state": "Rhode Island",
+    "country": "USA",
+    "location": {
+      "lat": 41.8239891,
+      "lng": -71.4128343
+    },
+    "score": {
+      "enl": 140.6,
+      "res": 109.4
+    },
+    "winner": "enlightened",
+    "details": "+Theta",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Adelaide",
+    "state": "",
+    "country": "Australia",
+    "location": {
+      "lat": -34.9281805,
+      "lng": 138.5999312
+    },
+    "score": {
+      "enl": 7.7,
+      "res": 4.2
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 11, RES: 6"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Asahikawa",
+    "state": "",
+    "country": "Japan",
+    "location": {
+      "lat": 43.770625,
+      "lng": 142.3649743
+    },
+    "score": {
+      "enl": 6.3,
+      "res": 5.6
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 9, RES: 8"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Busan",
+    "state": "",
+    "country": "South Korea",
+    "location": {
+      "lat": 35.1799528,
+      "lng": 129.0752365
+    },
+    "score": {
+      "enl": 0.7,
+      "res": 13.3
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 1, RES: 19"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Kumamoto",
+    "state": "",
+    "country": "Japan",
+    "location": {
+      "lat": 32.6450475,
+      "lng": 130.6341345
+    },
+    "score": {
+      "enl": 14,
+      "res": 1.4
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 20, RES: 2"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Matsuyama",
+    "state": "",
+    "country": "Japan",
+    "location": {
+      "lat": 33.8395188,
+      "lng": 132.7653521
+    },
+    "score": {
+      "enl": 1.4,
+      "res": 8.4
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 2, RES: 12"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Morioka",
+    "state": "",
+    "country": "Japan",
+    "location": {
+      "lat": 39.7021331,
+      "lng": 141.1545397
+    },
+    "score": {
+      "enl": 10.5,
+      "res": 6.3
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 15, RES: 9"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Hualien",
+    "state": "",
+    "country": "Taiwan",
+    "location": {
+      "lat": 23.9913421,
+      "lng": 121.6197276
+    },
+    "score": {
+      "enl": 1.4,
+      "res": 14
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 2, RES: 20"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Taichung",
+    "state": "",
+    "country": "Taiwan",
+    "location": {
+      "lat": 24.163162,
+      "lng": 120.6478282
+    },
+    "score": {
+      "enl": 8.4,
+      "res": 4.9
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 12, RES: 7"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Hanoi",
+    "state": "",
+    "country": "Vietnam",
+    "location": {
+      "lat": 21.0283334,
+      "lng": 105.854041
+    },
+    "score": {
+      "enl": 0,
+      "res": 17.5
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 0, RES: 25"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Malang",
+    "state": "",
+    "country": "Indonesia",
+    "location": {
+      "lat": -7.9771308,
+      "lng": 112.6340265
+    },
+    "score": {
+      "enl": 0,
+      "res": 16.8
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 0, RES: 24"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Bengaluru",
+    "state": "",
+    "country": "India",
+    "location": {
+      "lat": 12.9767936,
+      "lng": 77.590082
+    },
+    "score": {
+      "enl": 11.2,
+      "res": 3.5
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 16, RES: 5"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Mumbai",
+    "state": "",
+    "country": "India",
+    "location": {
+      "lat": 19.054999,
+      "lng": 72.8692035
+    },
+    "score": {
+      "enl": 2.8,
+      "res": 11.2
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Shards — ENL: 4, RES: 16"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-06-07",
+    "city": "Utsunomiya",
+    "state": "",
+    "country": "Japan",
+    "location": {
+      "lat": 36.5549677,
+      "lng": 139.8828776
+    },
+    "score": {
+      "enl": 6.275,
+      "res": 3.6
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Shards — ENL: 251, RES: 144"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Spokane",
+    "state": "",
+    "country": "USA",
+    "location": {
+      "lat": 47.6571934,
+      "lng": -117.42351
+    },
+    "score": {
+      "enl": 2.1,
+      "res": 13.3
+    },
+    "winner": "resistance",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 3 / RES 19"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Tempe",
+    "state": "",
+    "country": "USA",
+    "location": {
+      "lat": 33.4255117,
+      "lng": -111.940016
+    },
+    "score": {
+      "enl": 16.8,
+      "res": 0
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 24 / RES 0"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Edmonton",
+    "state": "Alberta",
+    "country": "Canada",
+    "location": {
+      "lat": 53.5462055,
+      "lng": -113.491241
+    },
+    "score": {
+      "enl": 11.9,
+      "res": 2.1
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 17 / RES 3"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Guatemala City",
+    "state": "",
+    "country": "Guatemala",
+    "location": {
+      "lat": 14.6416142,
+      "lng": -90.5132836
+    },
+    "score": {
+      "enl": 3.5,
+      "res": 0
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 5 / RES 0"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Mexico City",
+    "state": "",
+    "country": "Mexico",
+    "location": {
+      "lat": 19.3207722,
+      "lng": -99.1514678
+    },
+    "score": {
+      "enl": 5.6,
+      "res": 9.1
+    },
+    "winner": "resistance",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 8 / RES 13"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Arequipa",
+    "state": "",
+    "country": "Peru",
+    "location": {
+      "lat": -16.3988667,
+      "lng": -71.5369607
+    },
+    "score": {
+      "enl": 9.1,
+      "res": 1.4
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 13 / RES 2"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Chiclayo",
+    "state": "",
+    "country": "Peru",
+    "location": {
+      "lat": -6.7716146,
+      "lng": -79.8387175
+    },
+    "score": {
+      "enl": 13.3,
+      "res": 1.4
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 19 / RES 2"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Medellín",
+    "state": "Antioquia",
+    "country": "Colombia",
+    "location": {
+      "lat": 6.2697325,
+      "lng": -75.6025597
+    },
+    "score": {
+      "enl": 2.1,
+      "res": 11.9
+    },
+    "winner": "resistance",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 3 / RES 17"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Minneapolis",
+    "state": "Minnesota",
+    "country": "USA",
+    "location": {
+      "lat": 44.9772995,
+      "lng": -93.2654692
+    },
+    "score": {
+      "enl": 14,
+      "res": 2.1
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 20 / RES 3"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Concepción",
+    "state": "",
+    "country": "Chile",
+    "location": {
+      "lat": -36.8270698,
+      "lng": -73.0502064
+    },
+    "score": {
+      "enl": 4.9,
+      "res": 7
+    },
+    "winner": "resistance",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 7 / RES 10"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Gainesville, FL",
+    "state": "Florida",
+    "country": "USA",
+    "location": {
+      "lat": 29.6519684,
+      "lng": -82.3249846
+    },
+    "score": {
+      "enl": 11.2,
+      "res": 0
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 16 / RES 0"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Santa Cruz de la Sierra",
+    "state": "",
+    "country": "Bolivia",
+    "location": {
+      "lat": -17.7834217,
+      "lng": -63.1820853
+    },
+    "score": {
+      "enl": 9.8,
+      "res": 2.1
+    },
+    "winner": "enlightened",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 14 / RES 3"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-31",
+    "city": "Brasília",
+    "state": "",
+    "country": "Brazil",
+    "location": {
+      "lat": -10.3333333,
+      "lng": -53.2
+    },
+    "score": {
+      "enl": 0,
+      "res": 17.5
+    },
+    "winner": "resistance",
+    "details": "+Theta Skirmish",
+    "info": "Shards ENL 0 / RES 25"
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-10-18",
+    "city": "Valencia",
+    "state": "Valencian Community",
+    "country": "Spain",
+    "location": {
+      "lat": 39.4697065,
+      "lng": -0.3763353
+    },
+    "score": {
+      "enl": 142.8,
+      "res": 157.2
+    },
+    "winner": "resistance",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-10-18",
+    "city": "São Paulo",
+    "state": "São Paulo",
+    "country": "Brazil",
+    "location": {
+      "lat": -23.5506507,
+      "lng": -46.6333824
+    },
+    "score": {
+      "enl": 149.2,
+      "res": 150.8
+    },
+    "winner": "resistance",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-10-25",
+    "city": "Wellington",
+    "state": "",
+    "country": "New Zealand",
+    "location": {
+      "lat": -41.2887953,
+      "lng": 174.7772114
+    },
+    "score": {
+      "enl": 194.6,
+      "res": 105.4
+    },
+    "winner": "enlightened",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-10-25",
+    "city": "Houston",
+    "state": "Texas",
+    "country": "United States",
+    "location": {
+      "lat": 29.7589382,
+      "lng": -95.3676974
+    },
+    "score": {
+      "enl": 211.4,
+      "res": 88.6
+    },
+    "winner": "enlightened",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-11-15",
+    "city": "Taoyuan",
+    "state": "",
+    "country": "Taiwan",
+    "location": {
+      "lat": 24.9929995,
+      "lng": 121.3010003
+    },
+    "score": {
+      "enl": 183.7,
+      "res": 116.3
+    },
+    "winner": "enlightened",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Anomaly",
+    "series": "+Beta",
+    "date": "2025-11-15",
+    "city": "The Hague",
+    "state": "",
+    "country": "Netherlands",
+    "location": {
+      "lat": 52.0749456,
+      "lng": 4.2696802
+    },
+    "score": {
+      "enl": 132.1,
+      "res": 167.9
+    },
+    "winner": "resistance",
+    "details": "+Beta",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "İstanbul",
+    "state": "",
+    "country": "Turkey",
+    "location": {
+      "lat": 41.006381,
+      "lng": 28.9758715
+    },
+    "score": {
+      "enl": 0.7,
+      "res": 13.3
+    },
+    "winner": "resistance",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Lahti",
+    "state": "",
+    "country": "Finland",
+    "location": {
+      "lat": 60.982628,
+      "lng": 25.6613418
+    },
+    "score": {
+      "enl": 0,
+      "res": 14
+    },
+    "winner": "resistance",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Belgrade",
+    "state": "",
+    "country": "Serbia",
+    "location": {
+      "lat": 44.8178131,
+      "lng": 20.4568974
+    },
+    "score": {
+      "enl": 7,
+      "res": 7.7
+    },
+    "winner": "resistance",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Drammen",
+    "state": "",
+    "country": "Norway",
+    "location": {
+      "lat": 59.6964936,
+      "lng": 10.175642
+    },
+    "score": {
+      "enl": 6.3,
+      "res": 4.9
+    },
+    "winner": "enlightened",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Orléans",
+    "state": "",
+    "country": "France",
+    "location": {
+      "lat": 47.9027336,
+      "lng": 1.9086066
+    },
+    "score": {
+      "enl": 7,
+      "res": 7
+    },
+    "winner": "",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Randers",
+    "state": "",
+    "country": "Denmark",
+    "location": {
+      "lat": 56.4617545,
+      "lng": 10.0371476
+    },
+    "score": {
+      "enl": 7,
+      "res": 4.9
+    },
+    "winner": "enlightened",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Uppsala",
+    "state": "",
+    "country": "Sweden",
+    "location": {
+      "lat": 59.8586126,
+      "lng": 17.6387436
+    },
+    "score": {
+      "enl": 11.9,
+      "res": 1.4
+    },
+    "winner": "enlightened",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Braga",
+    "state": "",
+    "country": "Portugal",
+    "location": {
+      "lat": 41.5510583,
+      "lng": -8.4280045
+    },
+    "score": {
+      "enl": 7.7,
+      "res": 4.9
+    },
+    "winner": "enlightened",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Cardiff",
+    "state": "",
+    "country": "United Kingdom",
+    "location": {
+      "lat": 51.4816546,
+      "lng": -3.1791934
+    },
+    "score": {
+      "enl": 4.2,
+      "res": 10.5
+    },
+    "winner": "resistance",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Glasgow",
+    "state": "",
+    "country": "United Kingdom",
+    "location": {
+      "lat": 55.861155,
+      "lng": -4.2501687
+    },
+    "score": {
+      "enl": 7.7,
+      "res": 5.6
+    },
+    "winner": "enlightened",
+    "details": "Theta Skirmish",
+    "info": ""
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Tartu",
+    "state": "",
+    "country": "Estonia",
+    "location": {
+      "lat": 58.3779528,
+      "lng": 26.7290023
+    },
+    "score": {
+      "enl": 7.8,
+      "res": 7.825
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Beacon Points — ENL: 312, RES: 313"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Lublin",
+    "state": "",
+    "country": "Poland",
+    "location": {
+      "lat": 51.250559,
+      "lng": 22.5701022
+    },
+    "score": {
+      "enl": 3.05,
+      "res": 11.825
+    },
+    "winner": "resistance",
+    "details": "",
+    "info": "Beacon Points — ENL: 122, RES: 473"
+  },
+  {
+    "type": "Skirmish",
+    "series": "+Theta",
+    "date": "2025-05-24",
+    "city": "Palma",
+    "state": "",
+    "country": "Spain",
+    "location": {
+      "lat": 39.5812525,
+      "lng": 2.7092683
+    },
+    "score": {
+      "enl": 10.7,
+      "res": 3.875
+    },
+    "winner": "enlightened",
+    "details": "",
+    "info": "Beacon Points — ENL: 428, RES: 155"
   }
 ]

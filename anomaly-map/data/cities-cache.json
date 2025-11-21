@@ -3842,5 +3842,113 @@
   "Goiânia ,Brazil": {
     "lat": -16.680882,
     "lon": -49.2532691
+  },
+  "Lucknow,India": {
+    "lat": 26.8381,
+    "lon": 80.9346001
+  },
+  "Melaka,Malaysia": {
+    "lat": 2.3293744,
+    "lon": 102.2880962
+  },
+  "Denpasar City,Indonesia": {
+    "lat": -8.6735843,
+    "lon": 115.1771125
+  },
+  "Cambridge,United Kingdom": {
+    "lat": 52.2055314,
+    "lon": 0.1186637
+  },
+  "The Hague,Netherlands": {
+    "lat": 52.0749456,
+    "lon": 4.2696802
+  },
+  "Chemnitz,Germany": {
+    "lat": 50.8323531,
+    "lon": 12.918914
+  },
+  "Providence,USA": {
+    "lat": 41.8239891,
+    "lon": -71.4128343
+  },
+  "Kumamoto,Japan": {
+    "lat": 32.6450475,
+    "lon": 130.6341345
+  },
+  "Hualien,Taiwan": {
+    "lat": 23.9913421,
+    "lon": 121.6197276
+  },
+  "Malang,Indonesia": {
+    "lat": -7.9771308,
+    "lon": 112.6340265
+  },
+  "Utsunomiya,Japan": {
+    "lat": 36.5549677,
+    "lon": 139.8828776
+  },
+  "Spokane,USA": {
+    "lat": 47.6571934,
+    "lon": -117.42351
+  },
+  "Tempe,USA": {
+    "lat": 33.4255117,
+    "lon": -111.940016
+  },
+  "Minneapolis,USA": {
+    "lat": 44.9772995,
+    "lon": -93.2654692
+  },
+  "Gainesville, FL,USA": {
+    "lat": 29.6519684,
+    "lon": -82.3249846
+  },
+  "Brasília,Brazil": {
+    "lat": -10.3333333,
+    "lon": -53.2
+  },
+  "İstanbul,Turkey": {
+    "lat": 41.006381,
+    "lon": 28.9758715
+  },
+  "Lahti,Finland": {
+    "lat": 60.982628,
+    "lon": 25.6613418
+  },
+  "Belgrade,Serbia": {
+    "lat": 44.8178131,
+    "lon": 20.4568974
+  },
+  "Drammen,Norway": {
+    "lat": 59.6964936,
+    "lon": 10.175642
+  },
+  "Orléans,France": {
+    "lat": 47.9027336,
+    "lon": 1.9086066
+  },
+  "Randers,Denmark": {
+    "lat": 56.4617545,
+    "lon": 10.0371476
+  },
+  "Uppsala,Sweden": {
+    "lat": 59.8586126,
+    "lon": 17.6387436
+  },
+  "Braga,Portugal": {
+    "lat": 41.5510583,
+    "lon": -8.4280045
+  },
+  "Cardiff,United Kingdom": {
+    "lat": 51.4816546,
+    "lon": -3.1791934
+  },
+  "Lublin,Poland": {
+    "lat": 51.250559,
+    "lon": 22.5701022
+  },
+  "Colorado Springs,United States": {
+    "lat": 38.8339578,
+    "lon": -104.825348
   }
 }

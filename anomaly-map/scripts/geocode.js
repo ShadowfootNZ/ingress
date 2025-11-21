@@ -45,7 +45,7 @@ async function updateLocations() {
     const coords = await geocode(anomaly.city, anomaly.country);
     if (coords) {
       anomaly.location = { lat: coords.lat, lng: coords.lon };
-      console.log(`Geocoded: ${anomaly.city}, ${anomaly.country}`);
+      //console.log(`Geocoded: ${anomaly.city}, ${anomaly.country}`);
     }
   }
 
