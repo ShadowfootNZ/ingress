@@ -12,6 +12,11 @@ A small, client-side progress tracker for the Ingress +β event.
 [+Beta Progress](https://shadowfootnz.github.io/ingress/beta-progress/)  
 Enter your current score and the page will show days remaining, remaining bounty points, and how far you are from Bronze / Silver / Gold targets.  
 
+## Ingress Anomaly Map  
+An interactive global map showing the history of Ingress anomaly sites, coloured and sized by outcome and recency.  
+[View the Anomaly Map](https://shadowfootnz.github.io/ingress/anomaly-map/)  
+Data collated from community sources including [Ingress Anomaly Stats](https://linktr.ee/ingressanomalystats).  
+
 ---
 
 ### Feedback and Contributions
