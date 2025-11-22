@@ -214,7 +214,7 @@ async function loadAnomalies() {
   const ideal = optionCount * rowHeight;
   
   seriesSel.style.height =
-    Math.min(Math.max(ideal, 80), maxAllowed) + 'px';
+    Math.min(Math.max(ideal, 70), maxAllowed) + 'px';
   const grouped = {};
 
   function renderMap() {

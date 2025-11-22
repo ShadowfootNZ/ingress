@@ -208,7 +208,7 @@ h4 {
   color: #ffffff;            /* brighten on hover */
 }
 #series-filter {
-  max-height: 50vh;     
+  max-height: 90vh;     
   height:auto;
   min-height: 40px;
   overflow-y: auto;
@@ -221,9 +221,9 @@ h4 {
 /* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {
   #series-filter {
-    max-height: 1.8em !important;   /* roughly one line */
-    height: 1.8em !important;
-    min-height: 1.8em !important;
+    max-height: 2em !important;   /* roughly one line */
+    height: 2em !important;
+    min-height: 2em !important;
     overflow-y: auto;
   }
 }
