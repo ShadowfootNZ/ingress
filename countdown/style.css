@@ -216,6 +216,11 @@ a:hover {
   filter: brightness(1.3);
 }
 
+.feedback .agent-badge a {
+  color: var(--enl-green);
+  text-decoration: none;
+}
+
 /* Optional: inherit the .error look for consistency */
 .feedback.error {
   opacity: 0.9;
@@ -231,6 +236,8 @@ a:hover {
     var(--enl-green)
   );
 }
+
+
 
 /* Animation states */
 
