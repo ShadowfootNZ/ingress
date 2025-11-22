@@ -1,3 +1,4 @@
+
 html, body {
   height: 100%;
   margin: 0;
@@ -6,6 +7,9 @@ html, body {
   --enl-green: #28f428; 
   --res-blue:  #00c4ff;
   --tie-teal:  #14DC94;
+}
+#info-panel, #legend-panel, #filter-panel {
+  font-family: sans-serif;
 }
 
 #map {
@@ -195,13 +199,16 @@ h4 {
   color: #fff;
   text-decoration: underline;
 }
+#info-panel h3 {
+  color: #14DC94;           
+}
 #info-panel a {
-  color: #66ccff;            /* soft cyan, readable on dark bg */
+  color: #14DC94;           
   text-decoration: underline;
 }
 
 #info-panel a:visited {
-  color: #88aaff;            /* lighter desaturated blue for visited links */
+  color: #14DC94;            
 }
 
 #info-panel a:hover {

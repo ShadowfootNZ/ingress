@@ -116,7 +116,8 @@ async function loadAnomalies() {
   
     // tie → neutral teal
     if (total === 0 || enl === res) {
-      return colour.tie;
+      // return a very desaturated / greyish teal for ties
+      return 'rgb(40, 70, 60)';  // muted, low‑saturation teal-grey
     }
   
     // winner’s base colour
