@@ -19,7 +19,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 2em 1em;
-}
+} 
 
 h1 {
   color: var(--neutral);
@@ -205,13 +205,16 @@ a:hover {
   font-size: 0.9em;
 }
 
-.feedback a {
+.feedback a,
+.map-page a {
   color: var(--xf-teal);
-  text-decoration: none;
-  font-weight: 600;
+  text-decoration: underline;
+  /* font-weight: 600;   */
 }
 
-.feedback a:hover {
+/* Hover style */
+.feedback a:hover,
+.map-page a:hover {
   text-decoration: underline;
   filter: brightness(1.3);
 }
@@ -237,8 +240,60 @@ a:hover {
   );
 }
 
+#map {
+  width: 100%;
+  height: 80vh;
+  /* max-width: 900px; */
+  border: 2px solid var(--neutral);
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
+.leaflet-container {
+  background: #111 !important;  /* fits your dark theme */
+  outline: none;
+}
+#info-panel {
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+  background: rgba(0,0,0,0.85);
+  padding: 1em 1.2em;
+  border: 1px solid var(--neutral);
+  border-radius: 8px;
+  max-width: 250px;
+  font-size: 0.9em;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+}
+body.map-page {
+  padding: 0;
+  align-items: stretch;
+}
+.map-page p {
+  text-align: center;
+  width: 100%;
+  margin: 0.5em 0 1.5em 0;
+}
+#info-panel h3 {
+  margin: 0;
+  font-size: 1.1em;
+  color: var(--neutral);
+}
 
+#info-toggle {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  background: none;
+  border: none;
+  color: var(--neutral);
+  font-size: 1.2em;
+  cursor: pointer;
+}
 
+.info-content {
+  margin-top: 0.5em;
+}
 /* Animation states */
 
 @keyframes activePulse {

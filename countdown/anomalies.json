@@ -72,7 +72,8 @@
         "country": "USA",
         "timezone": "America/New_York",
         "url-res": "https://anomalycharlotte.com/",
-        "url-enl": "https://enl.rocks/-scrA"
+        "url-enl": "https://enl.rocks/-scrA",
+        "location": { "lat": 35.2271, "lng": -80.8431 }
       },
       {
         "date": "2026-02-28T14:00:00",
@@ -80,7 +81,8 @@
         "country": "Portugal",
         "timezone": "Europe/Lisbon",
         "url-res": "https://anomalylisbon.com/",
-        "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026"
+        "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026",
+        "location": { "lat": 38.7223, "lng": -9.1393 }
       },
       {
         "date": "2026-03-14T14:00:00",
@@ -88,28 +90,32 @@
         "country": "China",
         "timezone": "Asia/Hong_Kong",
         "url-res": "https://www.willbe.blue/anomalies-events/",
-        "url-enl": "https://enl.rocks/-m4F1"
+        "url-enl": "https://enl.rocks/-m4F1",
+        "location": { "lat": 22.3193, "lng": 114.1694 }
       },
       {
         "date": "2026-03-14T14:00:00",
         "city": "Zagreb",
         "country": "Croatia",
         "timezone": "Europe/Zagreb",
-        "url-enl": "https://enlightened.rocks/zagreb2026"
+        "url-enl": "https://enlightened.rocks/zagreb2026",
+        "location": { "lat": 45.8150, "lng": 15.9819 }
       },
       {
         "date": "2026-03-21T14:00:00",
         "city": "Hyderabad, Telangana",
         "country": "India",
         "timezone": "Asia/Kolkata",
-        "url-res": "https://res.blue/group/hyderabad-anomaly-hype-chatq1-2026"
+        "url-res": "https://res.blue/group/hyderabad-anomaly-hype-chatq1-2026",
+        "location": { "lat": 17.3850, "lng": 78.4867 }
       },
       {
         "date": "2026-03-21T14:00:00",
         "city": "Buenos Aires",
         "country": "Argentina",
         "timezone": "America/Argentina/Buenos_Aires",
-        "url-enl": "https://enlightened.rocks/anomaly/BA2026"
+        "url-enl": "https://enlightened.rocks/anomaly/BA2026",
+        "location": { "lat": -34.6037, "lng": -58.3816 }
       }
     ]
   }
