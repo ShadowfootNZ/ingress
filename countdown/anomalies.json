@@ -115,6 +115,7 @@
         "country": "Argentina",
         "timezone": "America/Argentina/Buenos_Aires",
         "url-enl": "https://enlightened.rocks/anomaly/BA2026",
+        "url-res": "https://buenosaires-res.com/",
         "location": { "lat": -34.6037, "lng": -58.3816 }
       }
     ]
