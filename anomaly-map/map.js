@@ -204,11 +204,14 @@ async function loadAnomalies() {
   }
 
   const seriesSet = new Set();
+  const seriesTypeMap = {};
 
   anomalies.forEach(a => {
     if (!a.series || !a.type) return;
     if (!a.location || a.location.lat == null || a.location.lng == null) return;
-      seriesSet.add(`${a.series} (${a.type})`);
+    const key = `${a.series} (${a.type})`;
+    seriesSet.add(key);
+    seriesTypeMap[key] = a.type;
   });
 
   const seriesSel = document.getElementById('series-filter');
@@ -246,9 +249,10 @@ async function loadAnomalies() {
       label = `${s} (${first}–${last})`;
     }
 
+    const typeForSeries = seriesTypeMap[s] || '';
     seriesSel.insertAdjacentHTML(
       'beforeend',
-      `<option value="${s}">${label}</option>`
+      `<option value="${s}" data-type="${typeForSeries}">${label}</option>`
     );
   });
   // Adjust height based on the number of entries (Option B)
@@ -410,6 +414,15 @@ async function loadAnomalies() {
 
     renderMap();
   }
-
+  const selectAnomalyBtn = document.getElementById('select-anomaly-series');
+  if (selectAnomalyBtn) {
+    selectAnomalyBtn.addEventListener('click', () => {
+      [...seriesSel.options].forEach(opt => {
+        const t = (opt.getAttribute('data-type') || '').toLowerCase();
+        opt.selected = (t === 'anomaly');
+      });
+      applyFilters();
+    });
+  }
   seriesSel.addEventListener('change', applyFilters);
 })();
