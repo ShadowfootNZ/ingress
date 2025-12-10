@@ -120,5 +120,52 @@
         "location": { "lat": -34.6037, "lng": -58.3816 }
       }
     ]
+  },
+  {
+    "series": "2026Q2",
+    "sites": [
+      {
+        "date": "2026-05-16T14:00:00",
+        "city": "Sydney, NSW",
+        "country": "Australia",
+        "timezone": "Australia/Sydney",
+        "location": { "lat": -33.8688, "lng": 151.2093 }
+      },
+      {
+        "date": "2026-05-16T14:00:00",
+        "city": "Prague",
+        "country": "Czechia",
+        "timezone": "Europe/Prague",
+        "location": { "lat": 50.0755, "lng": 14.4378 }
+      },
+      {
+        "date": "2026-05-30T14:00:00",
+        "city": "Kure City",
+        "country": "Japan",
+        "timezone": "Asia/Tokyo",
+        "location": { "lat": 34.2480, "lng": 132.5653 }
+      },
+      {
+        "date": "2026-05-30T14:00:00",
+        "city": "Jersey City, NJ",
+        "country": "USA",
+        "timezone": "America/New_York",
+        "location": { "lat": 40.7178, "lng": -74.0431 }
+      },
+      {
+        "date": "2026-06-13T14:00:00",
+        "city": "Geneva",
+        "country": "Switzerland",
+        "timezone": "Europe/Zurich",
+        "location": { "lat": 46.2044, "lng": 6.1432 }
+      },
+      {
+        "date": "2026-06-13T14:00:00",
+        "city": "Lima",
+        "country": "Peru",
+        "timezone": "America/Lima",
+        "location": { "lat": -12.0464, "lng": -77.0428 }
+      }
+    ]
   }
 ]

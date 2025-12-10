@@ -64,18 +64,40 @@ function renderAnomalies(anomalies) {
 
   const now = DateTime.utc();
 
+  // Build a "latest event date per series" map in UTC
+  const seriesLatest = {};
+
+  for (const a of anomalies) {
+    if (!a.date || !a.timezone) continue;
+
+    let dateStr = a.date.trim();
+    if (!dateStr.includes("T")) {
+      dateStr += "T00:00:00";
+    }
+
+    const localDate = DateTime.fromISO(dateStr, { zone: a.timezone });
+    if (!localDate.isValid) continue;
+
+    const utcDate = localDate.toUTC();
+    const key = a.series || "(no series)";
+
+    if (!seriesLatest[key] || utcDate > seriesLatest[key]) {
+      seriesLatest[key] = utcDate;
+    }
+  }
+
+    // Any series with the last event date older than this is suppressed
+    const cutoff = now.minus({ months: 1});
+
   // Filter + sort
   const upcoming = anomalies
   .map(a => {
     let dateStr = a.date.trim();
 
-    // If it's date-only (no time), assume midnight local time
     if (!dateStr.includes('T')) {
       dateStr += 'T00:00:00';
     }
-    // Parse it in its local timezone
     const localDate = DateTime.fromISO(dateStr, { zone: a.timezone });
-    // If still invalid, log it for debugging
     if (!localDate.isValid) {
       console.warn(`Invalid DateTime for ${a.city}:`, dateStr, a.timezone, localDate.invalidReason);
     }
@@ -86,6 +108,13 @@ function renderAnomalies(anomalies) {
   })
   // Drop invalid or unparsable dates
   .filter(a => a.utcDate)
+  // 🔹 Drop whole series whose last event is older than 1 month
+  .filter(a => {
+    const key = a.series || "(no series)";
+    const lastUtc = seriesLatest[key];
+    if (!lastUtc) return true;            // if we couldn't compute, keep by default
+    return lastUtc >= cutoff;             // only keep series whose latest event is recent
+  })
   // Sort chronologically by UTC milliseconds
   .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
 
