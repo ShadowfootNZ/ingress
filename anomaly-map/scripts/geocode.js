@@ -2,10 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 
-const dataPath = path.resolve('./anomaly-map/data/anomalies.json');
+// Path to the GROUPED historical data
+// (series → types → dates → events)
+const dataPath = path.resolve('./anomaly-map/data/anomalies-historical.json');
 const cachePath = path.resolve('./anomaly-map/data/cities-cache.json');
 
-// Load anomalies
+// Load grouped anomalies
 const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
 // Load or initialize cache
@@ -15,7 +17,7 @@ if (fs.existsSync(cachePath)) {
 }
 
 // Nominatim geocoding function
-async function geocode(city, country) {
+async function geocode(city, state, country) {
   const key = `${city},${country}`;
   if (cache[key]) return cache[key];
 
@@ -30,29 +32,81 @@ async function geocode(city, country) {
     return coords;
   } else {
     console.warn(`No results for ${key}`);
+
     return null;
   }
 }
 
-// Main loop
+// Main loop for grouped structure
 async function updateLocations() {
-  for (const anomaly of anomalies) {
-    if (!anomaly.city || !anomaly.country) {
-      console.warn(`Skipping incomplete entry:`, anomaly);
-      continue;
-    }
+  let totalEvents = 0;
+  let alreadyHadCoords = 0;
+  let missingCityCountry = 0;
+  let geocoded = 0;
+  let noResult = 0;
 
-    const coords = await geocode(anomaly.city, anomaly.country);
-    if (coords) {
-      anomaly.location = { lat: coords.lat, lng: coords.lon };
-      //console.log(`Geocoded: ${anomaly.city}, ${anomaly.country}`);
+  for (const series of anomalies) {
+    if (!series || !Array.isArray(series.types)) continue;
+    console.info({ series: series.series });
+
+    for (const typeEntry of series.types) {
+      if (!typeEntry || !Array.isArray(typeEntry.dates)) continue;
+      // console.info({ type: typeEntry.type });
+
+      for (const dateEntry of typeEntry.dates) {
+        if (!dateEntry || !Array.isArray(dateEntry.events)) continue;
+
+        for (const evt of dateEntry.events) {
+          totalEvents++;
+
+          // If we already have usable coordinates, leave them alone
+          if (
+            evt.location &&
+            evt.location.lat !== null &&
+            evt.location.lat !== undefined &&
+            evt.location.lng !== null &&
+            evt.location.lng !== undefined
+          ) {
+            alreadyHadCoords++;
+            continue;
+          }
+
+          const city = evt.city;
+          const state = evt.state;
+          const country = evt.country;
+
+          if (!city || !country) {
+            missingCityCountry++;
+            console.warn(
+              `Missing details: ${typeEntry.type} ${dateEntry.date}: '${city}', '${state}', '${country}'`
+              // { date: dateEntry.date, city, state, country }
+            );
+            continue;
+          }
+
+          const coords = await geocode(city, state, country);
+          if (coords) {
+            evt.location = { lat: coords.lat, lng: coords.lon };
+            geocoded++;
+            // console.log(`Geocoded: ${city}, ${country}`);
+          } else {
+            noResult++;
+          }
+        }
+      }
     }
   }
 
   // Save updated data and cache
   fs.writeFileSync(dataPath, JSON.stringify(anomalies, null, 2));
   fs.writeFileSync(cachePath, JSON.stringify(cache, null, 2));
-  console.log("Geocoding complete.");
+
+  console.log('Geocoding complete.');
+  console.log(`Total events seen:       ${totalEvents}`);
+  console.log(`Already had coordinates: ${alreadyHadCoords}`);
+  console.log(`Missing city/country:    ${missingCityCountry}`);
+  console.log(`Successfully geocoded:   ${geocoded}`);
+  console.log(`No geocode result:       ${noResult}`);
 }
 
 updateLocations();

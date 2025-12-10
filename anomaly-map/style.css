@@ -7,6 +7,7 @@ html, body {
   --enl-green: #28f428; 
   --res-blue:  #00c4ff;
   --tie-teal:  #14DC94;
+  --upcoming: #9ba1ff;
 }
 #info-panel, #legend-panel, #filter-panel {
   font-family: sans-serif;
@@ -224,7 +225,10 @@ h4 {
   border: 1px solid #444;
   border-radius: 4px;
 }
-
+.upcoming-text {
+  color: var(--upcoming);
+  font-weight: 600;
+}
 /* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {
   #series-filter {

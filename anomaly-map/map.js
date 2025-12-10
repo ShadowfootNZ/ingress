@@ -13,14 +13,54 @@ function logDebug(msg) {
   }
   panel.appendChild(line);
 }
+function isUpcoming(dateStr) {
+  const d = new Date(dateStr);
+  const today = new Date();
+  return d > today;  // future = upcoming
+}
 
 async function loadAnomalies() {
-  const resp = await fetch('./data/anomalies.json');
+  const resp = await fetch('./data/anomalies-historical.json');
   if (!resp.ok) {
-    console.error('Failed to load anomalies.json:', resp.status);
+    console.error('Failed to load anomalies-historical.json:', resp.status);
     return [];
   }
-  return resp.json();
+
+  const grouped = await resp.json();
+
+  if (!Array.isArray(grouped)) {
+    console.error('Unexpected anomalies-historical.json format: expected an array of series objects');
+    return [];
+  }
+
+  const flat = [];
+
+  grouped.forEach(seriesEntry => {
+    if (!seriesEntry || !seriesEntry.series || !Array.isArray(seriesEntry.types)) return;
+    const seriesName = seriesEntry.series;
+
+    seriesEntry.types.forEach(typeEntry => {
+      if (!typeEntry || !typeEntry.type || !Array.isArray(typeEntry.dates)) return;
+      const typeName = typeEntry.type;
+
+      typeEntry.dates.forEach(dateEntry => {
+        if (!dateEntry || !dateEntry.date || !Array.isArray(dateEntry.events)) return;
+        const dateStr = dateEntry.date;
+
+        dateEntry.events.forEach(evt => {
+          if (!evt) return;
+          flat.push({
+            series: seriesName,
+            type: typeName,
+            date: dateStr,
+            ...evt,
+          });
+        });
+      });
+    });
+  });
+
+  return flat;
 }
 
 (async function draw() {
@@ -53,9 +93,23 @@ async function loadAnomalies() {
   let placedCount = 0;
 
   const anomalies = await loadAnomalies();
+  const msPerDay = 1000 * 60 * 60 * 24;
+  const nowMs = Date.now();
+
+  // Find the oldest *historical* event (<= today)
+  const historicalTimes = anomalies
+    .map(a => new Date(a.date).getTime())
+    .filter(t => !Number.isNaN(t) && t <= nowMs);
+
+  // Fallback: if everything is in the future, pretend the range is 1 year
+  const oldestMs = historicalTimes.length
+    ? Math.min(...historicalTimes)
+    : nowMs - 365 * msPerDay;
+
+  const maxAgeDays = Math.max(1, (nowMs - oldestMs) / msPerDay); // avoid divide by 0
 
   if (!anomalies.length) {
-    console.error('No anomalies found in anomalies.json');
+    console.error('No anomalies found in anomalies-historical.json');
     const msg = document.createElement('div');
     msg.className = 'map-error';
     msg.textContent = 'No anomaly data available.';
@@ -76,41 +130,31 @@ async function loadAnomalies() {
     enl: cssVars.getPropertyValue('--enl-green').trim(),
     res: cssVars.getPropertyValue('--res-blue').trim(),
     tie: cssVars.getPropertyValue('--tie-teal').trim(),
+    upcoming: cssVars.getPropertyValue('--upcoming').trim(), 
+    
   };
 
   // Radius based on recency
   function radiusForDate(dateStr) {
-    const event = new Date(dateStr).getTime();
-    const now = Date.now();
-    const diff = (now - event) / (1000 * 60 * 60 * 24); // days ago
-  
-    if (diff < 365) return 20;    // last year
-    if (diff < 730) return 16;    // 1-2 years
-    if (diff < 1460) return 11;   // 2-4 years
-    if (diff < 2920) return 8;    // 4-8 years
-    if (diff < 4380) return 6;    // 8-12 years
-    return 4;                     // older than 12 years
+    const t = new Date(dateStr).getTime();
+    if (Number.isNaN(t)) return 8; // fallback radius
+
+    // Future events → always max radius
+    if (t > nowMs) return 20;
+
+    const ageDays = (nowMs - t) / msPerDay;
+
+    // 0 = today (youngest), 1 = oldest historical event
+    let norm = ageDays / maxAgeDays;
+    norm = Math.min(Math.max(norm, 0), 1); // clamp 0–1
+
+    const minR = 4;
+    const maxR = 20;
+
+    // oldest → minR, newest → maxR
+    return maxR - norm * (maxR - minR);
   }
   
-  function mixColours(c1, c2, t) {
-    const parse = (c) => {
-      const m = c.match(/#(..)(..)(..)/);
-      return {
-        r: parseInt(m[1], 16),
-        g: parseInt(m[2], 16),
-        b: parseInt(m[3], 16),
-      };
-    };
-  
-    const a = parse(c1);
-    const b = parse(c2);
-  
-    const r = Math.round(a.r + (b.r - a.r) * t);
-    const g = Math.round(a.g + (b.g - a.g) * t);
-    const b2 = Math.round(a.b + (b.b - a.b) * t);
-  
-    return `rgb(${r},${g},${b2})`;
-  }
   function resultColour(enl, res) {
     const total = enl + res;
   
@@ -257,11 +301,20 @@ async function loadAnomalies() {
       
       winnerColour = adjustStrokeBrightness(winnerColour, strokeBrightness);
       
+      let fill = resultColour(enl, res);
+      let stroke = winnerColour;
+      
+      // override for upcoming events
+      if (isUpcoming(a.date)) {
+        fill = colour.upcoming;
+        stroke = colour.upcoming;
+      }
+      
       const options = {
         radius: rad,
-        fillColor: resultColour(enl, res),
-        fillOpacity: 0.5,
-        color: winnerColour, // outline color
+        fillColor: fill,
+        fillOpacity: 0.45,
+        color: stroke,
         weight: 2,
       };
 
@@ -277,27 +330,35 @@ async function loadAnomalies() {
               <div>
                 <strong>${evt.series} (${evt.type})</strong><br>
                 ${new Date(evt.date).toLocaleDateString()}<br>
-                ${
-                  (() => {
-                    const enlScore = evt.score?.enl ?? '-';
-                    const resScore = evt.score?.res ?? '-';
-                    const isTie = enlScore === resScore;
-                    
-                    const enlMarkup = isTie
+                ${(() => {
+                  if (isUpcoming(evt.date)) {
+                    const today = new Date();
+                    const eventDate = new Date(evt.date);
+                    const diffMs = eventDate - today;
+                    const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+                
+                    return `<span class="upcoming-text">In ${diffDays} days</span>`;
+                  }
+                
+                  // Historical event — show ENL/RES scores
+                  const enlScore = evt.score?.enl ?? '-';
+                  const resScore = evt.score?.res ?? '-';
+                  const isTie = enlScore === resScore;
+                
+                  const enlMarkup = isTie
                     ? `<span class="enl-text">ENL: ${enlScore}</span>`
                     : enlScore > resScore
                       ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
                       : `<span>ENL: ${enlScore}</span>`;
-                  
+                
                   const resMarkup = isTie
                     ? `<span class="res-text">RES: ${resScore}</span>`
                     : resScore > enlScore
                       ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
                       : `<span>RES: ${resScore}</span>`;
-                  
+                
                   return `${enlMarkup} — ${resMarkup}`;
-                  })()
-                }<br>
+                })()}<br>
                 ${
                   evt.info && evt.info.trim()
                     ? `<div class="evt-info">${evt.info.trim()}</div>`
@@ -322,12 +383,11 @@ async function loadAnomalies() {
     logDebug(`Mapped: ${placedCount}`);
   }
 
-  // Preselect the series of the most recent event
+  // Preselect the series of the most recent *historical* event
   let newest = null;
-
   anomalies.forEach(a => {
-    const d = new Date(a.date);
-    if (!newest || d > new Date(newest.date)) {
+    if (isUpcoming(a.date)) return; // skip future events
+    if (!newest || new Date(a.date) > new Date(newest.date)) {
       newest = a;
     }
   });

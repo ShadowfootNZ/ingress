@@ -37,7 +37,7 @@ function makeMarker(lat, lng, colour, popupHtml) {
 
 // Load anomalies.json from the countdown folder
 async function loadEvents() {
-  const res = await fetch(`./anomalies.json?ts=${Date.now()}`, { cache: "no-store" });
+  const res = await fetch(`./anomaly-countdown.json?ts=${Date.now()}`, { cache: "no-store" });
   const data = await res.json();
 
   if (!Array.isArray(data)) return [];

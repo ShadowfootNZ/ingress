@@ -3950,5 +3950,69 @@
   "Colorado Springs,United States": {
     "lat": 38.8339578,
     "lon": -104.825348
+  },
+  "Charlotte, NC,USA": {
+    "lat": 35.2272086,
+    "lon": -80.8430827
+  },
+  "Hyderabad, Telangana,India": {
+    "lat": 17.360589,
+    "lon": 78.4740613
+  },
+  "Bernau bei Berlin,Germany": {
+    "lat": 52.6787254,
+    "lon": 13.5881114
+  },
+  "Rimini,Italy": {
+    "lat": 43.9465433,
+    "lon": 12.630749
+  },
+  "Alverca do Ribatejo,Portugal": {
+    "lat": 38.9049525,
+    "lon": -9.046018
+  },
+  "Sydney, NSW,Australia": {
+    "lat": -33.8698439,
+    "lon": 151.2082848
+  },
+  "Kure City,Japan": {
+    "lat": 34.2411847,
+    "lon": 132.5558799
+  },
+  "Jersey City, NJ,USA": {
+    "lat": 40.7215682,
+    "lon": -74.047455
+  },
+  "Simferopol,Ukraine": {
+    "lat": 44.9521459,
+    "lon": 34.1024858
+  },
+  "Tomsk,Russia": {
+    "lat": 58.6124279,
+    "lon": 82.0475315
+  },
+  "Krasnoyarsk,Russia": {
+    "lat": 56.0091173,
+    "lon": 92.872586
+  },
+  "Shanghai,China": {
+    "lat": 31.2312707,
+    "lon": 121.4700152
+  },
+  "Dubai,United Arab Emirates": {
+    "lat": 25.0742823,
+    "lon": 55.1885387
+  },
+  "Chelyabinsk,Russia": {
+    "lat": 55.1598408,
+    "lon": 61.4025547
+  },
+  "Khabarovsk,Russia": {
+    "lat": 51.6312684,
+    "lon": 136.121524
+  },
+  "Sevastopol,Ukraine": {
+    "lat": 44.6054434,
+    "lon": 33.5220842
   }
 }

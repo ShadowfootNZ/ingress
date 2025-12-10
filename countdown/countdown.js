@@ -2,7 +2,7 @@ const { DateTime } = luxon;
 
 async function loadAnomalies() {
   try {
-    const res = await fetch(`anomalies.json?ts=${Date.now()}`, { cache: "no-store" });
+    const res = await fetch(`anomaly-countdown.json?ts=${Date.now()}`, { cache: "no-store" });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     
