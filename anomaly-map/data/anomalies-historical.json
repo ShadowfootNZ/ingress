@@ -655,6 +655,7 @@
               },
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -1577,6 +1578,7 @@
               },
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -1884,6 +1886,7 @@
               },
               {
                 "city": "Christchurch",
+                "state": "Canterbury",
                 "country": "New Zealand",
                 "location": {
                   "lat": -43.530955,
@@ -4496,6 +4499,7 @@
             "events": [
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -5744,6 +5748,7 @@
               },
               {
                 "city": "Wellington",
+                "state": "Wellington",
                 "country": "New Zealand",
                 "location": {
                   "lat": -41.2887953,
@@ -8502,6 +8507,7 @@
               },
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -14188,7 +14194,7 @@
               },
               {
                 "city": "San Juan de Lurigancho",
-                "state": "Lima Province",
+                "state": "Lima",
                 "country": "Peru",
                 "location": {
                   "lat": -12.0017252,
@@ -14299,12 +14305,11 @@
                 "winner": "resistance"
               },
               {
-                "city": "",
-                "state": "Central",
+                "city": "Singapore",
                 "country": "Singapore",
                 "location": {
-                  "lat": null,
-                  "lng": null
+                  "lat": 1.357107,
+                  "lng": 103.8194992
                 },
                 "score": {
                   "enl": 2,
@@ -14314,7 +14319,6 @@
               },
               {
                 "city": "Kuala Lumpur",
-                "state": "Kuala Lumpur",
                 "country": "Malaysia",
                 "location": {
                   "lat": 3.1526589,
@@ -19875,7 +19879,7 @@
             "date": "2024-03-16",
             "events": [
               {
-                "city": "Macao",
+                "city": "Macau",
                 "country": "China",
                 "location": {
                   "lat": 22.1757605,
@@ -20624,6 +20628,7 @@
             "events": [
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -21072,6 +21077,7 @@
             "events": [
               {
                 "city": "Wellington",
+                "state": "Wellington",
                 "country": "New Zealand",
                 "location": {
                   "lat": -41.2887953,
@@ -22117,7 +22123,6 @@
             "events": [
               {
                 "city": "Singapore",
-                "state": "Singapore",
                 "country": "Singapore",
                 "location": {
                   "lat": 1.357107,
@@ -22981,6 +22986,7 @@
             "events": [
               {
                 "city": "Christchurch",
+                "state": "Canterbury",
                 "country": "New Zealand",
                 "location": {
                   "lat": -43.530955,
@@ -24078,6 +24084,7 @@
             "events": [
               {
                 "city": "Auckland",
+                "state": "Auckland",
                 "country": "New Zealand",
                 "location": {
                   "lat": -36.852095,
@@ -25233,6 +25240,7 @@
             "events": [
               {
                 "city": "Wellington",
+                "state": "Wellington",
                 "country": "New Zealand",
                 "location": {
                   "lat": -41.2887953,
@@ -25406,6 +25414,7 @@
               },
               {
                 "city": "Wellington",
+                "state": "Wellington",
                 "country": "New Zealand",
                 "location": {
                   "lat": -41.2887953,
@@ -25606,6 +25615,7 @@
               },
               {
                 "city": "Lima",
+                "state": "Lima",
                 "country": "Peru",
                 "location": {
                   "lat": -12.0459808,
@@ -25708,7 +25718,8 @@
             "date": "2026-03-21",
             "events": [
               {
-                "city": "Hyderabad, Telangana",
+                "city": "Hyderabad",
+                "state": "Telangana",
                 "country": "India",
                 "location": {
                   "lat": 17.360589,
@@ -25826,6 +25837,7 @@
               },
               {
                 "city": "Lima",
+                "state": "Lima",
                 "country": "Peru",
                 "location": {
                   "lat": -12.0459808,

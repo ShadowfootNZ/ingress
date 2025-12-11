@@ -18,7 +18,33 @@ function isUpcoming(dateStr) {
   const today = new Date();
   return d > today;  // future = upcoming
 }
+function formatPlace(city, state, country) {
 
+  // If city, state, and/or country are identical → just show one
+  const eq = (a, b) => a && b && a.toLowerCase() === b.toLowerCase();
+  // Normalise null/undefined/empty and also literal "undefined"/"null" strings
+  const normalize = (v) => {
+    if (v === undefined || v === null) return '';
+    const s = String(v).trim();
+    if (!s) return '';
+    const lower = s.toLowerCase();
+    if (lower === 'undefined' || lower === 'null') return '';
+    return s;
+  };
+
+  // Normalise null/undefined/empty
+  let cityPart = normalize(city);
+  let statePart = normalize(state);
+  let countryPart = normalize(country);
+
+  // Build ordered parts, skipping empties
+  if (eq(cityPart, statePart)) cityPart = ''; // If city and state are identical → drop city
+  if (eq(cityPart, countryPart)) cityPart = ''; // If city and country are identical → drop city
+  if (eq(statePart, countryPart)) statePart = ''; // If state and country are identical → drop state
+  // Build ordered parts, skipping empties
+  const parts = [cityPart, statePart, countryPart].filter(Boolean);
+  return `<strong><u>${parts.join(', ')}</u></strong>`;
+}
 async function loadAnomalies() {
   const resp = await fetch('./data/anomalies-historical.json');
   if (!resp.ok) {
@@ -271,7 +297,7 @@ async function loadAnomalies() {
     anomalies.forEach(a => {
       if (!a._visible) return;
       if (!a.location?.lat || !a.location?.lng) return;
-      const key = `${a.city}, ${a.country}`;
+      const key = `${a.city}, ${a.state}, ${a.country}`;
       grouped[key] = grouped[key] || [];
       grouped[key].push(a);
     });
@@ -283,7 +309,7 @@ async function loadAnomalies() {
 
     // Loop through grouped entries
     Object.entries(grouped).forEach(([key, events]) => {
-      const [city, country] = key.split(', ');
+      const [city, state, country] = key.split(', ');
       const { lat, lng } = events[0].location;
 
       // Sort events by date (oldest → newest)
@@ -327,7 +353,7 @@ async function loadAnomalies() {
         // Only bind popup to the newest event
         if (index === events.length - 1) {
           const popupContent = `
-            <strong>${city}, ${country}</strong><br>
+          ${formatPlace(city, state, country)}<br>
             ${events
               .map(
                 (evt) => `
