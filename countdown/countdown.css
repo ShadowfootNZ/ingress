@@ -6,6 +6,7 @@
   --machina-red: #ff0028;
   --bg-dark: #0a0a0a;
   --text-light: #e0e0e0;
+  --niantic: #9ba1ff;
 }
 
 body {
@@ -193,7 +194,7 @@ a:hover {
 }
 
 .niantic {
-  color: var(--xf-teal);
+  color: var(--niantic);
 }
 
 .error {
@@ -207,7 +208,7 @@ a:hover {
 
 .feedback a,
 .map-page a {
-  color: var(--xf-teal);
+  color: var(--niantic);
   text-decoration: underline;
   /* font-weight: 600;   */
 }
