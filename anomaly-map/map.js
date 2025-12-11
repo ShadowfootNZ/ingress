@@ -144,7 +144,13 @@ async function loadAnomalies() {
     return;
   }
 
-  const map = L.map('map').setView([20, 0], 3);
+  const map = L.map('map', {
+    zoomControl: false
+  }).setView([20, 0], 3);
+  
+  L.control.zoom({
+    position: 'topright'   // ← moves the zoom buttons
+  }).addTo(map);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: 'abcd',
