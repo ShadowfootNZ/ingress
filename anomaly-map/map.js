@@ -372,8 +372,8 @@ async function loadAnomalies() {
                     const eventDate = new Date(evt.date);
                     const diffMs = eventDate - today;
                     const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-                
-                    return `<span class="upcoming-text">In ${diffDays} days</span>`;
+                    const countdownUrl = '../countdown/';
+                    return `<span class="upcoming-text"><a href="${countdownUrl}">In ${diffDays} days</a></span>`;
                   }
                 
                   // Historical event — show ENL/RES scores
