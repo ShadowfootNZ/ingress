@@ -4014,5 +4014,45 @@
   "Sevastopol,Ukraine": {
     "lat": 44.6054434,
     "lon": 33.5220842
+  },
+  "Taguig,Philippines": {
+    "lat": 14.5270538,
+    "lon": 121.0744942
+  },
+  "Chengdu,China": {
+    "lat": 30.659867,
+    "lon": 104.063315
+  },
+  "Ostiano,Italy": {
+    "lat": 45.220775,
+    "lon": 10.252075
+  },
+  "Taastrup,Denmark": {
+    "lat": 55.6522136,
+    "lon": 12.292049
+  },
+  "Nijmegen,Netherlands": {
+    "lat": 51.8474946,
+    "lon": 5.8637771
+  },
+  "Élancourt,France": {
+    "lat": 48.7681182,
+    "lon": 1.949352
+  },
+  "Encamp,Andorra": {
+    "lat": 42.5360425,
+    "lon": 1.5836096
+  },
+  "New York,USA": {
+    "lat": 40.7127281,
+    "lon": -74.0060152
+  },
+  "St. Petersburg,USA": {
+    "lat": 27.7712264,
+    "lon": -82.6340259
+  },
+  "Hayward,USA": {
+    "lat": 37.6688205,
+    "lon": -122.080796
   }
 }

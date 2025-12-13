@@ -25305,6 +25305,360 @@
         "type": "Shard Storm",
         "dates": [
           {
+            "date": "2025-12-13",
+            "events": [
+              {
+                "city": "Brisbane",
+                "state": "",
+                "country": "Australia",
+                "location": {
+                  "lat": -27.4689623,
+                  "lng": 153.0235009
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Adelaide",
+                "state": "South Australia",
+                "country": "Australia",
+                "location": {
+                  "lat": -34.9281805,
+                  "lng": 138.5999312
+                },
+                "score": {
+                  "enl": 5,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Niigata",
+                "country": "Japan",
+                "location": {
+                  "lat": 37.6452283,
+                  "lng": 138.7669125
+                },
+                "score": {
+                  "enl": 5,
+                  "res": 5
+                },
+                "winner": ""
+              },
+              {
+                "city": "Osaka",
+                "state": "",
+                "country": "Japan",
+                "location": {
+                  "lat": 34.6937569,
+                  "lng": 135.5014539
+                },
+                "score": {
+                  "enl": 5,
+                  "res": 5
+                },
+                "winner": ""
+              },
+              {
+                "city": "Seoul",
+                "state": "",
+                "country": "South Korea",
+                "location": {
+                  "lat": 37.5666791,
+                  "lng": 126.9782914
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 20
+                },
+                "winner": ""
+              },
+              {
+                "city": "Taguig",
+                "state": "",
+                "country": "Philippines",
+                "location": {
+                  "lat": 14.5270538,
+                  "lng": 121.0744942
+                },
+                "score": {
+                  "enl": 25,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Kaohsiung",
+                "state": "",
+                "country": "Taiwan",
+                "location": {
+                  "lat": 22.6203348,
+                  "lng": 120.3120375
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Kuala Lumpur",
+                "state": "",
+                "country": "Malaysia",
+                "location": {
+                  "lat": 3.1526589,
+                  "lng": 101.7022205
+                },
+                "score": {
+                  "enl": 10,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Shanghai",
+                "state": "",
+                "country": "China",
+                "location": {
+                  "lat": 31.2312707,
+                  "lng": 121.4700152
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 5
+                },
+                "winner": ""
+              },
+              {
+                "city": "Guangzhou",
+                "state": "Guangdong Province",
+                "country": "China",
+                "location": {
+                  "lat": 23.1301964,
+                  "lng": 113.2592945
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 10
+                },
+                "winner": ""
+              },
+              {
+                "city": "Chengdu",
+                "state": "Sichuan Province",
+                "country": "China",
+                "location": {
+                  "lat": 30.659867,
+                  "lng": 104.063315
+                },
+                "score": {
+                  "enl": 10,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Budapest",
+                "state": "",
+                "country": "Hungary",
+                "location": {
+                  "lat": 47.4813896,
+                  "lng": 19.1460941
+                },
+                "score": {
+                  "enl": 5,
+                  "res": 10
+                },
+                "winner": ""
+              },
+              {
+                "city": "Prague",
+                "state": "",
+                "country": "Czechia",
+                "location": {
+                  "lat": 50.0874654,
+                  "lng": 14.4212535
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 20
+                },
+                "winner": ""
+              },
+              {
+                "city": "Ostiano",
+                "state": "Cremona",
+                "country": "Italy",
+                "location": {
+                  "lat": 45.220775,
+                  "lng": 10.252075
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Taastrup",
+                "state": "Hovedstaden",
+                "country": "Denmark",
+                "location": {
+                  "lat": 55.6522136,
+                  "lng": 12.292049
+                },
+                "score": {
+                  "enl": 25,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Nijmegen",
+                "state": "Nijmegen",
+                "country": "Netherlands",
+                "location": {
+                  "lat": 51.8474946,
+                  "lng": 5.8637771
+                },
+                "score": {
+                  "enl": 10,
+                  "res": 5
+                },
+                "winner": ""
+              },
+              {
+                "city": "Élancourt",
+                "state": "Yvelines",
+                "country": "France",
+                "location": {
+                  "lat": 48.7681182,
+                  "lng": 1.949352
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 5
+                },
+                "winner": ""
+              },
+              {
+                "city": "Encamp",
+                "state": "",
+                "country": "Andorra",
+                "location": {
+                  "lat": 42.5360425,
+                  "lng": 1.5836096
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 25
+                },
+                "winner": ""
+              },
+              {
+                "city": "Aberdeen",
+                "state": "Scotland",
+                "country": "United Kingdom",
+                "location": {
+                  "lat": 57.1482429,
+                  "lng": -2.0928095
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 25
+                },
+                "winner": ""
+              },
+              {
+                "city": "São Paulo",
+                "state": "",
+                "country": "Brazil",
+                "location": {
+                  "lat": -23.5506507,
+                  "lng": -46.6333824
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Asunción",
+                "state": "",
+                "country": "Paraguay",
+                "location": {
+                  "lat": -25.2800459,
+                  "lng": -57.6343814
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Santiago",
+                "state": "",
+                "country": "Chile",
+                "location": {
+                  "lat": -33.4377756,
+                  "lng": -70.6504502
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "New York",
+                "state": "NY",
+                "country": "USA",
+                "location": {
+                  "lat": 40.7127281,
+                  "lng": -74.0060152
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "St. Petersburg",
+                "state": "FL",
+                "country": "USA",
+                "location": {
+                  "lat": 27.7712264,
+                  "lng": -82.6340259
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              },
+              {
+                "city": "Hayward",
+                "state": "CA",
+                "country": "USA",
+                "location": {
+                  "lat": 37.6688205,
+                  "lng": -122.080796
+                },
+                "score": {
+                  "enl": 0,
+                  "res": 0
+                },
+                "winner": ""
+              }
+            ]
+          },
+          {
             "date": "2025-12-14",
             "events": [
               {
