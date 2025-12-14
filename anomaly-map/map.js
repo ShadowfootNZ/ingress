@@ -193,7 +193,7 @@ async function loadAnomalies() {
     // tie → neutral teal
     if (total === 0 || enl === res) {
       // return a very desaturated / greyish teal for ties
-      return 'rgb(40, 70, 60)';  // muted, low‑saturation teal-grey
+      return 'rgba(105, 188, 160, 1)';  // muted, low‑saturation teal-grey
     }
   
     // winner’s base colour
@@ -364,7 +364,26 @@ async function loadAnomalies() {
               .map(
                 (evt) => `
               <div>
-                <strong>${evt.series} (${evt.type})</strong><br>
+                ${(() => {
+                  // Colour the series label by the winner, using existing .enl-text / .res-text.
+                  // For upcoming, ties, or missing scores, fall back to default styling.
+                  const enl = evt.score?.enl;
+                  const res = evt.score?.res;
+
+                  let cls = '';
+                  if (!isUpcoming(evt.date) && enl != null && res != null) {
+                    const enlNum = Number(enl);
+                    const resNum = Number(res);
+                    if (!Number.isNaN(enlNum) && !Number.isNaN(resNum)) {
+                      if (enlNum > resNum) cls = 'enl-text';
+                      else if (resNum > enlNum) cls = 'res-text';
+                    }
+                  }
+
+                  return cls
+                    ? `<strong class="${cls}">${evt.series} (${evt.type})</strong><br>`
+                    : `<strong>${evt.series} (${evt.type})</strong><br>`;
+                })()}
                 ${new Date(evt.date).toLocaleDateString()}<br>
                 ${(() => {
                   if (isUpcoming(evt.date)) {
@@ -377,21 +396,24 @@ async function loadAnomalies() {
                   }
                 
                   // Historical event — show ENL/RES scores
-                  const enlScore = evt.score?.enl ?? '-';
-                  const resScore = evt.score?.res ?? '-';
+                  const enlScore = evt.score?.enl ?? null;
+                  const resScore = evt.score?.res ?? null;
+                  if (!enlScore || !resScore) { 
+                    return 'ENL: ? — RES: ?';
+                  }
                   const isTie = enlScore === resScore;
                 
                   const enlMarkup = isTie
-                    ? `<span class="enl-text">ENL: ${enlScore}</span>`
-                    : enlScore > resScore
-                      ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
-                      : `<span>ENL: ${enlScore}</span>`;
+                  ? `<span class="enl-text">ENL: ${enlScore}</span>`
+                  : enlScore > resScore
+                    ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
+                    : `<span>ENL: ${enlScore}</span>`;
                 
-                  const resMarkup = isTie
-                    ? `<span class="res-text">RES: ${resScore}</span>`
-                    : resScore > enlScore
-                      ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
-                      : `<span>RES: ${resScore}</span>`;
+                const resMarkup = isTie
+                  ? `<span class="res-text">RES: ${resScore}</span>`
+                  : resScore > enlScore
+                    ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
+                    : `<span>RES: ${resScore}</span>`;
                 
                   return `${enlMarkup} — ${resMarkup}`;
                 })()}<br>
