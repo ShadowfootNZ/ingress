@@ -14925,28 +14925,28 @@
                 "city": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6768601, "lng": 139.7638947 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 0 },
                 "winner": ""
               },
               {
                 "city": "Fukuoka",
                 "country": "Japan",
                 "location": { "lat": 33.6251241, "lng": 130.6180016 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 5 },
                 "winner": ""
               },
               {
                 "city": "Naha",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 10 },
                 "winner": ""
               },
               {
                 "city": "Beijing",
                 "country": "China",
                 "location": { "lat": 40.190632, "lng": 116.412144 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 10 },
                 "winner": ""
               },
               {
@@ -14960,14 +14960,14 @@
                 "city": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 0 },
                 "winner": ""
               },
               {
                 "city": "Singapore",
                 "country": "Singapore",
                 "location": { "lat": 1.357107, "lng": 103.8194992 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 15 },
                 "winner": ""
               },
               {
@@ -14975,7 +14975,7 @@
                 "state": "Victoria",
                 "country": "Australia",
                 "location": { "lat": -37.8142454, "lng": 144.9631732 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 25, "res": 0 },
                 "winner": ""
               },
               {
@@ -14983,21 +14983,21 @@
                 "state": "Wellington",
                 "country": "New Zealand",
                 "location": { "lat": -41.2887953, "lng": 174.7772114 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 20, "res": 0 },
                 "winner": ""
               },
               {
                 "city": "Helsinki",
                 "country": "Finland",
                 "location": { "lat": 60.1698897, "lng": 24.9384719 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 5 },
                 "winner": ""
               },
               {
                 "city": "Oslo",
                 "country": "Norway",
                 "location": { "lat": 59.9133301, "lng": 10.7389701 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 10, "res": 0 },
                 "winner": ""
               },
               {
@@ -15005,7 +15005,7 @@
                 "state": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 54.9738474, "lng": -1.6131572 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 25 },
                 "winner": ""
               },
               {
@@ -15013,28 +15013,28 @@
                 "state": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 52.2055314, "lng": 0.1186637 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 10, "res": 5 },
                 "winner": ""
               },
               {
                 "city": "Bremen",
                 "country": "Germany",
                 "location": { "lat": 53.0758196, "lng": 8.8071646 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 20 },
                 "winner": ""
               },
               {
                 "city": "Bernau bei Berlin",
                 "country": "Germany",
                 "location": { "lat": 52.6787254, "lng": 13.5881114 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 5 },
                 "winner": ""
               },
               {
                 "city": "Kaiserslautern",
                 "country": "Germany",
                 "location": { "lat": 49.4432174, "lng": 7.7689951 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 10 },
                 "winner": ""
               },
               {
@@ -15048,14 +15048,14 @@
                 "city": "Rimini",
                 "country": "Italy",
                 "location": { "lat": 43.9465433, "lng": 12.630749 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 10 },
                 "winner": ""
               },
               {
                 "city": "Alverca do Ribatejo",
                 "country": "Portugal",
                 "location": { "lat": 38.9049525, "lng": -9.046018 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 20 },
                 "winner": ""
               },
               {
@@ -15063,7 +15063,7 @@
                 "state": "British Columbia",
                 "country": "Canada",
                 "location": { "lat": 48.4283182, "lng": -123.364953 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 20, "res": 0 },
                 "winner": ""
               },
               {
@@ -15071,7 +15071,7 @@
                 "state": "Ohio",
                 "country": "United States",
                 "location": { "lat": 41.4996574, "lng": -81.6936772 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 5, "res": 0 },
                 "winner": ""
               },
               {
@@ -15079,14 +15079,14 @@
                 "state": "Utah",
                 "country": "United States",
                 "location": { "lat": 40.7596198, "lng": -111.886797 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 25, "res": 0 },
                 "winner": ""
               },
               {
                 "city": "Bogotá",
                 "country": "Colombia",
                 "location": { "lat": 4.6533817, "lng": -74.0836331 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 0, "res": 20 },
                 "winner": ""
               },
               {
@@ -15094,14 +15094,14 @@
                 "state": "Lima",
                 "country": "Peru",
                 "location": { "lat": -12.0459808, "lng": -77.0305912 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 20, "res": 0 },
                 "winner": ""
               },
               {
                 "city": "Montevideo",
                 "country": "Uruguay",
                 "location": { "lat": -34.9058916, "lng": -56.1913095 },
-                "score": { "enl": 0, "res": 0 },
+                "score": { "enl": 25, "res": 0 },
                 "winner": ""
               }
             ]
