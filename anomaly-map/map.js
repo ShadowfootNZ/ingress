@@ -396,9 +396,14 @@ async function loadAnomalies() {
                   }
                 
                   // Historical event — show ENL/RES scores
-                  const enlScore = evt.score?.enl ?? null;
-                  const resScore = evt.score?.res ?? null;
-                  if (!enlScore || !resScore) { 
+                  const enlScoreRaw = evt.score?.enl;
+                  const resScoreRaw = evt.score?.res;
+
+                  // Treat 0 as valid. Only show ? when missing or not a number.
+                  const enlScore = Number(enlScoreRaw);
+                  const resScore = Number(resScoreRaw);
+
+                  if (enlScoreRaw == null || resScoreRaw == null || Number.isNaN(enlScore) || Number.isNaN(resScore)) {
                     return 'ENL: ? — RES: ?';
                   }
                   const isTie = enlScore === resScore;

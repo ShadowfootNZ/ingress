@@ -14738,16 +14738,16 @@
                 "city": "Niigata",
                 "country": "Japan",
                 "location": { "lat": 37.6452283, "lng": 138.7669125 },
-                "score": { "enl": 5, "res": 5 },
-                "winner": "tie"
+                "score": { "enl": 5, "res": 0 },
+                "winner": "enlightened"
               },
               {
                 "city": "Osaka",
                 "state": "",
                 "country": "Japan",
                 "location": { "lat": 34.6937569, "lng": 135.5014539 },
-                "score": { "enl": 5, "res": 5 },
-                "winner": "tie"
+                "score": { "enl": 10, "res": 0 },
+                "winner": "enlightened"
               },
               {
                 "city": "Seoul",
@@ -14785,8 +14785,8 @@
                 "state": "",
                 "country": "China",
                 "location": { "lat": 31.2312707, "lng": 121.4700152 },
-                "score": { "enl": 0, "res": 5 },
-                "winner": "resistance"
+                "score": { "enl": 5, "res": 0 },
+                "winner": "enlightened"
               },
               {
                 "city": "Guangzhou",
@@ -14932,8 +14932,8 @@
                 "city": "Fukuoka",
                 "country": "Japan",
                 "location": { "lat": 33.6251241, "lng": 130.6180016 },
-                "score": { "enl": 5, "res": 5 },
-                "winner": "tie"
+                "score": { "enl": 10, "res": 0 },
+                "winner": "enlightened"
               },
               {
                 "city": "Naha",
@@ -14967,7 +14967,7 @@
                 "city": "Singapore",
                 "country": "Singapore",
                 "location": { "lat": 1.357107, "lng": 103.8194992 },
-                "score": { "enl": 5, "res": 15 },
+                "score": { "enl": 0, "res": 20 },
                 "winner": "resistance"
               },
               {
@@ -14990,8 +14990,8 @@
                 "city": "Helsinki",
                 "country": "Finland",
                 "location": { "lat": 60.1698897, "lng": 24.9384719 },
-                "score": { "enl": 5, "res": 5 },
-                "winner": "tie"
+                "score": { "enl": 0, "res": 10 },
+                "winner": "resistance"
               },
               {
                 "city": "Oslo",
