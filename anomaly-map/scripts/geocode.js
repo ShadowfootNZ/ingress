@@ -17,12 +17,12 @@ if (fs.existsSync(cachePath)) {
 }
 
 // Nominatim geocoding function
-async function geocode(city, state, country) {
+async function geocode(city, region, country) {
   // Build the best possible query string
   let query = '';
-  if (city && state) query = `${city}, ${state}, ${country}`;
+  if (city && region) query = `${city}, ${region}, ${country}`;
   else if (city) query = `${city}, ${country}`;
-  else if (state) query = `${state}, ${country}`;
+  else if (region) query = `${region}, ${country}`;
   else return null;
 
   const key = query;
@@ -115,19 +115,19 @@ async function updateLocations() {
           }
 
           const city = evt.city;
-          const state = evt.state;
+          const region = evt.region;
           const country = evt.country;
 
-          // Require country, and at least one of city or state
-          if (!country || (!city && !state)) {
+          // Require country, and at least one of city or region
+          if (!country || (!city && !region)) {
             missingCityCountry++;
             console.warn(
-              `Missing details: ${typeEntry.type} ${dateEntry.date}: '${city}', '${state}', '${country}'`
+              `Missing details: ${typeEntry.type} ${dateEntry.date}: '${city}', '${region}', '${country}'`
             );
             continue;
           }
 
-          const coords = await geocode(city, state, country);
+          const coords = await geocode(city, region, country);
           if (coords) {
             evt.location = { lat: coords.lat, lng: coords.lon };
             geocoded++;

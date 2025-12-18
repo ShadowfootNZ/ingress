@@ -215,9 +215,9 @@ h4 {
 #info-panel a:hover {
   color: #ffffff;            /* brighten on hover */
 }
-#series-filter {
-  max-height: 90vh;     
-  height:auto;
+#series-filter, #country-filter {
+  max-height: 30vh;     
+  height:20vh;
   min-height: 40px;
   overflow-y: auto;
   background: #222;
@@ -231,7 +231,7 @@ h4 {
 }
 /* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {
-  #series-filter {
+  #series-filter, #country-filter {
     max-height: 2em !important;   /* roughly one line */
     height: 2em !important;
     min-height: 2em !important;

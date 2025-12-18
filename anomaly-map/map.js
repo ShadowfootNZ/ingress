@@ -18,9 +18,8 @@ function isUpcoming(dateStr) {
   const today = new Date();
   return d > today;  // future = upcoming
 }
-function formatPlace(city, state, country) {
-
-  // If city, state, and/or country are identical → just show one
+function formatPlace(city, region, country) {
+  // If city, region, and/or country are identical → just show one
   const eq = (a, b) => a && b && a.toLowerCase() === b.toLowerCase();
   // Normalise null/undefined/empty and also literal "undefined"/"null" strings
   const normalize = (v) => {
@@ -34,16 +33,30 @@ function formatPlace(city, state, country) {
 
   // Normalise null/undefined/empty
   let cityPart = normalize(city);
-  let statePart = normalize(state);
+  let regionPart = normalize(region);
   let countryPart = normalize(country);
 
   // Build ordered parts, skipping empties
-  if (eq(cityPart, statePart)) cityPart = ''; // If city and state are identical → drop city
+  if (eq(cityPart, regionPart)) cityPart = ''; // If city and region are identical → drop city
   if (eq(cityPart, countryPart)) cityPart = ''; // If city and country are identical → drop city
-  if (eq(statePart, countryPart)) statePart = ''; // If state and country are identical → drop state
+  if (eq(regionPart, countryPart)) regionPart = ''; // If region and country are identical → drop region
   // Build ordered parts, skipping empties
-  const parts = [cityPart, statePart, countryPart].filter(Boolean);
+  const parts = [cityPart, regionPart, countryPart].filter(Boolean);
   return `<strong><u>${parts.join(', ')}</u></strong>`;
+}
+
+function placeLabel(city, region, country) {
+  // Pick a single label: city → region → country.
+  const normalize = (v) => {
+    if (v === undefined || v === null) return '';
+    const s = String(v).trim();
+    if (!s) return '';
+    const lower = s.toLowerCase();
+    if (lower === 'undefined' || lower === 'null') return '';
+    return s;
+  };
+
+  return normalize(city) || normalize(region) || normalize(country) || '';
 }
 async function loadAnomalies() {
   const resp = await fetch('./data/anomalies-historical.json');
@@ -156,6 +169,9 @@ async function loadAnomalies() {
     subdomains: 'abcd',
     maxZoom: 12,
   }).addTo(map);
+  // All rendered circle markers live here, so we can fit bounds to the current selection
+  // (FeatureGroup supports getBounds())
+  const markerLayer = L.featureGroup().addTo(map);
 
   const cssVars = getComputedStyle(document.documentElement);
   const colour = {
@@ -237,16 +253,30 @@ async function loadAnomalies() {
 
   const seriesSet = new Set();
   const seriesTypeMap = {};
+  const countrySet = new Set();
+  const norm = (v) => {
+    if (v == null) return '';
+    const s = String(v).trim();
+    if (!s) return '';
+    const lower = s.toLowerCase();
+    if (lower === 'undefined' || lower === 'null' || lower === 'n/a') return '';
+    return s;
+  };
 
   anomalies.forEach(a => {
     if (!a.series || !a.type) return;
     if (!a.location || a.location.lat == null || a.location.lng == null) return;
+
     const key = `${a.series} (${a.type})`;
     seriesSet.add(key);
     seriesTypeMap[key] = a.type;
+
+    const c = norm(a.country);
+    if (c) countrySet.add(c);
   });
 
   const seriesSel = document.getElementById('series-filter');
+  const countrySel = document.getElementById('country-filter');
 
   const seriesYears = {};
   anomalies.forEach(a => {
@@ -287,6 +317,13 @@ async function loadAnomalies() {
       `<option value="${s}" data-type="${typeForSeries}">${label}</option>`
     );
   });
+  // Populate country filter
+  if (countrySel) {
+    const countries = [...countrySet].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+    countries.forEach(c => {
+      countrySel.insertAdjacentHTML('beforeend', `<option value="${c}">${c}</option>`);
+    });
+  }
   // Adjust height based on the number of entries (Option B)
   const optionCount = seriesSel.options.length;
   const rowHeight = 22;                   // approx height per <option>
@@ -298,25 +335,32 @@ async function loadAnomalies() {
     Math.min(Math.max(ideal, 70), maxAllowed) + 'px';
   const grouped = {};
 
+  function locationKey(lat, lng, metres = 5000) {
+    // 1 degreet latitude ~ 111,320 m
+    const latFactor = 111320;
+    const lngFactor = 111320 * Math.cos(lat * Math.PI / 180);
+    
+    const latKey = Math.round((lat * latFactor) / metres);
+    const lngKey = Math.round((lng * lngFactor) / metres);
+    return `${latKey},${lngKey}`
+  }
+
   function renderMap() {
+    markerLayer.clearLayers();
     Object.keys(grouped).forEach(k => delete grouped[k]);
     anomalies.forEach(a => {
       if (!a._visible) return;
       if (!a.location?.lat || !a.location?.lng) return;
-      const key = `${a.city}, ${a.state}, ${a.country}`;
+      const key = locationKey(a.location.lat, a.location.lng);
       grouped[key] = grouped[key] || [];
       grouped[key].push(a);
-    });
-    // Clear existing layers
-    map.eachLayer(l => {
-      if (l instanceof L.CircleMarker) map.removeLayer(l);
     });
     placedCount = 0;
 
     // Loop through grouped entries
     Object.entries(grouped).forEach(([key, events]) => {
-      const [city, state, country] = key.split(', ');
       const { lat, lng } = events[0].location;
+      const label = placeLabel(events[0].city, events[0].region, events[0].country);
 
       // Sort events by date (oldest → newest)
       events.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -358,8 +402,7 @@ async function loadAnomalies() {
 
         // Only bind popup to the newest event
         if (index === events.length - 1) {
-          const popupContent = `
-          ${formatPlace(city, state, country)}<br>
+          const popupContent = `<strong><u>${label}</u></strong><br>
             ${events
               .map(
                 (evt) => `
@@ -385,6 +428,18 @@ async function loadAnomalies() {
                     : `<strong>${evt.series} (${evt.type})</strong><br>`;
                 })()}
                 ${new Date(evt.date).toLocaleDateString()}<br>
+                ${(() => {
+                  const city = (evt.city ?? '').toString().trim();
+                  if (!city) return '';
+
+                  const a = city.toLowerCase();
+                  const b = (label ?? '').toString().trim().toLowerCase();
+
+                  // Only show the city if it adds information beyond the popup header label
+                  if (b && a === b) return '';
+
+                  return `<span class="evt-city">${city}</span><br>`;
+                })()}
                 ${(() => {
                   if (isUpcoming(evt.date)) {
                     const today = new Date();
@@ -436,14 +491,23 @@ async function loadAnomalies() {
           circle.bindPopup(popupContent);
         }
 
-        circle.addTo(map);
+        circle.addTo(markerLayer);
         placedCount++;
       });
 
-      logDebug(`Grouped: ${city}, ${country}`);
+      logDebug(`Grouped: ${label}`);
     });
 
     logDebug(`Mapped: ${placedCount}`);
+  }
+  function zoomToSelection() {
+    const bounds = markerLayer.getBounds();
+    if (!bounds || !bounds.isValid()) return;
+  
+    map.fitBounds(bounds.pad(0.12), {
+      maxZoom: 6,
+      animate: true,
+    });
   }
 
   // Preselect the series of the most recent *historical* event
@@ -465,13 +529,22 @@ async function loadAnomalies() {
 
   function applyFilters() {
     const selectedSeries = [...seriesSel.selectedOptions].map(opt => opt.value);
+    const selectedCountries = countrySel
+      ? [...countrySel.selectedOptions].map(opt => opt.value)
+      : [];
 
     anomalies.forEach(a => {
       const key = `${a.series} (${a.type})`;
-      a._visible = selectedSeries.length === 0 || selectedSeries.includes(key);
+      const passSeries = selectedSeries.length === 0 || selectedSeries.includes(key);
+
+      const c = norm(a.country);
+      const passCountry = selectedCountries.length === 0 || (c && selectedCountries.includes(c));
+
+      a._visible = passSeries && passCountry;
     });
 
     renderMap();
+    zoomToSelection();
   }
   const selectAnomalyBtn = document.getElementById('select-anomaly-series');
   if (selectAnomalyBtn) {
@@ -483,5 +556,27 @@ async function loadAnomalies() {
       applyFilters();
     });
   }
+  const resetSeriesBtn = document.getElementById('reset-anomaly-series');
+  if (resetSeriesBtn && seriesSel) {
+    resetSeriesBtn.addEventListener('click', () => {
+      // Clear all selections so the filter is effectively "all series"
+      [...seriesSel.options].forEach(opt => { opt.selected = false; });
+      applyFilters();
+    });
+  }
+
+  const resetCountriesBtn = document.getElementById('select-countries');
+  if (resetCountriesBtn && countrySel) {
+    resetCountriesBtn.addEventListener('click', () => {
+      // Clear all selections so the filter is effectively "all countries"
+      [...countrySel.options].forEach(opt => { opt.selected = false; });
+      applyFilters();
+    });
+  }
+
+  if (countrySel) {
+    countrySel.addEventListener('change', applyFilters);
+  }
+
   seriesSel.addEventListener('change', applyFilters);
 })();
