@@ -1470,6 +1470,7 @@
               },
               {
                 "city": "Bangkok",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
                 "score": { "enl": 849, "res": 202 },
@@ -1590,7 +1591,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Milan",
+                "city": "Milano",
                 "region": "Lombardy",
                 "country": "Italy",
                 "location": { "lat": 45.4641943, "lng": 9.1896346 },
@@ -1794,6 +1795,7 @@
               },
               {
                 "city": "Chiang Mai",
+                "region": "Chiang Mai",
                 "country": "Thailand",
                 "location": { "lat": 18.7882778, "lng": 98.9858802 },
                 "score": { "enl": 208, "res": 101 },
@@ -1986,7 +1988,7 @@
                 "city": "Portland",
                 "region": "Maine",
                 "country": "United States",
-                "location": { "lat": 45.5202471, "lng": -122.674194 },
+                "location": { "lat": 43.6573605, "lng": -70.2586618 },
                 "score": { "enl": 634, "res": 294 },
                 "winner": "enlightened"
               },
@@ -2623,6 +2625,7 @@
               },
               {
                 "city": "Bangkok",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
                 "score": { "enl": 239, "res": 93 },
@@ -2637,7 +2640,8 @@
                 "winner": "resistance"
               },
               {
-                "city": "Palma de Mallorca",
+                "city": "Palma",
+                "region": "Mallorca",
                 "country": "Spain",
                 "location": { "lat": 39.5812525, "lng": 2.7092683 },
                 "score": { "enl": 133, "res": 199 },
@@ -2773,7 +2777,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Genoa",
+                "city": "Genova",
                 "country": "Italy",
                 "location": { "lat": 44.40726, "lng": 8.9338624 },
                 "score": { "enl": 203, "res": 171 },
@@ -3261,8 +3265,8 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Sta Cruz",
-                "region": "Canary Islands",
+                "city": "Santa Cruz",
+                "region": "Tenerife",
                 "country": "Spain",
                 "location": { "lat": 28.467178, "lng": -16.2507843 },
                 "score": { "enl": 2, "res": 5 },
@@ -3669,7 +3673,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Castello de la Plana",
+                "city": "Castellón de la Plana",
                 "region": "Valencian Community",
                 "country": "Spain",
                 "location": { "lat": 39.9860347, "lng": -0.0377354 },
@@ -3952,7 +3956,7 @@
               },
               {
                 "city": "Palma",
-                "region": "Balearic Islands",
+                "region": "Mallorca",
                 "country": "Spain",
                 "location": { "lat": 39.5812525, "lng": 2.7092683 },
                 "score": { "enl": 4105, "res": 390 },
@@ -4454,8 +4458,8 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Elx / Elche",
-                "region": "Valencian Community",
+                "city": "Elche",
+                "region": "Alicante",
                 "country": "Spain",
                 "location": { "lat": 38.2653307, "lng": -0.6988391 },
                 "score": { "enl": 1940, "res": 1505 },
@@ -4740,7 +4744,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Genoa",
+                "city": "Genova",
                 "region": "Liguria",
                 "country": "Italy",
                 "location": { "lat": 44.40726, "lng": 8.9338624 },
@@ -5180,7 +5184,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Milan",
+                "city": "Milano",
                 "region": "Lombardy",
                 "country": "Italy",
                 "location": { "lat": 45.4641943, "lng": 9.1896346 },
@@ -6175,7 +6179,7 @@
                 "city": "Mendoza",
                 "region": "Mendoza",
                 "country": "Argentina",
-                "location": { "lat": -34.5970325, "lng": -68.7304797 },
+                "location": { "lat": -32.8894155, "lng": -68.8446177},
                 "score": { "enl": 1055, "res": 340 },
                 "winner": "enlightened"
               },
@@ -6426,8 +6430,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "",
-                "region": "Songkhla Province",
+                "region": "Songkhla",
                 "country": "Thailand",
                 "location": { "lat": 6.8790221, "lng": 100.5498542 },
                 "score": { "enl": 1260, "res": 0 },
@@ -7550,8 +7553,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "",
-                "region": "Chiang Mai Province",
+                "region": "Chiang Mai",
                 "country": "Thailand",
                 "location": { "lat": 18.6951714, "lng": 98.4462684 },
                 "score": { "enl": 405, "res": 0 },
@@ -8341,7 +8343,7 @@
               },
               {
                 "city": "Prawet",
-                "region": "Bangkok Metropolis",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7213599, "lng": 100.6978082 },
                 "score": { "enl": 5, "res": 8 },
@@ -8660,7 +8662,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Berne",
+                "city": "Bern",
                 "region": "Bern",
                 "country": "Switzerland",
                 "location": { "lat": 46.9484742, "lng": 7.4521749 },
@@ -8868,8 +8870,8 @@
                 "winner": "resistance"
               },
               {
-                "city": "Kauno",
-                "region": "Kauno",
+                "city": "Kaunas",
+                "region": "Kaunas",
                 "country": "Lithuania",
                 "location": { "lat": 54.8982139, "lng": 23.9044817 },
                 "score": { "enl": 12, "res": 1 },
@@ -9185,7 +9187,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Berne",
+                "city": "Bern",
                 "region": "Bern",
                 "country": "Switzerland",
                 "location": { "lat": 46.9484742, "lng": 7.4521749 },
@@ -9361,7 +9363,7 @@
               },
               {
                 "city": "Prawet",
-                "region": "Bangkok Metropolis",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7213599, "lng": 100.6978082 },
                 "score": { "enl": 12, "res": 1 },
@@ -10987,7 +10989,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Merida",
+                "city": "Mérida",
                 "region": "Yucatan",
                 "country": "Mexico",
                 "location": { "lat": 20.9670759, "lng": -89.6237402 },
@@ -11394,7 +11396,7 @@
                 "city": "Charleston",
                 "region": "West Virginia",
                 "country": "United States",
-                "location": { "lat": 32.7884363, "lng": -79.9399309 },
+                "location": { "lat": 38.3505995, "lng": -81.6332812 },
                 "score": { "enl": 139, "res": 53 },
                 "winner": "enlightened"
               }
@@ -11469,6 +11471,7 @@
             "events": [
               {
                 "city": "Bangkok",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
                 "score": { "enl": 270, "res": 330 },
@@ -12061,7 +12064,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Nonthaburi, TH",
+                "region": "Nonthaburi",
                 "country": "Thailand",
                 "location": { "lat": 13.8428962, "lng": 100.4937886 },
                 "score": { "enl": 6, "res": 4 },
@@ -12382,7 +12385,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Phuket City",
+                "city": "Phuket",
                 "region": "Phuket",
                 "country": "Thailand",
                 "location": { "lat": 7.8847901, "lng": 98.3891503 },
@@ -12621,7 +12624,8 @@
                 "winner": "resistance"
               },
               {
-                "city": "Santa Cruz de Tenerife",
+                "city": "Santa Cruz",
+                "region": "Tenerife",
                 "country": "Spain",
                 "location": { "lat": 28.467178, "lng": -16.2507843 },
                 "score": { "enl": 0, "res": 4 },
@@ -13548,7 +13552,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Merida",
+                "city": "Mérida",
                 "region": "Yucatan",
                 "country": "Mexico",
                 "location": { "lat": 20.9670759, "lng": -89.6237402 },
@@ -13709,8 +13713,8 @@
                 "winner": "resistance"
               },
               {
-                "city": "Pattaya City",
-                "region": "Bang Lamung District",
+                "city": "Pattaya",
+                "region": "Chonburi",
                 "country": "Thailand",
                 "location": { "lat": 12.9366924, "lng": 100.8865002 },
                 "score": { "enl": 4, "res": 6 },
@@ -14093,6 +14097,7 @@
               },
               {
                 "city": "Bangkok",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
                 "score": { "enl": 7, "res": 6 },
@@ -14388,6 +14393,7 @@
               },
               {
                 "city": "Palma",
+                "region": "Mallorca",
                 "country": "Spain",
                 "location": { "lat": 39.5812525, "lng": 2.7092683 },
                 "score": { "enl": 10.7, "res": 3.875 },
@@ -15013,6 +15019,7 @@
               },
               {
                 "city": "Bangkok",
+                "region": "Bangkok",
                 "country": "Thailand",
                 "location": { "lat": 13.7524938, "lng": 100.4935089 },
                 "score": { "enl": 5, "res": 0 },
