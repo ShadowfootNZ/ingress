@@ -12763,7 +12763,7 @@
                 "city": "Springfield",
                 "region": "Missouri",
                 "country": "United States",
-                "location": { "lat": 39.7990175, "lng": -89.6439575 },
+                "location": { "lat": 37.2081729, "lng": -93.2922715 },
                 "score": { "enl": 5, "res": 0 },
                 "winner": "enlightened"
               },
