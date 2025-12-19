@@ -277,6 +277,15 @@ async function loadAnomalies() {
 
   const seriesSel = document.getElementById('series-filter');
   const countrySel = document.getElementById('country-filter');
+  // Auto pan/zoom toggle (default enabled)
+  const autoPanZoomEl = document.getElementById('auto-pan-zoom');
+  let autoPanZoomEnabled = autoPanZoomEl ? autoPanZoomEl.checked : true;
+
+  if (autoPanZoomEl) {
+    autoPanZoomEl.addEventListener('change', () => {
+      autoPanZoomEnabled = autoPanZoomEl.checked;
+    });
+  }
 
   const seriesYears = {};
   anomalies.forEach(a => {
@@ -544,7 +553,7 @@ async function loadAnomalies() {
     });
 
     renderMap();
-    zoomToSelection();
+    if (autoPanZoomEnabled) zoomToSelection();
   }
   const selectAnomalyBtn = document.getElementById('select-anomaly-series');
   if (selectAnomalyBtn) {

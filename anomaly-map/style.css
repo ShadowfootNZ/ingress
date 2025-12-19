@@ -230,10 +230,11 @@ h4 {
   border: 1px solid #444;
   border-radius: 4px;
 }
-#series-filter, #country-filter option:checked {
-  background: var(--xf-teal);
-  color: #000;
-}
+/* #series-filter option:checked, 
+#country-filter option:checked {
+  background: #fff;
+  color: #000
+} */
 #series-filter option {
   padding: 0.3em 0.3em;
 }
