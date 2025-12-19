@@ -12173,7 +12173,7 @@
                 "city": "Glendale",
                 "region": "Arizona",
                 "country": "United States",
-                "location": { "lat": 34.1469416, "lng": -118.2478471 },
+                "location": { "lat": 33.5386858, "lng": -112.185994 },
                 "score": { "enl": 10, "res": 0 },
                 "winner": "enlightened"
               },
