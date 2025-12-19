@@ -278,3 +278,11 @@ button.primary {
     overflow-y: auto;
   }
 }
+/* iPhone portrait optimisation */
+@media (max-width: 480px) and (orientation: portrait) {
+  #info-panel {
+    max-height: 96vh;     /* use almost full height */
+    top: 8px;
+    bottom: 8px;
+  }
+}
