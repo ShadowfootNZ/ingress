@@ -278,12 +278,26 @@ button.primary {
     overflow-y: auto;
   }
 }
-/* iPhone portrait optimisation */
-@media (max-width: 480px) and (orientation: portrait) {
+/* Small screens (phones): turn panel into a bottom sheet */
+@media (max-width: 520px) {
   #info-panel {
-    max-height: 96vh;     /* use almost full height */
-    width: calc(100% - 24px);  /* full width minus margins */
-    top: 8px;
-    bottom: 8px;
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    max-height: 45svh;      /* iOS-friendly viewport unit */
+    border-radius: 12px 12px 0 0;
+    padding: 10px 12px;
+  }
+
+  #info-minimise {
+    top: 6px;
+    right: 10px;
+    font-size: 22px;
+  }
+
+  button {
+    padding: 8px 10px;      /* easier taps */
   }
 }
