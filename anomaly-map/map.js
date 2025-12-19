@@ -103,6 +103,27 @@ async function loadAnomalies() {
 }
 
 (async function draw() {
+  async function loadBuildMeta() {
+    try {
+      const res = await fetch('./data/build-meta.json', { cache: 'no-store' });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
+    }
+  }
+  
+  const buildFooter = document.getElementById('build-footer');
+  const meta = await loadBuildMeta();
+  if (buildFooter && meta) {
+    // Adjust these field names to match your build-meta.json
+    const build = meta.build ?? meta.commit ?? 'unknown';
+    const dataUpdated = meta.dataMtime ?? meta.dataUpdated ?? '';
+    buildFooter.innerHTML = `
+      <div><span class="muted">Build:</span> ${build}</div>
+      ${dataUpdated ? `<div><span class="muted">Data:</span> ${dataUpdated}</div>` : ''}
+    `;
+  }
   document.getElementById('info-minimise').addEventListener('click', () => {
     const panel = document.getElementById('info-panel');
     if (panel.classList.contains('minimised')) {
