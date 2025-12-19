@@ -286,6 +286,18 @@ button.primary {
 
 #build-footer .muted {
   color: #bbb;
+  .leaflet-build-meta {
+    background: rgba(0, 0, 0, 0.75);
+    color: #ccc;
+    font-size: 11px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    line-height: 1.3;
+  }
+  
+  .leaflet-build-meta .label {
+    color: #888;
+  }
 }
 /* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {

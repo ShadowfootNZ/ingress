@@ -58,8 +58,9 @@ function placeLabel(city, region, country) {
 
   return normalize(city) || normalize(region) || normalize(country) || '';
 }
-async function loadAnomalies() {
-  const resp = await fetch('./data/anomalies-historical.json');
+async function loadAnomalies(meta) {
+  const buildParam = meta?.data_mtime ? `?build=${encodeURIComponent(meta.data_mtime)}` : '';
+  const resp = await fetch(`./data/anomalies-historical.json?${buildParam}`);
   if (!resp.ok) {
     console.error('Failed to load anomalies-historical.json:', resp.status);
     return [];
@@ -101,29 +102,27 @@ async function loadAnomalies() {
 
   return flat;
 }
-
-(async function draw() {
-  async function loadBuildMeta() {
-    try {
-      const res = await fetch('./data/build-meta.json', { cache: 'no-store' });
-      if (!res.ok) return null;
-      return await res.json();
-    } catch {
-      return null;
-    }
+async function loadBuildMeta() {
+  try {
+    const res = await fetch('./data/build-meta.json', { cache: 'no-store' });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
   }
-  
+}
+(async function draw() {
+
   const buildFooter = document.getElementById('build-footer');
   const meta = await loadBuildMeta();
-  if (buildFooter && meta) {
-    // Adjust these field names to match your build-meta.json
-    const build = meta.build ?? meta.commit ?? 'unknown';
-    const dataUpdated = meta.dataMtime ?? meta.dataUpdated ?? '';
+  if (buildFooter) {
+    const build = meta?.commit ?? meta?.build ?? 'unknown';
+    const dataUpdated = meta?.data_mtime ?? meta?.dataUpdated ?? '';
     buildFooter.innerHTML = `
-      <div><span class="muted">Build:</span> ${build}</div>
-      ${dataUpdated ? `<div><span class="muted">Data:</span> ${dataUpdated}</div>` : ''}
+      <div><span class="muted">Build:</span> ${build}${dataUpdated ? ` &nbsp; <span class="muted">Data:</span> ${dataUpdated}` : ''}</div>
     `;
   }
+
   document.getElementById('info-minimise').addEventListener('click', () => {
     const panel = document.getElementById('info-panel');
     if (panel.classList.contains('minimised')) {
@@ -151,8 +150,7 @@ async function loadAnomalies() {
   }
 
   let placedCount = 0;
-
-  const anomalies = await loadAnomalies();
+  const anomalies = await loadAnomalies(meta);
   const msPerDay = 1000 * 60 * 60 * 24;
   const nowMs = Date.now();
 

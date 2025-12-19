@@ -59,7 +59,28 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script type="module" src="map.js"></script>
+<script type="module">
+  // Cache-bust map.js using build-meta.json (generated on commit)
+  async function boot() {
+    let v = Date.now().toString();
+    try {
+      const res = await fetch('./data/build-meta.json', { cache: 'no-store' });
+      if (res.ok) {
+        const meta = await res.json();
+        v = meta.commit || meta.build || v;
+      }
+    } catch {
+      // ignore; fall back to timestamp
+    }
+
+    const s = document.createElement('script');
+    s.type = 'module';
+    s.src = `map.js?v=${encodeURIComponent(v)}`;
+    document.body.appendChild(s);
+  }
+
+  boot();
+</script>
 <div id="build-footer"></div>
 </body>
 </html>
