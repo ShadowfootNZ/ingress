@@ -282,6 +282,7 @@ button.primary {
 @media (max-width: 480px) and (orientation: portrait) {
   #info-panel {
     max-height: 96vh;     /* use almost full height */
+    width: calc(100% - 24px);  /* full width minus margins */
     top: 8px;
     bottom: 8px;
   }
