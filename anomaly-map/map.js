@@ -385,8 +385,12 @@ async function loadAnomalies() {
           : colour.res;
       
       // margin-based brightness: close = darker, blowout = bright
-      const ratio = Math.abs(enl - res) / (enl + res);
-      const strokeBrightness = 0.5 + ratio * 0.5;  // 0.5 → 1.0
+      // Guard against enl+res = 0 (0/0 -> NaN), which breaks stroke styling for ties.
+      const total = enl + res;
+      const ratio = total > 0 ? Math.abs(enl - res) / total : 0;
+
+      // Slightly stronger outline for ties/unknowns so border stays distinct
+      const strokeBrightness = total > 0 ? (0.5 + ratio * 0.5) : 0.8;  // 0.5 → 1.0, ties default to 0.8
       
       winnerColour = adjustStrokeBrightness(winnerColour, strokeBrightness);
       
