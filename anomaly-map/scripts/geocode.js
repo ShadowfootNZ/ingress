@@ -12,9 +12,10 @@ const doUpdate = args.has('update');
 const doOverride = args.has('override');
 const doVerify = args.has('verify') || doOverride;
 const doRefresh = args.has('refresh');
+const doUnusedCache = args.has('unused-cache') || args.has('audit-cache');
 
 console.log(
-  `Mode: ${doUpdate ? 'UPDATE' : 'DRY-RUN'}${doRefresh ? ' + REFRESH' : ''}${doVerify ? ' + VERIFY' : ''}${doOverride ? ' + OVERRIDE' : ''}`
+  `Mode: ${doUpdate ? 'UPDATE' : 'DRY-RUN'}${doRefresh ? ' + REFRESH' : ''}${doUnusedCache ? ' + UNUSED-CACHE' : ''}${doVerify ? ' + VERIFY' : ''}${doOverride ? ' + OVERRIDE' : ''}`
 );
 if (doRefresh && (doVerify || doOverride)) {
   console.warn('Note: refresh mode ignores verify/override flags and only validates the cache.');
@@ -45,7 +46,80 @@ function prettyFromCacheKey(key) {
   const country = parts[0] || '';
   const region = parts[1] || '';
   const city = parts[2] || '';
-  return [city, region, country].filter(v => v).join(', ');
+  return [country, region, city].filter(v => v).join(', ');
+}
+
+function normalizeCacheKey(key) {
+  // Normalise any key shape to a 3-part canonical form: "country, region, city"
+  // This allows comparing legacy 2-part keys like "Uruguay, Montevideo".
+  const parts = String(key)
+    .split(',')
+    .map(s => s.trim());
+
+  const country = parts[0] || '';
+  const region = parts.length >= 2 ? (parts[1] || '') : '';
+  const city = parts.length >= 3 ? parts.slice(2).join(', ').trim() : '';
+
+  return `${country}, ${region}, ${city}`;
+}
+
+function makeEventCacheKey(city, region, country) {
+  const ctry = country ? String(country).trim() : '';
+  const reg = region ? String(region).trim() : '';
+  const cty = city ? String(city).trim() : '';
+  return `${ctry}, ${reg}, ${cty}`;
+}
+async function reportUnusedCacheEntries() {
+  // Read-only audit: no geocoding and no writes.
+  const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+  const used = new Set();
+
+  for (const series of anomalies) {
+    if (!series || !Array.isArray(series.types)) continue;
+    for (const typeEntry of series.types) {
+      if (!typeEntry || !Array.isArray(typeEntry.dates)) continue;
+      for (const dateEntry of typeEntry.dates) {
+        if (!dateEntry || !Array.isArray(dateEntry.events)) continue;
+        for (const evt of dateEntry.events) {
+          const city = evt.city;
+          const region = evt.region;
+          const country = evt.country;
+
+          // Require country, and at least one of city or region
+          if (!country || (!city && !region)) continue;
+
+          used.add(makeEventCacheKey(city, region, country));
+        }
+      }
+    }
+  }
+
+  const unused = [];
+  const cacheKeys = Object.keys(cache);
+
+  for (const rawKey of cacheKeys) {
+    const norm = normalizeCacheKey(rawKey);
+    if (!used.has(norm)) {
+      unused.push({ rawKey, pretty: prettyFromCacheKey(rawKey) });
+    }
+  }
+
+  unused.sort((a, b) => a.pretty.localeCompare(b.pretty));
+
+  console.log('Cache audit complete.');
+  console.log(`Cache entries total: ${cacheKeys.length}`);
+  console.log(`Cache entries used:  ${used.size}`);
+  console.log(`Cache entries unused:${unused.length}`);
+
+  const cap = 500;
+  const show = unused.slice(0, cap);
+  for (const u of show) {
+    console.log(`UNUSED: ${u.pretty}  [key="${u.rawKey}"]`);
+  }
+  if (unused.length > cap) {
+    console.log(`... plus ${unused.length - cap} more`);
+  }
 }
 
 // Nominatim geocoding function
@@ -350,6 +424,8 @@ async function updateLocations() {
 
 if (doRefresh) {
   refreshCache();
+} else if (doUnusedCache) {
+  reportUnusedCacheEntries();
 } else {
   updateLocations();
 }

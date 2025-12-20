@@ -937,6 +937,7 @@
               },
               {
                 "city": "Santo Domingo",
+                "region": "Distrito Nacional",
                 "country": "Dominican Republic",
                 "location": { "lat": 18.4713858, "lng": -69.8918436 },
                 "score": { "enl": 94, "res": 217 },
@@ -1549,6 +1550,7 @@
               },
               {
                 "city": "Guatemala City",
+                "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
                 "location": { "lat": 14.6416142, "lng": -90.5132836 },
                 "score": { "enl": 179, "res": 356 },
@@ -2552,6 +2554,7 @@
               },
               {
                 "city": "Linz",
+                "region": "Oberösterreich",
                 "country": "Austria",
                 "location": { "lat": 48.3059078, "lng": 14.286198 },
                 "score": { "enl": 131, "res": 268 },
@@ -3801,7 +3804,7 @@
               },
               {
                 "city": "Göteborg",
-                "region": "Vastra Gotaland",
+                "region": "Västra Götaland",
                 "country": "Sweden",
                 "location": { "lat": 57.7072326, "lng": 11.9670171 },
                 "score": { "enl": 90, "res": 4995 },
@@ -4195,7 +4198,7 @@
               },
               {
                 "city": "Linz",
-                "region": "Upper Austria",
+                "region": "Oberösterreich",
                 "country": "Austria",
                 "location": { "lat": 48.3059078, "lng": 14.286198 },
                 "score": { "enl": 1095, "res": 2745 },
@@ -4830,7 +4833,7 @@
               },
               {
                 "city": "Nödinge-Nol",
-                "region": "Vastra Gotaland",
+                "region": "Västra Götaland",
                 "country": "Sweden",
                 "location": { "lat": 57.9085969, "lng": 12.0653476 },
                 "score": { "enl": 0, "res": 2880 },
@@ -5770,7 +5773,7 @@
               },
               {
                 "city": "Curitiba",
-                "region": "South",
+                "region": "Paraná",
                 "country": "Brazil",
                 "location": { "lat": -25.4295963, "lng": -49.2712724 },
                 "score": { "enl": 255, "res": 1545 },
@@ -7599,7 +7602,7 @@
               },
               {
                 "city": "Guatemala City",
-                "region": "Guatemala",
+                "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
                 "location": { "lat": 14.6416142, "lng": -90.5132836 },
                 "score": { "enl": 360, "res": 0 },
@@ -11027,6 +11030,7 @@
               },
               {
                 "city": "Santa Cruz de la Sierra",
+                "region": "Santa Cruz",
                 "country": "Bolivia",
                 "location": { "lat": -17.7834217, "lng": -63.1820853 },
                 "score": { "enl": 10, "res": 13 },
@@ -11351,6 +11355,7 @@
             "events": [
               {
                 "city": "Santa Cruz de la Sierra",
+                "region": "Santa Cruz",
                 "country": "Bolivia",
                 "location": { "lat": -17.7834217, "lng": -63.1820853 },
                 "score": { "enl": 334, "res": 266 },
@@ -11458,6 +11463,7 @@
               },
               {
                 "city": "Curitiba",
+                "region": "Paraná",
                 "country": "Brazil",
                 "location": { "lat": -25.4295963, "lng": -49.2712724 },
                 "score": { "enl": 92, "res": 108 },
@@ -11938,7 +11944,7 @@
                 "winner": "tie"
               },
               {
-                "city": "Istanbul",
+                "city": "İstanbul",
                 "country": "Türkiye",
                 "location": { "lat": 41.006381, "lng": 28.9758715 },
                 "score": { "enl": 2, "res": 7 },
@@ -12706,6 +12712,7 @@
               },
               {
                 "city": "Santo Domingo",
+                "region": "Distrito Nacional",
                 "country": "Dominican Republic",
                 "location": { "lat": 18.4713858, "lng": -69.8918436 },
                 "score": { "enl": 0, "res": 5 },
@@ -13613,7 +13620,7 @@
               },
               {
                 "city": "Belém",
-                "region": "State of Pará",
+                "region": "Pará",
                 "country": "Brazil",
                 "location": { "lat": -1.45056, "lng": -48.4682453 },
                 "score": { "enl": 4, "res": 2 },
@@ -13823,6 +13830,7 @@
               },
               {
                 "city": "Salzburg",
+                "region": "Salzburg",
                 "country": "Austria",
                 "location": { "lat": 47.7981346, "lng": 13.0464806 },
                 "score": { "enl": 4, "res": 5 },
@@ -14360,6 +14368,7 @@
               },
               {
                 "city": "Cardiff",
+                "region": "Wales",
                 "country": "United Kingdom",
                 "location": { "lat": 51.4816546, "lng": -3.1791934 },
                 "score": { "enl": 4.2, "res": 10.5 },
@@ -14431,6 +14440,7 @@
               },
               {
                 "city": "Guatemala City",
+                "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
                 "location": { "lat": 14.6416142, "lng": -90.5132836 },
                 "score": { "enl": 3.5, "res": 0 },
@@ -14499,6 +14509,7 @@
               },
               {
                 "city": "Santa Cruz de la Sierra",
+                "region": "Santa Cruz",
                 "country": "Bolivia",
                 "location": { "lat": -17.7834217, "lng": -63.1820853 },
                 "score": { "enl": 9.8, "res": 2.1 },
@@ -14520,6 +14531,7 @@
             "events": [
               {
                 "city": "Adelaide",
+                "region": "South Australia",
                 "country": "Australia",
                 "location": { "lat": -34.9281805, "lng": 138.5999312 },
                 "score": { "enl": 7.7, "res": 4.2 },
