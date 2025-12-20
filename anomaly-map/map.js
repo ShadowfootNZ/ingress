@@ -317,6 +317,8 @@ async function loadBuildMeta() {
   });
 
   /* Insert series options with year or year-range */
+  let lastMostRecentYear = null;
+
   [...seriesSet]
     .sort((a, b) => {
       const datesA = seriesYears[a] || [];
@@ -329,22 +331,34 @@ async function loadBuildMeta() {
       const years = [...new Set(seriesYears[s].map(ts =>
         new Date(ts).getFullYear()
       ))].sort((a,b) => a - b);
-    let label = s;
 
-    if (years.length === 1) {
-      label = `${years[0]} ${s}`;
-    } else if (years.length > 1) {
-      const first = years[0];
-      const last = years[years.length - 1];
-      label = `${s} (${first}–${last})`;
-    }
+      let label = s;
 
-    const typeForSeries = seriesTypeMap[s] || '';
-    seriesSel.insertAdjacentHTML(
-      'beforeend',
-      `<option value="${s}" data-type="${typeForSeries}">${label}</option>`
-    );
-  });
+      if (years.length === 1) {
+        label = `${years[0]} ${s}`;
+      } else if (years.length > 1) {
+        const first = years[0];
+        const last = years[years.length - 1];
+        label = `${s} (${first}–${last})`;
+      }
+
+      // Use the most recent year for a visual break when the year changes
+      const mostRecentYear = years.length ? years[years.length - 1] : null;
+      const yearBreak =
+        mostRecentYear !== null &&
+        lastMostRecentYear !== null &&
+        mostRecentYear !== lastMostRecentYear;
+
+      const breakAttr = yearBreak ? ' data-year-break="true"' : '';
+
+      const typeForSeries = seriesTypeMap[s] || '';
+      seriesSel.insertAdjacentHTML(
+        'beforeend',
+        `<option value="${s}" data-type="${typeForSeries}"${breakAttr}>${label}</option>`
+      );
+
+      if (mostRecentYear !== null) lastMostRecentYear = mostRecentYear;
+    });
   // Populate country filter
   if (countrySel) {
     const countries = [...countrySet].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
