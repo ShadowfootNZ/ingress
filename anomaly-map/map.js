@@ -408,8 +408,11 @@ async function loadBuildMeta() {
       events.sort((a, b) => new Date(a.date) - new Date(b.date));
 
       events.forEach((a, index) => {
-        const enl = parseInt(a.score?.enl ?? 0);
-        const res = parseInt(a.score?.res ?? 0);
+        // For styling (fill/stroke), treat missing or negative scores as 0
+        const enlRaw = a.score?.enl;
+        const resRaw = a.score?.res;
+        const enl = Math.max(0, Number(enlRaw ?? 0));
+        const res = Math.max(0, Number(resRaw ?? 0));
         const rad = radiusForDate(a.date);
         let winnerColour = enl === res
         ? colour.tie
@@ -498,32 +501,37 @@ async function loadBuildMeta() {
                     const countdownUrl = '../countdown/';
                     return `<span class="upcoming-text"><a href="${countdownUrl}">In ${diffDays} days</a></span>`;
                   }
-                
+
                   // Historical event — show ENL/RES scores
                   const enlScoreRaw = evt.score?.enl;
                   const resScoreRaw = evt.score?.res;
 
-                  // Treat 0 as valid. Only show ? when missing or not a number.
+                  // Treat 0 as valid for display. Negative values should still display,
+                  // but styling elsewhere clamps them to 0.
                   const enlScore = Number(enlScoreRaw);
                   const resScore = Number(resScoreRaw);
 
-                  if (enlScoreRaw == null || resScoreRaw == null || Number.isNaN(enlScore) || Number.isNaN(resScore)) {
+                  const enlValid = enlScoreRaw != null && !Number.isNaN(enlScore);
+                  const resValid = resScoreRaw != null && !Number.isNaN(resScore);
+
+                  if (!enlValid || !resValid) {
                     return 'ENL: ? — RES: ?';
                   }
+
                   const isTie = enlScore === resScore;
-                
+
                   const enlMarkup = isTie
-                  ? `<span class="enl-text">ENL: ${enlScore}</span>`
-                  : enlScore > resScore
-                    ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
-                    : `<span>ENL: ${enlScore}</span>`;
-                
-                const resMarkup = isTie
-                  ? `<span class="res-text">RES: ${resScore}</span>`
-                  : resScore > enlScore
-                    ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
-                    : `<span>RES: ${resScore}</span>`;
-                
+                    ? `<span class="enl-text">ENL: ${enlScore}</span>`
+                    : enlScore > resScore
+                      ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
+                      : `<span>ENL: ${enlScore}</span>`;
+
+                  const resMarkup = isTie
+                    ? `<span class="res-text">RES: ${resScore}</span>`
+                    : resScore > enlScore
+                      ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
+                      : `<span>RES: ${resScore}</span>`;
+
                   return `${enlMarkup} — ${resMarkup}`;
                 })()}<br>
                 ${
