@@ -193,7 +193,7 @@
             "events": [
               {
                 "city": "Montreal",
-                "region": null,
+                "region": "Quebec",
                 "country": "Canada",
                 "score": { "enl": 5079, "res": 4039 },
                 "winner": "enlightened",
@@ -209,7 +209,7 @@
               },
               {
                 "city": "Toronto",
-                "region": null,
+                "region": "Ontario",
                 "country": "Canada",
                 "score": { "enl": 8877, "res": 871 },
                 "winner": "enlightened",
@@ -264,7 +264,7 @@
     "series": "Minotaur",
     "types": [
       {
-        "type": "Operation",
+        "type": "Anomaly",
         "dates": [
           {
             "date": "2013-08-03",
@@ -334,7 +334,7 @@
               },
               {
                 "city": "Toronto",
-                "region": null,
+                "region": "Ontario",
                 "country": "Canada",
                 "score": { "enl": 57, "res": 28 },
                 "winner": "enlightened",
@@ -343,7 +343,7 @@
               },
               {
                 "city": "Montreal",
-                "region": null,
+                "region": "Quebec",
                 "country": "Canada",
                 "score": { "enl": 111, "res": 19 },
                 "winner": "enlightened",
@@ -360,7 +360,7 @@
     "series": "Cassandra",
     "types": [
       {
-        "type": "Other",
+        "type": "Anomaly",
         "dates": [
           {
             "date": "2013-08-11",
@@ -435,11 +435,11 @@
             "events": [
               {
                 "city": "Paris",
-                "region": null,
+                "region": "Île-de-France",
                 "country": "France",
                 "score": { "enl": 433, "res": 28 },
                 "winner": "enlightened",
-                "location": { "lat": 48.8534951, "lng": 2.3483915 }
+                "location": { "lat": 48.8588897, "lng": 2.320041 }
               },
               {
                 "city": "Manila",
@@ -497,8 +497,8 @@
                 "location": { "lat": 40.7127281, "lng": -74.0060152 }
               },
               {
-                "city": "Cologne",
-                "region": null,
+                "city": "Köln",
+                "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "score": { "enl": 491, "res": 404 },
                 "winner": "enlightened",
@@ -612,7 +612,7 @@
     "series": "Voynich",
     "types": [
       {
-        "type": "Operation",
+        "type": "Anomaly",
         "dates": [
           {
             "date": "2013-07-13",
@@ -784,8 +784,8 @@
                 "location": { "lat": 45.4641943, "lng": 9.1896346 }
               },
               {
-                "city": "Munich",
-                "region": null,
+                "city": "München",
+                "region": "Bayern",
                 "country": "Germany",
                 "score": { "enl": 0, "res": 1 },
                 "winner": "resistance",
@@ -809,10 +809,10 @@
               },
               {
                 "city": "Paris",
-                "region": null,
+                "region": "Île-de-France",
                 "country": "France",
                 "score": { "enl": 0, "res": 0 },
-                "location": { "lat": 48.8534951, "lng": 2.3483915 }
+                "location": { "lat": 48.8588897, "lng": 2.320041 }
               }
             ]
           }
@@ -899,7 +899,7 @@
               },
               {
                 "city": "Montreal",
-                "region": null,
+                "region": "Quebec",
                 "country": "Canada",
                 "score": { "enl": 172, "res": 146 },
                 "winner": "enlightened",
@@ -907,7 +907,7 @@
               },
               {
                 "city": "Vancouver",
-                "region": null,
+                "region": "British Columbia",
                 "country": "Canada",
                 "score": { "enl": 126, "res": 215 },
                 "winner": "resistance",
@@ -936,7 +936,7 @@
               },
               {
                 "city": "Prague",
-                "region": null,
+                "region": "Prague",
                 "country": "Czech Republic",
                 "score": { "enl": 317, "res": 115 },
                 "winner": "enlightened",
@@ -1066,7 +1066,7 @@
               },
               {
                 "city": "Graz",
-                "region": null,
+                "region": "Styria",
                 "country": "Austria",
                 "score": { "enl": 299, "res": 208 },
                 "winner": "enlightened",
@@ -1172,7 +1172,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": null,
+                "region": "Southeast",
                 "country": "Brazil",
                 "score": { "enl": 378, "res": 97 },
                 "winner": "enlightened",
@@ -1195,7 +1195,7 @@
                 "location": { "lat": -33.4377756, "lng": -70.6504502 }
               },
               {
-                "city": "Sao Paulo",
+                "city": "São Paulo",
                 "region": null,
                 "country": "Brazil",
                 "score": { "enl": 186, "res": 139 },
@@ -1701,7 +1701,7 @@
                 "city": "Kraków",
                 "region": "Małopolskie",
                 "country": "Poland",
-                "location": { "lat": 50.0619474, "lng": 19.9368564 },
+                "location": { "lat": 50.0469432, "lng": 19.9971534 },
                 "score": { "enl": 1014, "res": 907 },
                 "winner": "enlightened"
               },
@@ -2003,7 +2003,7 @@
             "date": "2014-09-27",
             "events": [
               {
-                "city": "Munich",
+                "city": "München",
                 "region": "Bayern",
                 "country": "Germany",
                 "location": { "lat": 48.1371079, "lng": 11.5753822 },
@@ -2072,6 +2072,7 @@
               },
               {
                 "city": "Aarhus",
+                "region": "Central Denmark Region",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
                 "score": { "enl": 70, "res": 251 },
@@ -2130,7 +2131,7 @@
             "events": [
               {
                 "city": "New Orleans",
-                "region": "Lousisana",
+                "region": "Louisiana",
                 "country": "United States",
                 "location": { "lat": 29.9559145, "lng": -90.0730259 },
                 "score": { "enl": 468, "res": 318 },
@@ -2245,6 +2246,7 @@
               },
               {
                 "city": "Rio de Janeiro",
+                "region": "Southeast",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 133, "res": 211 },
@@ -2523,7 +2525,7 @@
                 "city": "Sendai",
                 "region": "Tohoku",
                 "country": "Japan",
-                "location": { "lat": 38.2606255, "lng": 140.8107493 },
+                "location": { "lat": 38.2548531, "lng": 140.8114183 },
                 "score": { "enl": 2524, "res": 1358 },
                 "winner": "enlightened"
               },
@@ -2761,7 +2763,7 @@
                 "city": "Guatemala City",
                 "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
-                "location": { "lat": 14.6416142, "lng": -90.5132836 },
+                "location": { "lat": 14.6297388, "lng": -90.5112998 },
                 "score": { "enl": 179, "res": 356 },
                 "winner": "resistance"
               }
@@ -2881,13 +2883,6 @@
             "date": "2016-02-04",
             "events": [
               {
-                "city": "Hamamatsu",
-                "country": "Japan",
-                "location": { "lat": 34.7109786, "lng": 137.7259431 },
-                "score": { "enl": 7482, "res": 3100 },
-                "winner": "enlightened"
-              },
-              {
                 "city": "Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.416782, "lng": -3.703507 },
@@ -2896,6 +2891,7 @@
               },
               {
                 "city": "Rio de Janeiro",
+                "region": "Southeast",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 1200, "res": 2400 },
@@ -2922,6 +2918,13 @@
           {
             "date": "2016-02-27",
             "events": [
+              {
+                "city": "Hamamatsu",
+                "country": "Japan",
+                "location": { "lat": 34.7109786, "lng": 137.7259431 },
+                "score": { "enl": 7482, "res": 3100 },
+                "winner": "enlightened"
+              },
               {
                 "city": "Colombo",
                 "country": "Sri Lanka",
@@ -3339,6 +3342,7 @@
               },
               {
                 "city": "Sofia",
+                "region": "Sofia City",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 1085, "res": 641 },
@@ -3519,6 +3523,7 @@
               },
               {
                 "city": "Belo Horizonte",
+                "region": "Minas Gerais",
                 "country": "Brazil",
                 "location": { "lat": -19.9227318, "lng": -43.9450948 },
                 "score": { "enl": 178, "res": 121 },
@@ -3550,7 +3555,7 @@
               {
                 "city": "Osaka",
                 "country": "Japan",
-                "location": { "lat": 34.6198813, "lng": 135.490357 },
+                "location": { "lat": 34.6937569, "lng": 135.5014539 },
                 "score": { "enl": 199, "res": 100 },
                 "winner": "enlightened"
               },
@@ -3855,7 +3860,7 @@
                 "city": "Palma",
                 "region": "Mallorca",
                 "country": "Spain",
-                "location": { "lat": 39.5695818, "lng": 2.6500745 },
+                "location": { "lat": 39.5532246, "lng": 2.729031 },
                 "score": { "enl": 133, "res": 199 },
                 "winner": "resistance"
               },
@@ -4156,8 +4161,9 @@
               },
               {
                 "city": "Kaunas",
+                "region": "Kaunas County",
                 "country": "Lithuania",
-                "location": { "lat": 54.8982139, "lng": 23.9044817 },
+                "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 143, "res": 96 },
                 "winner": "enlightened"
               },
@@ -4237,7 +4243,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Dräsdn",
+                "city": "Dresden",
                 "region": "Sachsen",
                 "country": "Germany",
                 "location": { "lat": 51.0493286, "lng": 13.7381437 },
@@ -4369,10 +4375,10 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Riga",
-                "region": "Vidzeme",
+                "city": "Vidzeme",
+                "region": "Riga",
                 "country": "Latvia",
-                "location": { "lat": 56.9493977, "lng": 24.1051846 },
+                "location": { "lat": 56.9812799, "lng": 24.2450493 },
                 "score": { "enl": 8, "res": 1 },
                 "winner": "enlightened"
               },
@@ -4427,7 +4433,7 @@
                 "city": "Gouda",
                 "region": "South Holland",
                 "country": "Netherlands",
-                "location": { "lat": 52.0181194, "lng": 4.7111221 },
+                "location": { "lat": 52.0114922, "lng": 4.7106094 },
                 "score": { "enl": 2, "res": 6 },
                 "winner": "resistance"
               },
@@ -4435,7 +4441,7 @@
                 "city": "Budapest",
                 "region": "Central Hungary",
                 "country": "Hungary",
-                "location": { "lat": 47.4978789, "lng": 19.0402383 },
+                "location": { "lat": 47.4813896, "lng": 19.1460941 },
                 "score": { "enl": 4, "res": 4 },
                 "winner": "tie"
               },
@@ -4458,7 +4464,7 @@
                 "city": "Kaliningrad",
                 "region": "Kaliningrad Oblast",
                 "country": "Russia",
-                "location": { "lat": 54.710128, "lng": 20.5105838 },
+                "location": { "lat": 54.7046485, "lng": 20.4565666 },
                 "score": { "enl": 5, "res": 2 },
                 "winner": "enlightened"
               },
@@ -4566,7 +4572,7 @@
               {
                 "region": "Maharashtra",
                 "country": "India",
-                "location": { "lat": 18.9068356, "lng": 75.6741579 },
+                "location": { "lat": 19.5670323, "lng": 76.4164557 },
                 "score": { "enl": 2, "res": 4 },
                 "winner": "resistance"
               },
@@ -4621,7 +4627,7 @@
                 "city": "Kaunas",
                 "region": "Kaunas County",
                 "country": "Lithuania",
-                "location": { "lat": 54.8982139, "lng": 23.9044817 },
+                "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 5, "res": 1 },
                 "winner": "enlightened"
               },
@@ -4746,7 +4752,7 @@
               },
               {
                 "city": "Lyon",
-                "region": "Auvergne-Rhone-Alpes",
+                "region": "Auvergne-Rhône-Alpes",
                 "country": "France",
                 "location": { "lat": 45.7578137, "lng": 4.8320114 },
                 "score": { "enl": 4, "res": 2 },
@@ -4754,6 +4760,7 @@
               },
               {
                 "city": "Sofia",
+                "region": "Sofia City",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 6, "res": 50 },
@@ -4996,8 +5003,7 @@
                 "winner": "resistance"
               },
               {
-                "city": "Ventspils",
-                "region": "Courland",
+                "region": "Ventspils",
                 "country": "Latvia",
                 "location": { "lat": 57.3903918, "lng": 21.5635991 },
                 "score": { "enl": 2280, "res": 2910 },
@@ -5082,6 +5088,7 @@
               },
               {
                 "city": "Ljubljana",
+                "region": "Central Slovenia",
                 "country": "Slovenia",
                 "location": { "lat": 46.0500268, "lng": 14.5069289 },
                 "score": { "enl": 1220, "res": 3545 },
@@ -5170,7 +5177,7 @@
                 "city": "Palma",
                 "region": "Mallorca",
                 "country": "Spain",
-                "location": { "lat": 39.5695818, "lng": 2.6500745 },
+                "location": { "lat": 39.5532246, "lng": 2.729031 },
                 "score": { "enl": 4105, "res": 390 },
                 "winner": "enlightened"
               },
@@ -5210,7 +5217,7 @@
                 "city": "Żory",
                 "region": "Śląskie",
                 "country": "Poland",
-                "location": { "lat": 50.0454961, "lng": 18.6943479 },
+                "location": { "lat": 50.0388902, "lng": 18.6806124 },
                 "score": { "enl": 1380, "res": 2965 },
                 "winner": "resistance"
               },
@@ -5257,7 +5264,7 @@
                 "city": "Würzburg",
                 "region": "Bayern",
                 "country": "Germany",
-                "location": { "lat": 49.7933723, "lng": 9.9309779 },
+                "location": { "lat": 49.7780356, "lng": 9.9434769 },
                 "score": { "enl": 4050, "res": 160 },
                 "winner": "enlightened"
               },
@@ -5329,7 +5336,7 @@
                 "city": "Kraków",
                 "region": "Małopolskie",
                 "country": "Poland",
-                "location": { "lat": 50.0619474, "lng": 19.9368564 },
+                "location": { "lat": 50.0469432, "lng": 19.9971534 },
                 "score": { "enl": 3595, "res": 355 },
                 "winner": "enlightened"
               },
@@ -5608,7 +5615,7 @@
                 "city": "Gdynia",
                 "region": "Pomorskie",
                 "country": "Poland",
-                "location": { "lat": 54.5164982, "lng": 18.5402738 },
+                "location": { "lat": 54.5233304, "lng": 18.6040279 },
                 "score": { "enl": 320, "res": 3190 },
                 "winner": "resistance"
               },
@@ -5765,7 +5772,6 @@
               },
               {
                 "city": "Sigulda",
-                "region": "Vidzeme",
                 "country": "Latvia",
                 "location": { "lat": 57.1540561, "lng": 24.8567141 },
                 "score": { "enl": 3170, "res": 115 },
@@ -5853,7 +5859,7 @@
               },
               {
                 "city": "Norrköping",
-                "region": "Ostergotland",
+                "region": "Östergötland",
                 "country": "Sweden",
                 "location": { "lat": 58.5909124, "lng": 16.1903511 },
                 "score": { "enl": 320, "res": 2730 },
@@ -5887,7 +5893,7 @@
                 "city": "Gorzów Wielkopolski",
                 "region": "Lubuskie",
                 "country": "Poland",
-                "location": { "lat": 52.7305756, "lng": 15.2107553 },
+                "location": { "lat": 52.7309926, "lng": 15.2400451 },
                 "score": { "enl": 2580, "res": 440 },
                 "winner": "enlightened"
               },
@@ -6065,8 +6071,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Homyel",
-                "region": "Homyel'skaya Voblasts'",
+                "city": "Gomel",
                 "country": "Belarus",
                 "location": { "lat": 52.4238936, "lng": 31.0131698 },
                 "score": { "enl": 1705, "res": 1130 },
@@ -6231,7 +6236,6 @@
               },
               {
                 "city": "Mogilev",
-                "region": "Mahilyowskaya Voblasts'",
                 "country": "Belarus",
                 "location": { "lat": 53.9090245, "lng": 30.3429838 },
                 "score": { "enl": 2590, "res": 45 },
@@ -7117,13 +7121,13 @@
                 "city": "Chelyabinsk",
                 "region": "Chelyabinsk Oblast",
                 "country": "Russia",
-                "location": { "lat": 55.1559312, "lng": 61.3997019 },
+                "location": { "lat": 55.1598408, "lng": 61.4025547 },
                 "score": { "enl": 1360, "res": 350 },
                 "winner": "enlightened"
               },
               {
                 "city": "Rennes",
-                "region": "Brittany",
+                "region": "Bretagne",
                 "country": "France",
                 "location": { "lat": 48.1113387, "lng": -1.6800198 },
                 "score": { "enl": 1665, "res": 0 },
@@ -7209,7 +7213,7 @@
               {
                 "region": "Maharashtra",
                 "country": "India",
-                "location": { "lat": 18.9068356, "lng": 75.6741579 },
+                "location": { "lat": 19.5670323, "lng": 76.4164557 },
                 "score": { "enl": 375, "res": 1225 },
                 "winner": "resistance"
               },
@@ -7233,13 +7237,13 @@
                 "city": "Hilo",
                 "region": "Hawaii",
                 "country": "United States",
-                "location": { "lat": 19.7073734, "lng": -155.08158 },
+                "location": { "lat": 19.6854458, "lng": -155.1003754 },
                 "score": { "enl": 1165, "res": 420 },
                 "winner": "enlightened"
               },
               {
                 "city": "Askim",
-                "region": "Viken",
+                "region": "Østfold",
                 "country": "Norway",
                 "location": { "lat": 59.5832224, "lng": 11.1641908 },
                 "score": { "enl": 0, "res": 1575 },
@@ -7475,7 +7479,7 @@
               },
               {
                 "city": "Montpellier",
-                "region": "Occitania",
+                "region": "Occitanie",
                 "country": "France",
                 "location": { "lat": 43.6112422, "lng": 3.8767337 },
                 "score": { "enl": 1350, "res": 0 },
@@ -8327,7 +8331,7 @@
                 "winner": "enlightened"
               },
               {
-                "city": "Goiania",
+                "city": "Goiânia",
                 "region": "Goiás",
                 "country": "Brazil",
                 "location": { "lat": -16.680882, "lng": -49.2532691 },
@@ -8344,7 +8348,7 @@
               },
               {
                 "city": "Nice",
-                "region": "Provence-Alpes-Cote d'Azur",
+                "region": "Provence-Alpes-Côte d'Azur",
                 "country": "France",
                 "location": { "lat": 43.7009358, "lng": 7.2683912 },
                 "score": { "enl": 630, "res": 0 },
@@ -8673,7 +8677,7 @@
                 "city": "Penza",
                 "region": "Penza Oblast",
                 "country": "Russia",
-                "location": { "lat": 53.1953477, "lng": 45.0190437 },
+                "location": { "lat": 53.1937836, "lng": 45.0067413 },
                 "score": { "enl": 340, "res": 110 },
                 "winner": "enlightened"
               },
@@ -8813,7 +8817,7 @@
                 "city": "Guatemala City",
                 "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
-                "location": { "lat": 14.6416142, "lng": -90.5132836 },
+                "location": { "lat": 14.6297388, "lng": -90.5112998 },
                 "score": { "enl": 360, "res": 0 },
                 "winner": "enlightened"
               },
@@ -9138,7 +9142,7 @@
               },
               {
                 "city": "Lucca",
-                "region": "Toscany",
+                "region": "Toscana",
                 "country": "Italy",
                 "location": { "lat": 44.0177639, "lng": 10.45443 },
                 "score": { "enl": 180, "res": 0 },
@@ -9176,8 +9180,8 @@
                 "winner": "resistance"
               },
               {
-                "city": "Mukacheve",
-                "region": "Zakarpattia",
+                "city": "Mukachevo",
+                "region": "Zakarpattia Oblast",
                 "country": "Ukraine",
                 "location": { "lat": 48.4493, "lng": 22.7117 },
                 "score": { "enl": 0, "res": 180 },
@@ -9452,7 +9456,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Rio de Janeiro",
+                "region": "Southeast",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 0, "res": 13 },
@@ -9626,9 +9630,9 @@
               },
               {
                 "city": "Nagasaki",
-                "region": "Naoasaki",
+                "region": "Nagasaki Prefecture",
                 "country": "Japan",
-                "location": { "lat": 33.1154683, "lng": 129.7874339 },
+                "location": { "lat": 32.7501611, "lng": 129.8781002 },
                 "score": { "enl": 10, "res": 3 },
                 "winner": "enlightened"
               },
@@ -9866,7 +9870,7 @@
               },
               {
                 "city": "Ljubljana",
-                "region": "Osrednjeslovenska",
+                "region": "Central Slovenia",
                 "country": "Slovenia",
                 "location": { "lat": 46.0500268, "lng": 14.5069289 },
                 "score": { "enl": 3, "res": 10 },
@@ -10082,7 +10086,7 @@
               },
               {
                 "city": "Kaunas",
-                "region": "Kaunas",
+                "region": "Kaunas County",
                 "country": "Lithuania",
                 "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 12, "res": 1 },
@@ -10137,7 +10141,6 @@
               },
               {
                 "city": "Bergen",
-                "region": "Hordaland",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
                 "score": { "enl": 7, "res": 6 },
@@ -10457,7 +10460,7 @@
                 "city": "Würzburg",
                 "region": "Bayern",
                 "country": "Germany",
-                "location": { "lat": 49.7933723, "lng": 9.9309779 },
+                "location": { "lat": 49.7780356, "lng": 9.9434769 },
                 "score": { "enl": 3, "res": 10 },
                 "winner": "resistance"
               },
@@ -10558,7 +10561,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Rio de Janeiro",
+                "region": "Southeast",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 13, "res": 0 },
@@ -10624,7 +10627,7 @@
                 "city": "Kraków",
                 "region": "Małopolskie",
                 "country": "Poland",
-                "location": { "lat": 50.0619474, "lng": 19.9368564 },
+                "location": { "lat": 50.0469432, "lng": 19.9971534 },
                 "score": { "enl": 3, "res": 10 },
                 "winner": "resistance"
               },
@@ -10766,7 +10769,6 @@
               },
               {
                 "city": "Ventspils",
-                "region": "Kurzeme",
                 "country": "Latvia",
                 "location": { "lat": 57.3903918, "lng": 21.5635991 },
                 "score": { "enl": 12, "res": 1 },
@@ -10919,7 +10921,7 @@
                 "city": "Leiden",
                 "region": "Zuid-Holland",
                 "country": "Netherlands",
-                "location": { "lat": 52.1594747, "lng": 4.4908843 },
+                "location": { "lat": 52.1518157, "lng": 4.4811089 },
                 "score": { "enl": 13, "res": 0 },
                 "winner": "enlightened"
               },
@@ -11055,7 +11057,7 @@
                 "city": "Kraków",
                 "region": "Małopolskie",
                 "country": "Poland",
-                "location": { "lat": 50.0619474, "lng": 19.9368564 },
+                "location": { "lat": 50.0469432, "lng": 19.9971534 },
                 "score": { "enl": 1, "res": 12 },
                 "winner": "resistance"
               },
@@ -11170,7 +11172,7 @@
               },
               {
                 "city": "Fredrikstad",
-                "region": "Ãstfold",
+                "region": "Østfold",
                 "country": "Norway",
                 "location": { "lat": 59.1862013, "lng": 10.8680241 },
                 "score": { "enl": 0, "res": 13 },
@@ -11283,7 +11285,7 @@
                 "city": "Żory",
                 "region": "Śląskie",
                 "country": "Poland",
-                "location": { "lat": 50.0454961, "lng": 18.6943479 },
+                "location": { "lat": 50.0388902, "lng": 18.6806124 },
                 "score": { "enl": 1, "res": 12 },
                 "winner": "resistance"
               },
@@ -11780,7 +11782,7 @@
               },
               {
                 "city": "Stolichna",
-                "region": "Grad Sofiya",
+
                 "country": "Bulgaria",
                 "location": { "lat": 42.757, "lng": 23.45 },
                 "score": { "enl": 13, "res": 0 },
@@ -11962,7 +11964,7 @@
             "date": "2022-07-30",
             "events": [
               {
-                "city": "Munich",
+                "city": "München",
                 "region": "Bayern",
                 "country": "Germany",
                 "location": { "lat": 48.1371079, "lng": 11.5753822 },
@@ -11996,7 +11998,7 @@
               {
                 "city": "AF14-CHARLIE-02",
                 "country": "South Africa",
-                "location": { "lat": -28.530553943176066, "lng": 30.89582422732901 },
+                "location": { "lat": -26.815767628335273, "lng": 32.356095183711965 },
                 "score": { "enl": 651, "res": 0 },
                 "winner": "enlightened"
               },
@@ -12004,7 +12006,7 @@
                 "city": "AM01-FOXTROT-06",
                 "region": "Colorado",
                 "country": "United States",
-                "location": { "lat": 42.61113560415245, "lng": -101.34310583455695 },
+                "location": { "lat": 39.74746477561302, "lng": -104.2861115827901 },
                 "score": { "enl": 723, "res": 135 },
                 "winner": "enlightened"
               },
@@ -12012,28 +12014,28 @@
                 "city": "AM03-KILO-03",
                 "region": "Florida",
                 "country": "United States",
-                "location": { "lat": 33.59329963269563, "lng": -82.90712295690098 },
+                "location": { "lat": 29.148958054742724, "lng": -81.51575346579584 },
                 "score": { "enl": 2, "res": -2 },
                 "winner": "enlightened"
               },
               {
                 "city": "AM10-LIMA-06",
                 "country": "Peru",
-                "location": { "lat": -6.8280710708060735, "lng": -74.21793256064282 },
+                "location": { "lat": -8.320866360642064, "lng": -78.65689416544306 },
                 "score": { "enl": -540, "res": 100 },
                 "winner": "resistance"
               },
               {
                 "city": "AM16-MIKE-12",
                 "country": "Chile",
-                "location": { "lat": -42.82936076947854, "lng": -71.19238052990498 },
+                "location": { "lat": -41.855090355872925, "lng": -72.70971610535116 },
                 "score": { "enl": -36, "res": 578 },
                 "winner": "resistance"
               },
               {
                 "city": "AS09-LIMA-06",
                 "country": "Malaysia",
-                "location": { "lat": 1.7628234857090679, "lng": 105.78206743935719 },
+                "location": { "lat": 3.037308873450917, "lng": 101.34310583455695 },
                 "score": { "enl": 1, "res": 1 },
                 "winner": "tie"
               },
@@ -12056,7 +12058,7 @@
                 "city": "NR02-JULIET-12",
                 "region": "England",
                 "country": "United Kingdom",
-                "location": { "lat": 54.75746482766004, "lng": -2.5944712290293896 },
+                "location": { "lat": 53.38786921866953, "lng": -0.8095808590835764 },
                 "score": { "enl": 3, "res": 307 },
                 "winner": "resistance"
               },
@@ -12071,7 +12073,7 @@
                 "city": "ST01-PAPA-03",
                 "region": "Tasmania",
                 "country": "Australia",
-                "location": { "lat": -41.068257495867485, "lng": 148.57216783687528 },
+                "location": { "lat": -43.152010486643704, "lng": 143.5628615138085 },
                 "score": { "enl": -2, "res": 5 },
                 "winner": "resistance"
               }
@@ -12083,7 +12085,7 @@
               {
                 "city": "AF14-PAPA-12",
                 "country": "Egypt",
-                "location": { "lat": 26.43988402826446, "lng": 33.796461262187094 },
+                "location": { "lat": 29.871883185394694, "lng": 30.89582422732901 },
                 "score": { "enl": 16, "res": 734 },
                 "winner": "resistance"
               },
@@ -12091,14 +12093,14 @@
                 "city": "AM01-CHARLIE-07",
                 "region": "California",
                 "country": "United States",
-                "location": { "lat": 38.837521535111954, "lng": -120.89582422732902 },
+                "location": { "lat": 37.17898328089244, "lng": -122.35609518371197 },
                 "score": { "enl": 11, "res": -73 },
                 "winner": "enlightened"
               },
               {
                 "city": "AM15-PAPA-01",
                 "country": "Argentina",
-                "location": { "lat": -32.908033435231545, "lng": -60.58206764701602 },
+                "location": { "lat": -34.68006459074965, "lng": -57.64390481628804 },
                 "score": { "enl": 264, "res": 3 },
                 "winner": "enlightened"
               },
@@ -12106,7 +12108,7 @@
                 "city": "AS02-NOVEMBER-09",
                 "region": "Western Australia",
                 "country": "Australia",
-                "location": { "lat": -33.28153360506938, "lng": 117.92490017414548 },
+                "location": { "lat": -32.29684017780866, "lng": 116.4193890026432 },
                 "score": { "enl": -31, "res": 12 },
                 "winner": "resistance"
               },
@@ -12120,14 +12122,14 @@
               {
                 "city": "AS12-PAPA-11",
                 "country": "Philippines",
-                "location": { "lat": 18.71864112464129, "lng": 122.35609518371197 },
+                "location": { "lat": 14.955102041778705, "lng": 120.89582422732902 },
                 "score": { "enl": 12, "res": -55 },
                 "winner": "enlightened"
               },
               {
                 "city": "AS13-PAPA-04",
                 "country": "Taiwan",
-                "location": { "lat": 20.064319771905208, "lng": 122.35609518371197 },
+                "location": { "lat": 24.45696051495437, "lng": 120.89582422732902 },
                 "score": { "enl": 6, "res": -148 },
                 "winner": "enlightened"
               },
@@ -12162,7 +12164,7 @@
               {
                 "city": "NR03-GOLF-06",
                 "country": "Denmark",
-                "location": { "lat": 57.32218873590156, "lng": 8.999835815991469 },
+                "location": { "lat": 55.752199709587785, "lng": 10.530884690093966 },
                 "score": { "enl": 57, "res": 4 },
                 "winner": "enlightened"
               },
@@ -12321,21 +12323,21 @@
               {
                 "city": "AS09-LIMA-13",
                 "country": "Malaysia",
-                "location": { "lat": 3.02080100111438, "lng": 102.80547525792775 },
+                "location": { "lat": 1.7752218142890746, "lng": 104.2861115827901 },
                 "score": { "enl": 7, "res": 3 },
                 "winner": "enlightened"
               },
               {
                 "city": "NR02-FOXTROT-11",
                 "country": "Poland",
-                "location": { "lat": 53.44283435533295, "lng": 17.85031830221683 },
+                "location": { "lat": 50.29826652469715, "lng": 19.902019721472158 },
                 "score": { "enl": 2, "res": 8 },
                 "winner": "resistance"
               },
               {
                 "city": "NR02-GOLF-12",
                 "country": "Germany",
-                "location": { "lat": 54.193261429754294, "lng": 11.933597463213482 },
+                "location": { "lat": 51.79362975236318, "lng": 7.324140369249519 },
                 "score": { "enl": 1, "res": 9 },
                 "winner": "resistance"
               },
@@ -12350,7 +12352,7 @@
               {
                 "city": "AF07-ROMEO-12",
                 "country": "Portugal",
-                "location": { "lat": 36.472104374205806, "lng": -5.729982102778799 },
+                "location": { "lat": 39.01190198376469, "lng": -8.484246534204168 },
                 "score": { "enl": 1, "res": 9 },
                 "winner": "resistance"
               },
@@ -12358,7 +12360,7 @@
                 "city": "AM01-LIMA-01",
                 "region": "New York",
                 "country": "United States",
-                "location": { "lat": 42.61113560415245, "lng": -78.65689416544306 },
+                "location": { "lat": 40.82770651325956, "lng": -74.21793256064282 },
                 "score": { "enl": 7, "res": 3 },
                 "winner": "enlightened"
               },
@@ -12372,7 +12374,7 @@
               {
                 "city": "AM08-LIMA-15",
                 "country": "Colombia",
-                "location": { "lat": 0.5897239532933078, "lng": -78.65689416544306 },
+                "location": { "lat": 4.232472872539129, "lng": -74.21793256064282 },
                 "score": { "enl": 0, "res": 10 },
                 "winner": "resistance"
               }
@@ -12384,14 +12386,14 @@
               {
                 "city": "AM09-LIMA-10",
                 "country": "Ecuador",
-                "location": { "lat": -4.232472872539129, "lng": -74.21793256064282 },
+                "location": { "lat": -0.5897239532933078, "lng": -78.65689416544306 },
                 "score": { "enl": 8, "res": 2 },
                 "winner": "enlightened"
               },
               {
                 "city": "AF02-GOLF-05",
                 "country": "Brazil",
-                "location": { "lat": -4.438720032567352, "lng": -39.32062407858502 },
+                "location": { "lat": -8.11651579769308, "lng": -35.21484691841178 },
                 "score": { "enl": 0, "res": 10 },
                 "winner": "resistance"
               },
@@ -12399,7 +12401,7 @@
                 "city": "AM01-LIMA-09",
                 "region": "New York",
                 "country": "United States",
-                "location": { "lat": 40.82770651325956, "lng": -74.21793256064282 },
+                "location": { "lat": 42.61113560415245, "lng": -78.65689416544306 },
                 "score": { "enl": 2, "res": 8 },
                 "winner": "resistance"
               },
@@ -12407,7 +12409,7 @@
                 "city": "AM03-GOLF-00",
                 "region": "Texas",
                 "country": "United States",
-                "location": { "lat": 33.400118050344666, "lng": -99.90181306343518 },
+                "location": { "lat": 29.295301230711456, "lng": -95.7299821027788 },
                 "score": { "enl": 8, "res": 2 },
                 "winner": "enlightened"
               },
@@ -12421,7 +12423,7 @@
               {
                 "city": "NR01-ECHO-00",
                 "country": "Hungary",
-                "location": { "lat": 43.37977053234058, "lng": 22.275160972437355 },
+                "location": { "lat": 47.6081209328702, "lng": 19.937285618085454 },
                 "score": { "enl": 9, "res": 1 },
                 "winner": "enlightened"
               },
@@ -12435,14 +12437,14 @@
               {
                 "city": "AS14-FOXTROT-06",
                 "country": "India",
-                "location": { "lat": 30.400162337945318, "lng": 78.65689416544306 },
+                "location": { "lat": 28.804575718810888, "lng": 77.19452474207226 },
                 "score": { "enl": 10, "res": 0 },
                 "winner": "enlightened"
               },
               {
                 "city": "AS16-ROMEO-11",
                 "country": "South Korea",
-                "location": { "lat": 37.663997635096045, "lng": 127.97845847276923 },
+                "location": { "lat": 36.26205808919451, "lng": 125.21484691841178 },
                 "score": { "enl": 9, "res": 1 },
                 "winner": "enlightened"
               },
@@ -12515,6 +12517,7 @@
               },
               {
                 "city": "Montevideo",
+                "region": "Montevideo",
                 "country": "Uruguay",
                 "location": { "lat": -34.9058916, "lng": -56.1913095 },
                 "score": { "enl": 84, "res": 106 },
@@ -12542,6 +12545,7 @@
               },
               {
                 "city": "Winnipeg",
+                "region": "Manitoba",
                 "country": "Canada",
                 "location": { "lat": 49.8955367, "lng": -97.1384584 },
                 "score": { "enl": 165, "res": 30 },
@@ -12814,7 +12818,7 @@
                 "city": "AM01-HOTEL-07",
                 "region": "Iowa",
                 "country": "United States",
-                "location": { "lat": 43.160102038311784, "lng": -91.83183338327159 },
+                "location": { "lat": 41.87800245341214, "lng": -93.09770198132624 },
                 "score": { "enl": 14, "res": 0 },
                 "winner": "enlightened"
               },
@@ -12829,21 +12833,21 @@
               {
                 "city": "AM14-PAPA-14",
                 "country": "Paraguay",
-                "location": { "lat": -28.892361169907012, "lng": -60.58206764701602 },
+                "location": { "lat": -25.47004531897397, "lng": -57.64390481628804 },
                 "score": { "enl": 7, "res": 7 },
                 "winner": "tie"
               },
               {
                 "city": "NR03-GOLF-06",
                 "country": "Denmark",
-                "location": { "lat": 57.32218873590156, "lng": 8.999835815991469 },
+                "location": { "lat": 55.752199709587785, "lng": 10.530884690093966 },
                 "score": { "enl": 2, "res": 12 },
                 "winner": "resistance"
               },
               {
                 "city": "NR01-FOXTROT-13",
                 "country": "Italy",
-                "location": { "lat": 46.97663362791547, "lng": 15.833534455766927 },
+                "location": { "lat": 46.00939373244752, "lng": 13.618033526429382 },
                 "score": { "enl": 2, "res": 12 },
                 "winner": "resistance"
               },
@@ -12865,14 +12869,14 @@
               {
                 "city": "NR01-JULIET-04",
                 "country": "France",
-                "location": { "lat": 45.55703844759935, "lng": -3.1632156918858745 },
+                "location": { "lat": 48.07840619136817, "lng": -0.669882967110837 },
                 "score": { "enl": 13, "res": 1 },
                 "winner": "enlightened"
               },
               {
                 "city": "AS09-ROMEO-03",
                 "country": "Indonesia",
-                "location": { "lat": 0.4828194914974395, "lng": 126.60939262387575 },
+                "location": { "lat": 1.4967691945837278, "lng": 125.21484691841178 },
                 "score": { "enl": 2, "res": 12 },
                 "winner": "resistance"
               },
@@ -12899,14 +12903,14 @@
                 "city": "AM01-MIKE-03",
                 "region": "Connecticut",
                 "country": "United States",
-                "location": { "lat": 42.82936076947854, "lng": -71.19238052990498 },
+                "location": { "lat": 41.855090355872925, "lng": -72.70971610535116 },
                 "score": { "enl": 12, "res": 2 },
                 "winner": "enlightened"
               },
               {
                 "city": "AF02-HOTEL-03",
                 "country": "Brazil",
-                "location": { "lat": -2.397357595549399, "lng": -39.32062407858502 },
+                "location": { "lat": -3.468979890839724, "lng": -37.97845847276924 },
                 "score": { "enl": 1, "res": 13 },
                 "winner": "resistance"
               },
@@ -12935,28 +12939,28 @@
               {
                 "city": "NR02-ECHO-01",
                 "country": "Poland",
-                "location": { "lat": 48.7264976436732, "lng": 27.19464978548826 },
+                "location": { "lat": 51.148673447032074, "lng": 22.73341172668763 },
                 "score": { "enl": 3, "res": 11 },
                 "winner": "resistance"
               },
               {
                 "city": "AS12-KILO-13",
                 "country": "Thailand",
-                "location": { "lat": 20.187898574137712, "lng": 97.09287704309904 },
+                "location": { "lat": 18.61605013638777, "lng": 98.48424653420417 },
                 "score": { "enl": 15, "res": 0 },
                 "winner": "enlightened"
               },
               {
                 "city": "AS16-ROMEO-03",
                 "country": "South Korea",
-                "location": { "lat": 34.56130033327515, "lng": 126.60939262387575 },
+                "location": { "lat": 35.97319639475234, "lng": 129.320624078585 },
                 "score": { "enl": 1, "res": 13 },
                 "winner": "resistance"
               },
               {
                 "city": "AS14-FOXTROT-06",
                 "country": "India",
-                "location": { "lat": 30.400162337945318, "lng": 78.65689416544306 },
+                "location": { "lat": 28.804575718810888, "lng": 77.19452474207226 },
                 "score": { "enl": 15, "res": 0 },
                 "winner": "enlightened"
               },
@@ -12971,21 +12975,21 @@
                 "city": "PA03-NOVEMBER-10",
                 "region": "Queensland",
                 "country": "Australia",
-                "location": { "lat": -24.782174488104083, "lng": 150.582067647016 },
+                "location": { "lat": -19.76387754905096, "lng": 146.20353873781292 },
                 "score": { "enl": 0, "res": 15 },
                 "winner": "resistance"
               },
               {
                 "city": "AS10-ROMEO-12",
                 "country": "Philippines",
-                "location": { "lat": 7.97653308630776, "lng": 126.60939262387575 },
+                "location": { "lat": 6.948437296286026, "lng": 125.21484691841178 },
                 "score": { "enl": 13, "res": 1 },
                 "winner": "enlightened"
               },
               {
                 "city": "AS14-BRAVO-15",
                 "country": "United Arab Emirates",
-                "location": { "lat": 27.37598026541274, "lng": 50.67937592141498 },
+                "location": { "lat": 24.7350632903444, "lng": 54.78515308158822 },
                 "score": { "enl": 14, "res": 0 },
                 "winner": "enlightened"
               }
@@ -13004,7 +13008,7 @@
               {
                 "city": "AM09-LIMA-10",
                 "country": "Ecuador",
-                "location": { "lat": -4.232472872539129, "lng": -74.21793256064282 },
+                "location": { "lat": -0.5897239532933078, "lng": -78.65689416544306 },
                 "score": { "enl": 0, "res": 14 },
                 "winner": "resistance"
               },
@@ -13028,7 +13032,7 @@
                 "city": "AM02-FOXTROT-09",
                 "region": "Colorado",
                 "country": "United States",
-                "location": { "lat": 36.06991069362731, "lng": -101.34310583455695 },
+                "location": { "lat": 38.44120542769051, "lng": -104.2861115827901 },
                 "score": { "enl": 15, "res": 0 },
                 "winner": "enlightened"
               },
@@ -13042,7 +13046,7 @@
               {
                 "city": "NR03-GOLF-08",
                 "country": "Sweden",
-                "location": { "lat": 58.56718804397736, "lng": 11.746816669267492 },
+                "location": { "lat": 56.94113286027843, "lng": 13.249134156334344 },
                 "score": { "enl": 0, "res": 14 },
                 "winner": "resistance"
               },
@@ -13056,14 +13060,14 @@
               {
                 "city": "AF08-ROMEO-09",
                 "country": "Spain",
-                "location": { "lat": 39.306267511842606, "lng": -1.8318333832715796 },
+                "location": { "lat": 36.528558042285006, "lng": -4.397635665480262 },
                 "score": { "enl": 15, "res": 0 },
                 "winner": "enlightened"
               },
               {
                 "city": "AF14-ROMEO-03",
                 "country": "Cyprus",
-                "location": { "lat": 32.908033435231545, "lng": 29.41793235298399 },
+                "location": { "lat": 34.68006459074965, "lng": 32.356095183711965 },
                 "score": { "enl": 12, "res": 2 },
                 "winner": "enlightened"
               },
@@ -13084,7 +13088,7 @@
               {
                 "city": "NR16-BRAVO-13",
                 "country": "Japan",
-                "location": { "lat": 39.32786183421099, "lng": 140.23698289830233 },
+                "location": { "lat": 40.63268201449276, "lng": 140.39473253445468 },
                 "score": { "enl": 12, "res": 2 },
                 "winner": "enlightened"
               }
@@ -13171,7 +13175,7 @@
                 "city": "Lodz",
                 "region": "Łódzkie",
                 "country": "Poland",
-                "location": { "lat": 51.7687323, "lng": 19.4569911 },
+                "location": { "lat": 51.7728245, "lng": 19.4784857 },
                 "score": { "enl": 4, "res": 5 },
                 "winner": "resistance"
               },
@@ -13881,7 +13885,7 @@
               },
               {
                 "city": "Vila Velha",
-                "region": "State of Espírito Santo",
+                "region": "Espírito Santo",
                 "country": "Brazil",
                 "location": { "lat": -20.3297037, "lng": -40.2920174 },
                 "score": { "enl": 1, "res": 4 },
@@ -14058,7 +14062,7 @@
                 "city": "Hilo",
                 "region": "Hawaii",
                 "country": "United States",
-                "location": { "lat": 19.7073734, "lng": -155.08158 },
+                "location": { "lat": 19.6854458, "lng": -155.1003754 },
                 "score": { "enl": 5, "res": 1 },
                 "winner": "enlightened"
               }
@@ -14132,7 +14136,7 @@
               },
               {
                 "city": "Recife",
-                "region": "State of Pernambuco",
+                "region": "Pernambuco",
                 "country": "Brazil",
                 "location": { "lat": -8.0584933, "lng": -34.8848193 },
                 "score": { "enl": 0, "res": 10 },
@@ -14319,7 +14323,7 @@
                 "city": "Chiayi City",
                 "region": "嘉義市",
                 "country": "Taiwan",
-                "location": { "lat": 23.4871369, "lng": 120.4020083 },
+                "location": { "lat": 23.4882887, "lng": 120.4003524 },
                 "score": { "enl": 4, "res": 7 },
                 "winner": "resistance"
               },
@@ -14396,7 +14400,7 @@
               {
                 "city": "Astana",
                 "country": "Kazakhstan",
-                "location": { "lat": 51.1159933, "lng": 71.4677059 },
+                "location": { "lat": 51.1282205, "lng": 71.4306682 },
                 "score": { "enl": 5, "res": 4 },
                 "winner": "enlightened"
               }
@@ -14437,6 +14441,7 @@
               },
               {
                 "city": "Sofia",
+                "softregion": "Sofia City",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 11, "res": 0 },
@@ -14531,7 +14536,7 @@
                 "city": "Rzeszów",
                 "region": "Podkarpackie",
                 "country": "Poland",
-                "location": { "lat": 50.0374531, "lng": 22.0047174 },
+                "location": { "lat": 50.013319, "lng": 22.0161677 },
                 "score": { "enl": 0, "res": 12 },
                 "winner": "resistance"
               },
@@ -14623,7 +14628,7 @@
               },
               {
                 "city": "Montevideo",
-                "region": "Montevideo Department",
+                "region": "Montevideo",
                 "country": "Uruguay",
                 "location": { "lat": -34.9058916, "lng": -56.1913095 },
                 "score": { "enl": 8, "res": 4 },
@@ -14719,6 +14724,7 @@
             "events": [
               {
                 "city": "Plovdiv",
+                "region": "Plovdiv",
                 "country": "Bulgaria",
                 "location": { "lat": 42.1418541, "lng": 24.7499297 },
                 "score": { "enl": 8, "res": 3 },
@@ -14815,6 +14821,7 @@
               },
               {
                 "city": "Guayaquil",
+                "region": "Guayas",
                 "country": "Ecuador",
                 "location": { "lat": -2.2895167, "lng": -80.0983887 },
                 "score": { "enl": 3, "res": 6 },
@@ -14837,7 +14844,7 @@
               },
               {
                 "city": "Belo Horizonte",
-                "region": "State of Minas Gerais",
+                "region": "Minas Gerais",
                 "country": "Brazil",
                 "location": { "lat": -19.9227318, "lng": -43.9450948 },
                 "score": { "enl": 0, "res": 9 },
@@ -14858,7 +14865,6 @@
               },
               {
                 "city": "Daejeon",
-                "region": "Hoseo",
                 "country": "South Korea",
                 "location": { "lat": 36.3497007, "lng": 127.3849016 },
                 "score": { "enl": 0, "res": 12 },
@@ -14946,7 +14952,7 @@
               {
                 "city": "Matara",
                 "country": "Sri Lanka",
-                "location": { "lat": 5.947822, "lng": 80.5482919 },
+                "location": { "lat": 5.9478515, "lng": 80.5463359 },
                 "score": { "enl": 3, "res": 5 },
                 "winner": "resistance"
               }
@@ -14972,6 +14978,7 @@
               },
               {
                 "city": "Aarhus",
+                "region": "Central Denmark Region",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
                 "score": { "enl": 3, "res": 7 },
@@ -14981,7 +14988,7 @@
                 "city": "Białystok",
                 "region": "Podlaskie",
                 "country": "Poland",
-                "location": { "lat": 53.132398, "lng": 23.1591679 },
+                "location": { "lat": 53.1275051, "lng": 23.1470509 },
                 "score": { "enl": 3, "res": 7 },
                 "winner": "resistance"
               },
@@ -15101,7 +15108,7 @@
             "events": [
               {
                 "city": "Yokosuka",
-                "region": "Kanto",
+                "region": "Kanagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.2814779, "lng": 139.6719597 },
                 "score": { "enl": 151, "res": 60 },
@@ -15152,6 +15159,7 @@
               },
               {
                 "city": "Tallinn",
+                "region": "Harju",
                 "country": "Estonia",
                 "location": { "lat": 59.4372419, "lng": 24.7572802 },
                 "score": { "enl": 3.5, "res": 9.8 },
@@ -15223,7 +15231,7 @@
                 "city": "Kaunas",
                 "region": "Kaunas County",
                 "country": "Lithuania",
-                "location": { "lat": 54.8982139, "lng": 23.9044817 },
+                "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 7.15, "res": 9.4 },
                 "winner": "resistance"
               },
@@ -15556,7 +15564,7 @@
               {
                 "city": "Randers",
                 "country": "Denmark",
-                "location": { "lat": 56.4355428, "lng": 10.0425957 },
+                "location": { "lat": 56.4617545, "lng": 10.0371476 },
                 "score": { "enl": 7, "res": 4.9 },
                 "winner": "enlightened"
               },
@@ -15612,7 +15620,7 @@
                 "city": "Palma",
                 "region": "Mallorca",
                 "country": "Spain",
-                "location": { "lat": 39.5695818, "lng": 2.6500745 },
+                "location": { "lat": 39.5532246, "lng": 2.729031 },
                 "score": { "enl": 10.7, "res": 3.875 },
                 "winner": "enlightened",
                 "info": "Beacon Points — ENL: 428, RES: 155"
@@ -15651,7 +15659,7 @@
                 "city": "Guatemala City",
                 "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
-                "location": { "lat": 14.6416142, "lng": -90.5132836 },
+                "location": { "lat": 14.6297388, "lng": -90.5112998 },
                 "score": { "enl": 3.5, "res": 0 },
                 "winner": "enlightened",
                 "info": "Shards ENL 5 / RES 0"
@@ -15987,7 +15995,7 @@
               {
                 "city": "The Hague",
                 "country": "Netherlands",
-                "location": { "lat": 52.0749456, "lng": 4.2696802 },
+                "location": { "lat": 52.0799838, "lng": 4.3113461 },
                 "score": { "enl": 132.1, "res": 167.9 },
                 "winner": "resistance"
               }
@@ -16028,7 +16036,7 @@
                 "city": "Osaka",
                 "region": "",
                 "country": "Japan",
-                "location": { "lat": 34.6198813, "lng": 135.490357 },
+                "location": { "lat": 34.6937569, "lng": 135.5014539 },
                 "score": { "enl": 10, "res": 0 },
                 "winner": "enlightened"
               },
@@ -16065,6 +16073,7 @@
               },
               {
                 "city": "Shanghai",
+                "region": "Shanghai",
                 "country": "China",
                 "location": { "lat": 31.2312707, "lng": 121.4700152 },
                 "score": { "enl": 5, "res": 0 },
@@ -16232,6 +16241,7 @@
               },
               {
                 "city": "Xiamen",
+                "region": "Fujian",
                 "country": "China",
                 "location": { "lat": 24.5438732, "lng": 118.0768065 },
                 "score": { "enl": 0, "res": 0 },
@@ -16387,6 +16397,7 @@
               },
               {
                 "city": "Montevideo",
+                "region": "Montevideo",
                 "country": "Uruguay",
                 "location": { "lat": -34.9058916, "lng": -56.1913095 },
                 "score": { "enl": 25, "res": 0 },
