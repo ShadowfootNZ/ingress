@@ -448,7 +448,10 @@ async function loadBuildMeta() {
 
         // Only bind popup to the newest event
         if (index === events.length - 1) {
-          const popupContent = `<strong><u>${label}</u></strong><br>
+          const { lat, lng } = events[0].location;
+          const intelUrl = `https://intel.ingress.com/intel?ll=${lat},${lng}`;
+          const popupContent = `
+                <h3><a target='intel' rel="noopener noreferrer" href="${intelUrl}">${label}</a></h3>
             ${events
               .map(
                 (evt) => `

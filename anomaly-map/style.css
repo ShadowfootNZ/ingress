@@ -68,6 +68,7 @@ html, body {
   opacity: 0.75;
 }
 
+
 #info-minimise {
   position: absolute;
   top: 4px;
@@ -104,6 +105,11 @@ h4 {
   max-height: 400px;
   overflow-y: auto;
   padding-right: 6px; /* avoid scrollbar overlaying text */
+}
+
+.leaflet-popup-content h3 {
+  font-size: 16px;
+  margin: 0 0 6px 0;
 }
 
 .leaflet-popup-content strong {
@@ -146,12 +152,14 @@ h4 {
 #info-panel label {
   color: #9ba1ff;           
 }
-#info-panel a {
+#info-panel a,
+.leaflet-popup a {
   color: #9ba1ff;           
   text-decoration: underline;
 }
 
-#info-panel a:visited {
+#info-panel a:visited,
+.leaflet-popup a:visited {
   color: #9ba1ff;            
 }
 
