@@ -356,8 +356,8 @@
             "date": "2013-08-13",
             "events": [
               {
-                "city": "Milan",
-                "region": null,
+                "city": "Milano",
+                "region": "Lombardia",
                 "country": "Italy",
                 "score": { "enl": 158, "res": 79 },
                 "location": { "lat": 45.4641943, "lng": 9.1896346 }
@@ -388,7 +388,7 @@
               },
               {
                 "city": "Washington",
-                "region": "DC",
+                "region": "D. C.",
                 "country": "United States",
                 "score": { "enl": 489, "res": 599 },
                 "location": { "lat": 38.8950368, "lng": -77.0365427 }
@@ -414,7 +414,7 @@
               },
               {
                 "city": "Manila",
-                "region": null,
+                "region": "Metro Manila",
                 "country": "Philippines",
                 "score": { "enl": 177, "res": 231 },
                 "location": { "lat": 14.5904492, "lng": 120.9803621 }
@@ -425,8 +425,8 @@
             "date": "2013-08-21",
             "events": [
               {
-                "city": "Sao Paulo",
-                "region": null,
+                "city": "São Paulo",
+                "region": "São Paulo",
                 "country": "Brazil",
                 "score": { "enl": 125, "res": 96 },
                 "location": { "lat": -23.5506507, "lng": -46.6333824 }
@@ -438,7 +438,7 @@
             "events": [
               {
                 "city": "Hong Kong",
-                "region": null,
+                "region": "Hong Kong",
                 "country": "China",
                 "score": { "enl": 75, "res": 328 },
                 "location": { "lat": 22.2792968, "lng": 114.1628907 }
@@ -578,7 +578,7 @@
             "events": [
               {
                 "city": "Hamburg",
-                "region": null,
+                "region": "Hamburg",
                 "country": "Germany",
                 "score": { "enl": 767, "res": 478 },
                 "info": "This is the total confirmed score for the overall \"Operation Voynich - Hamburg Anomaly\"",
@@ -586,7 +586,7 @@
               },
               {
                 "city": "Hamburg",
-                "region": null,
+                "region": "Hamburg",
                 "country": "Germany",
                 "score": { "enl": 32, "res": 116 },
                 "info": "This is the best guess individual city contribution.",
@@ -594,7 +594,7 @@
               },
               {
                 "city": "Stockholm",
-                "region": null,
+                "region": "Stockholm",
                 "country": "Sweden",
                 "score": { "enl": 52, "res": 56 },
                 "info": "This is the best guess individual city contribution.",
@@ -625,8 +625,8 @@
                 "location": { "lat": 60.1666204, "lng": 24.9435408 }
               },
               {
-                "city": "St. Petersburg",
-                "region": null,
+                "city": "Saint Petersburg",
+                "region": "Saint Petersburg",
                 "country": "Russia",
                 "score": { "enl": 107, "res": 3 },
                 "info": "This is the best guess individual city contribution.",
@@ -634,7 +634,7 @@
               },
               {
                 "city": "Moscow",
-                "region": null,
+                "region": "Moscow Oblast",
                 "country": "Russia",
                 "score": { "enl": 76, "res": 25 },
                 "info": "This is the best guess individual city contribution.",
@@ -716,14 +716,14 @@
               },
               {
                 "city": "Stuttgart",
-                "region": null,
+                "region": "Baden-Württemberg",
                 "country": "Germany",
                 "score": { "enl": 0, "res": 1 },
                 "location": { "lat": 48.7784485, "lng": 9.1800132 }
               },
               {
-                "city": "Milan",
-                "region": null,
+                "city": "Milano",
+                "region": "Lombardia",
                 "country": "Italy",
                 "score": { "enl": 0, "res": 1 },
                 "location": { "lat": 45.4641943, "lng": 9.1896346 }
@@ -737,7 +737,7 @@
               },
               {
                 "city": "Zurich",
-                "region": null,
+                "region": "Zurich",
                 "country": "Switzerland",
                 "score": { "enl": 0, "res": 1 },
                 "location": { "lat": 47.3744489, "lng": 8.5410422 }
@@ -769,18 +769,6 @@
         "type": "Operation",
         "dates": [
           {
-            "date": "2013-06-30",
-            "events": [
-              {
-                "city": "Portland",
-                "region": "Oregon",
-                "country": "United States",
-                "score": { "enl": 72, "res": 67 },
-                "location": { "lat": 45.5202471, "lng": -122.674194 }
-              }
-            ]
-          },
-          {
             "date": "2013-03-02",
             "events": [
               {
@@ -789,6 +777,18 @@
                 "country": "United Kingdom",
                 "score": { "enl": 0, "res": 12 },
                 "location": { "lat": 56.1181242, "lng": -3.9360012 }
+              }
+            ]
+          },
+          {
+            "date": "2013-06-30",
+            "events": [
+              {
+                "city": "Portland",
+                "region": "Oregon",
+                "country": "United States",
+                "score": { "enl": 72, "res": 67 },
+                "location": { "lat": 45.5202471, "lng": -122.674194 }
               }
             ]
           }
@@ -821,7 +821,7 @@
               },
               {
                 "city": "Bangkok",
-                "region": null,
+                "region": "Bangkok",
                 "country": "Thailand",
                 "score": { "enl": 2299, "res": 0 },
                 "location": { "lat": 13.7524938, "lng": 100.4935089 }
@@ -861,7 +861,6 @@
               },
               {
                 "city": "Kyiv",
-                "region": null,
                 "country": "Ukraine",
                 "score": { "enl": 485, "res": 450 },
                 "location": { "lat": 50.4500336, "lng": 30.5241361 }
@@ -869,27 +868,26 @@
               {
                 "city": "Prague",
                 "region": "Prague",
-                "country": "Czech Republic",
+                "country": "Czechia",
                 "score": { "enl": 317, "res": 115 },
                 "location": { "lat": 50.0874654, "lng": 14.4212535 }
               },
               {
                 "city": "Budapest",
-                "region": null,
                 "country": "Hungary",
                 "score": { "enl": 234, "res": 121 },
                 "location": { "lat": 47.4978789, "lng": 19.0402383 }
               },
               {
-                "city": "Bucharest",
-                "region": null,
+                "city": "București",
+                "region": "București-Ilfov",
                 "country": "Romania",
                 "score": { "enl": 260, "res": 61 },
                 "location": { "lat": 44.4361414, "lng": 26.102684 }
               },
               {
-                "city": "Warsaw",
-                "region": null,
+                "city": "Warszawa",
+                "region": "Mazowieckie",
                 "country": "Poland",
                 "score": { "enl": 247, "res": 197 },
                 "location": { "lat": 52.2333742, "lng": 21.0711489 }
@@ -908,21 +906,21 @@
               },
               {
                 "city": "Madrid",
-                "region": null,
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "score": { "enl": 235, "res": 431 },
                 "location": { "lat": 40.416782, "lng": -3.703507 }
               },
               {
                 "city": "Mumbai",
-                "region": null,
+                "region": "Maharashtra",
                 "country": "India",
                 "score": { "enl": 421, "res": 268 },
                 "location": { "lat": 19.054999, "lng": 72.8692035 }
               },
               {
                 "city": "Barcelona",
-                "region": null,
+                "region": "Cataluña",
                 "country": "Spain",
                 "score": { "enl": 145, "res": 121 },
                 "location": { "lat": 41.3825802, "lng": 2.177073 }
@@ -936,7 +934,7 @@
               },
               {
                 "city": "Lisbon",
-                "region": null,
+                "region": "Lisbon",
                 "country": "Portugal",
                 "score": { "enl": 1217, "res": 0 },
                 "location": { "lat": 38.7077507, "lng": -9.1365919 }
@@ -962,7 +960,6 @@
               },
               {
                 "city": "Vienna",
-                "region": null,
                 "country": "Austria",
                 "score": { "enl": 492, "res": 694 },
                 "location": { "lat": 48.2083537, "lng": 16.3725042 }
@@ -976,7 +973,7 @@
               },
               {
                 "city": "Bratislava",
-                "region": null,
+                "region": "Bratislava",
                 "country": "Slovakia",
                 "score": { "enl": 758, "res": 77 },
                 "location": { "lat": 48.1559178, "lng": 17.1313541 }
@@ -1004,7 +1001,7 @@
               },
               {
                 "city": "Zurich",
-                "region": null,
+                "region": "Zurich",
                 "country": "Switzerland",
                 "score": { "enl": 177, "res": 135 },
                 "location": { "lat": 47.3744489, "lng": 8.5410422 }
@@ -1023,22 +1020,20 @@
               },
               {
                 "city": "Rome",
-                "region": null,
                 "country": "Italy",
                 "score": { "enl": 927, "res": 666 },
                 "location": { "lat": 41.8933203, "lng": 12.4829321 }
               },
               {
                 "city": "Athens",
-                "region": null,
+                "region": "Attica",
                 "country": "Greece",
                 "score": { "enl": 86, "res": 691 },
                 "location": { "lat": 37.9755648, "lng": 23.7348324 }
               },
               {
                 "city": "Istanbul",
-                "region": null,
-                "country": "Turkey",
+                "country": "Türkiye",
                 "score": { "enl": 317, "res": 123 },
                 "location": { "lat": 41.006381, "lng": 28.9758715 }
               },
@@ -1077,7 +1072,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "score": { "enl": 378, "res": 97 },
                 "location": { "lat": -22.9110137, "lng": -43.2093727 }
@@ -1091,17 +1086,39 @@
               },
               {
                 "city": "Santiago",
-                "region": null,
+                "region": "Santiago",
                 "country": "Chile",
                 "score": { "enl": 253, "res": 84 },
                 "location": { "lat": -33.4377756, "lng": -70.6504502 }
               },
               {
                 "city": "São Paulo",
-                "region": null,
+                "region": "São Paulo",
                 "country": "Brazil",
                 "score": { "enl": 186, "res": 139 },
                 "location": { "lat": -23.5506507, "lng": -46.6333824 }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "series": "DICE",
+    "types": [
+      {
+        "type": "Operation",
+        "dates": [
+          {
+            "date": "2014-02-05",
+            "events": [
+              {
+                "city": "Las Vegas",
+                "region": "Nevada",
+                "country": "United States",
+                "score": { "enl": 145, "res": 630 },
+                "location": { "lat": 36.1674263, "lng": -115.1484131 }
               }
             ]
           }
@@ -1205,6 +1222,7 @@
               },
               {
                 "city": "Mexico City",
+                "region": "Ciudad de México",
                 "country": "Mexico",
                 "location": { "lat": 19.3207722, "lng": -99.1514678 },
                 "score": { "enl": 84, "res": 224 }
@@ -1392,6 +1410,7 @@
               },
               {
                 "city": "Stockholm",
+                "region": "Stockholm",
                 "country": "Sweden",
                 "location": { "lat": 59.3251172, "lng": 18.0710935 },
                 "score": { "enl": 179, "res": 189 }
@@ -1427,7 +1446,7 @@
                 "region": "Wisconsin",
                 "country": "United States",
                 "location": { "lat": 43.07469, "lng": -89.3841663 },
-                "score": { "enl": 238, "res": 146 }
+                "score": { "enl": 238.75, "res": 146 }
               },
               {
                 "city": "Ishinomaki",
@@ -1472,7 +1491,7 @@
                 "region": "Auckland",
                 "country": "New Zealand",
                 "location": { "lat": -36.852095, "lng": 174.7631803 },
-                "score": { "enl": 102, "res": 409 }
+                "score": { "enl": 102.75, "res": 409 }
               },
               {
                 "city": "Kansas City",
@@ -1530,7 +1549,8 @@
               },
               {
                 "city": "San Juan",
-                "country": "Puerto Rico",
+                "region": "Puerto Rico",
+                "country": "United States",
                 "location": { "lat": 18.465299, "lng": -66.116666 },
                 "score": { "enl": 120.5, "res": 260 }
               },
@@ -1563,7 +1583,7 @@
                 "region": "Saint Petersburg",
                 "country": "Russia",
                 "location": { "lat": 59.938732, "lng": 30.316229 },
-                "score": { "enl": 254, "res": 181 }
+                "score": { "enl": 254, "res": 181.5 }
               },
               {
                 "city": "Gettysburg",
@@ -1632,6 +1652,7 @@
               },
               {
                 "city": "Tallinn",
+                "region": "Harju",
                 "country": "Estonia",
                 "location": { "lat": 59.4372419, "lng": 24.7572802 },
                 "score": { "enl": 93, "res": 198.6 }
@@ -1700,7 +1721,7 @@
                 "region": "Texas",
                 "country": "United States",
                 "location": { "lat": 29.3872254, "lng": -94.992736 },
-                "score":  { "enl": 248.8, "res": 139 }
+                "score": { "enl": 248.8, "res": 139 }
               },
               {
                 "city": "Richmond",
@@ -1792,7 +1813,7 @@
                 "city": "Asunción",
                 "country": "Paraguay",
                 "location": { "lat": -25.2800459, "lng": -57.6343814 },
-                "score": { "enl": 139, "res": 176 }
+                "score":  { "enl": 139.4, "res": 176 }
               },
               {
                 "city": "Buenos Aires",
@@ -1833,9 +1854,10 @@
               },
               {
                 "city": "Göteborg",
+                "region": "Västra Götaland",
                 "country": "Sweden",
                 "location": { "lat": 57.7072326, "lng": 11.9670171 },
-                "score": { "enl": 213, "res": 218 }
+                "score": { "enl": 213.6, "res": 218 }
               },
               {
                 "city": "Tacoma",
@@ -1884,7 +1906,7 @@
                 "region": "Central Denmark Region",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
-                "score": { "enl": 70, "res": 251 }
+                "score": { "enl": 70, "res": 251.2 }
               },
               {
                 "city": "Bern",
@@ -1936,7 +1958,7 @@
                 "region": "Louisiana",
                 "country": "United States",
                 "location": { "lat": 29.9559145, "lng": -90.0730259 },
-                "score": { "enl": 468, "res": 318 }
+                "score": { "enl": 468, "res": 318.2 }
               },
               {
                 "city": "Oklahoma City",
@@ -1950,7 +1972,7 @@
                 "region": "Distrito Nacional",
                 "country": "Dominican Republic",
                 "location": { "lat": 18.4713858, "lng": -69.8918436 },
-                "score": { "enl": 94, "res": 217 }
+                "score": { "enl": 94, "res": 217.6 }
               },
               {
                 "city": "Virginia Beach",
@@ -1982,17 +2004,18 @@
                 "region": "Metro Manila",
                 "country": "Philippines",
                 "location": { "lat": 14.5904492, "lng": 120.9803621 },
-                "score": { "enl": 289, "res": 99 }
+                "score": { "enl": 289.8, "res": 99 }
               },
               {
                 "city": "Seoul",
                 "region": "Seoul metropolitan area",
                 "country": "South Korea",
                 "location": { "lat": 37.5666791, "lng": 126.9782914 },
-                "score": { "enl": 39, "res": 315 }
+                "score": { "enl": 39.2, "res": 315 }
               },
               {
                 "city": "Barcelona",
+                "region": "Cataluña",
                 "country": "Spain",
                 "location": { "lat": 41.3825802, "lng": 2.177073 },
                 "score": { "enl": 786, "res": 910 }
@@ -2002,7 +2025,7 @@
                 "region": "Gauteng",
                 "country": "South Africa",
                 "location": { "lat": -25.7459277, "lng": 28.1879101 },
-                "score": { "enl": 12, "res": 212 }
+                "score":  { "enl": 12.6, "res": 212 }
               },
               {
                 "city": "Stuttgart",
@@ -2034,7 +2057,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 133, "res": 211 }
@@ -2070,7 +2093,7 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 515, "res": 424 }
@@ -2235,7 +2258,7 @@
               },
               {
                 "city": "Covilhã",
-                "region": "Centro",
+                "region": "Castelo Branco",
                 "country": "Portugal",
                 "location": { "lat": 40.2804021, "lng": -7.504191 },
                 "score": { "enl": 392, "res": 624 }
@@ -2531,7 +2554,7 @@
               },
               {
                 "city": "Milano",
-                "region": "Lombardy",
+                "region": "Lombardia",
                 "country": "Italy",
                 "location": { "lat": 45.4641943, "lng": 9.1896346 },
                 "score": { "enl": 2174, "res": 3058 }
@@ -2552,7 +2575,7 @@
               },
               {
                 "city": "Sofia",
-                "region": "Sofia City",
+                "region": "Grad Sofiya",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 448, "res": 318 }
@@ -2601,14 +2624,21 @@
             "date": "2016-02-04",
             "events": [
               {
+                "city": "Hamamatsu",
+                "country": "Japan",
+                "location": { "lat": 34.7109786, "lng": 137.7259431 },
+                "score": { "enl": 7482, "res": 3100 }
+              },
+              {
                 "city": "Madrid",
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.416782, "lng": -3.703507 },
                 "score": { "enl": 846, "res": 1741 }
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 1200, "res": 2400 }
@@ -2632,12 +2662,6 @@
           {
             "date": "2016-02-27",
             "events": [
-              {
-                "city": "Hamamatsu",
-                "country": "Japan",
-                "location": { "lat": 34.7109786, "lng": 137.7259431 },
-                "score": { "enl": 7482, "res": 3100 }
-              },
               {
                 "city": "Colombo",
                 "country": "Sri Lanka",
@@ -2686,6 +2710,7 @@
               },
               {
                 "city": "Mexico City",
+                "region": "Ciudad de México",
                 "country": "Mexico",
                 "location": { "lat": 19.3207722, "lng": -99.1514678 },
                 "score": { "enl": 660, "res": 750 }
@@ -3008,7 +3033,7 @@
               },
               {
                 "city": "Sofia",
-                "region": "Sofia City",
+                "region": "Grad Sofiya",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 1085, "res": 641 }
@@ -3073,7 +3098,7 @@
                 "region": "Macao",
                 "country": "China",
                 "location": { "lat": 22.1899448, "lng": 113.5380454 },
-                "score": { "enl": 52, "res": 247 }
+                "score": { "enl": 52.57, "res": 247.43 }
               },
               {
                 "city": "Basel",
@@ -3093,7 +3118,7 @@
                 "region": "Pays de la Loire",
                 "country": "France",
                 "location": { "lat": 47.2186371, "lng": -1.5541362 },
-                "score": { "enl": 210, "res": 89 }
+                "score": { "enl": 210.81, "res": 89.19 }
               },
               {
                 "city": "Ann Arbor",
@@ -3126,7 +3151,7 @@
                 "region": "Seoul metropolitan area",
                 "country": "South Korea",
                 "location": { "lat": 37.5666791, "lng": 126.9782914 },
-                "score": { "enl": 235, "res": 64 }
+                "score": { "enl": 235.96, "res": 64.04 }
               },
               {
                 "city": "Galle",
@@ -3138,20 +3163,21 @@
                 "region": "Bali",
                 "country": "Indonesia",
                 "location": { "lat": -8.2271303, "lng": 115.1919203 },
-                "score": { "enl": 89, "res": 210 }
+                "score": { "enl": 89.47, "res": 210.53 }
               },
               {
                 "city": "Stockholm",
+                "region": "Stockholm",
                 "country": "Sweden",
                 "location": { "lat": 59.3251172, "lng": 18.0710935 },
                 "score": { "enl": 56.98, "res": 243.03 }
               },
               {
                 "city": "Ljubljana",
-                "region": "Central Slovenia",
+                "region": "Osrednjeslovenska",
                 "country": "Slovenia",
                 "location": { "lat": 46.0500268, "lng": 14.5069289 },
-                "score": { "enl": 71, "res": 228 }
+                "score": { "enl": 71.45, "res": 228.55 }
               },
               {
                 "city": "Turin",
@@ -3164,14 +3190,14 @@
                 "region": "D. C.",
                 "country": "United States",
                 "location": { "lat": 38.8950368, "lng": -77.0365427 },
-                "score": { "enl": 229, "res": 70 }
+                "score": { "enl": 229.82, "res": 70.18 }
               },
               {
                 "city": "Belo Horizonte",
                 "region": "Minas Gerais",
                 "country": "Brazil",
                 "location": { "lat": -19.9227318, "lng": -43.9450948 },
-                "score": { "enl": 178, "res": 121 }
+                "score": { "enl": 178.55, "res": 121.45 }
               },
               {
                 "city": "Kansas City",
@@ -3206,21 +3232,21 @@
                 "region": "Tamil Nadu",
                 "country": "India",
                 "location": { "lat": 13.0836939, "lng": 80.270186 },
-                "score": { "enl": 98, "res": 201 }
+                "score": { "enl": 98.37, "res": 201.63 }
               },
               {
                 "city": "Cebu City",
                 "region": "Cebu",
                 "country": "Philippines",
                 "location": { "lat": 10.3285606, "lng": 123.9008849 },
-                "score": { "enl": 277, "res": 22 }
+                "score": { "enl": 277.21, "res": 22.79 }
               },
               {
                 "city": "Berlin",
                 "region": "Berlin",
                 "country": "Germany",
                 "location": { "lat": 52.503379, "lng": 13.3386522 },
-                "score": { "enl": 86, "res": 213 }
+                "score": { "enl": 86.47, "res": 213.53 }
               },
               {
                 "city": "Belfast",
@@ -3233,7 +3259,7 @@
                 "city": "Zagreb",
                 "country": "Croatia",
                 "location": { "lat": 45.8130967, "lng": 15.9772795 },
-                "score":  { "enl": 112.72, "res": 187.28 }
+                "score": { "enl": 112.72, "res": 187.28 }
               },
               {
                 "city": "Boulder",
@@ -3246,14 +3272,14 @@
                 "city": "Panama City",
                 "country": "Panama",
                 "location": { "lat": 8.9714493, "lng": -79.5341802 },
-                "score":  { "enl": 218.48, "res": 81.52 }
+                "score": { "enl": 218.48, "res": 81.52 }
               },
               {
                 "city": "Houston",
                 "region": "Texas",
                 "country": "United States",
                 "location": { "lat": 29.7589382, "lng": -95.3676974 },
-                "score":  { "enl": 64.5, "res": 35.5 }
+                "score": { "enl": 64.5, "res": 35.5 }
               }
             ]
           },
@@ -3277,10 +3303,11 @@
                 "region": "Western Australia",
                 "country": "Australia",
                 "location": { "lat": -31.9558967, "lng": 115.8605784 },
-                "score":  { "enl": 273.1, "res": 26.9 }
+                "score": { "enl": 273.1, "res": 26.9 }
               },
               {
                 "city": "Tallinn",
+                "region": "Harju",
                 "country": "Estonia",
                 "location": { "lat": 59.4372419, "lng": 24.7572802 },
                 "score": { "enl": 91.12, "res": 208.88 }
@@ -3293,6 +3320,7 @@
               },
               {
                 "city": "Madrid",
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.416782, "lng": -3.703507 },
                 "score": { "enl": 78.84, "res": 221.16 }
@@ -3343,14 +3371,14 @@
                 "region": "Mazowieckie",
                 "country": "Poland",
                 "location": { "lat": 52.2333742, "lng": 21.0711489 },
-                "score": { "enl": 184, "res": 215 }
+                "score": { "enl": 184.26, "res": 215.75 }
               },
               {
                 "city": "Marseille",
                 "region": "Provence-Alpes-Côte d'Azur",
                 "country": "France",
                 "location": { "lat": 43.2961743, "lng": 5.3699525 },
-                "score": { "enl": 115, "res": 234 }
+                "score":{ "enl": 115.31, "res": 234.69 }
               },
               {
                 "city": "San Diego",
@@ -3382,14 +3410,14 @@
                 "region": "Seoul metropolitan area",
                 "country": "South Korea",
                 "location": { "lat": 37.456, "lng": 126.7052 },
-                "score": { "enl": 284, "res": 65 }
+                "score": { "enl": 284.96, "res": 65.04 }
               },
               {
                 "city": "Linz",
                 "region": "Oberösterreich",
                 "country": "Austria",
                 "location": { "lat": 48.3059078, "lng": 14.286198 },
-                "score": { "enl": 131, "res": 268 }
+                "score": { "enl": 131.45, "res": 268.55 }
               },
               {
                 "city": "Riga",
@@ -3409,7 +3437,7 @@
                 "region": "British Columbia",
                 "country": "Canada",
                 "location": { "lat": 49.2608724, "lng": -123.113952 },
-                "score": { "enl": 298, "res": 51 }
+                "score": { "enl": 298.98, "res": 51.02 }
               }
             ]
           },
@@ -3460,7 +3488,7 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 130, "res": 202 }
@@ -3488,6 +3516,7 @@
               },
               {
                 "city": "Mexico City",
+                "region": "Ciudad de México",
                 "country": "Mexico",
                 "location": { "lat": 19.3207722, "lng": -99.1514678 },
                 "score": { "enl": 210, "res": 122 }
@@ -3513,6 +3542,7 @@
               },
               {
                 "city": "Barcelona",
+                "region": "Cataluña",
                 "country": "Spain",
                 "location": { "lat": 41.3825802, "lng": 2.177073 },
                 "score": { "enl": 182, "res": 183 }
@@ -3558,52 +3588,54 @@
                 "region": "Auckland",
                 "country": "New Zealand",
                 "location": { "lat": -36.852095, "lng": 174.7631803 },
-                "score": { "enl": 174, "res": 200 }
+                "score": { "enl": 174.45, "res": 200.55 }
               },
               {
                 "city": "Quezon City",
                 "region": "Metro Manila",
                 "country": "Philippines",
                 "location": { "lat": 14.6510546, "lng": 121.0486254 },
-                "score": { "enl": 269, "res": 105 }
+                "score": { "enl": 269.85, "res": 105.15 }
               },
               {
                 "city": "Pune",
                 "region": "Maharashtra",
                 "country": "India",
                 "location": { "lat": 18.5213738, "lng": 73.8545071 },
-                "score": { "enl": 1, "res": 373 }
+                "score": { "enl": 1.55, "res": 373.45 }
               },
               {
                 "city": "Lisbon",
                 "region": "Lisbon",
                 "country": "Portugal",
                 "location": { "lat": 38.7077507, "lng": -9.1365919 },
-                "score": { "enl": 172, "res": 202 }
+                "score": { "enl": 172.19, "res": 202.81 }
               },
               {
                 "city": "Athens",
+                "region": "Attica",
                 "country": "Greece",
                 "location": { "lat": 37.9755648, "lng": 23.7348324 },
                 "score": { "enl": 240.28, "res": 134.72 }
               },
               {
                 "city": "Genova",
+                "region": "Liguria",
                 "country": "Italy",
                 "location": { "lat": 44.40726, "lng": 8.9338624 },
-                "score": { "enl": 203, "res": 171 }
+                "score":  { "enl": 203.58, "res": 171.42 }
               },
               {
                 "city": "Asunción",
                 "country": "Paraguay",
                 "location": { "lat": -25.2800459, "lng": -57.6343814 },
-                "score": { "enl": 251, "res": 123 }
+                "score": { "enl": 251.3, "res": 123.7 }
               },
               {
                 "city": "New Orleans",
                 "region": "Louisiana",
                 "country": "United States",
-                "location": { "enl": 230.81, "res": 144.19 },
+                "location": { "lat": 29.9559145, "lng": -90.0730259 },
                 "score": { "enl": 230.81, "res": 144.19 }
               },
               {
@@ -3628,21 +3660,21 @@
                 "city": "Thành phố Hồ Chí Minh",
                 "country": "Vietnam",
                 "location": { "lat": 10.7755254, "lng": 106.7021047 },
-                "score": { "enl": 175, "res": 199 }
+                "score":{ "enl": 175.24, "res": 199.76 }
               },
               {
                 "city": "Nürnberg",
                 "region": "Bayern",
                 "country": "Germany",
                 "location": { "lat": 49.453872, "lng": 11.077298 },
-                "score": { "enl": 196, "res": 178 }
+                "score": { "enl": 196.14, "res": 178.86 }
               },
               {
                 "city": "Bristol",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 51.4538022, "lng": -2.5972985 },
-                "score":  { "enl": 227.76, "res": 147.24 }
+                "score": { "enl": 227.76, "res": 147.24 }
               },
               {
                 "city": "Atlanta",
@@ -3722,14 +3754,14 @@
                 "region": "Jawa Barat",
                 "country": "Indonesia",
                 "location": { "lat": -6.914258, "lng": 107.6021243 },
-                "score": { "enl": 160, "res": 79 }
+                "score": { "enl": 160.75, "res": 79.25 }
               },
               {
                 "city": "Busan",
                 "region": "Yeongnam",
                 "country": "South Korea",
                 "location": { "lat": 35.1799528, "lng": 129.0752365 },
-                "score": { "enl": 167, "res": 72 }
+                "score": { "enl": 167.51, "res": 72.49 }
               },
               {
                 "city": "Helsinki",
@@ -3739,17 +3771,17 @@
               },
               {
                 "city": "Kaunas",
-                "region": "Kaunas County",
+                "region": "Kauno",
                 "country": "Lithuania",
                 "location": { "lat": 54.886228, "lng": 23.9317431 },
-                "score": { "enl": 143, "res": 96 }
+                "score": { "enl": 143.39, "res": 96.61 }
               },
               {
                 "city": "Lyon",
                 "region": "Auvergne-Rhône-Alpes",
                 "country": "France",
                 "location": { "lat": 45.7578137, "lng": 4.8320114 },
-                "score": { "enl": 135, "res": 104 }
+                "score": { "enl": 135.06, "res": 104.94 }
               },
               {
                 "city": "Madison",
@@ -3763,13 +3795,14 @@
                 "region": "Quebec",
                 "country": "Canada",
                 "location": { "lat": 45.5031824, "lng": -73.5698065 },
-                "score": { "enl": 146, "res": 93 }
+                "score": { "enl": 146.75, "res": 93.25 }
               },
               {
                 "city": "Brasília",
+                "region": "Central-West",
                 "country": "Brazil",
                 "location": { "lat": -10.3333333, "lng": -53.2 },
-                "score": { "enl": 116, "res": 123 }
+                "score": { "enl": 116.42, "res": 123.58 }
               }
             ]
           }
@@ -3816,13 +3849,14 @@
                 "region": "Sachsen",
                 "country": "Germany",
                 "location": { "lat": 51.0493286, "lng": 13.7381437 },
-                "score": { "enl": 40, "res": 59 }
+                "score": { "enl": 40.66, "res": 59.34 }
               },
               {
                 "city": "Göteborg",
+                "region": "Västra Götaland",
                 "country": "Sweden",
                 "location": { "lat": 57.7072326, "lng": 11.9670171 },
-                "score": { "enl": 42, "res": 57 }
+                "score": { "enl": 42.09, "res": 57.91 }
               },
               {
                 "city": "Guadalajara",
@@ -3864,34 +3898,34 @@
                 "region": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6812546, "lng": 139.766706 },
-                "score": { "enl": 11, "res": 855 }
+                "score": { "enl": 11705, "res": 855 }
               },
               {
                 "city": "Namba",
                 "region": "Osaka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.663345, "lng": 135.501876 },
-                "score": { "enl": 8, "res": 8 }
+                "score": { "enl": 8265, "res": 8730 }
               },
               {
                 "city": "San Juan de Lurigancho",
                 "region": "Lima",
                 "country": "Peru",
                 "location": { "lat": -12.0017252, "lng": -77.0084106 },
-                "score": { "enl": 6, "res": 10 }
+                "score": { "enl": 6100, "res": 10190 }
               },
               {
                 "city": "Melbourne",
                 "region": "Victoria",
                 "country": "Australia",
                 "location": { "lat": -37.8142454, "lng": 144.9631732 },
-                "score": { "enl": 3, "res": 7 }
+                "score": { "enl": 3645, "res": 7050 }
               },
               {
                 "city": "Singapore",
                 "country": "Singapore",
                 "location": { "lat": 1.357107, "lng": 103.8194992 },
-                "score": { "enl": 6, "res": 8 }
+                "score": { "enl": 6085, "res": 8975 }
               },
               {
                 "city": "Santiago",
@@ -3905,21 +3939,21 @@
                 "region": "Chiba Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.691534, "lng": 140.0203671 },
-                "score": { "enl": 5, "res": 4 }
+                "score": { "enl": 5745, "res": 4425 }
               },
               {
                 "city": "Nagoya",
                 "region": "Aichi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.1851045, "lng": 136.8998438 },
-                "score": { "enl": 7, "res": 3 }
+                "score": { "enl": 7300, "res": 3640 }
               },
               {
                 "city": "Saint Petersburg",
                 "region": "Saint Petersburg",
                 "country": "Russia",
                 "location": { "lat": 59.938732, "lng": 30.316229 },
-                "score": { "enl": 5, "res": 5 }
+                "score": { "enl": 5875, "res": 5760 }
               },
               {
                 "city": "Hong Kong",
@@ -3946,14 +3980,14 @@
                 "region": "Miyagi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 38.2677554, "lng": 140.8691498 },
-                "score": { "enl": 6, "res": 3 }
+                "score": { "enl": 6605, "res": 3840 }
               },
               {
                 "city": "Zaragoza",
-                "region": "Aragon",
+                "region": "Aragón",
                 "country": "Spain",
                 "location": { "lat": 41.6521342, "lng": -0.8809428 },
-                "score": { "enl": 6, "res": 3 }
+                "score": { "enl": 6430, "res": 3970 }
               },
               {
                 "city": "Hong Kong",
@@ -3967,35 +4001,34 @@
                 "region": "Moscow Oblast",
                 "country": "Russia",
                 "location": { "lat": 55.9954335, "lng": 36.265357 },
-                "score": { "enl": 8, "res": 890 }
+                "score": { "enl": 8055, "res": 890 }
               },
               {
                 "city": "Shizuoka",
                 "region": "Shizuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.9751974, "lng": 138.3831697 },
-                "score": { "enl": 4, "res": 4 }
+                "score": { "enl": 4785, "res": 4125 }
               },
               {
                 "city": "Gouda",
                 "region": "South Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.0114922, "lng": 4.7106094 },
-                "score": { "enl": 2, "res": 6 }
+                "score": { "enl": 2430, "res": 6460 }
               },
               {
                 "city": "Budapest",
-                "region": "Central Hungary",
                 "country": "Hungary",
                 "location": { "lat": 47.4813896, "lng": 19.1460941 },
-                "score": { "enl": 4, "res": 4 }
+                "score": { "enl": 4730, "res": 4105 }
               },
               {
                 "city": "Sapporo",
                 "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 43.061936, "lng": 141.3542924 },
-                "score": { "enl": 2, "res": 5 }
+                "score": { "enl": 2960, "res": 5805 }
               },
               {
                 "city": "Taipei",
@@ -4018,6 +4051,7 @@
               },
               {
                 "city": "Stockholm",
+                "region": "Stockholm",
                 "country": "Sweden",
                 "location": { "lat": 59.3251172, "lng": 18.0710935 },
                 "score": { "enl": 35, "res": 8 }
@@ -4034,69 +4068,69 @@
                 "region": "Okayama Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6553944, "lng": 133.9194595 },
-                "score": { "enl": 1, "res": 6 }
+                "score": { "enl": 1540, "res": 6850 }
               },
               {
                 "city": "Prague",
                 "region": "Prague",
                 "country": "Czechia",
                 "location": { "lat": 50.0874654, "lng": 14.4212535 },
-                "score": { "enl": 1, "res": 6 }
+                "score": { "enl": 1290, "res": 6665 }
               },
               {
                 "city": "Maebashi",
                 "region": "Gunma Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.3893418, "lng": 139.0632826 },
-                "score": { "enl": 6, "res": 1 }
+                "score": { "enl": 6580, "res": 1345 }
               },
               {
                 "city": "Hiroshima",
                 "region": "Hiroshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3917241, "lng": 132.4517589 },
-                "score": { "enl": 7, "res": 120 }
+                "score": { "enl": 7745, "res": 120 }
               },
               {
                 "city": "Nagano",
                 "region": "Nagano Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.6485851, "lng": 138.1947664 },
-                "score": { "enl": 4, "res": 3 }
+                "score": { "enl": 4345, "res": 3495 }
               },
               {
                 "city": "Vilnius",
                 "region": "Vilnius County",
                 "country": "Lithuania",
                 "location": { "lat": 54.6870458, "lng": 25.2829111 },
-                "score": { "enl": 6, "res": 1 }
+                "score": { "enl": 6090, "res": 1745 }
               },
               {
                 "city": "Vienna",
                 "country": "Austria",
                 "location": { "lat": 48.2083537, "lng": 16.3725042 },
-                "score": { "enl": 245, "res": 7 }
+                "score": { "enl": 245, "res": 7570 }
               },
               {
                 "city": "Utrecht",
                 "region": "Utrecht",
                 "country": "Netherlands",
                 "location": { "lat": 52.0907006, "lng": 5.1215634 },
-                "score": { "enl": 1, "res": 6 }
+                "score": { "enl": 1340, "res": 6390 }
               },
               {
                 "city": "Bochum",
                 "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "location": { "lat": 51.4818111, "lng": 7.2196635 },
-                "score": { "enl": 1, "res": 6 }
+                "score": { "enl": 935, "res": 6755 }
               },
               {
                 "city": "Berlin",
                 "region": "Berlin",
                 "country": "Germany",
                 "location": { "lat": 52.503379, "lng": 13.3386522 },
-                "score": { "enl": 935, "res": 6 }
+                "score": { "enl": 935, "res": 6755 }
               },
               {
                 "region": "Maharashtra",
@@ -4121,14 +4155,14 @@
                 "region": "Hamburg",
                 "country": "Germany",
                 "location": { "lat": 53.5909051, "lng": 9.9753758 },
-                "score": { "enl": 1, "res": 5 }
+                "score": { "enl": 1960, "res": 5455 }
               },
               {
                 "city": "Nymburk",
                 "region": "Central Bohemia",
                 "country": "Czechia",
                 "location": { "lat": 50.186331, "lng": 15.0417306 },
-                "score": { "enl": 2, "res": 4 }
+                "score": { "enl": 2935, "res": 4415 }
               },
               {
                 "city": "Seoul",
@@ -4143,14 +4177,14 @@
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 52.4796992, "lng": -1.9026911 },
-                "score": { "enl": 6, "res": 680 }
+                "score": { "enl": 6525, "res": 680 }
               },
               {
                 "city": "Kaunas",
-                "region": "Kaunas County",
+                "region": "Kauno",
                 "country": "Lithuania",
                 "location": { "lat": 54.886228, "lng": 23.9317431 },
-                "score": { "enl": 5, "res": 1 }
+                "score": { "enl": 5745, "res": 1455 }
               },
               {
                 "city": "Naha",
@@ -4164,18 +4198,18 @@
                 "region": "Basque Country",
                 "country": "Spain",
                 "location": { "lat": 43.2630018, "lng": -2.9350039 },
-                "score": { "enl": 1, "res": 5 }
+                "score": { "enl": 1230, "res": 5900 }
               },
               {
                 "city": "Barcelona",
-                "region": "Catalonia",
+                "region": "Cataluña",
                 "country": "Spain",
                 "location": { "lat": 41.3825802, "lng": 2.177073 },
-                "score": { "enl": 3, "res": 3 }
+                "score": { "enl": 3365, "res": 3655 }
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 760, "res": 6 }
@@ -4185,7 +4219,7 @@
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 51.7520131, "lng": -1.2578499 },
-                "score": { "enl": 1, "res": 5 }
+                "score": { "enl": 1615, "res": 5345 }
               },
               {
                 "city": "Nürnberg",
@@ -4199,7 +4233,7 @@
                 "region": "South Australia",
                 "country": "Australia",
                 "location": { "lat": -34.9281805, "lng": 138.5999312 },
-                "score": { "enl": 4, "res": 2 }
+                "score": { "enl": 4135, "res": 2720 }
               },
               {
                 "city": "Szczecin",
@@ -4240,41 +4274,40 @@
                 "region": "Ehime Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.8395188, "lng": 132.7653521 },
-                "score": { "enl": 3, "res": 2 }
+                "score": { "enl": 3980, "res": 2670 }
               },
               {
                 "city": "Neumünster",
                 "region": "Schleswig-Holstein",
                 "country": "Germany",
                 "location": { "lat": 54.0703296, "lng": 9.9884451 },
-                "score": { "enl": 4, "res": 2 }
+                "score": { "enl": 4545, "res": 2095 }
               },
               {
                 "city": "Bern",
                 "region": "Bern",
                 "country": "Switzerland",
                 "location": { "lat": 46.9484742, "lng": 7.4521749 },
-                "score": { "enl": 1, "res": 5 }
+                "score": { "enl": 1165, "res": 5445 }
               },
               {
                 "city": "Lyon",
                 "region": "Auvergne-Rhône-Alpes",
                 "country": "France",
                 "location": { "lat": 45.7578137, "lng": 4.8320114 },
-                "score": { "enl": 4, "res": 2 }
+                "score": { "enl": 4215, "res": 2380 }
               },
               {
                 "city": "Sofia",
-                "region": "Sofia City",
+                "region": "Grad Sofiya",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
-                "score": { "enl": 6, "res": 50 }
+                "score": { "enl": 6490, "res": 50 }
               },
               {
-                "city": "",
                 "country": "Taiwan",
                 "location": { "lat": null, "lng": null },
-                "score": { "enl": 6, "res": 85 }
+                "score": { "enl": 6325, "res": 85 }
               },
               {
                 "city": "Poznań",
@@ -4288,21 +4321,21 @@
                 "region": "Dnipropetrovs'k",
                 "country": "Ukraine",
                 "location": { "lat": 47.9064756, "lng": 33.3465796 },
-                "score": { "enl": 5, "res": 685 }
+                "score": { "enl": 5600, "res": 685 }
               },
               {
                 "city": "Marseille",
                 "region": "Provence-Alpes-Côte d'Azur",
                 "country": "France",
                 "location": { "lat": 43.2961743, "lng": 5.3699525 },
-                "score": { "enl": 0, "res": 6 }
+                "score": { "enl": 0, "res": 6210 }
               },
               {
                 "city": "Basingstoke and Deane",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 51.2587797, "lng": -1.2211073 },
-                "score": { "enl": 450, "res": 5 }
+                "score": { "enl": 450, "res": 5670 }
               },
               {
                 "city": "Malmö",
@@ -4323,7 +4356,7 @@
                 "region": "British Columbia",
                 "country": "Canada",
                 "location": { "lat": 49.2608724, "lng": -123.113952 },
-                "score": { "enl": 2, "res": 3 }
+                "score": { "enl": 2125, "res": 3910 }
               },
               {
                 "city": "Leipzig",
@@ -4344,7 +4377,7 @@
                 "region": "Nagasaki Prefecture",
                 "country": "Japan",
                 "location": { "lat": 32.7523858, "lng": 129.8689158 },
-                "score": { "enl": 2, "res": 3 }
+                "score": { "enl": 2875, "res": 3085 }
               },
               {
                 "city": "Tampere",
@@ -4357,27 +4390,27 @@
                 "region": "Kagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3425592, "lng": 134.0465338 },
-                "score": { "enl": 3, "res": 2 }
+                "score": { "enl": 3380, "res": 2495 }
               },
               {
                 "city": "Bergen",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
-                "score": { "enl": 2, "res": 3 }
+                "score": { "enl": 2635, "res": 3235 }
               },
               {
                 "city": "London",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 51.5074456, "lng": -0.1277653 },
-                "score": { "enl": 5, "res": 205 }
+                "score": { "enl": 5660, "res": 205 }
               },
               {
                 "city": "Arlington",
                 "region": "Virginia",
                 "country": "United States",
                 "location": { "lat": 38.8769326, "lng": -77.0893094 },
-                "score": { "enl": 3, "res": 2 }
+                "score": { "enl": 3415, "res": 2450 }
               },
               {
                 "city": "Castellón de la Plana",
@@ -4391,14 +4424,14 @@
                 "region": "Lviv",
                 "country": "Ukraine",
                 "location": { "lat": 49.841952, "lng": 24.0315921 },
-                "score": { "enl": 3, "res": 2 }
+                "score": { "enl": 3315, "res": 2490 }
               },
               {
                 "city": "Aarhus",
                 "region": "Central Denmark Region",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
-                "score": { "enl": 1, "res": 3 }
+                "score": { "enl": 1745, "res": 3980 }
               },
               {
                 "city": "Houston",
@@ -4416,7 +4449,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 1350, "res": 4180 }
@@ -4551,7 +4584,7 @@
               },
               {
                 "city": "Ljubljana",
-                "region": "Central Slovenia",
+                "region": "Osrednjeslovenska",
                 "country": "Slovenia",
                 "location": { "lat": 46.0500268, "lng": 14.5069289 },
                 "score": { "enl": 1220, "res": 3545 }
@@ -4738,7 +4771,7 @@
               },
               {
                 "city": "Madrid",
-                "region": "Community of Madrid",
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.416782, "lng": -3.703507 },
                 "score": { "enl": 4085, "res": 0 }
@@ -4786,7 +4819,6 @@
                 "score": { "enl": 20, "res": 3880 }
               },
               {
-                "city": "",
                 "region": "Penang",
                 "country": "Malaysia",
                 "location": { "lat": 5.4065013, "lng": 100.2559077 },
@@ -4885,7 +4917,7 @@
               },
               {
                 "city": "Móstoles",
-                "region": "Community of Madrid",
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.3238525, "lng": -3.8649214 },
                 "score": { "enl": 275, "res": 3465 }
@@ -5547,7 +5579,7 @@
               },
               {
                 "city": "São Sebastião",
-                "region": "Azores",
+                "region": "Açores",
                 "country": "Portugal",
                 "location": { "lat": 37.7545212, "lng": -25.6711468 },
                 "score": { "enl": 135, "res": 2510 }
@@ -5697,7 +5729,7 @@
               },
               {
                 "city": "Milano",
-                "region": "Lombardy",
+                "region": "Lombardia",
                 "country": "Italy",
                 "location": { "lat": 45.4641943, "lng": 9.1896346 },
                 "score": { "enl": 2395, "res": 25 }
@@ -5939,7 +5971,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 0, "res": 2160 }
@@ -6366,6 +6398,7 @@
               },
               {
                 "city": "Mexico City",
+                "region": "Ciudad de México",
                 "country": "Mexico",
                 "location": { "lat": 19.3207722, "lng": -99.1514678 },
                 "score": { "enl": 10, "res": 1610 }
@@ -7488,7 +7521,7 @@
               },
               {
                 "city": "Angra do Heroísmo",
-                "region": "Azores",
+                "region": "Açores",
                 "country": "Portugal",
                 "location": { "lat": 38.6593167, "lng": -27.2195578 },
                 "score": { "enl": 205, "res": 380 }
@@ -7607,7 +7640,7 @@
               },
               {
                 "city": "Athlone",
-                "region": "Connacht",
+                "region": "Leinster",
                 "country": "Ireland",
                 "location": { "lat": 53.4573264, "lng": -8.0447636 },
                 "score": { "enl": 0, "res": 495 }
@@ -7758,8 +7791,6 @@
                 "score": { "enl": 405, "res": 0 }
               },
               {
-                "city": "",
-                "region": "",
                 "country": "Taiwan",
                 "location": { "lat": null, "lng": null },
                 "score": { "enl": 405, "res": 0 }
@@ -7868,7 +7899,7 @@
               },
               {
                 "city": "Beydağ",
-                "region": "Aegean Region",
+                "region": "İzmir",
                 "country": "Türkiye",
                 "location": { "lat": 38.0859301, "lng": 28.20843 },
                 "score": { "enl": 360, "res": 0 }
@@ -8007,7 +8038,6 @@
                 "score": { "enl": 90, "res": 180 }
               },
               {
-                "city": "",
                 "region": "Sabah",
                 "country": "Malaysia",
                 "location": { "lat": 5.4257359, "lng": 117.0326392 },
@@ -8112,7 +8142,7 @@
               },
               {
                 "city": "Covilhã",
-                "region": "Centro",
+                "region": "Castelo Branco",
                 "country": "Portugal",
                 "location": { "lat": 40.2804021, "lng": -7.504191 },
                 "score": { "enl": 180, "res": 0 }
@@ -8257,7 +8287,8 @@
               },
               {
                 "city": "San Juan",
-                "country": "Puerto Rico",
+                "region": "Puerto Rico",
+                "country": "United States",
                 "location": { "lat": 18.465299, "lng": -66.116666 },
                 "score": { "enl": 0, "res": 65 }
               },
@@ -8368,7 +8399,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 0, "res": 13 }
@@ -8492,7 +8523,6 @@
               },
               {
                 "city": "Taipei",
-                "region": "Taipei",
                 "country": "Taiwan",
                 "location": { "lat": 25.0479308, "lng": 121.5170046 },
                 "score": { "enl": 13, "res": 0 }
@@ -8730,7 +8760,7 @@
               },
               {
                 "city": "Ljubljana",
-                "region": "Central Slovenia",
+                "region": "Osrednjeslovenska",
                 "country": "Slovenia",
                 "location": { "lat": 46.0500268, "lng": 14.5069289 },
                 "score": { "enl": 3, "res": 10 }
@@ -8757,8 +8787,7 @@
                 "score": { "enl": 13, "res": 0 }
               },
               {
-                "city": "Budapesti",
-                "region": "Budapest",
+                "city": "Budapest",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 2, "res": 11 }
@@ -8800,7 +8829,7 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 11, "res": 2 }
@@ -8919,7 +8948,7 @@
               },
               {
                 "city": "Kaunas",
-                "region": "Kaunas County",
+                "region": "Kauno",
                 "country": "Lithuania",
                 "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 12, "res": 1 }
@@ -8967,6 +8996,7 @@
               },
               {
                 "city": "Bergen",
+                "region": "Vestland",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
                 "score": { "enl": 7, "res": 6 }
@@ -9037,7 +9067,7 @@
               },
               {
                 "city": "São Pedro",
-                "region": "Azores",
+                "region": "Açores",
                 "country": "Portugal",
                 "location": { "lat": 38.6620559, "lng": -27.2419637 },
                 "score": { "enl": 0, "res": 13 }
@@ -9084,7 +9114,7 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 0, "res": 13 }
@@ -9277,8 +9307,7 @@
                 "score": { "enl": 13, "res": 0 }
               },
               {
-                "city": "Budapesti",
-                "region": "Budapest",
+                "city": "Budapest",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 1, "res": 12 }
@@ -9334,7 +9363,7 @@
               },
               {
                 "city": "Rio de Janeiro",
-                "region": "Southeast",
+                "region": "Sudeste",
                 "country": "Brazil",
                 "location": { "lat": -22.9110137, "lng": -43.2093727 },
                 "score": { "enl": 13, "res": 0 }
@@ -9689,7 +9718,6 @@
               },
               {
                 "city": "Taipei",
-                "region": "Taipei",
                 "country": "Taiwan",
                 "location": { "lat": 25.0479308, "lng": 121.5170046 },
                 "score": { "enl": 12, "res": 1 }
@@ -9755,7 +9783,7 @@
                 "region": "Michigan",
                 "country": "United States",
                 "location": { "lat": 43.0024013, "lng": -85.5502718 },
-                "score": { "enl": 13, "res": 0 }
+                "score": { "enl": 9, "res": 4 }
               },
               {
                 "city": "Stuttgart",
@@ -9937,8 +9965,7 @@
                 "score": { "enl": 0, "res": 13 }
               },
               {
-                "city": "Budapesti",
-                "region": "Budapest",
+                "city": "Budapest",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 0, "res": 13 }
@@ -10028,7 +10055,7 @@
               },
               {
                 "city": "São Sebastião",
-                "region": "Azores",
+                "region": "Açores",
                 "country": "Portugal",
                 "location": { "lat": 37.7545212, "lng": -25.6711468 },
                 "score": { "enl": 2, "res": 11 }
@@ -10126,7 +10153,7 @@
               },
               {
                 "city": "Juvisy-sur-Orge",
-                "region": "Île-de-France",
+                "region": "Bretagne",
                 "country": "France",
                 "location": { "lat": 48.6904063, "lng": 2.373809 },
                 "score": { "enl": 4, "res": 9 }
@@ -10136,7 +10163,7 @@
                 "region": "California",
                 "country": "United States",
                 "location": { "lat": 40.5997415, "lng": -123.8997734 },
-                "score": { "enl": 6, "res": 6 }
+                "score": { "enl": 6.5, "res": 6.5 }
               },
               {
                 "city": "Edmonton",
@@ -10402,7 +10429,7 @@
               },
               {
                 "city": "Stolichna",
-
+                "region": "Grad Sofiya",
                 "country": "Bulgaria",
                 "location": { "lat": 42.757, "lng": 23.45 },
                 "score": { "enl": 13, "res": 0 }
@@ -10583,84 +10610,84 @@
                 "city": "AF09-SIERRA-00",
                 "country": "Spain",
                 "location": { "lat": 40.63312488884837, "lng": 0.6014716838554413 },
-                "score": { "enl": 425, "res": -3 }
+                "score": { "enl": 425328, "res": -3178 }
               },
               {
                 "city": "AF13-SIERRA-00",
                 "country": "Greece",
                 "location": { "lat": 38.22679706381197, "lng": 23.382354484595307 },
-                "score": { "enl": 187, "res": 350 }
+                "score": { "enl": 187609, "res": 350196 }
               },
               {
                 "city": "AF14-CHARLIE-02",
                 "country": "South Africa",
                 "location": { "lat": -26.815767628335273, "lng": 32.356095183711965 },
-                "score": { "enl": 651, "res": 0 }
+                "score": { "enl": 651008, "res": 0 }
               },
               {
                 "city": "AM01-FOXTROT-06",
                 "region": "Colorado",
                 "country": "United States",
                 "location": { "lat": 39.74746477561302, "lng": -104.2861115827901 },
-                "score": { "enl": 723, "res": 135 }
+                "score": { "enl": 723296, "res": 135658 }
               },
               {
                 "city": "AM03-KILO-03",
                 "region": "Florida",
                 "country": "United States",
                 "location": { "lat": 29.148958054742724, "lng": -81.51575346579584 },
-                "score": { "enl": 2, "res": -2 }
+                "score": { "enl": 2960003, "res": -2471 }
               },
               {
                 "city": "AM10-LIMA-06",
                 "country": "Peru",
                 "location": { "lat": -8.320866360642064, "lng": -78.65689416544306 },
-                "score": { "enl": -540, "res": 100 }
+                "score": { "enl": -540526, "res": 100358 }
               },
               {
                 "city": "AM16-MIKE-12",
                 "country": "Chile",
                 "location": { "lat": -41.855090355872925, "lng": -72.70971610535116 },
-                "score": { "enl": -36, "res": 578 }
+                "score": { "enl": -36767, "res": 578737 }
               },
               {
                 "city": "AS09-LIMA-06",
                 "country": "Malaysia",
                 "location": { "lat": 3.037308873450917, "lng": 101.34310583455695 },
-                "score": { "enl": 1, "res": 1 }
+                "score": { "enl": 1287611, "res": 1112940 }
               },
               {
                 "city": "AS15-SIERRA-05",
                 "region": "Kagoshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.76128321126842, "lng": 134.39928915608147 },
-                "score": { "enl": 1, "res": 35 }
+                "score": { "enl": 1948754, "res": 35571 }
               },
               {
                 "city": "NR01-GOLF-03",
                 "country": "Italy",
                 "location": { "lat": 45.27216486363963, "lng": 8.661343312400062 },
-                "score": { "enl": 20, "res": -322 }
+                "score": { "enl": 20250296, "res": -322253 }
               },
               {
                 "city": "NR02-JULIET-12",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 53.38786921866953, "lng": -0.8095808590835764 },
-                "score": { "enl": 3, "res": 307 }
+                "score": { "enl": 3077201, "res": 307891 }
               },
               {
                 "city": "NR12-ROMEO-15",
                 "country": "Canada",
                 "location": { "lat": 50.929266014539785, "lng": -119.61023892069345 },
-                "score": { "enl": 244, "res": 8 }
+                "score": { "enl": 244245, "res": 8206 }
               },
               {
                 "city": "ST01-PAPA-03",
                 "region": "Tasmania",
                 "country": "Australia",
                 "location": { "lat": -43.152010486643704, "lng": 143.5628615138085 },
-                "score": { "enl": -2, "res": 5 }
+                "score": { "enl": -2344, "res": 5338 }
               }
             ]
           },
@@ -10671,81 +10698,81 @@
                 "city": "AF14-PAPA-12",
                 "country": "Egypt",
                 "location": { "lat": 29.871883185394694, "lng": 30.89582422732901 },
-                "score": { "enl": 16, "res": 734 }
+                "score": { "enl": 16872507, "res": 734543 }
               },
               {
                 "city": "AM01-CHARLIE-07",
                 "region": "California",
                 "country": "United States",
                 "location": { "lat": 37.17898328089244, "lng": -122.35609518371197 },
-                "score": { "enl": 11, "res": -73 }
+                "score": { "enl": 11923211, "res": -73168 }
               },
               {
                 "city": "AM15-PAPA-01",
                 "country": "Argentina",
                 "location": { "lat": -34.68006459074965, "lng": -57.64390481628804 },
-                "score": { "enl": 264, "res": 3 }
+                "score": { "enl": 264406, "res": 3152949 }
               },
               {
                 "city": "AS02-NOVEMBER-09",
                 "region": "Western Australia",
                 "country": "Australia",
                 "location": { "lat": -32.29684017780866, "lng": 116.4193890026432 },
-                "score": { "enl": -31, "res": 12 }
+                "score": { "enl": -31083, "res": 12198517 }
               },
               {
                 "city": "AS12-FOXTROT-05",
                 "country": "India",
                 "location": { "lat": 16.972140286232673, "lng": 78.65689416544306 },
-                "score": { "enl": -617, "res": 33 }
+                "score": { "enl": -617604, "res": 33470862 }
               },
               {
                 "city": "AS12-PAPA-11",
                 "country": "Philippines",
                 "location": { "lat": 14.955102041778705, "lng": 120.89582422732902 },
-                "score": { "enl": 12, "res": -55 }
+                "score": { "enl": 12593597, "res": -55592 }
               },
               {
                 "city": "AS13-PAPA-04",
                 "country": "Taiwan",
                 "location": { "lat": 24.45696051495437, "lng": 120.89582422732902 },
-                "score": { "enl": 6, "res": -148 }
+                "score": { "enl": 6251740, "res": -148389 }
               },
               {
                 "city": "AS16-ROMEO-13",
                 "country": "South Korea",
                 "location": { "lat": 36.98478065243195, "lng": 126.60939262387575 },
-                "score": { "enl": -1, "res": 66 }
+                "score": { "enl": -1093349, "res": 66376838 }
               },
               {
                 "city": "NR01-GOLF-08",
                 "country": "Switzerland",
                 "location": { "lat": 47.80930088278853, "lng": 7.890037643700349 },
-                "score": { "enl": 1, "res": 1 }
+                "score": { "enl": 1420725, "res": 1867752 }
               },
               {
                 "city": "NR02-FOXTROT-05",
                 "country": "Czechia",
                 "location": { "lat": 49.85910976442226, "lng": 13.761333118826055 },
-                "score": { "enl": -25, "res": 2 }
+                "score": { "enl": -25626, "res": 2877960 }
               },
               {
                 "city": "NR02-HOTEL-02",
                 "country": "Netherlands",
                 "location": { "lat": 51.95490626436635, "lng": 3.9654786585153072 },
-                "score": { "enl": 8, "res": 1 }
+                "score": { "enl": 8679, "res": 1133876 }
               },
               {
                 "city": "NR03-GOLF-06",
                 "country": "Denmark",
                 "location": { "lat": 55.752199709587785, "lng": 10.530884690093966 },
-                "score": { "enl": 57, "res": 4 }
+                "score": { "enl": 57685, "res": 4146723 }
               },
               {
                 "city": "PA01-ALPHA-15",
                 "country": "Japan",
                 "location": { "lat": 36.61711173702971, "lng": 139.36531486792157 },
-                "score": { "enl": 4, "res": -39 }
+                "score": { "enl": 4239370, "res": -39231 }
               }
             ]
           }
@@ -10773,7 +10800,7 @@
               },
               {
                 "city": "Mérida",
-                "region": "Yucatan",
+                "region": "Yucatán",
                 "country": "Mexico",
                 "location": { "lat": 20.9670759, "lng": -89.6237402 },
                 "score": { "enl": 4, "res": 22 }
@@ -10800,6 +10827,7 @@
               },
               {
                 "city": "Salvador",
+                "region": "Bahia",
                 "country": "Brazil",
                 "location": { "lat": -12.9822499, "lng": -38.4812772 },
                 "score": { "enl": 0, "res": 26 }
@@ -10841,6 +10869,7 @@
             "events": [
               {
                 "city": "Los Angeles",
+                "region": "California",
                 "country": "United States",
                 "location": { "lat": 34.0536909, "lng": -118.242766 },
                 "score": { "enl": 218, "res": 68 }
@@ -11064,6 +11093,7 @@
             "events": [
               {
                 "city": "Athens",
+                "region": "Attica",
                 "country": "Greece",
                 "location": { "lat": 37.9755648, "lng": 23.7348324 },
                 "score": { "enl": 300, "res": 215 }
@@ -11131,6 +11161,7 @@
               },
               {
                 "city": "Seoul",
+                "region": "Seoul metropolitan area",
                 "country": "South Korea",
                 "location": { "lat": 37.5666791, "lng": 126.9782914 },
                 "score": { "enl": 135, "res": 40 }
@@ -11184,6 +11215,7 @@
             "events": [
               {
                 "city": "Madrid",
+                "region": "Comunidad de Madrid",
                 "country": "Spain",
                 "location": { "lat": 40.416782, "lng": -3.703507 },
                 "score": { "enl": 281, "res": 319 }
@@ -11277,7 +11309,7 @@
                 "region": "Santiago",
                 "country": "Chile",
                 "location": { "lat": -33.4420638, "lng": -70.6456647 },
-                "score": { "enl": 79, "res": 85 }
+                "score": { "enl": 79.2, "res": 85.8 }
               }
             ]
           },
@@ -11289,14 +11321,14 @@
                 "region": "Macao",
                 "country": "China",
                 "location": { "lat": 22.1899448, "lng": 113.5380454 },
-                "score": { "enl": 59, "res": 99 }
+                "score": { "enl": 59.3, "res": 99.8 }
               },
               {
                 "city": "Porto",
                 "region": "Porto",
                 "country": "Portugal",
                 "location": { "lat": 41.1502195, "lng": -8.6103497 },
-                "score": { "enl": 56, "res": 115 }
+                "score": { "enl": 56.6, "res": 115.4 }
               }
             ]
           }
@@ -11319,7 +11351,7 @@
                 "city": "NR10-ROMEO-05",
                 "country": "Canada",
                 "location": { "lat": 50.47003866627513, "lng": -96.98414777555058 },
-                "score":  { "enl": 2.6, "res": 12.4 }
+                "score": { "enl": 2.6, "res": 12.4 }
               },
               {
                 "city": "AM01-HOTEL-07",
@@ -11357,7 +11389,7 @@
                 "city": "AF07-SIERRA-11",
                 "country": "Spain",
                 "location": { "lat": 43.03153171283092, "lng": -5.729982102778799 },
-                "score":  { "enl": 14.9, "res": 0.1 }
+                "score": { "enl": 14.9, "res": 0.1 }
               },
               {
                 "city": "NR02-JULIET-07",
@@ -11382,13 +11414,13 @@
                 "city": "PA02-ALPHA-00",
                 "country": "Japan",
                 "location": { "lat": 37.14604774321081, "lng": 140.679375921415 },
-                "score":  { "enl": 14.4, "res": 0.6 }
+                "score": { "enl": 14.4, "res": 0.6 }
               },
               {
                 "city": "AS10-GOLF-01",
                 "country": "Sri Lanka",
                 "location": { "lat": 6.988273240173705, "lng": 80.09818693656483 },
-                "score":  { "enl": 12.6, "res": 2.4 }
+                "score": { "enl": 12.6, "res": 2.4 }
               }
             ]
           },
@@ -11406,7 +11438,7 @@
                 "city": "AF02-HOTEL-03",
                 "country": "Brazil",
                 "location": { "lat": -3.468979890839724, "lng": -37.97845847276924 },
-                "score":{ "enl": 1.9, "res": 13.1 }
+                "score": { "enl": 1.9, "res": 13.1 }
               },
               {
                 "city": "AM02-KILO-00",
@@ -11431,7 +11463,7 @@
                 "city": "NR02-ECHO-01",
                 "country": "Poland",
                 "location": { "lat": 51.148673447032074, "lng": 22.73341172668763 },
-                "score":  { "enl": 3.2, "res": 11.8 }
+                "score": { "enl": 3.2, "res": 11.8 }
               },
               {
                 "city": "AS12-KILO-13",
@@ -11443,7 +11475,7 @@
                 "city": "AS16-ROMEO-03",
                 "country": "South Korea",
                 "location": { "lat": 35.97319639475234, "lng": 129.320624078585 },
-                "score":  { "enl": 1.4, "res": 13.6 }
+                "score": { "enl": 1.4, "res": 13.6 }
               },
               {
                 "city": "AS14-FOXTROT-06",
@@ -11536,7 +11568,7 @@
                 "city": "AF08-ROMEO-09",
                 "country": "Spain",
                 "location": { "lat": 36.528558042285006, "lng": -4.397635665480262 },
-                "score":  { "enl": 15, "res": 0 }
+                "score": { "enl": 15, "res": 0 }
               },
               {
                 "city": "AF14-ROMEO-03",
@@ -11574,6 +11606,7 @@
             "events": [
               {
                 "city": "Athens",
+                "region": "Attica",
                 "country": "Greece",
                 "location": { "lat": 37.9755648, "lng": 23.7348324 },
                 "score": { "enl": 1.4, "res": 8.6 }
@@ -11583,7 +11616,7 @@
                 "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "location": { "lat": 52.0191005, "lng": 8.531007 },
-                "score": { "enl": 4, "res": 5 }
+                "score": { "enl": 4.5, "res": 5.5 }
               },
               {
                 "city": "Bradford",
@@ -11594,10 +11627,10 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
-                "score": { "enl": 3, "res": 6 }
+                "score":{ "enl": 3.3, "res": 6.7 }
               },
               {
                 "city": "București",
@@ -11611,7 +11644,7 @@
                 "region": "Sachsen",
                 "country": "Germany",
                 "location": { "lat": 51.0493286, "lng": 13.7381437 },
-                "score": { "enl": 1, "res": 8 }
+                "score": { "enl": 1.7, "res": 8.3 }
               },
               {
                 "city": "Geneva",
@@ -11630,14 +11663,14 @@
                 "region": "Hauts-de-France",
                 "country": "France",
                 "location": { "lat": 50.6365654, "lng": 3.0635282 },
-                "score": { "enl": 8, "res": 1 }
+                "score": { "enl": 8.2, "res": 1.8 }
               },
               {
-                "city": "Lodz",
-                "region": "Łódzkie",
+                "city": "Łódź",
+                "region": "Łódź",
                 "country": "Poland",
                 "location": { "lat": 51.7728245, "lng": 19.4784857 },
-                "score": { "enl": 4, "res": 5 }
+                "score": { "enl": 4.3, "res": 5.7 }
               },
               {
                 "city": "Vilnius",
@@ -11654,9 +11687,10 @@
               },
               {
                 "city": "Zaragoza",
+                "region": "Aragón",
                 "country": "Spain",
                 "location": { "lat": 41.6521342, "lng": -0.8809428 },
-                "score": { "enl": 6, "res": 3 }
+                "score": { "enl": 6.7, "res": 3.3 }
               }
             ]
           },
@@ -11693,7 +11727,7 @@
                 "city": "Toyama",
                 "country": "Japan",
                 "location": { "lat": 36.6468015, "lng": 137.2183531 },
-                "score":{ "enl": 6.3, "res": 3.8 }
+                "score": { "enl": 6.3, "res": 3.8 }
               },
               {
                 "city": "Tsu",
@@ -11712,21 +11746,21 @@
                 "city": "Johor Bahru",
                 "country": "Malaysia",
                 "location": { "lat": 1.4581986, "lng": 103.7649059 },
-                "score":  { "enl": 2.5, "res": 7.5 }
+                "score": { "enl": 2.5, "res": 7.5 }
               },
               {
                 "city": "Pasay City",
                 "region": "Metro Manila",
                 "country": "Philippines",
                 "location": { "lat": 14.5436995, "lng": 120.9946503 },
-                "score": { "enl": 9, "res": 0 }
+                "score":  { "enl": 9.2, "res": 0.8 }
               },
               {
                 "city": "Perth",
                 "region": "Western Australia",
                 "country": "Australia",
                 "location": { "lat": -31.9558967, "lng": 115.8605784 },
-                "score": { "enl": 1, "res": 8 }
+                "score": { "enl": 1.7, "res": 8.3 }
               },
               {
                 "region": "Nonthaburi",
@@ -11764,7 +11798,7 @@
                 "city": "La Paz",
                 "country": "Bolivia",
                 "location": { "lat": -16.4955455, "lng": -68.1336229 },
-                "score": { "enl": 8, "res": 1 }
+                "score": { "enl": 8.8, "res": 1.3 }
               },
               {
                 "city": "Pittsburgh",
@@ -11819,7 +11853,7 @@
                 "region": "California",
                 "country": "United States",
                 "location": { "lat": 37.8708393, "lng": -122.272863 },
-                "score":  {"enl": 9.1, "res": 0.9 }
+                "score": { "enl": 9.1, "res": 0.9 }
               },
               {
                 "city": "Glendale",
@@ -11909,7 +11943,7 @@
                 "region": "Wellington",
                 "country": "New Zealand",
                 "location": { "lat": -41.2887953, "lng": 174.7772114 },
-                "score": { "enl": 4, "res": 0 }
+                "score": { "enl": 4.5, "res": 0 }
               },
               {
                 "city": "Gold Coast",
@@ -12005,7 +12039,7 @@
                 "city": "Da Nang",
                 "country": "Vietnam",
                 "location": { "lat": 16.068, "lng": 108.212 },
-                "score": { "enl": 0, "res": 4 }
+                "score": { "enl": 0.5, "res": 4 }
               },
               {
                 "city": "Thành phố Hồ Chí Minh",
@@ -12125,14 +12159,14 @@
                 "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "location": { "lat": 50.7352621, "lng": 7.1024635 },
-                "score": { "enl": 0, "res": 4 }
+                "score": { "enl": 0.5, "res": 4.5 }
               },
               {
                 "city": "Bydgoszcz",
                 "region": "Kujawsko-Pomorskie",
                 "country": "Poland",
                 "location": { "lat": 53.1297127, "lng": 18.0294488 },
-                "score": { "enl": 1, "res": 2 }
+                "score": { "enl": 1.5, "res": 2 }
               },
               {
                 "city": "Cape Town",
@@ -12165,21 +12199,21 @@
                 "region": "Occitanie",
                 "country": "France",
                 "location": { "lat": 43.6112422, "lng": 3.8767337 },
-                "score": { "enl": 4, "res": 1 }
+                "score": { "enl": 4.5, "res": 1 }
               },
               {
                 "city": "Nantes",
                 "region": "Pays de la Loire",
                 "country": "France",
                 "location": { "lat": 47.2186371, "lng": -1.5541362 },
-                "score": { "enl": 3, "res": 2 }
+                "score": { "enl": 3.5, "res": 2 }
               },
               {
                 "city": "Ostrava",
                 "region": "Moravian-Silesian",
                 "country": "Czechia",
                 "location": { "lat": 49.8349139, "lng": 18.2820084 },
-                "score": { "enl": 2, "res": 2 }
+                "score": { "enl": 2.5, "res": 2.5 }
               },
               {
                 "city": "Pisa",
@@ -12226,7 +12260,7 @@
                 "region": "Tenerife",
                 "country": "Spain",
                 "location": { "lat": 28.467178, "lng": -16.2507843 },
-                "score": { "enl": 0, "res": 4 }
+                "score": { "enl": 0, "res": 4.5 }
               },
               {
                 "city": "Setúbal",
@@ -12239,7 +12273,7 @@
                 "city": "Reykjavik",
                 "country": "Iceland",
                 "location": { "lat": 64.145981, "lng": -21.9422367 },
-                "score": { "enl": 0, "res": 6 }
+                "score": { "enl": 0, "res": 6.5 }
               }
             ]
           },
@@ -12437,7 +12471,7 @@
                 "city": "Singapore",
                 "country": "Singapore",
                 "location": { "lat": 1.357107, "lng": 103.8194992 },
-                "score": { "enl": 33, "res": 166 }
+                "score": { "enl": 33.6, "res": 166.4 }
               },
               {
                 "city": "Rotterdam",
@@ -12455,7 +12489,7 @@
                 "region": "Hokkaido",
                 "country": "Japan",
                 "location": { "lat": 41.768793, "lng": 140.729008 },
-                "score":  { "enl": 109.5, "res": 90.5 }
+                "score": { "enl": 109.5, "res": 90.5 }
               },
               {
                 "city": "Seattle",
@@ -12479,14 +12513,14 @@
                 "region": "Nova Scotia",
                 "country": "Canada",
                 "location": { "lat": 44.648618, "lng": -63.5859487 },
-                "score": { "enl": 7, "res": 2 }
+                "score": { "enl": 7.5, "res": 2 }
               },
               {
                 "city": "Recife",
                 "region": "Pernambuco",
                 "country": "Brazil",
                 "location": { "lat": -8.0584933, "lng": -34.8848193 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0, "res": 10.5 }
               },
               {
                 "city": "Concepción",
@@ -12500,7 +12534,7 @@
                 "region": "Michigan",
                 "country": "United States",
                 "location": { "lat": 42.3222599, "lng": -83.1763145 },
-                "score": { "enl": 10, "res": 0 }
+                "score": { "enl": 10.5, "res": 0 }
               },
               {
                 "city": "Montreal",
@@ -12511,70 +12545,71 @@
               },
               {
                 "city": "San Juan",
-                "country": "Puerto Rico",
+                "region": "Puerto Rico",
+                "country": "United States",
                 "location": { "lat": 18.465299, "lng": -66.116666 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0, "res": 10.5 }
               },
               {
                 "city": "Baton Rouge",
                 "region": "Louisiana",
                 "country": "United States",
                 "location": { "lat": 30.4494155, "lng": -91.1869659 },
-                "score": { "enl": 2, "res": 10 }
+                "score": { "enl": 2, "res": 10.5 }
               },
               {
                 "city": "Chiclayo",
                 "country": "Peru",
                 "location": { "lat": -6.7716146, "lng": -79.8387175 },
-                "score": { "enl": 7, "res": 3 }
+                "score": { "enl": 7, "res": 3.5 }
               },
               {
                 "city": "Duluth",
                 "region": "Minnesota",
                 "country": "United States",
                 "location": { "lat": 46.7838287, "lng": -92.1052679 },
-                "score": { "enl": 9, "res": 1 }
+                "score": { "enl": 9, "res": 1.5 }
               },
               {
                 "city": "Iquitos",
                 "country": "Peru",
                 "location": { "lat": -3.749365, "lng": -73.2444145 },
-                "score": { "enl": 9, "res": 0 }
+                "score": { "enl": 9, "res": 0.5 }
               },
               {
                 "city": "Medellín",
                 "region": "Antioquia",
                 "country": "Colombia",
                 "location": { "lat": 6.2697325, "lng": -75.6025597 },
-                "score": { "enl": 3, "res": 4 }
+                "score": { "enl": 3.5, "res": 4.5 }
               },
               {
                 "city": "Fort Collins",
                 "region": "Colorado",
                 "country": "United States",
                 "location": { "lat": 40.5871782, "lng": -105.0770113 },
-                "score": { "enl": 11, "res": 0 }
+                "score": { "enl": 11.5, "res": 0.5 }
               },
               {
                 "city": "Guatemala City",
                 "region": "Ciudad de Guatemala",
                 "country": "Guatemala",
                 "location": { "lat": 14.6297388, "lng": -90.5112998 },
-                "score": { "enl": 2, "res": 4 }
+                "score": { "enl": 2, "res": 4.5 }
               },
               {
                 "city": "Monterrey",
                 "region": "Nuevo Leon",
                 "country": "Mexico",
                 "location": { "lat": 25.6802019, "lng": -100.315258 },
-                "score": { "enl": 5, "res": 3 }
+                "score": { "enl": 5.5, "res": 3 }
               },
               {
                 "city": "San José",
                 "region": "California",
                 "country": "United States",
                 "location": { "lat": 37.3361663, "lng": -121.890591 },
-                "score": { "enl": 5, "res": 0 }
+                "score": { "enl": 5, "res": 0.5 }
               },
               {
                 "city": "Saskatoon",
@@ -12588,14 +12623,14 @@
                 "region": "Nevada",
                 "country": "United States",
                 "location": { "lat": 36.1674263, "lng": -115.1484131 },
-                "score": { "enl": 8, "res": 2 }
+                "score": { "enl": 8.5, "res": 2.5 }
               },
               {
                 "city": "Honolulu",
                 "region": "Hawaii",
                 "country": "United States",
                 "location": { "lat": 21.304547, "lng": -157.855676 },
-                "score": { "enl": 6, "res": 2 }
+                "score": { "enl": 6.5, "res": 2.5 }
               }
             ]
           },
@@ -12606,21 +12641,21 @@
                 "city": "Hamilton",
                 "country": "New Zealand",
                 "location": { "lat": -37.7878809, "lng": 175.281788 },
-                "score": { "enl": 4, "res": 6 }
+                "score": { "enl": 4.5, "res": 6 }
               },
               {
                 "city": "Melbourne",
                 "region": "Victoria",
                 "country": "Australia",
                 "location": { "lat": -37.8142454, "lng": 144.9631732 },
-                "score": { "enl": 5, "res": 2 }
+                "score": { "enl": 5.5, "res": 2 }
               },
               {
                 "city": "Townsville",
                 "region": "Queensland",
                 "country": "Australia",
                 "location": { "lat": -19.2569391, "lng": 146.8239537 },
-                "score": { "enl": 6, "res": 4 }
+                "score": { "enl": 6.5, "res": 4.5 }
               },
               {
                 "city": "Busan",
@@ -12648,21 +12683,21 @@
                 "region": "嘉義市",
                 "country": "Taiwan",
                 "location": { "lat": 23.4882887, "lng": 120.4003524 },
-                "score": { "enl": 4, "res": 7 }
+                "score": { "enl": 4.5, "res": 7 }
               },
               {
                 "city": "Kota Kinabalu",
                 "region": "Sabah",
                 "country": "Malaysia",
                 "location": { "lat": 5.9780066, "lng": 116.0728988 },
-                "score": { "enl": 1, "res": 4 }
+                "score": { "enl": 1.5, "res": 4.5 }
               },
               {
                 "city": "Yilan",
                 "region": "宜蘭市",
                 "country": "Taiwan",
                 "location": { "lat": 24.7545672, "lng": 121.7582722 },
-                "score": { "enl": 9, "res": 0 }
+                "score": { "enl": 9.5, "res": 0.5 }
               },
               {
                 "city": "Chiang Mai",
@@ -12675,7 +12710,7 @@
                 "city": "Hà Nội",
                 "country": "Vietnam",
                 "location": { "lat": 21.0283334, "lng": 105.854041 },
-                "score": { "enl": 1, "res": 10 }
+                "score": { "enl": 1, "res": 10.5 }
               },
               {
                 "city": "Malang",
@@ -12688,7 +12723,7 @@
                 "city": "Colombo",
                 "country": "Sri Lanka",
                 "location": { "lat": 6.9388614, "lng": 79.8542005 },
-                "score": { "enl": 9, "res": 1 }
+                "score": { "enl": 9.5, "res": 1.5 }
               },
               {
                 "city": "Delhi",
@@ -12726,31 +12761,31 @@
                 "city": "Batumi",
                 "country": "Georgia",
                 "location": { "lat": 41.6509502, "lng": 41.6360085 },
-                "score": { "enl": 4, "res": 4 }
+                "score": { "enl": 4, "res": 4.5 }
               },
               {
                 "city": "Antalya",
                 "country": "Türkiye",
                 "location": { "lat": 36.8865728, "lng": 30.7030242 },
-                "score": { "enl": 0, "res": 12 }
+                "score": { "enl": 0, "res": 12.5 }
               },
               {
                 "city": "Brașov",
                 "region": "Centru",
                 "country": "Romania",
                 "location": { "lat": 45.8314058, "lng": 24.9838959 },
-                "score": { "enl": 12, "res": 0 }
+                "score": { "enl": 12, "res": 0.5 }
               },
               {
                 "city": "Klaipėda",
                 "region": "Klaipeda City Municipality",
                 "country": "Lithuania",
                 "location": { "lat": 55.7127529, "lng": 21.1350469 },
-                "score": { "enl": 8, "res": 2 }
+                "score": { "enl": 8, "res": 2.5 }
               },
               {
                 "city": "Sofia",
-                "softregion": "Sofia City",
+                "region": "Grad Sofiya",
                 "country": "Bulgaria",
                 "location": { "lat": 42.6977028, "lng": 23.3217359 },
                 "score": { "enl": 11, "res": 0 }
@@ -12759,19 +12794,19 @@
                 "city": "Turku",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0.5, "res": 10 }
               },
               {
                 "city": "Varna",
                 "country": "Bulgaria",
                 "location": { "lat": 43.2073873, "lng": 27.9166653 },
-                "score": { "enl": 9, "res": 1 }
+                "score": { "enl": 9.5, "res": 1 }
               },
               {
                 "city": "Bergen",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
-                "score": { "enl": 7, "res": 1 }
+                "score": { "enl": 7, "res": 1.5 }
               },
               {
                 "city": "Bordeaux",
@@ -12785,35 +12820,35 @@
                 "region": "Bratislava",
                 "country": "Slovakia",
                 "location": { "lat": 48.1559178, "lng": 17.1313541 },
-                "score": { "enl": 7, "res": 1 }
+                "score": { "enl": 7, "res": 1.5 }
               },
               {
                 "city": "Centurion",
                 "region": "Gauteng",
                 "country": "South Africa",
                 "location": { "lat": -25.836389, "lng": 28.180278 },
-                "score": { "enl": 1, "res": 10 }
+                "score": { "enl": 1.5, "res": 10.5 }
               },
               {
                 "city": "Elche",
                 "region": "Alicante",
                 "country": "Spain",
                 "location": { "lat": 38.2653307, "lng": -0.6988391 },
-                "score": { "enl": 3, "res": 7 }
+                "score": { "enl": 3.5, "res": 7 }
               },
               {
                 "city": "Naples",
                 "region": "Napoli",
                 "country": "Italy",
                 "location": { "lat": 40.8358846, "lng": 14.2487679 },
-                "score": { "enl": 8, "res": 1 }
+                "score": { "enl": 8.5, "res": 1 }
               },
               {
                 "city": "Nice",
                 "region": "Provence-Alpes-Côte d'Azur",
                 "country": "France",
                 "location": { "lat": 43.7009358, "lng": 7.2683912 },
-                "score": { "enl": 6, "res": 3 }
+                "score": { "enl": 6.5, "res": 3 }
               },
               {
                 "city": "Novi Sad",
@@ -12823,11 +12858,11 @@
                 "score": { "enl": 3, "res": 4 }
               },
               {
-                "city": "Pilsen",
+                "city": "Plzeň",
                 "region": "Plzeňský",
                 "country": "Czechia",
                 "location": { "lat": 49.7477415, "lng": 13.3775249 },
-                "score": { "enl": 4, "res": 5 }
+                "score": { "enl": 4.5, "res": 5.5 }
               },
               {
                 "city": "Rzeszów",
@@ -12848,7 +12883,7 @@
                 "region": "Scotland",
                 "country": "United Kingdom",
                 "location": { "lat": 55.9533456, "lng": -3.1883749 },
-                "score": { "enl": 3, "res": 5 }
+                "score": { "enl": 3.5, "res": 5.5 }
               }
             ]
           }
@@ -12889,7 +12924,7 @@
                 "region": "Canterbury",
                 "country": "New Zealand",
                 "location": { "lat": -43.530955, "lng": 172.6364343 },
-                "score": { "enl": 142, "res": 61 }
+                "score": { "enl": 142, "res": 61.5 }
               },
               {
                 "city": "Nashville",
@@ -12913,42 +12948,42 @@
                 "region": "Ceará",
                 "country": "Brazil",
                 "location": { "lat": -3.7304512, "lng": -38.5217989 },
-                "score": { "enl": 4, "res": 7 }
+                "score": { "enl": 4.1, "res": 7.5 }
               },
               {
                 "city": "Montevideo",
                 "region": "Montevideo",
                 "country": "Uruguay",
                 "location": { "lat": -34.9058916, "lng": -56.1913095 },
-                "score": { "enl": 8, "res": 4 }
+                "score": { "enl": 8.5, "res": 4.6 }
               },
               {
                 "city": "Talca",
                 "region": "Maule",
                 "country": "Chile",
                 "location": { "lat": -35.4265343, "lng": -71.6660322 },
-                "score": { "enl": 6, "res": 5 }
+                "score": { "enl": 6.5, "res": 5.1 }
               },
               {
                 "city": "Bogotá",
                 "region": "D. C.",
                 "country": "Colombia",
                 "location": { "lat": 4.6533817, "lng": -74.0836331 },
-                "score": { "enl": 5, "res": 5 }
+                "score":  { "enl": 5.9, "res": 5.8 }
               },
               {
                 "city": "Hamilton",
                 "region": "Ontario",
                 "country": "Canada",
                 "location": { "lat": 43.2560802, "lng": -79.8728583 },
-                "score": { "enl": 9, "res": 3 }
+                "score": { "enl": 9, "res": 3.6 }
               },
               {
                 "city": "Kamloops",
                 "region": "British Columbia",
                 "country": "Canada",
                 "location": { "lat": 50.6758269, "lng": -120.339415 },
-                "score": { "enl": 6, "res": 5 }
+                "score": { "enl": 6.1, "res": 5.8 }
               }
             ]
           },
@@ -12959,41 +12994,41 @@
                 "city": "Dunedin",
                 "country": "New Zealand",
                 "location": { "lat": -45.8740984, "lng": 170.5035755 },
-                "score": { "enl": 6, "res": 4 }
+                "score": { "enl": 6.5, "res": 4.9 }
               },
               {
                 "city": "Hirosaki",
                 "region": "Aomori",
                 "country": "Japan",
                 "location": { "lat": 40.6030543, "lng": 140.4640389 },
-                "score": { "enl": 8, "res": 3 }
+                "score": { "enl": 8.9, "res": 3.2 }
               },
               {
                 "city": "Takamatsu",
                 "region": "Kagawa",
                 "country": "Japan",
                 "location": { "lat": 34.3425592, "lng": 134.0465338 },
-                "score": { "enl": 2, "res": 9 }
+                "score": { "enl": 2.7, "res": 9.6 }
               },
               {
                 "city": "Keelung City",
                 "country": "Taiwan",
                 "location": { "lat": 25.1314886, "lng": 121.7494319 },
-                "score": { "enl": 11, "res": 1 }
+                "score":  { "enl": 11.5, "res": 1.4 }
               },
               {
                 "city": "Manado",
                 "region": "Sulawesi Utara",
                 "country": "Indonesia",
                 "location": { "lat": 1.505288, "lng": 124.8860106 },
-                "score": { "enl": 4, "res": 8 }
+                "score": { "enl": 4.2, "res": 8.5 }
               },
               {
                 "city": "Bandung",
                 "region": "Jawa Barat",
                 "country": "Indonesia",
                 "location": { "lat": -6.914258, "lng": 107.6021243 },
-                "score": { "enl": 4, "res": 6 }
+                "score": { "enl": 4.4, "res": 6.3 }
               }
             ]
           },
@@ -13005,14 +13040,14 @@
                 "region": "Plovdiv",
                 "country": "Bulgaria",
                 "location": { "lat": 42.1418541, "lng": 24.7499297 },
-                "score": { "enl": 8, "res": 3 }
+                "score": { "enl": 8.5, "res": 3.6 }
               },
               {
                 "city": "Marseille",
                 "region": "Provence-Alpes-Côte d'Azur",
                 "country": "France",
                 "location": { "lat": 43.2961743, "lng": 5.3699525 },
-                "score": { "enl": 4, "res": 8 }
+                "score": { "enl": 4.5, "res": 8 }
               }
             ]
           }
@@ -13047,17 +13082,17 @@
               },
               {
                 "city": "Mérida",
-                "region": "Yucatan",
+                "region": "Yucatán",
                 "country": "Mexico",
                 "location": { "lat": 20.9670759, "lng": -89.6237402 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0.5, "res": 10.5 }
               },
               {
                 "city": "San Antonio",
                 "region": "Texas",
                 "country": "United States",
                 "location": { "lat": 29.4246002, "lng": -98.4951405 },
-                "score": { "enl": 11, "res": 0 }
+                "score": { "enl": 11.5, "res": 0 }
               },
               {
                 "city": "San Salvador",
@@ -13077,21 +13112,21 @@
                 "region": "Manitoba",
                 "country": "Canada",
                 "location": { "lat": 49.8955367, "lng": -97.1384584 },
-                "score": { "enl": 5, "res": 5 }
+                "score": { "enl": 5.5, "res": 5 }
               },
               {
                 "city": "Burlington",
                 "region": "Vermont",
                 "country": "United States",
                 "location": { "lat": 44.4761601, "lng": -73.212906 },
-                "score": { "enl": 5, "res": 6 }
+                "score": { "enl": 5.5, "res": 6 }
               },
               {
                 "city": "Guayaquil",
                 "region": "Guayas",
                 "country": "Ecuador",
                 "location": { "lat": -2.2895167, "lng": -80.0983887 },
-                "score": { "enl": 3, "res": 6 }
+                "score": { "enl": 3, "res": 6.5 }
               },
               {
                 "city": "La Paz",
@@ -13104,14 +13139,14 @@
                 "region": "Pará",
                 "country": "Brazil",
                 "location": { "lat": -1.45056, "lng": -48.4682453 },
-                "score": { "enl": 4, "res": 2 }
+                "score": { "enl": 4.5, "res": 2.5 }
               },
               {
                 "city": "Belo Horizonte",
                 "region": "Minas Gerais",
                 "country": "Brazil",
                 "location": { "lat": -19.9227318, "lng": -43.9450948 },
-                "score": { "enl": 0, "res": 9 }
+                "score": { "enl": 0.5, "res": 9 }
               }
             ]
           },
@@ -13123,61 +13158,61 @@
                 "region": "New South Wales",
                 "country": "Australia",
                 "location": { "lat": -34.4243941, "lng": 150.89385 },
-                "score": { "enl": 4, "res": 5 }
+                "score": { "enl": 4.5, "res": 5 }
               },
               {
                 "city": "Daejeon",
                 "country": "South Korea",
                 "location": { "lat": 36.3497007, "lng": 127.3849016 },
-                "score": { "enl": 0, "res": 12 }
+                "score": { "enl": 0, "res": 12.5 }
               },
               {
                 "city": "Fukushima",
                 "region": "Fukushima",
                 "country": "Japan",
                 "location": { "lat": 37.75454, "lng": 140.4592144 },
-                "score": { "enl": 7, "res": 2 }
+                "score": { "enl": 7.5, "res": 2.5 }
               },
               {
                 "city": "Sasebo",
                 "region": "Nagasaki",
                 "country": "Japan",
                 "location": { "lat": 33.1799965, "lng": 129.7152872 },
-                "score": { "enl": 3, "res": 5 }
+                "score": { "enl": 3.5, "res": 5.5 }
               },
               {
                 "city": "Toyama",
                 "country": "Japan",
                 "location": { "lat": 36.6468015, "lng": 137.2183531 },
-                "score": { "enl": 5, "res": 3 }
+                "score": { "enl": 5.5, "res": 3 }
               },
               {
                 "city": "Ipoh",
                 "region": "Perak",
                 "country": "Malaysia",
                 "location": { "lat": 4.5986817, "lng": 101.0900236 },
-                "score": { "enl": 6, "res": 4 }
+                "score": { "enl": 6.5, "res": 4.5 }
               },
               {
                 "city": "Johor Bahru",
                 "region": "Johor Darul Ta'zim",
                 "country": "Malaysia",
                 "location": { "lat": 1.4581986, "lng": 103.7649059 },
-                "score": { "enl": 0, "res": 11 }
+                "score": { "enl": 0.5, "res": 11 }
               },
               {
                 "city": "Naga",
                 "region": "Camarines Sur",
                 "country": "Philippines",
                 "location": { "lat": 13.6240122, "lng": 123.1850318 },
-                "score": { "enl": 9, "res": 3 }
+                "score": { "enl": 9.5, "res": 3 }
               },
               {
                 "city": "Parepare",
                 "region": "Sulawesi Selatan",
                 "country": "Indonesia",
                 "location": { "lat": -4.0057055, "lng": 119.6236101 },
-                "score": { "enl": 0, "res": 8 }
+                "score": { "enl": 0.5, "res": 8.5 }
               },
               {
                 "city": "Perth",
@@ -13191,20 +13226,20 @@
                 "region": "Chonburi",
                 "country": "Thailand",
                 "location": { "lat": 12.9366924, "lng": 100.8865002 },
-                "score": { "enl": 4, "res": 6 }
+                "score": { "enl": 4.5, "res": 6.5 }
               },
               {
                 "city": "Lucknow",
                 "region": "Uttar Pradesh",
                 "country": "India",
                 "location": { "lat": 26.8381, "lng": 80.9346001 },
-                "score": { "enl": 3, "res": 4 }
+                "score":  { "enl": 3, "res": 4.5 }
               },
               {
                 "city": "Matara",
                 "country": "Sri Lanka",
                 "location": { "lat": 5.9478515, "lng": 80.5463359 },
-                "score": { "enl": 3, "res": 5 }
+                "score": { "enl": 3.5, "res": 5.5 }
               }
             ]
           },
@@ -13216,34 +13251,34 @@
                 "region": "București-Ilfov",
                 "country": "Romania",
                 "location": { "lat": 44.5346715, "lng": 26.0684019 },
-                "score": { "enl": 9, "res": 0 }
+                "score": { "enl": 9, "res": 0.5 }
               },
               {
                 "city": "Tampere",
                 "country": "Finland",
                 "location": { "lat": 61.4977929, "lng": 23.7616372 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0.5, "res": 10 }
               },
               {
                 "city": "Aarhus",
                 "region": "Central Denmark Region",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
-                "score": { "enl": 3, "res": 7 }
+                "score": { "enl": 3, "res": 7.5 }
               },
               {
                 "city": "Białystok",
                 "region": "Podlaskie",
                 "country": "Poland",
                 "location": { "lat": 53.1275051, "lng": 23.1470509 },
-                "score": { "enl": 3, "res": 7 }
+                "score": { "enl": 3, "res": 7.5 }
               },
               {
                 "city": "Bremen",
                 "region": "Bremen",
                 "country": "Germany",
                 "location": { "lat": 53.0758196, "lng": 8.8071646 },
-                "score": { "enl": 2, "res": 7 }
+                "score": { "enl": 2, "res": 7.5 }
               },
               {
                 "city": "Caserta",
@@ -13256,13 +13291,13 @@
                 "city": "Castellón de la Plana",
                 "country": "Spain",
                 "location": { "lat": 39.9860347, "lng": -0.0377354 },
-                "score": { "enl": 3, "res": 7 }
+                "score": { "enl": 3, "res": 7.5 }
               },
               {
                 "city": "Kecskemét",
                 "country": "Hungary",
                 "location": { "lat": 46.9073883, "lng": 19.6917206 },
-                "score": { "enl": 0, "res": 6 }
+                "score": { "enl": 0.5, "res": 6.5 }
               },
               {
                 "city": "Kristiansand",
@@ -13281,48 +13316,48 @@
                 "region": "Bretagne",
                 "country": "France",
                 "location": { "lat": 48.1113387, "lng": -1.6800198 },
-                "score": { "enl": 7, "res": 2 }
+                "score":  { "enl": 7, "res": 2.5 }
               },
               {
                 "city": "Salzburg",
                 "region": "Salzburg",
                 "country": "Austria",
                 "location": { "lat": 47.7981346, "lng": 13.0464806 },
-                "score": { "enl": 4, "res": 5 }
+                "score": { "enl": 4.5, "res": 5.5 }
               },
               {
                 "city": "Västerås",
                 "country": "Sweden",
                 "location": { "lat": 59.6110992, "lng": 16.5463679 },
-                "score": { "enl": 9, "res": 1 }
+                "score": { "enl": 9, "res": 1.5 }
               },
               {
                 "city": "Coimbra",
                 "region": "Coimbra",
                 "country": "Portugal",
                 "location": { "lat": 40.2111931, "lng": -8.4294632 },
-                "score": { "enl": 0, "res": 10 }
+                "score": { "enl": 0.5, "res": 10.5 }
               },
               {
                 "city": "Cork",
                 "region": "Munster",
                 "country": "Ireland",
                 "location": { "lat": 51.8985136, "lng": -8.4726423 },
-                "score": { "enl": 2, "res": 9 }
+                "score":  { "enl": 2, "res": 9.5 }
               },
               {
                 "city": "Newcastle upon Tyne",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 54.9738474, "lng": -1.6131572 },
-                "score": { "enl": 5, "res": 2 }
+                "score": { "enl": 5.5, "res": 2 }
               },
               {
                 "city": "Oxford",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 51.7520131, "lng": -1.2578499 },
-                "score": { "enl": 2, "res": 7 }
+                "score": { "enl": 2.5, "res": 7.5 }
               }
             ]
           }
@@ -13344,7 +13379,7 @@
                 "region": "Kanagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.2814779, "lng": 139.6719597 },
-                "score": { "enl": 151, "res": 60 }
+                "score": { "enl": 151.4, "res": 60.7 }
               }
             ]
           },
@@ -13415,7 +13450,7 @@
               },
               {
                 "city": "Sevilla",
-                "region": "Seville",
+                "region": "Andalusia",
                 "country": "Spain",
                 "location": { "lat": 37.3886303, "lng": -5.9953403 },
                 "score": { "enl": 7.7, "res": 7.7 }
@@ -13449,7 +13484,7 @@
               },
               {
                 "city": "Kaunas",
-                "region": "Kaunas County",
+                "region": "Kauno",
                 "country": "Lithuania",
                 "location": { "lat": 54.886228, "lng": 23.9317431 },
                 "score": { "enl": 7.15, "res": 9.4 }
@@ -13637,7 +13672,7 @@
                 "region": "Coquimbo",
                 "country": "Chile",
                 "location": { "lat": -29.9531851, "lng": -71.3379503 },
-                "score": { "enl": 12.7, "res": 0.7 }
+                "score": { "enl": 12.6, "res": 0.7 }
               },
               {
                 "city": "Goiânia",
@@ -13836,6 +13871,7 @@
               },
               {
                 "city": "Mexico City",
+                "region": "Ciudad de México",
                 "country": "Mexico",
                 "location": { "lat": 19.3207722, "lng": -99.1514678 },
                 "score": { "enl": 5.6, "res": 9.1 },
@@ -13897,6 +13933,7 @@
               },
               {
                 "city": "Brasília",
+                "region": "Central-West",
                 "country": "Brazil",
                 "location": { "lat": -10.3333333, "lng": -53.2 },
                 "score": { "enl": 0, "res": 17.5 },
@@ -14174,6 +14211,7 @@
               },
               {
                 "city": "Seoul",
+                "region": "Seoul metropolitan area",
                 "country": "South Korea",
                 "location": { "lat": 37.5666791, "lng": 126.9782914 },
                 "score": { "enl": 0, "res": 20 }
@@ -14187,14 +14225,12 @@
               },
               {
                 "city": "Kaohsiung",
-                "region": "",
                 "country": "Taiwan",
                 "location": { "lat": 22.6203348, "lng": 120.3120375 },
                 "score": { "enl": 0, "res": 0 }
               },
               {
                 "city": "Kuala Lumpur",
-                "region": "",
                 "country": "Malaysia",
                 "location": { "lat": 3.1526589, "lng": 101.7022205 },
                 "score": { "enl": 10, "res": 0 }
@@ -14222,7 +14258,6 @@
               },
               {
                 "city": "Budapest",
-                "region": "",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 5, "res": 10 }
@@ -14277,7 +14312,7 @@
               },
               {
                 "city": "São Paulo",
-                "region": "",
+                "region": "São Paulo",
                 "country": "Brazil",
                 "location": { "lat": -23.5506507, "lng": -46.6333824 },
                 "score": { "enl": 0, "res": 25 }
@@ -14429,7 +14464,7 @@
               },
               {
                 "city": "Brno",
-                "region": "South Moravia",
+                "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
                 "score": { "enl": 0, "res": 0 }
