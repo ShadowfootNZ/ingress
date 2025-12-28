@@ -3932,7 +3932,7 @@
                 "region": "Santiago",
                 "country": "Chile",
                 "location": { "lat": -33.4420638, "lng": -70.6456647 },
-                "score": { "enl": 8, "res": 4 }
+                "score": { "enl": 8450, "res": 4660 }
               },
               {
                 "city": "Tsudanuma",
@@ -3960,7 +3960,7 @@
                 "region": "Hong Kong",
                 "country": "China",
                 "location": { "lat": 22.2445518, "lng": 114.2053888 },
-                "score": { "enl": 475, "res": 10 }
+                "score": { "enl": 475, "res": 10910 }
               },
               {
                 "city": "Vidzeme",
@@ -3973,7 +3973,7 @@
                 "city": "Helsinki",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
-                "score": { "enl": 3, "res": 6 }
+                "score":  { "enl": 3755, "res": 6690 }
               },
               {
                 "city": "Sendai",
@@ -3994,7 +3994,7 @@
                 "region": "Hong Kong",
                 "country": "China",
                 "location": { "lat": 22.2445518, "lng": 114.2053888 },
-                "score": { "enl": 210, "res": 10 }
+                "score": { "enl": 210, "res": 10050 }
               },
               {
                 "city": "Moscow",
@@ -4034,27 +4034,27 @@
                 "city": "Taipei",
                 "country": "Taiwan",
                 "location": { "lat": 25.0375198, "lng": 121.5636796 },
-                "score": { "enl": 8, "res": 100 }
+                "score": { "enl": 8585, "res": 100 }
               },
               {
                 "city": "Kaliningrad",
                 "region": "Kaliningrad Oblast",
                 "country": "Russia",
                 "location": { "lat": 54.7046485, "lng": 20.4565666 },
-                "score": { "enl": 5, "res": 2 }
+                "score": { "enl": 5960, "res": 2650 }
               },
               {
                 "city": "Beijing",
                 "country": "China",
                 "location": { "lat": 40.190632, "lng": 116.412144 },
-                "score": { "enl": 0, "res": 8 }
+                "score": { "enl": 0, "res": 8505 }
               },
               {
                 "city": "Stockholm",
                 "region": "Stockholm",
                 "country": "Sweden",
                 "location": { "lat": 59.3251172, "lng": 18.0710935 },
-                "score": { "enl": 35, "res": 8 }
+                "score":  { "enl": 35, "res": 8425 }
               },
               {
                 "city": "Santa Cruz",
@@ -4136,7 +4136,7 @@
                 "region": "Maharashtra",
                 "country": "India",
                 "location": { "lat": 19.5670323, "lng": 76.4164557 },
-                "score": { "enl": 2, "res": 4 }
+                "score": { "enl": 2970, "res": 4590 }
               },
               {
                 "city": "Kaohsiung",
@@ -4170,7 +4170,7 @@
                 "country": "South Korea",
                 "info": "Jongno-gu",
                 "location": { "lat": 37.5666791, "lng": 126.9782914 },
-                "score": { "enl": 5, "res": 1 }
+                "score": { "enl": 5710, "res": 1625 }
               },
               {
                 "city": "Birmingham",
@@ -4191,7 +4191,7 @@
                 "region": "Okinawa",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
-                "score": { "enl": 5, "res": 1 }
+                "score": { "enl": 5595, "res": 1535 }
               },
               {
                 "city": "Bilbao",
@@ -4212,7 +4212,7 @@
                 "region": "Jihomoravský",
                 "country": "Czechia",
                 "location": { "lat": 49.1922443, "lng": 16.6113382 },
-                "score": { "enl": 760, "res": 6 }
+                "score": { "enl": 760, "res": 6230 }
               },
               {
                 "city": "Oxford",
@@ -4226,7 +4226,7 @@
                 "region": "Bayern",
                 "country": "Germany",
                 "location": { "lat": 49.453872, "lng": 11.077298 },
-                "score": { "enl": 2, "res": 4 }
+                "score": { "enl": 2595, "res": 4285 }
               },
               {
                 "city": "Adelaide",
@@ -4240,34 +4240,34 @@
                 "region": "Zachodniopomorskie",
                 "country": "Poland",
                 "location": { "lat": 53.4298114, "lng": 14.5928676 },
-                "score": { "enl": 4, "res": 1 }
+                "score": { "enl": 4995, "res": 1850 }
               },
               {
                 "city": "Wellington",
                 "region": "Wellington",
                 "country": "New Zealand",
                 "location": { "lat": -41.2887953, "lng": 174.7772114 },
-                "score": { "enl": 6, "res": 515 }
+                "score": { "enl": 6325, "res": 515 }
               },
               {
                 "city": "Warszawa",
                 "region": "Mazowieckie",
                 "country": "Poland",
                 "location": { "lat": 52.2333742, "lng": 21.0711489 },
-                "score": { "enl": 6, "res": 555 }
+                "score": { "enl": 6260, "res": 555 }
               },
               {
                 "city": "Turku",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
-                "score": { "enl": 1, "res": 5 }
+                "score":  { "enl": 1595, "res": 5185 }
               },
               {
                 "city": "Bonn",
                 "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "location": { "lat": 50.7352621, "lng": 7.1024635 },
-                "score": { "enl": 2, "res": 4 }
+                "score":  { "enl": 2575, "res": 4185 }
               },
               {
                 "city": "Matsuyama",
@@ -4314,7 +4314,7 @@
                 "region": "Wielkopolska",
                 "country": "Poland",
                 "location": { "lat": 52.2292214, "lng": 17.2776991 },
-                "score": { "enl": 5, "res": 1 }
+                "score": { "enl": 5270, "res": 1045 }
               },
               {
                 "city": "Dnipropetrovs'k",
@@ -4342,14 +4342,14 @@
                 "region": "Scania",
                 "country": "Sweden",
                 "location": { "lat": 55.6052931, "lng": 13.0001566 },
-                "score": { "enl": 1, "res": 4 }
+                "score": { "enl": 1345, "res": 4735 }
               },
               {
                 "city": "Kaufbeuren",
                 "region": "Bayern",
                 "country": "Germany",
                 "location": { "lat": 47.8803788, "lng": 10.622246 },
-                "score": { "enl": 1, "res": 4 }
+                "score": { "enl": 1120, "res": 4945 }
               },
               {
                 "city": "Vancouver",
@@ -4363,14 +4363,14 @@
                 "region": "Sachsen",
                 "country": "Germany",
                 "location": { "lat": 51.3406321, "lng": 12.3747329 },
-                "score": { "enl": 1, "res": 4 }
+                "score": { "enl": 1895, "res": 4135 }
               },
               {
                 "city": "Wrocław",
                 "region": "Dolnośląskie",
                 "country": "Poland",
                 "location": { "lat": 51.1263106, "lng": 16.9781963 },
-                "score": { "enl": 5, "res": 470 }
+                "score":  { "enl": 5505, "res": 470 }
               },
               {
                 "city": "Nagasaki Station",
@@ -4383,7 +4383,7 @@
                 "city": "Tampere",
                 "country": "Finland",
                 "location": { "lat": 61.4977929, "lng": 23.7616372 },
-                "score": { "enl": 10, "res": 5 }
+                "score": { "enl": 10, "res": 5875 }
               },
               {
                 "city": "Takamatsu",
@@ -4417,7 +4417,7 @@
                 "region": "Valencian Community",
                 "country": "Spain",
                 "location": { "lat": 39.9860347, "lng": -0.0377354 },
-                "score": { "enl": 3, "res": 1 }
+                "score":  { "enl": 3975, "res": 1875 }
               },
               {
                 "city": "Lviv",
