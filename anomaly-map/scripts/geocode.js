@@ -8,14 +8,20 @@ const dataPath = path.resolve('./anomaly-map/data/anomalies-historical.json');
 const cachePath = path.resolve('./anomaly-map/data/cities-cache.json');
 
 const args = new Set(process.argv.slice(2).map(a => String(a).toLowerCase()));
-const doUpdate = args.has('update');
-const doOverride = args.has('override');
-const doVerify = args.has('verify') || doOverride;
-const doRefresh = args.has('refresh');
-const doUnusedCache = args.has('unused-cache') || args.has('audit-cache');
+const doUpdate = args.has('update'); // Apply changes
+const doOverride = args.has('override'); // force update events
+const doVerify = args.has('verify') || doOverride; // compare anomalies-historical coords vs cities-cache
+const doRefresh = args.has('refresh'); // Refresh existing cities-cache entries
+const doUnusedCache = args.has('audit-cache'); // Report unused cities-cache entries
+const doMissingCache = args.has('missing-cache'); // Report missing cities-cache entries
 
 console.log(
-  `Mode: ${doUpdate ? 'UPDATE' : 'DRY-RUN'}${doRefresh ? ' + REFRESH' : ''}${doUnusedCache ? ' + UNUSED-CACHE' : ''}${doVerify ? ' + VERIFY' : ''}${doOverride ? ' + OVERRIDE' : ''}`
+  `Mode: ${doUpdate ? 'UPDATE' : 'DRY-RUN'}` +
+    `${doRefresh ? ' + REFRESH' : ''}` +
+    `${doUnusedCache ? ' + UNUSED-CACHE' : ''}` +
+    `${doMissingCache ? ' + MISSING-CACHE' : ''}` +
+    `${doVerify ? ' + VERIFY' : ''}` +
+    `${doOverride ? ' + OVERRIDE' : ''}`
 );
 if (doRefresh && (doVerify || doOverride)) {
   console.warn('Note: refresh mode ignores verify/override flags and only validates the cache.');
@@ -37,6 +43,193 @@ async function geocodeRaw(query) {
   }
   return null;
 }
+
+// --- Ingress score-region (S2 level 6) cell support -------------------------
+// Cell codes look like: AF01-ALPHA-00, NR02-JULIET-12, etc.
+// These correspond to S2 cells used for regional scoreboards.
+
+const FACE_NAMES = ['AF', 'AS', 'NR', 'PA', 'AM', 'ST'];
+const CODE_WORDS = [
+  'ALPHA', 'BRAVO', 'CHARLIE', 'DELTA',
+  'ECHO', 'FOXTROT', 'GOLF', 'HOTEL',
+  'JULIET', 'KILO', 'LIMA', 'MIKE',
+  'NOVEMBER', 'PAPA', 'ROMEO', 'SIERRA'
+];
+
+// Accept common formatting variations: optional dashes, leading zeros optional
+const CELL_RE = new RegExp(
+  `^\\s*(${FACE_NAMES.join('|')})\\s*-?\\s*(\\d{1,2})\\s*-?\\s*(${CODE_WORDS.join('|')})\\s*(?:-?\\s*(\\d{1,2}))\\s*$`,
+  'i'
+);
+
+function isIngressCellName(s) {
+  return typeof s === 'string' && CELL_RE.test(s.replace(/\s+/g, ''));
+}
+
+function parseIngressCellName(s) {
+  const m = s.replace(/\s+/g, '').match(CELL_RE);
+  if (!m) return null;
+  const face = m[1].toUpperCase();
+  const id1 = parseInt(m[2], 10);
+  const word = m[3].toUpperCase();
+  const id2 = parseInt(m[4], 10);
+  if (!Number.isFinite(id1) || !Number.isFinite(id2)) return null;
+  return { face, id1, word, id2 };
+}
+
+// Face-aware Hilbert mapping (ported from the reference implementation).
+// We need this because Hilbert orientation differs by face parity.
+function pointToHilbertQuadList(face, x, y, order) {
+  const hilbertMap = {
+    a: [[0, 'd'], [1, 'a'], [3, 'b'], [2, 'a']],
+    b: [[2, 'b'], [1, 'b'], [3, 'a'], [0, 'c']],
+    c: [[2, 'c'], [3, 'd'], [1, 'c'], [0, 'b']],
+    d: [[0, 'a'], [3, 'c'], [1, 'd'], [2, 'd']]
+  };
+
+  // IMPORTANT: initial square depends on face parity.
+  // This is the piece that makes some codes (e.g. ...-06 vs ...-12) swap if ignored.
+  let currentSquare = (face & 1) ? 'd' : 'a';
+  const positions = [];
+
+  for (let i = order - 1; i >= 0; i--) {
+    const mask = 1 << i;
+    const quad_x = (x & mask) ? 1 : 0;
+    const quad_y = (y & mask) ? 1 : 0;
+    const t = hilbertMap[currentSquare][quad_x * 2 + quad_y];
+    positions.push(t[0]);
+    currentSquare = t[1];
+  }
+
+  return positions;
+}
+// Hilbert d2xy + rot (from the plugin; n=4 for the last component 00..15)
+function rot(n, x, y, rx, ry) {
+  if (ry === 0) {
+    if (rx === 1) {
+      x = n - 1 - x;
+      y = n - 1 - y;
+    }
+    return [y, x];
+  }
+  return [x, y];
+}
+
+function d2xy(n, d) {
+  let rx, ry;
+  let t = d;
+  let x = 0;
+  let y = 0;
+  for (let s = 1; s < n; s *= 2) {
+    rx = 1 & (t / 2);
+    ry = 1 & (t ^ rx);
+    [x, y] = rot(s, x, y, rx, ry);
+    x += s * rx;
+    y += s * ry;
+    t /= 4;
+  }
+  return [x, y];
+}
+
+// Minimal S2 conversions (ported from IITC plugin)
+const d2r = Math.PI / 180.0;
+const r2d = 180.0 / Math.PI;
+
+function faceUVToXYZ(face, u, v) {
+  switch (face) {
+    case 0: return [ 1, u, v];
+    case 1: return [-u, 1, v];
+    case 2: return [-u,-v, 1];
+    case 3: return [-1,-v,-u];
+    case 4: return [ v,-1,-u];
+    case 5: return [ v, u,-1];
+    default: throw new Error('Invalid face');
+  }
+}
+
+function xyzToLatLng(x, y, z) {
+  const lat = Math.atan2(z, Math.sqrt(x * x + y * y));
+  const lng = Math.atan2(y, x);
+  return { lat: lat * r2d, lng: lng * r2d };
+}
+
+function stToUVSingle(st) {
+  if (st >= 0.5) {
+    return (1 / 3.0) * (4 * st * st - 1);
+  } else {
+    return (1 / 3.0) * (1 - (4 * (1 - st) * (1 - st)));
+  }
+}
+
+function stToUV(s, t) {
+  return [stToUVSingle(s), stToUVSingle(t)];
+}
+
+function ijToST(i, j, level, offsets) {
+  const maxSize = 1 << level;
+  return [
+    (i + offsets[0]) / maxSize,
+    (j + offsets[1]) / maxSize
+  ];
+}
+
+function s2CellCenterLatLng(face, i, j, level) {
+  // center uses offsets [0.5, 0.5]
+  const [s, t] = ijToST(i, j, level, [0.5, 0.5]);
+  const [u, v] = stToUV(s, t);
+  const [x, y, z] = faceUVToXYZ(face, u, v);
+  return xyzToLatLng(x, y, z);
+}
+
+function cellNameToLatLng(cellName) {
+  const p = parseIngressCellName(cellName);
+  if (!p) return null;
+
+  const faceId = FACE_NAMES.indexOf(p.face);
+  if (faceId < 0) return null;
+
+  let regionI4 = p.id1 - 1; // 1..16 -> 0..15
+  let regionJ4 = CODE_WORDS.indexOf(p.word); // 0..15
+  const subNum = p.id2; // 0..15
+
+  if (regionI4 < 0 || regionI4 > 15 || regionJ4 < 0 || regionJ4 > 15 || subNum < 0 || subNum > 15) {
+    return null;
+  }
+
+  // Naming has an I/J swap on odd faces
+  if (faceId & 1) {
+    [regionI4, regionJ4] = [regionJ4, regionI4];
+  }
+
+  const iBase = regionI4 << 2;
+  const jBase = regionJ4 << 2;
+
+  // Find the specific (i,j) within the 4x4 group whose Hilbert-derived number matches subNum.
+  // This avoids relying on a simplified d2xy mapping which can be face-orientation sensitive.
+  let targetI = null;
+  let targetJ = null;
+
+  for (let di = 0; di < 4; di++) {
+    for (let dj = 0; dj < 4; dj++) {
+      const ti = iBase + di;
+      const tj = jBase + dj;
+      const quads = pointToHilbertQuadList(faceId, ti, tj, 6);
+      const n = quads[4] * 4 + quads[5];
+      if (n === subNum) {
+        targetI = ti;
+        targetJ = tj;
+        break;
+      }
+    }
+    if (targetI !== null) break;
+  }
+
+  if (targetI === null) return null;
+
+  const ll = s2CellCenterLatLng(faceId, targetI, targetJ, 6);
+  return ll; // {lat,lng}
+}
+// ---------------------------------------------------------------------------
 
 function prettyFromCacheKey(key) {
   // Key is stored as: country, region, city (with possible empty slot)
@@ -61,6 +254,18 @@ function normalizeCacheKey(key) {
   const city = parts.length >= 3 ? parts.slice(2).join(', ').trim() : '';
 
   return `${country}, ${region}, ${city}`;
+}
+
+function splitCacheKey(key) {
+  const parts = String(key)
+    .split(',')
+    .map(s => s.trim());
+
+  const country = parts[0] || '';
+  const region = parts.length >= 2 ? (parts[1] || '') : '';
+  const city = parts.length >= 3 ? parts.slice(2).join(', ').trim() : '';
+
+  return { country, region, city };
 }
 
 function makeEventCacheKey(city, region, country) {
@@ -115,10 +320,92 @@ async function reportUnusedCacheEntries() {
   const cap = 500;
   const show = unused.slice(0, cap);
   for (const u of show) {
-    console.log(`UNUSED: ${u.pretty}  [key="${u.rawKey}"]`);
+    console.log(`UNUSED: ${u.pretty}`);
   }
   if (unused.length > cap) {
     console.log(`... plus ${unused.length - cap} more`);
+  }
+}
+
+async function reportMissingCacheEntries() {
+  // Read-only audit: no geocoding and no writes unless `update` is provided.
+  const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+  // Normalise existing cache keys for membership testing
+  const cacheKeys = Object.keys(cache);
+  const cacheNorm = new Set(cacheKeys.map(k => normalizeCacheKey(k)));
+
+  // Map prettyLocation -> { lat, lon, count }
+  const missing = new Map();
+
+  const add = (pretty, lat, lon) => {
+    if (!missing.has(pretty)) {
+      missing.set(pretty, { lat, lon, count: 1 });
+    } else {
+      missing.get(pretty).count++;
+    }
+  };
+
+  for (const series of anomalies) {
+    if (!series || !Array.isArray(series.types)) continue;
+    for (const typeEntry of series.types) {
+      if (!typeEntry || !Array.isArray(typeEntry.dates)) continue;
+      for (const dateEntry of typeEntry.dates) {
+        if (!dateEntry || !Array.isArray(dateEntry.events)) continue;
+        for (const evt of dateEntry.events) {
+          const city = evt.city;
+          const region = evt.region;
+          const country = evt.country;
+
+          // Same eligibility rule as geocoding: require country, and at least one of city/region
+          if (!country || (!city && !region)) continue;
+
+          const normKey = makeEventCacheKey(city, region, country);
+
+          if (!cacheNorm.has(normKey)) {
+            if (evt.location &&
+                typeof evt.location.lat === 'number' &&
+                typeof evt.location.lng === 'number') {
+              const pretty = prettyFromCacheKey(normKey);
+              add(pretty, evt.location.lat, evt.location.lng);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  const entries = [...missing.entries()]
+    .map(([pretty, v]) => ({ pretty, lat: v.lat, lon: v.lon, count: v.count }))
+    .sort((a, b) => b.count - a.count || a.pretty.localeCompare(b.pretty));
+
+  console.log('Missing-cache audit complete.');
+  console.log(`Cache entries total: ${cacheKeys.length}`);
+  console.log(`Missing location keys: ${entries.length}`);
+
+  const cap = 200;
+  const show = entries.slice(0, cap);
+  for (const e of show) {
+    console.log(`"${e.pretty}": { "lat": ${e.lat}, "lon": ${e.lon} }`);
+  }
+  if (entries.length > cap) {
+    console.log(`... plus ${entries.length - cap} more`);
+  }
+
+  // Option C: export report (only if update is supplied)
+  const reportPath = path.resolve('./anomaly-map/data/missing-cache-report.json');
+  if (doUpdate) {
+    fs.writeFileSync(
+      reportPath,
+      JSON.stringify(
+        { generatedAt: new Date().toISOString(), locations: entries },
+        null,
+        2
+      )
+    );
+    console.log(`Wrote: ${reportPath}`);
+  } else {
+    console.log('Dry-run: no files were written. Add `update` to write missing-cache-report.json');
   }
 }
 
@@ -134,6 +421,16 @@ async function geocode(city, region, country) {
 
   const key = query;
   if (cache[key]) return cache[key];
+
+  // Fast-path: if city is an Ingress score-region cell name, compute coordinates locally
+  if (city && isIngressCellName(city)) {
+    const ll = cellNameToLatLng(city);
+    if (ll) {
+      const coords = { lat: ll.lat, lon: ll.lng };
+      cache[key] = coords;
+      return coords;
+    }
+  }
 
   const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
   const res = await fetch(url);
@@ -240,7 +537,19 @@ async function refreshCache() {
       continue;
     }
 
-    const fresh = await geocodeRaw(key);
+    // If this cache entry is an Ingress score-region cell name, recompute locally.
+    // Nominatim will generally return no results for these.
+    let fresh = null;
+    const { city } = splitCacheKey(key);
+    if (city && isIngressCellName(city)) {
+      const ll = cellNameToLatLng(city);
+      if (ll) {
+        fresh = { lat: ll.lat, lon: ll.lng };
+      }
+    } else {
+      fresh = await geocodeRaw(key);
+    }
+
     if (!fresh) {
       noResult++;
       console.warn(`No results for ${key}`);
@@ -426,6 +735,8 @@ if (doRefresh) {
   refreshCache();
 } else if (doUnusedCache) {
   reportUnusedCacheEntries();
+} else if (doMissingCache) {
+  reportMissingCacheEntries();
 } else {
   updateLocations();
 }
