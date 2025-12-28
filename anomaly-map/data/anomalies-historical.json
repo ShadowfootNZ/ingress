@@ -1032,7 +1032,7 @@
                 "location": { "lat": 37.9755648, "lng": 23.7348324 }
               },
               {
-                "city": "Istanbul",
+                "city": "İstanbul",
                 "country": "Türkiye",
                 "score": { "enl": 317, "res": 123 },
                 "location": { "lat": 41.006381, "lng": 28.9758715 }
@@ -4123,7 +4123,7 @@
                 "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "location": { "lat": 51.4818111, "lng": 7.2196635 },
-                "score": { "enl": 935, "res": 6755 }
+                "score": { "enl": 1170, "res": 6540 }
               },
               {
                 "city": "Berlin",
@@ -4142,13 +4142,13 @@
                 "city": "Kaohsiung",
                 "country": "Taiwan",
                 "location": { "lat": 22.6203348, "lng": 120.3120375 },
-                "score": { "enl": 4, "res": 2 }
+                "score": { "enl": 4975, "res": 2565 }
               },
               {
                 "city": "Taichung",
                 "country": "Taiwan",
                 "location": { "lat": 24.163162, "lng": 120.6478282 },
-                "score": { "enl": 2, "res": 4 }
+                "score": { "enl": 2860, "res": 4680 }
               },
               {
                 "city": "Hamburg",
@@ -4476,7 +4476,7 @@
                 "score": { "enl": 3210, "res": 2135 }
               },
               {
-                "city": "Dräsdn",
+                "city": "Dresden",
                 "region": "Sachsen",
                 "country": "Germany",
                 "location": { "lat": 51.0493286, "lng": 13.7381437 },
@@ -5415,9 +5415,9 @@
               },
               {
                 "city": "Warszawa",
-                "region": "Lubuskie",
+                "region": "Mazowieckie",
                 "country": "Poland",
-                "location": { "lat": 52.334862, "lng": 14.5975646 },
+                "location": { "lat": 52.2333742, "lng": 21.0711489 },
                 "score": { "enl": 2695, "res": 185 }
               },
               {
@@ -7791,8 +7791,9 @@
                 "score": { "enl": 405, "res": 0 }
               },
               {
+                "city": "Linbian",
                 "country": "Taiwan",
-                "location": { "lat": null, "lng": null },
+                "location": { "lat": 22.4347, "lng": 120.5147 },
                 "score": { "enl": 405, "res": 0 }
               },
               {
@@ -9260,7 +9261,7 @@
               },
               {
                 "city": "Beşiktaş",
-                "region": "Istanbul",
+                "region": "İstanbul",
                 "country": "Türkiye",
                 "location": { "lat": 41.0428465, "lng": 29.0075283 },
                 "score": { "enl": 13, "res": 0 }
@@ -9786,6 +9787,13 @@
                 "score": { "enl": 9, "res": 4 }
               },
               {
+                "city": "Kent",
+                "region": "Michigan",
+                "country": "United States",
+                "location": { "lat": 43.0024013, "lng": -85.5502718 },
+                "score": { "enl": 13, "res": 0 }
+              },
+              {
                 "city": "Stuttgart",
                 "region": "Baden-Württemberg",
                 "country": "Germany",
@@ -10131,7 +10139,7 @@
                 "score": { "enl": 13, "res": 0 }
               },
               {
-                "city": "New Castle",
+                "city": "Henry",
                 "region": "Indiana",
                 "country": "United States",
                 "location": { "lat": 39.9289351, "lng": -85.3702477 },
@@ -10610,84 +10618,84 @@
                 "city": "AF09-SIERRA-00",
                 "country": "Spain",
                 "location": { "lat": 40.63312488884837, "lng": 0.6014716838554413 },
-                "score": { "enl": 425328, "res": -3178 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AF13-SIERRA-00",
                 "country": "Greece",
                 "location": { "lat": 38.22679706381197, "lng": 23.382354484595307 },
-                "score": { "enl": 187609, "res": 350196 }
+                "score": { "enl": 3, "res": 7 }
               },
               {
                 "city": "AF14-CHARLIE-02",
                 "country": "South Africa",
                 "location": { "lat": -26.815767628335273, "lng": 32.356095183711965 },
-                "score": { "enl": 651008, "res": 0 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AM01-FOXTROT-06",
                 "region": "Colorado",
                 "country": "United States",
                 "location": { "lat": 39.74746477561302, "lng": -104.2861115827901 },
-                "score": { "enl": 723296, "res": 135658 }
+                "score": { "enl": 8, "res": 2 }
               },
               {
                 "city": "AM03-KILO-03",
                 "region": "Florida",
                 "country": "United States",
                 "location": { "lat": 29.148958054742724, "lng": -81.51575346579584 },
-                "score": { "enl": 2960003, "res": -2471 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AM10-LIMA-06",
                 "country": "Peru",
                 "location": { "lat": -8.320866360642064, "lng": -78.65689416544306 },
-                "score": { "enl": -540526, "res": 100358 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "AM16-MIKE-12",
                 "country": "Chile",
                 "location": { "lat": -41.855090355872925, "lng": -72.70971610535116 },
-                "score": { "enl": -36767, "res": 578737 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "AS09-LIMA-06",
                 "country": "Malaysia",
                 "location": { "lat": 3.037308873450917, "lng": 101.34310583455695 },
-                "score": { "enl": 1287611, "res": 1112940 }
+                "score": { "enl": 5, "res": 5 }
               },
               {
                 "city": "AS15-SIERRA-05",
                 "region": "Kagoshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.76128321126842, "lng": 134.39928915608147 },
-                "score": { "enl": 1948754, "res": 35571 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "NR01-GOLF-03",
                 "country": "Italy",
                 "location": { "lat": 45.27216486363963, "lng": 8.661343312400062 },
-                "score": { "enl": 20250296, "res": -322253 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "NR02-JULIET-12",
                 "region": "England",
                 "country": "United Kingdom",
                 "location": { "lat": 53.38786921866953, "lng": -0.8095808590835764 },
-                "score": { "enl": 3077201, "res": 307891 }
+                "score": { "enl": 9, "res": 1 }
               },
               {
                 "city": "NR12-ROMEO-15",
                 "country": "Canada",
                 "location": { "lat": 50.929266014539785, "lng": -119.61023892069345 },
-                "score": { "enl": 244245, "res": 8206 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "ST01-PAPA-03",
                 "region": "Tasmania",
                 "country": "Australia",
                 "location": { "lat": -43.152010486643704, "lng": 143.5628615138085 },
-                "score": { "enl": -2344, "res": 5338 }
+                "score": { "enl": 0, "res": 10 }
               }
             ]
           },
@@ -10698,81 +10706,81 @@
                 "city": "AF14-PAPA-12",
                 "country": "Egypt",
                 "location": { "lat": 29.871883185394694, "lng": 30.89582422732901 },
-                "score": { "enl": 16872507, "res": 734543 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AM01-CHARLIE-07",
                 "region": "California",
                 "country": "United States",
                 "location": { "lat": 37.17898328089244, "lng": -122.35609518371197 },
-                "score": { "enl": 11923211, "res": -73168 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AM15-PAPA-01",
                 "country": "Argentina",
                 "location": { "lat": -34.68006459074965, "lng": -57.64390481628804 },
-                "score": { "enl": 264406, "res": 3152949 }
+                "score": { "enl": 1, "res": 9 }
               },
               {
                 "city": "AS02-NOVEMBER-09",
                 "region": "Western Australia",
                 "country": "Australia",
                 "location": { "lat": -32.29684017780866, "lng": 116.4193890026432 },
-                "score": { "enl": -31083, "res": 12198517 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "AS12-FOXTROT-05",
                 "country": "India",
                 "location": { "lat": 16.972140286232673, "lng": 78.65689416544306 },
-                "score": { "enl": -617604, "res": 33470862 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "AS12-PAPA-11",
                 "country": "Philippines",
                 "location": { "lat": 14.955102041778705, "lng": 120.89582422732902 },
-                "score": { "enl": 12593597, "res": -55592 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AS13-PAPA-04",
                 "country": "Taiwan",
                 "location": { "lat": 24.45696051495437, "lng": 120.89582422732902 },
-                "score": { "enl": 6251740, "res": -148389 }
+                "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "AS16-ROMEO-13",
                 "country": "South Korea",
                 "location": { "lat": 36.98478065243195, "lng": 126.60939262387575 },
-                "score": { "enl": -1093349, "res": 66376838 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "NR01-GOLF-08",
                 "country": "Switzerland",
                 "location": { "lat": 47.80930088278853, "lng": 7.890037643700349 },
-                "score": { "enl": 1420725, "res": 1867752 }
+                "score": { "enl": 4, "res": 6 }
               },
               {
                 "city": "NR02-FOXTROT-05",
                 "country": "Czechia",
                 "location": { "lat": 49.85910976442226, "lng": 13.761333118826055 },
-                "score": { "enl": -25626, "res": 2877960 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "NR02-HOTEL-02",
                 "country": "Netherlands",
                 "location": { "lat": 51.95490626436635, "lng": 3.9654786585153072 },
-                "score": { "enl": 8679, "res": 1133876 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "NR03-GOLF-06",
                 "country": "Denmark",
                 "location": { "lat": 55.752199709587785, "lng": 10.530884690093966 },
-                "score": { "enl": 57685, "res": 4146723 }
+                "score": { "enl": 0, "res": 10 }
               },
               {
                 "city": "PA01-ALPHA-15",
                 "country": "Japan",
                 "location": { "lat": 36.61711173702971, "lng": 139.36531486792157 },
-                "score": { "enl": 4239370, "res": -39231 }
+                "score": { "enl": 10, "res": 0 }
               }
             ]
           }
@@ -11656,7 +11664,7 @@
                 "city": "İstanbul",
                 "country": "Türkiye",
                 "location": { "lat": 41.006381, "lng": 28.9758715 },
-                "score": { "enl": 2, "res": 7 }
+                "score": { "enl": 2.7, "res": 7.3 }
               },
               {
                 "city": "Lille",
@@ -11944,6 +11952,13 @@
                 "country": "New Zealand",
                 "location": { "lat": -41.2887953, "lng": 174.7772114 },
                 "score": { "enl": 4.5, "res": 0 }
+              },
+              {
+                "city": "Yogyakarta",
+                "region": "Special Region of Yogyakarta",
+                "country": "Indonesia",
+                "location": { "lat": -7.8012646, "lng": 110.3646857 },
+                "score": {"enl": 1, "res": 4.5}
               },
               {
                 "city": "Gold Coast",
