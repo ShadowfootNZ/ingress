@@ -3,60 +3,25 @@
  * Data sourced from: https://linktr.ee/ingressanomalystats
  * Data originally collated by Breezy: https://linktr.ee/breenzy
  ***************************************************************/
-function logDebug(msg) {
-  const panel = document.getElementById('debug-output');
-  if (!panel) return;
-  const line = document.createElement('div');
-  line.textContent = msg;
-  while (panel.children.length > 50) {
-    panel.removeChild(panel.firstChild);
-  }
-  panel.appendChild(line);
-}
 function isUpcoming(dateStr) {
   const d = new Date(dateStr);
   const today = new Date();
   return d > today;  // future = upcoming
 }
-function formatPlace(city, region, country) {
-  // If city, region, and/or country are identical → just show one
-  const eq = (a, b) => a && b && a.toLowerCase() === b.toLowerCase();
-  // Normalise null/undefined/empty and also literal "undefined"/"null" strings
-  const normalize = (v) => {
-    if (v === undefined || v === null) return '';
-    const s = String(v).trim();
-    if (!s) return '';
-    const lower = s.toLowerCase();
-    if (lower === 'undefined' || lower === 'null') return '';
-    return s;
-  };
 
-  // Normalise null/undefined/empty
-  let cityPart = normalize(city);
-  let regionPart = normalize(region);
-  let countryPart = normalize(country);
-
-  // Build ordered parts, skipping empties
-  if (eq(cityPart, regionPart)) cityPart = ''; // If city and region are identical → drop city
-  if (eq(cityPart, countryPart)) cityPart = ''; // If city and country are identical → drop city
-  if (eq(regionPart, countryPart)) regionPart = ''; // If region and country are identical → drop region
-  // Build ordered parts, skipping empties
-  const parts = [cityPart, regionPart, countryPart].filter(Boolean);
-  return `<strong><u>${parts.join(', ')}</u></strong>`;
+// Normalise text fields that may be null/undefined or stringified null/undefined.
+function normText(v) {
+  if (v === undefined || v === null) return '';
+  const s = String(v).trim();
+  if (!s) return '';
+  const lower = s.toLowerCase();
+  if (lower === 'undefined' || lower === 'null') return '';
+  return s;
 }
 
 function placeLabel(city, region, country) {
   // Pick a single label: city → region → country.
-  const normalize = (v) => {
-    if (v === undefined || v === null) return '';
-    const s = String(v).trim();
-    if (!s) return '';
-    const lower = s.toLowerCase();
-    if (lower === 'undefined' || lower === 'null') return '';
-    return s;
-  };
-
-  return normalize(city) || normalize(region) || normalize(country) || '';
+  return normText(city) || normText(region) || normText(country) || '';
 }
 async function loadAnomalies(meta) {
   const buildParam = meta?.data_mtime ? `?build=${encodeURIComponent(meta.data_mtime)}` : '';
@@ -134,22 +99,6 @@ async function loadBuildMeta() {
     }
   });
 
-  // Debug toggle logic
-  const debugToggle = document.getElementById('debug-toggle');
-  const debugOutput = document.getElementById('debug-output');
-  if (debugToggle && debugOutput) {
-    debugToggle.addEventListener('click', () => {
-      if (debugOutput.style.display === 'none') {
-        debugOutput.style.display = 'block';
-        debugToggle.textContent = 'Hide loaded details';
-      } else {
-        debugOutput.style.display = 'none';
-        debugToggle.textContent = 'Show loaded details';
-      }
-    });
-  }
-
-  let placedCount = 0;
   const anomalies = await loadAnomalies(meta);
   const msPerDay = 1000 * 60 * 60 * 24;
   const nowMs = Date.now();
@@ -227,8 +176,8 @@ async function loadBuildMeta() {
   
     // tie → neutral teal
     if (total === 0 || enl === res) {
-      // return a very desaturated / greyish teal for ties
-      return 'rgba(105, 188, 160, 1)';  // muted, low‑saturation teal-grey
+      // return  teal for ties
+      return colour.tie;
     }
   
     // winner’s base colour
@@ -244,20 +193,7 @@ async function loadBuildMeta() {
     return adjustBrightness(base, brightness);
   }
 
-  
   function adjustBrightness(hex, factor) {
-    const m = hex.match(/#(..)(..)(..)/);
-    const r = parseInt(m[1], 16);
-    const g = parseInt(m[2], 16);
-    const b = parseInt(m[3], 16);
-  
-    const nr = Math.min(255, Math.round(r * factor));
-    const ng = Math.min(255, Math.round(g * factor));
-    const nb = Math.min(255, Math.round(b * factor));
-  
-    return `rgb(${nr},${ng},${nb})`;
-  }
-  function adjustStrokeBrightness(hex, factor) {
     const m = hex.match(/#(..)(..)(..)/);
     const r = parseInt(m[1], 16);
     const g = parseInt(m[2], 16);
@@ -273,14 +209,6 @@ async function loadBuildMeta() {
   const seriesSet = new Set();
   const seriesTypeMap = {};
   const countrySet = new Set();
-  const norm = (v) => {
-    if (v == null) return '';
-    const s = String(v).trim();
-    if (!s) return '';
-    const lower = s.toLowerCase();
-    if (lower === 'undefined' || lower === 'null' || lower === 'n/a') return '';
-    return s;
-  };
 
   anomalies.forEach(a => {
     if (!a.series || !a.type) return;
@@ -290,7 +218,7 @@ async function loadBuildMeta() {
     seriesSet.add(key);
     seriesTypeMap[key] = a.type;
 
-    const c = norm(a.country);
+    const c = normText(a.country);
     if (c) countrySet.add(c);
   });
 
@@ -378,7 +306,7 @@ async function loadBuildMeta() {
   const grouped = {};
 
   function locationKey(lat, lng, metres = 5000) {
-    // 1 degreet latitude ~ 111,320 m
+    // 1 degrees latitude ~ 111,320 m
     const latFactor = 111320;
     const lngFactor = 111320 * Math.cos(lat * Math.PI / 180);
     
@@ -397,7 +325,6 @@ async function loadBuildMeta() {
       grouped[key] = grouped[key] || [];
       grouped[key].push(a);
     });
-    placedCount = 0;
 
     // Loop through grouped entries
     Object.entries(grouped).forEach(([key, events]) => {
@@ -428,7 +355,7 @@ async function loadBuildMeta() {
       // Slightly stronger outline for ties/unknowns so border stays distinct
       const strokeBrightness = total > 0 ? (0.5 + ratio * 0.5) : 0.8;  // 0.5 → 1.0, ties default to 0.8
       
-      winnerColour = adjustStrokeBrightness(winnerColour, strokeBrightness);
+      winnerColour = adjustBrightness(winnerColour, strokeBrightness);
       
       let fill = resultColour(enl, res);
       let stroke = winnerColour;
@@ -444,7 +371,8 @@ async function loadBuildMeta() {
         fillColor: fill,
         fillOpacity: 0.45,
         color: stroke,
-        weight: 2,
+        weight: 2.5,
+        opacity: 0.9,
       };
 
         const circle = L.circleMarker([lat, lng], options);
@@ -521,16 +449,16 @@ async function loadBuildMeta() {
                   const isTie = enlScore === resScore;
 
                   const enlMarkup = isTie
-                    ? `<span class="enl-text">ENL: ${enlScore}</span>`
+                    ? `<span class="enl-text">ENL: ${enlScore.toLocaleString()}</span>`
                     : enlScore > resScore
-                      ? `<span class="enl-text"><strong>ENL: ${enlScore}</strong></span>`
-                      : `<span>ENL: ${enlScore}</span>`;
+                      ? `<span class="enl-text"><strong>ENL: ${enlScore.toLocaleString()}</strong></span>`
+                      : `<span>ENL: ${enlScore.toLocaleString()}</span>`;
 
                   const resMarkup = isTie
-                    ? `<span class="res-text">RES: ${resScore}</span>`
+                    ? `<span class="res-text">RES: ${resScore.toLocaleString()}</span>`
                     : resScore > enlScore
-                      ? `<span class="res-text"><strong>RES: ${resScore}</strong></span>`
-                      : `<span>RES: ${resScore}</span>`;
+                      ? `<span class="res-text"><strong>RES: ${resScore.toLocaleString()}</strong></span>`
+                      : `<span>RES: ${resScore.toLocaleString()}</span>`;
 
                   return `${enlMarkup} — ${resMarkup}`;
                 })()}<br>
@@ -549,13 +477,9 @@ async function loadBuildMeta() {
         }
 
         circle.addTo(markerLayer);
-        placedCount++;
       });
 
-      logDebug(`Grouped: ${label}`);
     });
-
-    logDebug(`Mapped: ${placedCount}`);
   }
   function zoomToSelection() {
     const bounds = markerLayer.getBounds();
@@ -594,7 +518,7 @@ async function loadBuildMeta() {
       const key = `${a.series} (${a.type})`;
       const passSeries = selectedSeries.length === 0 || selectedSeries.includes(key);
 
-      const c = norm(a.country);
+      const c = normText(a.country);
       const passCountry = selectedCountries.length === 0 || (c && selectedCountries.includes(c));
 
       a._visible = passSeries && passCountry;

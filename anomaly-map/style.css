@@ -6,7 +6,7 @@ html, body {
 :root {
   --enl-green: #28f428; 
   --res-blue:  #00c4ff;
-  --tie-teal:  #14DC94;
+  --tie-teal:  #00d4aa;
   --upcoming: #9ba1ff;
 }
 #info-panel {
@@ -85,26 +85,23 @@ h4 {
   font-size: 15px;
 }
 
-/* Debug Output Panel */
-#debug-output {
-  max-height: 150px;
-  overflow-y: auto;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.35);
-  padding: 6px 8px;
-  margin-top: 8px;
-  border-radius: 4px;
-  color: #ccc;
-  line-height: 1.3em;
+/* Leaflet popup: dark theme */
+.leaflet-popup-content-wrapper {
+  background: #111;
+  color: #eee;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(155,161,255,0.9);
 }
-
 .leaflet-popup-content {
-  /* background: #111; */
-  /* color: #eee; */
+
   font-family: system-ui, sans-serif;
   max-height: 400px;
   overflow-y: auto;
+  color: #eee;
   padding-right: 6px; /* avoid scrollbar overlaying text */
+}
+.leaflet-popup-tip {
+  background: #111;
 }
 
 .leaflet-popup-content h3 {
@@ -113,23 +110,15 @@ h4 {
 }
 
 .leaflet-popup-content strong {
-  /* color: #eee; */
   font-weight: bold;
 }
 
 .enl-text {
   color: var(--enl-green);
-  /* font-weight: bold; */
 }
 
 .res-text {
   color: var(--res-blue);
-  /* font-weight: bold; */
-}
-
-
-.leaflet-popup-tip {
-  background: #111;
 }
 
 /* Minimise behaviour for info panel */
@@ -176,11 +165,7 @@ h4 {
   border: 1px solid #444;
   border-radius: 4px;
 }
-/* #series-filter option:checked, 
-#country-filter option:checked {
-  background: #fff;
-  color: #000
-} */
+
 #series-filter option {
   padding: 0.3em 0.3em;
 }
@@ -224,7 +209,6 @@ button {
 
 #build-footer .muted {
   color: #bbb;
-
 }
 /* iOS / iPadOS override: ignore JS height adjustments */
 @supports (-webkit-touch-callout: none) and (not (hover: hover)) {
