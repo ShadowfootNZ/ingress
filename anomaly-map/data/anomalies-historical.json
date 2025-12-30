@@ -164,7 +164,7 @@
             "events": [
               {
                 "city": "Fukuoka",
-                "region": null,
+                "region": "Fukuoka Prefecture",
                 "country": "Japan",
                 "score": { "enl": 194, "res": 46 },
                 "location": { "lat": 33.6251241, "lng": 130.6180016 }
@@ -456,8 +456,8 @@
                 "location": { "lat": 41.8755616, "lng": -87.6244212 }
               },
               {
-                "city": "New York City",
-                "region": "New York State",
+                "city": "New York",
+                "region": "New York",
                 "country": "United States",
                 "score": { "enl": 441, "res": 813 },
                 "location": { "lat": 40.7127281, "lng": -74.0060152 }
@@ -509,8 +509,8 @@
             "date": "2013-09-12",
             "events": [
               {
-                "city": "New York City",
-                "region": "New York State",
+                "city": "New York",
+                "region": "New York",
                 "country": "United States",
                 "score": { "enl": 95, "res": 575 },
                 "location": { "lat": 40.7127281, "lng": -74.0060152 }
@@ -701,7 +701,7 @@
             "events": [
               {
                 "city": "Geneva",
-                "region": null,
+                "region": "Geneva",
                 "country": "Switzerland",
                 "score": { "enl": 0, "res": 7 },
                 "info": "This score is the sum total of the other sites.",
@@ -1331,12 +1331,14 @@
               },
               {
                 "city": "Spokane",
+                "region": "Washington",
                 "country": "United States",
                 "location": { "lat": 47.6571934, "lng": -117.42351 },
                 "score": { "enl": 282, "res": 77 }
               },
               {
                 "city": "Oakland",
+                "region": "California",
                 "country": "United States",
                 "location": { "lat": 37.8044557, "lng": -122.271356 },
                 "score": { "enl": 128, "res": 138 }
@@ -1371,6 +1373,7 @@
               },
               {
                 "city": "Málaga",
+                "region": "Andalusia",
                 "country": "Spain",
                 "location": { "lat": 36.7213028, "lng": -4.4216366 },
                 "score": { "enl": 505, "res": 125 }
@@ -1817,8 +1820,8 @@
               },
               {
                 "city": "Buenos Aires",
-                "country": "Brazil",
-                "location": { "lat": -7.7218931, "lng": -35.326587 },
+                "country": "Argentina",
+                "location": { "lat": -34.6095579, "lng": -58.3887904 },
                 "score": { "enl": 148, "res": 246.4 }
               }
             ]
@@ -1910,6 +1913,7 @@
               },
               {
                 "city": "Bern",
+                "region": "Bern",
                 "country": "Switzerland",
                 "location": { "lat": 46.9484742, "lng": 7.4521749 },
                 "score": { "enl": 176, "res": 184.6 }
@@ -3223,6 +3227,7 @@
             "events": [
               {
                 "city": "Osaka",
+                "region": "Osaka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6937569, "lng": 135.5014539 },
                 "score": { "enl": 199.56, "res": 100.44 }
@@ -4414,7 +4419,7 @@
               },
               {
                 "city": "Castellón de la Plana",
-                "region": "Valencian Community",
+                "region": "Comunidad Valenciana",
                 "country": "Spain",
                 "location": { "lat": 39.9860347, "lng": -0.0377354 },
                 "score": { "enl": 3975, "res": 1875 }
@@ -5340,7 +5345,7 @@
               },
               {
                 "city": "Burgos",
-                "region": "Castile and Leon",
+                "region": "Castile and León",
                 "country": "Spain",
                 "location": { "lat": 42.343926, "lng": -3.696977 },
                 "score": { "enl": 810, "res": 2195 }
@@ -5736,7 +5741,7 @@
               },
               {
                 "city": "Reus",
-                "region": "Catalonia",
+                "region": "Cataluña",
                 "country": "Spain",
                 "location": { "lat": 41.1555564, "lng": 1.1076133 },
                 "score": { "enl": 420, "res": 1990 }
@@ -6130,7 +6135,7 @@
               },
               {
                 "city": "Valencia",
-                "region": "Valencian Community",
+                "region": "Comunidad Valenciana",
                 "country": "Spain",
                 "location": { "lat": 39.4697065, "lng": -0.3763353 },
                 "score": { "enl": 635, "res": 1345 }
@@ -6638,7 +6643,7 @@
               },
               {
                 "city": "Tirano",
-                "region": "Lombardy",
+                "region": "Lombardia",
                 "country": "Italy",
                 "location": { "lat": 46.2156719, "lng": 10.1731777 },
                 "score": { "enl": 0, "res": 1395 }
@@ -6755,7 +6760,7 @@
               },
               {
                 "city": "Girona",
-                "region": "Catalonia",
+                "region": "Cataluña",
                 "country": "Spain",
                 "location": { "lat": 41.9793006, "lng": 2.8199439 },
                 "score": { "enl": 1305, "res": 0 }
@@ -7438,7 +7443,7 @@
               },
               {
                 "city": "Bergamo",
-                "region": "Lombardy",
+                "region": "Lombardia",
                 "country": "Italy",
                 "location": { "lat": 45.7566557, "lng": 9.7542192 },
                 "score": { "enl": 630, "res": 0 }
@@ -7879,7 +7884,7 @@
               },
               {
                 "city": "Compostilla",
-                "region": "Castile and Leon",
+                "region": "Castile and León",
                 "country": "Spain",
                 "location": { "lat": 42.5635989, "lng": -6.5993624 },
                 "score": { "enl": 0, "res": 360 }
@@ -8565,7 +8570,7 @@
               },
               {
                 "city": "Fukuoka",
-                "region": "Fukuoka",
+                "region": "Fukuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.5898988, "lng": 130.4017509 },
                 "score": { "enl": 11, "res": 2 }
@@ -8579,28 +8584,28 @@
               },
               {
                 "city": "Takamatsu",
-                "region": "Kagawa",
+                "region": "Kagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3425592, "lng": 134.0465338 },
                 "score": { "enl": 10, "res": 3 }
               },
               {
                 "city": "Hiroshima",
-                "region": "Hiroshima",
+                "region": "Hiroshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3981963, "lng": 132.4758529 },
                 "score": { "enl": 10, "res": 3 }
               },
               {
                 "city": "Okayama",
-                "region": "Okayama",
+                "region": "Okayama Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6553944, "lng": 133.9194595 },
                 "score": { "enl": 9, "res": 4 }
               },
               {
                 "city": "Nagoya",
-                "region": "Aichi",
+                "region": "Aichi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.1851045, "lng": 136.8998438 },
                 "score": { "enl": 10, "res": 3 }
@@ -8642,7 +8647,7 @@
               },
               {
                 "city": "Sendai",
-                "region": "Miyagi",
+                "region": "Miyagi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 38.2677554, "lng": 140.8691498 },
                 "score": { "enl": 12, "res": 1 }
@@ -8712,7 +8717,7 @@
               },
               {
                 "city": "Sapporo",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 43.061936, "lng": 141.3542924 },
                 "score": { "enl": 7, "res": 6 }
@@ -9254,7 +9259,7 @@
               },
               {
                 "city": "Kure",
-                "region": "Hiroshima",
+                "region": "Hiroshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.2484488, "lng": 132.5652498 },
                 "score": { "enl": 13, "res": 0 }
@@ -9434,7 +9439,7 @@
               },
               {
                 "city": "Chitose",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 42.8209335, "lng": 141.6509612 },
                 "score": { "enl": 5, "res": 8 }
@@ -9552,7 +9557,7 @@
               },
               {
                 "city": "Akita",
-                "region": "Akita",
+                "region": "Akita Prefecture",
                 "country": "Japan",
                 "location": { "lat": 39.7197629, "lng": 140.1034669 },
                 "score": { "enl": 13, "res": 0 }
@@ -9621,7 +9626,7 @@
               },
               {
                 "city": "Takamatsu",
-                "region": "Kagawa",
+                "region": "Kagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3425592, "lng": 134.0465338 },
                 "score": { "enl": 6, "res": 7 }
@@ -9684,7 +9689,7 @@
               },
               {
                 "city": "Hiroshima",
-                "region": "Hiroshima",
+                "region": "Hiroshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3981963, "lng": 132.4758529 },
                 "score": { "enl": 12, "res": 1 }
@@ -9698,14 +9703,14 @@
               },
               {
                 "city": "Nagoya",
-                "region": "Aichi",
+                "region": "Aichi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.1851045, "lng": 136.8998438 },
                 "score": { "enl": 11, "res": 2 }
               },
               {
                 "city": "Shizuoka",
-                "region": "Shizuoka",
+                "region": "Shizuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.9715372, "lng": 138.3883294 },
                 "score": { "enl": 9, "res": 4 }
@@ -9732,7 +9737,7 @@
               },
               {
                 "city": "Osaka",
-                "region": "Osaka",
+                "region": "Osaka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6937569, "lng": 135.5014539 },
                 "score": { "enl": 8, "res": 5 }
@@ -9767,7 +9772,7 @@
               },
               {
                 "city": "Shizuoka",
-                "region": "Shizuoka",
+                "region": "Shizuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.9715372, "lng": 138.3883294 },
                 "score": { "enl": 11, "res": 2 }
@@ -9856,7 +9861,7 @@
               },
               {
                 "city": "Tateyama",
-                "region": "Chiba",
+                "region": "Chiba Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.9965304, "lng": 139.8699838 },
                 "score": { "enl": 0, "res": 13 }
@@ -10335,7 +10340,7 @@
               },
               {
                 "city": "Obihiro",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 42.923809, "lng": 143.1966324 },
                 "score": { "enl": 5, "res": 8 }
@@ -10362,7 +10367,7 @@
               },
               {
                 "city": "Sendai",
-                "region": "Miyagi",
+                "region": "Miyagi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 38.2677554, "lng": 140.8691498 },
                 "score": { "enl": 13, "res": 0 }
@@ -10430,7 +10435,7 @@
               },
               {
                 "city": "Toyohashi",
-                "region": "Aichi",
+                "region": "Aichi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.769123, "lng": 137.391461 },
                 "score": { "enl": 12, "res": 1 }
@@ -10486,7 +10491,7 @@
               },
               {
                 "city": "Okayama",
-                "region": "Okayama",
+                "region": "Okayama Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6553944, "lng": 133.9194595 },
                 "score": { "enl": 6, "res": 7 }
@@ -10500,14 +10505,14 @@
               },
               {
                 "city": "Chiba",
-                "region": "Chiba",
+                "region": "Chiba Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.6070629, "lng": 140.1062653 },
                 "score": { "enl": 11, "res": 2 }
               },
               {
                 "city": "Ueda",
-                "region": "Nagano",
+                "region": "Nagano Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.4021192, "lng": 138.2490506 },
                 "score": { "enl": 11, "res": 2 }
@@ -10556,7 +10561,7 @@
               },
               {
                 "city": "Ueda",
-                "region": "Nagano",
+                "region": "Nagano Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.4021192, "lng": 138.2490506 },
                 "score": { "enl": 13, "res": 0 }
@@ -10794,7 +10799,7 @@
             "events": [
               {
                 "city": "Beppu",
-                "region": "Oita",
+                "region": "Oita Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.2845752, "lng": 131.4913063 },
                 "score": { "enl": 24, "res": 2 }
@@ -10815,7 +10820,7 @@
               },
               {
                 "city": "Otaru",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 43.1906806, "lng": 140.9946021 },
                 "score": { "enl": 13, "res": 13 }
@@ -10849,6 +10854,7 @@
               },
               {
                 "city": "Sevilla",
+                "region": "Andalusia",
                 "country": "Spain",
                 "location": { "lat": 37.3886303, "lng": -5.9953403 },
                 "score": { "enl": 19, "res": 7 }
@@ -11108,7 +11114,7 @@
               },
               {
                 "city": "Ueda",
-                "region": "Nagano",
+                "region": "Nagano Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.4021192, "lng": 138.2490506 },
                 "score": { "enl": 120, "res": 65 }
@@ -11656,6 +11662,7 @@
               },
               {
                 "city": "Geneva",
+                "region": "Geneva",
                 "country": "Switzerland",
                 "location": { "lat": 46.2017559, "lng": 6.1466014 },
                 "score": { "enl": 5, "res": 5 }
@@ -11983,14 +11990,14 @@
               },
               {
                 "city": "Akita",
-                "region": "Akita",
+                "region": "Akita Prefecture",
                 "country": "Japan",
                 "location": { "lat": 39.7197629, "lng": 140.1034669 },
                 "score": { "enl": 3.5, "res": 1 }
               },
               {
                 "city": "Asahikawa",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 43.770625, "lng": 142.3649743 },
                 "score": { "enl": 2, "res": 3 }
@@ -12011,7 +12018,7 @@
               },
               {
                 "city": "Miyazaki",
-                "region": "Miyazaki",
+                "region": "Miyazaki Prefecture",
                 "country": "Japan",
                 "location": { "lat": 31.9076334, "lng": 131.4204022 },
                 "score": { "enl": 3.5, "res": 2 }
@@ -12501,7 +12508,7 @@
             "events": [
               {
                 "city": "Hakodate",
-                "region": "Hokkaido",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 41.768793, "lng": 140.729008 },
                 "score": { "enl": 109.5, "res": 90.5 }
@@ -12924,6 +12931,7 @@
               },
               {
                 "city": "Valencia",
+                "region": "Comunidad Valenciana",
                 "country": "Spain",
                 "location": { "lat": 39.4697065, "lng": -0.3763353 },
                 "score": { "enl": 0, "res": 0 },
@@ -13013,14 +13021,14 @@
               },
               {
                 "city": "Hirosaki",
-                "region": "Aomori",
+                "region": "Aomori Prefecture",
                 "country": "Japan",
                 "location": { "lat": 40.6030543, "lng": 140.4640389 },
                 "score": { "enl": 8.9, "res": 3.2 }
               },
               {
                 "city": "Takamatsu",
-                "region": "Kagawa",
+                "region": "Kagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.3425592, "lng": 134.0465338 },
                 "score": { "enl": 2.7, "res": 9.6 }
@@ -13183,7 +13191,7 @@
               },
               {
                 "city": "Fukushima",
-                "region": "Fukushima",
+                "region": "Fukushima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 37.75454, "lng": 140.4592144 },
                 "score": { "enl": 7.5, "res": 2.5 }
@@ -13322,6 +13330,7 @@
               },
               {
                 "city": "Málaga",
+                "region": "Andalusia",
                 "country": "Spain",
                 "location": { "lat": 36.7213028, "lng": -4.4216366 },
                 "score": { "enl": 8, "res": 2 }
@@ -13856,6 +13865,7 @@
             "events": [
               {
                 "city": "Spokane",
+                "region": "Washington",
                 "country": "United States",
                 "location": { "lat": 47.6571934, "lng": -117.42351 },
                 "score": { "enl": 2.1, "res": 13.3 },
@@ -13863,6 +13873,7 @@
               },
               {
                 "city": "Tempe",
+                "region": "Arizona",
                 "country": "United States",
                 "location": { "lat": 33.4255117, "lng": -111.940016 },
                 "score": { "enl": 16.8, "res": 0 },
@@ -14139,7 +14150,7 @@
             "events": [
               {
                 "city": "Valencia",
-                "region": "Valencian Community",
+                "region": "Comunidad Valenciana",
                 "country": "Spain",
                 "location": { "lat": 39.4697065, "lng": -0.3763353 },
                 "score": { "enl": 142.8, "res": 157.2 }
@@ -14219,7 +14230,7 @@
               },
               {
                 "city": "Osaka",
-                "region": "",
+                "region": "Osaka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6937569, "lng": 135.5014539 },
                 "score": { "enl": 10, "res": 0 }
@@ -14379,6 +14390,7 @@
               },
               {
                 "city": "Fukuoka",
+                "region": "Fukuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.6251241, "lng": 130.6180016 },
                 "score": { "enl": 10, "res": 0 }
@@ -14668,6 +14680,7 @@
             "events": [
               {
                 "city": "Geneva",
+                "region": "Geneva",
                 "country": "Switzerland",
                 "location": { "lat": 46.2017559, "lng": 6.1466014 },
                 "score": { "enl": null, "res": null },
