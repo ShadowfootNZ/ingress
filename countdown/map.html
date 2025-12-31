@@ -2,16 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Upcoming Anomaly Map</title>
-  <link rel="stylesheet" href="./countdown.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive map showing upcoming Ingress anomaly locations with L16 recharge range visualization.">
+  
+  <title>Ingress Anomaly Map - L16 Recharge Range</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="countdown.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+        crossorigin="anonymous">
 </head>
 <body class="map-page">
-  <h1>Upcoming Anomaly Map</h1>
-  <p>Recharge range (L16) of <a href="index.html">upcoming anomalies</a></p>
-  <div id="map"></div>
-  <div id="legend" class="map-legend"></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="map.js"></script>`
+  <header>
+    <h1>Upcoming Anomaly Map</h1>
+    <p>Recharge range (L16) of <a href="index.html">upcoming anomalies</a></p>
+  </header>
+
+  <main>
+    <div id="map" role="application" aria-label="Interactive map of Ingress anomaly locations"></div>
+    <div id="legend" class="map-legend" role="complementary" aria-label="Map legend"></div>
+  </main>
+
+  <!-- Leaflet library -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+          crossorigin="anonymous"></script>
+  
+  <!-- Map application -->
+  <script type="module" src="map.js"></script>
 </body>
 </html>

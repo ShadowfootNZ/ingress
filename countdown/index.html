@@ -3,32 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Real-time countdown tracker for upcoming Ingress anomaly events worldwide. Track Resistance vs Enlightened competitions with live timers and faction registration links.">
+  <meta name="keywords" content="Ingress, anomaly, countdown, Niantic, Resistance, Enlightened, events">
+  
   <title>Ingress Anomaly Countdown</title>
+  
+  <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png">
 
-  <!-- Timezone handling -->
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
-
-  <!-- External stylesheet -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="countdown.css">
+  
+  <!-- Timezone handling library - must load before countdown.js -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
 </head>
 <body>
-  <h1>Ingress Anomaly Countdown</h1>
-  <div id="anomalyList" class="anomaly-list"></div>
-  <div id="error" class="error"></div>
+  <header>
+    <h1>Ingress Anomaly Countdown</h1>
+  </header>
 
-  <!-- App logic -->
-  <script src="countdown.js"></script>
+  <main>
+    <div id="anomalyList" class="anomaly-list" role="list"></div>
+    <div id="error" class="error" role="alert" aria-live="polite"></div>
+  </main>
+
   <footer class="feedback">
-    <nav>
+    <nav aria-label="Additional resources">
       <p><a href="map.html">View map of upcoming anomalies with L16 recharge range</a></p>
-      <p><a href="../anomaly-map/">Anomaly Timeline & Map</a></p>
-      <p><a href="https://github.com/ShadowfootNZ/ingress" target="_blank" rel="noopener">Report issue or submit link on Github</a></p>
-      <p class="agent-badge"><a href="https://link.ingress.com/agent/ShadowfootNZ" target="_blank" rel="noopener">@ShadowfootNZ</a></p>
+      <p><a href="../anomaly-map/">Anomaly Timeline &amp; Map</a></p>
+      <p><a href="https://github.com/ShadowfootNZ/ingress" target="_blank" rel="noopener noreferrer">Report issue or submit link on Github</a></p>
+      <p class="agent-badge">
+        <a href="https://link.ingress.com/agent/ShadowfootNZ" target="_blank" rel="noopener noreferrer">@ShadowfootNZ</a>
+      </p>
     </nav>
   </footer>
+
+  <!-- Application logic -->
+  <script src="countdown.js"></script>
 </body>
 </html>

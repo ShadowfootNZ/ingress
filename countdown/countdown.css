@@ -6,7 +6,11 @@
   --machina-red: #ff0028;
   --bg-dark: #0a0a0a;
   --text-light: #e0e0e0;
-  --niantic: #9ba1ff;
+  
+  /* Animation timing */
+  --pulse-active-duration: 2.3s;
+  --pulse-prep-duration: 7s;
+  --pulse-red-duration: 3s;
 }
 
 body {
@@ -27,7 +31,8 @@ h1 {
   margin-bottom: 0.5em;
   text-align: center;
 }
-/* General link style */
+
+/* Links */
 a {
   text-decoration: none;
   transition: 0.2s ease;
@@ -37,18 +42,20 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Anomaly List Layout */
 .anomaly-list {
   display: flex;
-  flex-wrap: wrap;             /* allow wrapping to new rows */
-  justify-content: center;     /* centre rows horizontally */
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5em;
   padding: 1em;
-  margin: 0 auto;              /* centres the flex container itself */
+  margin: 0 auto;
 }
 
+/* Individual Anomaly Card */
 .anomaly {
   flex: 1 1 600px;
-  max-width: 500px;                 /* optional limit to prevent over-stretching */
+  max-width: 500px;
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -65,7 +72,6 @@ a:hover {
     transparent 85%,
     color-mix(in srgb, var(--enl-green) 15%, transparent) 100%
   );
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
 }
 
 .anomaly-inner {
@@ -75,6 +81,7 @@ a:hover {
   width: 100%;
 }
 
+/* Faction Logo Sides */
 .side {
   flex: 0 0 5em;
   display: flex;
@@ -89,6 +96,7 @@ a:hover {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
 }
 
+/* Center Content */
 .center-content {
   flex: 1;
   text-align: center;
@@ -110,23 +118,25 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Series Information */
 .series-block {
   display: flex;
-  flex-direction: column; /* stack series name and badges */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5em;
 }
+
 .series {
   font-size: 1.5em;
   color: var(--neutral);
   margin-bottom: 0.2em;
 }
-.series-line {
+
+.series-badges {
   display: flex;
-  align-items: center;
+  gap: 0.6em;
   justify-content: center;
-  gap: 0.4em;
   flex-wrap: wrap;
 }
 
@@ -136,6 +146,7 @@ a:hover {
   vertical-align: middle;
 }
 
+/* Time Display */
 .time-info {
   margin-top: 0.4em;
   font-size: 0.9em;
@@ -153,26 +164,20 @@ a:hover {
   opacity: 0.8;
 }
 
-.series-badges {
-  display: flex;
-  gap: 0.6em;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-
 .anomaly h2 {
   margin: 0 0 0.3em;
   font-size: 1.5em;
   color: var(--neutral);
 }
 
+/* Countdown Display */
 .countdown {
   font-size: 1.3em;
   margin-top: 0.6em;
   color: var(--machina-red);
 }
 
+/* Border States */
 .anomaly.border-default {
   box-shadow: 0 0 12px color-mix(in srgb, var(--machina-red) 60%, transparent);
 }
@@ -180,11 +185,24 @@ a:hover {
 .anomaly.border-res {
   box-shadow: 0 0 20px var(--res-blue);
 }
+
 .anomaly.border-enl {
   box-shadow: 0 0 20px var(--enl-green);
 }
 
-/* Faction and source variants */
+.anomaly.border-redpulse {
+  animation: redPulse var(--pulse-red-duration) ease-in-out infinite;
+}
+
+.anomaly.border-prep {
+  animation: prepPulse var(--pulse-prep-duration) ease-in-out infinite;
+}
+
+.anomaly.border-active {
+  animation: activePulse var(--pulse-active-duration) ease-in-out infinite;
+}
+
+/* Faction Colors */
 .enl {
   color: var(--enl-green);
 }
@@ -193,44 +211,16 @@ a:hover {
   color: var(--res-blue);
 }
 
-.niantic {
-  color: var(--niantic);
-}
-
+/* Error Display */
 .error {
   color: var(--machina-red);
-}
-.feedback {
   text-align: center;
   margin-top: 2em;
-  font-size: 0.9em;
 }
 
-.feedback a,
-.map-page a {
-  color: var(--niantic);
-  text-decoration: underline;
-  /* font-weight: 600;   */
-}
-
-/* Hover style */
-.feedback a:hover,
-.map-page a:hover {
-  text-decoration: underline;
-  filter: brightness(1.3);
-}
-
-.feedback .agent-badge a {
-  color: var(--enl-green);
-  text-decoration: none;
-}
-
-/* Optional: inherit the .error look for consistency */
-.feedback.error {
-  opacity: 0.9;
-}
+/* Series Break */
 .series-break {
-  flex-basis: 100%;     /* forces a new row */
+  flex-basis: 100%;
   height: 1px;
   margin: 1em 0;
   background: linear-gradient(
@@ -241,23 +231,115 @@ a:hover {
   );
 }
 
+/* Footer */
+.feedback {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 0.9em;
+}
+
+.feedback a {
+  color: #9ba1ff;
+  text-decoration: underline;
+}
+
+.feedback a:hover {
+  filter: brightness(1.3);
+}
+
+.feedback .agent-badge a {
+  color: var(--enl-green);
+  text-decoration: none;
+}
+
+/* Animations */
+@keyframes activePulse {
+  0%, 100% { box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 90%, transparent); }
+  25%      { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%, transparent); }
+  50%      { box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 90%, transparent); }
+  75%      { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%, transparent); }
+}
+
+@keyframes prepPulse {
+  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
+  12%  { box-shadow: 0 0 5px transparent; }
+  25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green) 70%, transparent); }
+  37%  { box-shadow: 0 0 5px transparent; }
+  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
+  62%  { box-shadow: 0 0 5px transparent; }
+  75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue) 70%, transparent); }
+  87%  { box-shadow: 0 0 5px transparent; }
+  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
+}
+
+@keyframes redPulse {
+  0%, 100% { box-shadow: 0 0 10px color-mix(in srgb, var(--machina-red) 20%, transparent); }
+  50%      { box-shadow: 0 0 25px color-mix(in srgb, var(--machina-red) 80%, transparent); }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .anomaly { 
+    flex: 1 1 calc(50% - 1.5em);
+  }
+}
+
+@media (max-width: 600px) {
+  .anomaly { 
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 1.5em 0;
+    padding: 1em;
+  }
+  
+  .side {
+    flex: 0 0 3.5em;
+  }
+  
+  .faction-logo {
+    width: 2.5em;
+  }
+}
+
+/* Map-specific styles (if map.html exists) */
+body.map-page {
+  padding: 0;
+  align-items: stretch;
+}
+
+.map-page p {
+  text-align: center;
+  width: 100%;
+  margin: 0.5em 0 1.5em 0;
+}
+
+.map-page a {
+  color: #9ba1ff;
+  text-decoration: underline;
+}
+
+.map-page a:hover {
+  filter: brightness(1.3);
+}
+
 #map {
   width: 100%;
   height: 80vh;
-  /* max-width: 900px; */
   border: 2px solid var(--neutral);
   border-radius: 10px;
   margin-bottom: 2em;
 }
+
 .leaflet-container {
-  background: #111 !important;  /* fits your dark theme */
+  background: #111 !important;
   outline: none;
 }
+
 #info-panel {
   position: fixed;
   bottom: 1.5em;
   right: 1.5em;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   padding: 1em 1.2em;
   border: 1px solid var(--neutral);
   border-radius: 8px;
@@ -266,15 +348,7 @@ a:hover {
   z-index: 9999;
   backdrop-filter: blur(3px);
 }
-body.map-page {
-  padding: 0;
-  align-items: stretch;
-}
-.map-page p {
-  text-align: center;
-  width: 100%;
-  margin: 0.5em 0 1.5em 0;
-}
+
 #info-panel h3 {
   margin: 0;
   font-size: 1.1em;
@@ -295,101 +369,7 @@ body.map-page {
 .info-content {
   margin-top: 0.5em;
 }
-/* Animation states */
 
-@keyframes activePulse {
-  0%, 100%   { box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 90%, transparent); }
-  25%        { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%,transparent); }
-  50%        { box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 90%, transparent); }
-  75%        { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%,transparent); }
-}
-/* @keyframes activePulse {
-  0%, 40% {
-    box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 75%, transparent);
-  }
-  45%, 55% {
-    box-shadow: 0 0 10px color-mix(in srgb, var(--res-blue) 10%, transparent);
-  }
-  60%, 100% {
-    box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 75%, transparent);
-  }
-} */
-/* @keyframes activePulse { */
-  /* 1️⃣ Strong blue left, weak green right */
-  /* 0%, 24% {
-    box-shadow:
-      -20px 0 30px -5px color-mix(in srgb, var(--res-blue) 90%, var(--xf-teal) 10%),
-      20px 0 20px -5px color-mix(in srgb, var(--enl-green) 30%, var(--xf-teal) 10%);
-  } */
-
-  /* 2️⃣ Weak blue left, strong green right */
-  /* 25%, 49% {
-    box-shadow:
-      -20px 0 20px -5px color-mix(in srgb, var(--res-blue) 30%, var(--xf-teal) 10%),
-      20px 0 30px -5px color-mix(in srgb, var(--enl-green) 90%, var(--xf-teal) 10%);
-  } */
-
-  /* 3️⃣ Strong green left, weak blue right */
-  /* 50%, 74% {
-    box-shadow:
-      -20px 0 30px -5px color-mix(in srgb, var(--enl-green) 90%, var(--xf-teal) 10%),
-      20px 0 20px -5px color-mix(in srgb, var(--res-blue) 30%, var(--xf-teal) 10%);
-  } */
-
-  /* 4️⃣ Weak green left, strong blue right */
-  /* 75%, 100% {
-    box-shadow:
-      -20px 0 20px -5px color-mix(in srgb, var(--enl-green) 30%, var(--xf-teal) 10%),
-      20px 0 30px -5px color-mix(in srgb, var(--res-blue) 90%, var(--xf-teal) 10%);
-  }
-} */
-
-@keyframes prepPulse {
-  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
-  12%  { box-shadow: 0 0 5px transparent; }
-  25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green) 70%, transparent); }
-  37%  { box-shadow: 0 0 5px transparent; }
-  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
-  62%  { box-shadow: 0 0 5px transparent; }
-  75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue) 70%, transparent); }
-  87%  { box-shadow: 0 0 5px transparent; }
-  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
-}
-@keyframes redPulse {
-  0%,100% { box-shadow: 0 0 10px color-mix(in srgb, var(--machina-red) 20%, transparent); }
-  50%     { box-shadow: 0 0 25px color-mix(in srgb, var(--machina-red) 80%, transparent); }
-}
-
-.anomaly.border-redpulse {
-  animation: redPulse 3s ease-in-out infinite;
-}
-.anomaly.border-prep {
-  animation: prepPulse 7s ease-in-out infinite;
-}
-
-.anomaly.border-active {
-  animation: activePulse 2.3s ease-in-out infinite;
-}
-@media (max-width: 900px) {
-  .anomaly { 
-    flex: 1 1 calc(50% - 1.5em);   /* 2 per row */
-  }
-}
-
-@media (max-width: 600px) {
-  .anomaly { 
-    flex: 1 1 100%; /* 1 per row */
-    max-width: 100%;
-    margin: 1.5em 0;
-    padding: 1em
-  }
-  .side {
-    flex: 0 0 3.5em;
-  }
-  .faction-logo {
-    width: 2.5em;
-  }
-}
 .map-legend {
   position: fixed;
   top: 12px;
