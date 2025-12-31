@@ -234,20 +234,29 @@ function makeKeyNoType({ series, date, country, region, city }) {
   ].join('|');
 }
 
-function flattenJson(anomalies) {
-  const noType = new Map();   // Series|Date|Country|Region|City  (may collide if multiple types share same loc+date)
+function flattenJson(grouped) {
+  const noType = new Map(); // Series|Date|Country|Region|City (may collide)
 
-  for (const s of anomalies) {
-    const series = s?.series ?? '';
-    for (const t of (s?.types ?? [])) {
-      const type = normTypeForMatch(t?.type ?? '');
-      for (const d of (t?.dates ?? [])) {
-        const date = d?.date ?? '';
-        for (const e of (d?.events ?? [])) {
+  const seriesObj = grouped?.series;
+  if (!seriesObj || typeof seriesObj !== 'object') return { noType };
+
+  for (const [seriesName, typesObj] of Object.entries(seriesObj)) {
+    if (!typesObj || typeof typesObj !== 'object') continue;
+
+    for (const [typeNameRaw, datesObj] of Object.entries(typesObj)) {
+      if (!datesObj || typeof datesObj !== 'object') continue;
+      const type = normTypeForMatch(typeNameRaw);
+
+      for (const [dateStr, events] of Object.entries(datesObj)) {
+        if (!Array.isArray(events)) continue;
+
+        for (const e of events) {
+          if (!e) continue;
+
           const row = {
-            series,
+            series: seriesName,
             type,
-            date,
+            date: dateStr,
             city: e?.city ?? '',
             region: e?.region ?? '',
             country: e?.country ?? '',
@@ -514,8 +523,36 @@ async function main() {
   const anomalyAliases = loadAnomalyAliases();
 
   const anomaliesAll = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+  // New format: { organizeBy: 'series', series: { [seriesName]: { [typeName]: { [dateStr]: events[] } } } }
+  if (!anomaliesAll || typeof anomaliesAll !== 'object' || typeof anomaliesAll.series !== 'object') {
+    throw new Error('Unexpected anomalies-historical.json format: expected { series: { ... } }');
+  }
+
   // `anomalies` may be filtered for comparison; never write it back to disk.
   let anomalies = anomaliesAll;
+
+  function forEachJsonEvent(grouped, fn) {
+    const seriesObj = grouped?.series;
+    if (!seriesObj || typeof seriesObj !== 'object') return;
+
+    for (const [seriesName, typesObj] of Object.entries(seriesObj)) {
+      if (!typesObj || typeof typesObj !== 'object') continue;
+
+      for (const [typeName, datesObj] of Object.entries(typesObj)) {
+        if (!datesObj || typeof datesObj !== 'object') continue;
+
+        for (const [dateStr, events] of Object.entries(datesObj)) {
+          if (!Array.isArray(events)) continue;
+
+          for (const evt of events) {
+            if (!evt) continue;
+            fn({ seriesName, typeName, dateStr, evt });
+          }
+        }
+      }
+    }
+  }
 
   const locationAliases = loadLocationAliases();
   let sheetRowsRaw = await readSheetRows();
@@ -534,7 +571,13 @@ async function main() {
     });
 
     // Filter JSON series
-    anomalies = anomalies.filter(s => seriesKeyForFilter(s?.series ?? '') === anomalyFilterKey);
+    const filteredSeries = {};
+    for (const [seriesName, typesObj] of Object.entries(anomalies.series)) {
+      if (seriesKeyForFilter(seriesName) === anomalyFilterKey) {
+        filteredSeries[seriesName] = typesObj;
+      }
+    }
+    anomalies = { ...anomalies, series: filteredSeries };
   }
 
   // Build JSON indexes AFTER any filtering
@@ -620,8 +663,8 @@ async function main() {
     sheetSeriesCounts.set(k, entry);
   }
 
-  for (const s of anomalies) {
-    const k = normKeyPart(s?.series ?? '');
+  for (const seriesName of Object.keys(anomalies.series)) {
+    const k = normKeyPart(seriesName);
     if (k) jsonSeriesSet.add(k);
   }
 
@@ -688,16 +731,11 @@ async function main() {
     sheetLocCounts.set(k, entry);
   }
 
-  for (const s of anomalies) {
-    for (const t of (s?.types ?? [])) {
-      for (const d of (t?.dates ?? [])) {
-        for (const e of (d?.events ?? [])) {
-          const k = locNormKey(e?.country ?? '', e?.region ?? '', e?.city ?? '');
-          if (k) jsonLocSet.add(k);
-        }
-      }
-    }
-  }
+  forEachJsonEvent(anomalies, ({ evt }) => {
+    const k = locNormKey(evt?.country ?? '', evt?.region ?? '', evt?.city ?? '');
+    if (k) jsonLocSet.add(k);
+  });
+  
 
   const missingLocations = [];
   for (const [k, entry] of sheetLocCounts.entries()) {

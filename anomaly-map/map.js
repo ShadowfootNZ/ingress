@@ -18,10 +18,116 @@ function normText(v) {
   if (lower === 'undefined' || lower === 'null') return '';
   return s;
 }
+// Build a stable location key for lookups in grouped.locations.
+// Missing/blank values are represented as the literal string 'null'.
+function locKeyPart(v) {
+  if (v === undefined || v === null) return 'null';
+  const s = String(v).trim();
+  if (!s) return 'null';
+  const lower = s.toLowerCase();
+  if (lower === 'undefined' || lower === 'null') return 'null';
+  return s;
+}
+
+function locKey(country, region, city) {
+    return [
+      country ?? '',
+      region ?? '',
+      city ?? ''
+    ].join(', ');
+  }
+
 
 function placeLabel(city, region, country) {
   // Pick a single label: city → region → country.
   return normText(city) || normText(region) || normText(country) || '';
+}
+
+function showDataWarning(missing) {
+  if (!missing || !missing.length) return;
+
+  // De-dupe by key + context so the list is useful.
+  const seen = new Set();
+  const items = [];
+  for (const m of missing) {
+    const id = `${m.key}__${m.series}__${m.type}__${m.date}`;
+    if (seen.has(id)) continue;
+    seen.add(id);
+    items.push(m);
+  }
+
+  const top = items.slice(0, 12);
+  const more = items.length - top.length;
+
+  // Prefer the info panel if it exists; otherwise fall back to body.
+  const host = document.getElementById('info-panel') || document.body;
+
+  const el = document.createElement('div');
+  el.id = 'data-warning';
+  el.style.cssText = [
+    'margin: 10px 0',
+    'padding: 10px 12px',
+    'border: 1px solid rgba(255,255,255,0.25)',
+    'border-radius: 8px',
+    'background: rgba(229, 156, 10, 0.46)',
+    'color: #fff',
+    'font-size: 13px',
+    'line-height: 1.35'
+  ].join(';');
+
+  const header = document.createElement('div');
+  header.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;';
+
+  const title = document.createElement('div');
+  title.innerHTML = `<strong>Data warning:</strong> ${items.length} event(s) have no matching entry in <code>locations</code>. Those markers will be skipped.`;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.textContent = '×';
+  closeBtn.title = 'Dismiss';
+  closeBtn.style.cssText = [
+    'cursor:pointer',
+    'border:0',
+    'background: transparent',
+    'color:#fff',
+    'font-size:18px',
+    'line-height:1',
+    'padding:0 4px'
+  ].join(';');
+  closeBtn.addEventListener('click', () => el.remove());
+
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+  el.appendChild(header);
+
+  const list = document.createElement('div');
+  list.style.cssText = 'font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; white-space: pre-wrap;';
+
+  list.textContent = top
+    .map(m => `${m.key}  ←  ${m.series} / ${m.type} / ${m.date}`)
+    .join('\n');
+
+  if (more > 0) {
+    const tail = document.createElement('div');
+    tail.style.cssText = 'margin-top:6px;opacity:0.9;';
+    tail.textContent = `... plus ${more} more. See console for full list.`;
+    el.appendChild(list);
+    el.appendChild(tail);
+  } else {
+    el.appendChild(list);
+  }
+
+  // Avoid duplicating if reload occurs.
+  const existing = document.getElementById('data-warning');
+  if (existing) existing.remove();
+
+  // Insert near the top of the panel.
+  if (host === document.body) {
+    el.style.cssText += ';position:fixed;top:10px;left:10px;right:10px;z-index:9999;max-width:820px;';
+    document.body.appendChild(el);
+  } else {
+    host.insertBefore(el, host.firstChild);
+  }
 }
 async function loadAnomalies(meta) {
   const buildParam = meta?.data_mtime ? `?build=${encodeURIComponent(meta.data_mtime)}` : '';
@@ -33,37 +139,65 @@ async function loadAnomalies(meta) {
 
   const grouped = await resp.json();
 
-  if (!Array.isArray(grouped)) {
-    console.error('Unexpected anomalies-historical.json format: expected an array of series objects');
+  // New format: { organizeBy: 'series', series: { [seriesName]: { [typeName]: { [dateStr]: events[] } } } }
+  if (!grouped || typeof grouped !== 'object' || typeof grouped.series !== 'object') {
+    console.error('Unexpected anomalies-historical.json format: expected { series: { ... } }');
     return [];
   }
 
+  if (typeof grouped.locations !== 'object' || grouped.locations === null) {
+    console.error('Unexpected anomalies-historical.json format: expected top-level { locations: { ... } }');
+    return [];
+  }
+
+  const locations = grouped.locations;
+
   const flat = [];
+  const missingLocations = [];
 
-  grouped.forEach(seriesEntry => {
-    if (!seriesEntry || !seriesEntry.series || !Array.isArray(seriesEntry.types)) return;
-    const seriesName = seriesEntry.series;
+  const seriesObj = grouped.series;
+  for (const [seriesName, typesObj] of Object.entries(seriesObj)) {
+    if (!typesObj || typeof typesObj !== 'object') continue;
 
-    seriesEntry.types.forEach(typeEntry => {
-      if (!typeEntry || !typeEntry.type || !Array.isArray(typeEntry.dates)) return;
-      const typeName = typeEntry.type;
+    for (const [typeName, datesObj] of Object.entries(typesObj)) {
+      if (!datesObj || typeof datesObj !== 'object') continue;
 
-      typeEntry.dates.forEach(dateEntry => {
-        if (!dateEntry || !dateEntry.date || !Array.isArray(dateEntry.events)) return;
-        const dateStr = dateEntry.date;
+      for (const [dateStr, events] of Object.entries(datesObj)) {
+        if (!Array.isArray(events)) continue;
 
-        dateEntry.events.forEach(evt => {
+        events.forEach(evt => {
           if (!evt) return;
+          
+          const k = locKey(evt.country, evt.region, evt.city);
+          const loc = locations[k];
+
+          // If we can't locate it, keep the row but with no lat/lng so the map can skip it.
+          // (This makes missing locations obvious in the console.)
+          if (!loc || loc.lat == null || loc.lng == null) {
+            missingLocations.push({ key: k, series: seriesName, type: typeName, date: dateStr });
+          }
+
           flat.push({
             series: seriesName,
             type: typeName,
             date: dateStr,
             ...evt,
+            location: loc && loc.lat != null && loc.lng != null ? { lat: loc.lat, lng: loc.lng } : null,
           });
         });
-      });
+      }
+    }
+  }
+  if (missingLocations.length) {
+    // Console: full detail for copy/paste while you’re fixing data.
+    console.warn('Data warning: events with missing locations lookup (key  ←  series / type / date):');
+    missingLocations.forEach(m => {
+      console.warn(`${m.key}  ←  ${m.series} / ${m.type} / ${m.date}`);
     });
-  });
+
+    // UI: short visible banner so you notice before committing/pushing.
+    showDataWarning(missingLocations);
+  }
 
   return flat;
 }
@@ -320,7 +454,7 @@ async function loadBuildMeta() {
     Object.keys(grouped).forEach(k => delete grouped[k]);
     anomalies.forEach(a => {
       if (!a._visible) return;
-      if (!a.location?.lat || !a.location?.lng) return;
+      if (!a.location || a.location.lat == null || a.location.lng == null) return;
       const key = locationKey(a.location.lat, a.location.lng);
       grouped[key] = grouped[key] || [];
       grouped[key].push(a);
