@@ -369,7 +369,7 @@
             "events": [
               {
                 "city": "Tokyo",
-                "region": null,
+                "region": "Tokyo",
                 "country": "Japan",
                 "score": { "enl": 89, "res": 154 },
                 "location": { "lat": 35.6768601, "lng": 139.7638947 }
@@ -394,8 +394,8 @@
                 "location": { "lat": 38.8950368, "lng": -77.0365427 }
               },
               {
-                "city": "Dusseldorf",
-                "region": null,
+                "city": "Düsseldorf",
+                "region": "Nordrhein-Westfalen",
                 "country": "Germany",
                 "score": { "enl": 514, "res": 324 },
                 "location": { "lat": 51.2254018, "lng": 6.7763137 }
@@ -601,8 +601,8 @@
                 "location": { "lat": 59.3251172, "lng": 18.0710935 }
               },
               {
-                "city": "Copenhagen",
-                "region": null,
+                "city": "København",
+                "region": "Hovedstaden",
                 "country": "Denmark",
                 "score": { "enl": 14, "res": 45 },
                 "info": "This is the best guess individual city contribution.",
@@ -610,7 +610,7 @@
               },
               {
                 "city": "Oslo",
-                "region": null,
+                "region": "Østlandet",
                 "country": "Norway",
                 "score": { "enl": 38, "res": 6 },
                 "info": "This is the best guess individual city contribution.",
@@ -618,7 +618,7 @@
               },
               {
                 "city": "Helsinki",
-                "region": null,
+                "region": "Uusimaa",
                 "country": "Finland",
                 "score": { "enl": 135, "res": 2 },
                 "info": "This is the best guess individual city contribution.",
@@ -709,7 +709,7 @@
               },
               {
                 "city": "Charny",
-                "region": null,
+                "region": "Bourgogne-Franche-Comté",
                 "country": "France",
                 "score": { "enl": 0, "res": 2 },
                 "location": { "lat": 47.336881, "lng": 4.4277949 }
@@ -736,15 +736,14 @@
                 "location": { "lat": 48.1371079, "lng": 11.5753822 }
               },
               {
-                "city": "Zurich",
-                "region": "Zurich",
+                "city": "Zürich",
+                "region": "Zürich",
                 "country": "Switzerland",
                 "score": { "enl": 0, "res": 1 },
                 "location": { "lat": 47.3744489, "lng": 8.5410422 }
               },
               {
                 "city": "Monaco",
-                "region": null,
                 "country": "Monaco",
                 "score": { "enl": 0, "res": 1 },
                 "location": { "lat": 43.7323492, "lng": 7.4276832 }
@@ -874,6 +873,7 @@
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "score": { "enl": 234, "res": 121 },
                 "location": { "lat": 47.4978789, "lng": 19.0402383 }
@@ -1000,8 +1000,8 @@
                 "location": { "lat": 29.4246002, "lng": -98.4951405 }
               },
               {
-                "city": "Zurich",
-                "region": "Zurich",
+                "city": "Zürich",
+                "region": "Zürich",
                 "country": "Switzerland",
                 "score": { "enl": 177, "res": 135 },
                 "location": { "lat": 47.3744489, "lng": 8.5410422 }
@@ -1020,6 +1020,7 @@
               },
               {
                 "city": "Rome",
+                "region": "Lazio",
                 "country": "Italy",
                 "score": { "enl": 927, "res": 666 },
                 "location": { "lat": 41.8933203, "lng": 12.4829321 }
@@ -1033,6 +1034,7 @@
               },
               {
                 "city": "İstanbul",
+                "region": "İstanbul",
                 "country": "Türkiye",
                 "score": { "enl": 317, "res": 123 },
                 "location": { "lat": 41.006381, "lng": 28.9758715 }
@@ -1058,7 +1060,6 @@
             "events": [
               {
                 "city": "Buenos Aires",
-                "region": null,
                 "country": "Argentina",
                 "score": { "enl": 978, "res": 933 },
                 "location": { "lat": -34.6095579, "lng": -58.3887904 }
@@ -1241,6 +1242,7 @@
             "events": [
               {
                 "city": "Zagreb",
+                "region": "Središnja Hrvatska",
                 "country": "Croatia",
                 "location": { "lat": 45.8130967, "lng": 15.9772795 },
                 "score": { "enl": 214, "res": 987 }
@@ -1360,6 +1362,7 @@
             "events": [
               {
                 "city": "Amsterdam",
+                "region": "Noord-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.3730796, "lng": 4.8924534 },
                 "score": { "enl": 274, "res": 1054 }
@@ -1453,6 +1456,7 @@
               },
               {
                 "city": "Ishinomaki",
+                "region": "Miyagi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 38.4341281, "lng": 141.3028087 },
                 "score": { "enl": 1115, "res": 470 }
@@ -1577,6 +1581,7 @@
               },
               {
                 "city": "Bergen",
+                "region": "Vestland",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
                 "score": { "enl": 238, "res": 96 }
@@ -1747,6 +1752,7 @@
               },
               {
                 "city": "Rotterdam",
+                "region": "Zuid-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 51.9244424, "lng": 4.47775 },
                 "score": { "enl": 444.4, "res": 498 }
@@ -1906,7 +1912,7 @@
               },
               {
                 "city": "Aarhus",
-                "region": "Central Denmark Region",
+                "region": "Midtjylland",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
                 "score": { "enl": 70, "res": 251.2 }
@@ -1992,6 +1998,7 @@
             "events": [
               {
                 "city": "Tokyo",
+                "region": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6768601, "lng": 139.7638947 },
                 "score": { "enl": 938, "res": 804 }
@@ -2151,6 +2158,7 @@
             "events": [
               {
                 "city": "Kyoto",
+                "region": "Kyoto Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.0115754, "lng": 135.7681441 },
                 "score": { "enl": 4214, "res": 1198 }
@@ -2308,9 +2316,9 @@
             "events": [
               {
                 "city": "Sendai",
-                "region": "Tohoku",
+                "region": "Miyagi Prefecture",
                 "country": "Japan",
-                "location": { "lat": 38.2548531, "lng": 140.8114183 },
+                "location": { "lat": 38.2677554, "lng": 140.8691498 },
                 "score": { "enl": 2524, "res": 1358 }
               },
               {
@@ -2357,6 +2365,7 @@
               },
               {
                 "city": "Helsinki",
+                "region": "Uusimaa",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
                 "score": { "enl": 511, "res": 402 }
@@ -2424,8 +2433,8 @@
             "date": "2015-10-24",
             "events": [
               {
-                "city": "Zurich",
-                "region": "Zurich",
+                "city": "Zürich",
+                "region": "Zürich",
                 "country": "Switzerland",
                 "location": { "lat": 47.3744489, "lng": 8.5410422 },
                 "score": { "enl": 2, "res": 46 }
@@ -2478,6 +2487,7 @@
               },
               {
                 "city": "Zagreb",
+                "region": "Središnja Hrvatska",
                 "country": "Croatia",
                 "location": { "lat": 45.8130967, "lng": 15.9772795 },
                 "score": { "enl": 354, "res": 392 }
@@ -2531,7 +2541,7 @@
             "events": [
               {
                 "city": "Okinawa",
-                "region": "Okinawa",
+                "region": "Okinawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.4748948, "lng": 127.9114687 },
                 "score": { "enl": 7644, "res": 3879 }
@@ -2629,6 +2639,7 @@
             "events": [
               {
                 "city": "Hamamatsu",
+                "region": "Shizuoka Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.7109786, "lng": 137.7259431 },
                 "score": { "enl": 7482, "res": 3100 }
@@ -2680,7 +2691,8 @@
                 "score": { "enl": 300, "res": 4200 }
               },
               {
-                "city": "Copenhagen",
+                "city": "København",
+                "region": "Hovedstaden",
                 "country": "Denmark",
                 "location": { "lat": 55.6867243, "lng": 12.5700724 },
                 "score": { "enl": 1974, "res": 1344 }
@@ -2756,12 +2768,14 @@
               },
               {
                 "city": "Rotterdam",
+                "region": "Zuid-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 51.9244424, "lng": 4.47775 },
                 "score": { "enl": 1508, "res": 3179 }
               },
               {
                 "city": "Padova",
+                "region": "Veneto",
                 "country": "Italy",
                 "location": { "lat": 45.391408, "lng": 11.8058487 },
                 "score": { "enl": 830, "res": 1105 }
@@ -2863,6 +2877,7 @@
               },
               {
                 "city": "Tokyo",
+                "region": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6768601, "lng": 139.7638947 },
                 "score": { "enl": 8581, "res": 5733 }
@@ -2898,6 +2913,7 @@
               },
               {
                 "city": "Turku",
+                "region": "Varsinais-Suomi",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
                 "score": { "enl": 415, "res": 479 }
@@ -2929,6 +2945,7 @@
             "events": [
               {
                 "city": "Setouchi",
+                "region": "Okayama Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6647608, "lng": 134.0926948 },
                 "score": { "enl": 3403, "res": 1227 }
@@ -2962,12 +2979,14 @@
               },
               {
                 "city": "Granada",
+                "region": "Andalusia",
                 "country": "Spain",
                 "location": { "lat": 37.1734995, "lng": -3.5995337 },
                 "score": { "enl": 115, "res": 544 }
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 791, "res": 803 }
@@ -3031,6 +3050,7 @@
               },
               {
                 "city": "Rome",
+                "region": "Lazio",
                 "country": "Italy",
                 "location": { "lat": 41.8933203, "lng": 12.4829321 },
                 "score": { "enl": 1918, "res": 2486 }
@@ -3106,6 +3126,7 @@
               },
               {
                 "city": "Basel",
+                "region": "Basel-Stadt",
                 "country": "Switzerland",
                 "location": { "lat": 47.5581077, "lng": 7.5878261 },
                 "score": { "enl": 53.21, "res": 246.79 }
@@ -3185,6 +3206,7 @@
               },
               {
                 "city": "Turin",
+                "region": "Piedmont",
                 "country": "Italy",
                 "location": { "lat": 45.0677551, "lng": 7.6824892 },
                 "score": { "enl": 126.15, "res": 173.85 }
@@ -3262,6 +3284,7 @@
               },
               {
                 "city": "Zagreb",
+                "region": "Središnja Hrvatska",
                 "country": "Croatia",
                 "location": { "lat": 45.8130967, "lng": 15.9772795 },
                 "score": { "enl": 112.72, "res": 187.28 }
@@ -3361,6 +3384,7 @@
             "events": [
               {
                 "city": "Sapporo",
+                "region": "Hokkaido Prefecture",
                 "country": "Japan",
                 "location": { "lat": 43.061936, "lng": 141.3542924 },
                 "score": { "enl": 276.07, "res": 123.93 }
@@ -3657,6 +3681,7 @@
             "events": [
               {
                 "city": "Tokyo",
+                "region": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6768601, "lng": 139.7638947 },
                 "score": { "enl": 301.09, "res": 73.91 }
@@ -3723,6 +3748,7 @@
             "events": [
               {
                 "city": "Amsterdam",
+                "region": "Noord-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.3730796, "lng": 4.8924534 },
                 "score": { "enl": 160.07, "res": 204.93 }
@@ -3770,6 +3796,7 @@
               },
               {
                 "city": "Helsinki",
+                "region": "Uusimaa",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
                 "score": { "enl": 93.99, "res": 146.01 }
@@ -3865,6 +3892,7 @@
               },
               {
                 "city": "Guadalajara",
+                "region": "Jalisco",
                 "country": "Mexico",
                 "location": { "lat": 20.6720375, "lng": -103.338396 },
                 "score": { "enl": 49.82, "res": 40.18 }
@@ -3976,6 +4004,7 @@
               },
               {
                 "city": "Helsinki",
+                "region": "Uusimaa",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
                 "score": { "enl": 3755, "res": 6690 }
@@ -4017,13 +4046,14 @@
               },
               {
                 "city": "Gouda",
-                "region": "South Holland",
+                "region": "Zuid-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.0114922, "lng": 4.7106094 },
                 "score": { "enl": 2430, "res": 6460 }
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4813896, "lng": 19.1460941 },
                 "score": { "enl": 4730, "res": 4105 }
@@ -4193,7 +4223,7 @@
               },
               {
                 "city": "Naha",
-                "region": "Okinawa",
+                "region": " Okinawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
                 "score": { "enl": 5595, "res": 1535 }
@@ -4263,6 +4293,7 @@
               },
               {
                 "city": "Turku",
+                "region": "Varsinais-Suomi",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
                 "score": { "enl": 1595, "res": 5185 }
@@ -4386,6 +4417,7 @@
               },
               {
                 "city": "Tampere",
+                "region": "Pirkanmaa",
                 "country": "Finland",
                 "location": { "lat": 61.4977929, "lng": 23.7616372 },
                 "score": { "enl": 10, "res": 5875 }
@@ -4399,6 +4431,7 @@
               },
               {
                 "city": "Bergen",
+                "region": "Vestland",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
                 "score": { "enl": 2635, "res": 3235 }
@@ -4433,7 +4466,7 @@
               },
               {
                 "city": "Aarhus",
-                "region": "Central Denmark Region",
+                "region": "Midtjylland",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
                 "score": { "enl": 1745, "res": 3980 }
@@ -4556,6 +4589,7 @@
               },
               {
                 "city": "Jyväskylä",
+                "region": "Keski-Suomi",
                 "country": "Finland",
                 "location": { "lat": 62.241672, "lng": 25.7495806 },
                 "score": { "enl": 215, "res": 4715 }
@@ -4721,6 +4755,7 @@
               },
               {
                 "city": "Kouvola",
+                "region": "Kymenlaakso",
                 "country": "Finland",
                 "location": { "lat": 60.8680928, "lng": 26.7038517 },
                 "score": { "enl": 335, "res": 3915 }
@@ -4811,7 +4846,7 @@
               },
               {
                 "city": "Tartu",
-                "region": "Tartu",
+                "region": "Tartumaa",
                 "country": "Estonia",
                 "location": { "lat": 58.3779528, "lng": 26.7290023 },
                 "score": { "enl": 3850, "res": 90 }
@@ -4900,8 +4935,8 @@
                 "score": { "enl": 2680, "res": 1125 }
               },
               {
-                "city": "Zurich",
-                "region": "Zurich",
+                "city": "Zürich",
+                "region": "Zürich",
                 "country": "Switzerland",
                 "location": { "lat": 47.3744489, "lng": 8.5410422 },
                 "score": { "enl": 1605, "res": 2165 }
@@ -5173,6 +5208,7 @@
               },
               {
                 "city": "Minsk",
+                "region": "Minsk Region",
                 "country": "Belarus",
                 "location": { "lat": 53.9024716, "lng": 27.5618225 },
                 "score": { "enl": 3045, "res": 310 }
@@ -5304,6 +5340,7 @@
               },
               {
                 "city": "Mikkeli",
+                "region": "Etelä-Savo",
                 "country": "Finland",
                 "location": { "lat": 61.6877823, "lng": 27.2731918 },
                 "score": { "enl": 0, "res": 3015 }
@@ -5338,7 +5375,7 @@
               },
               {
                 "city": "Marcali",
-                "region": "Southern Transdanubia",
+                "region": "Dél-Dunántúl",
                 "country": "Hungary",
                 "location": { "lat": 46.5833484, "lng": 17.4123002 },
                 "score": { "enl": 165, "res": 2840 }
@@ -5448,6 +5485,7 @@
               },
               {
                 "city": "Gomel",
+                "region": "Gomel Region",
                 "country": "Belarus",
                 "location": { "lat": 52.4238936, "lng": 31.0131698 },
                 "score": { "enl": 1705, "res": 1130 }
@@ -5591,6 +5629,7 @@
               },
               {
                 "city": "Mogilev",
+                "region": "Mogilev Region",
                 "country": "Belarus",
                 "location": { "lat": 53.9090245, "lng": 30.3429838 },
                 "score": { "enl": 2590, "res": 45 }
@@ -5762,7 +5801,7 @@
               },
               {
                 "city": "Alkmaar",
-                "region": "North Holland",
+                "region": "Noord-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.6008538, "lng": 4.8170994 },
                 "score": { "enl": 405, "res": 1980 }
@@ -5962,7 +6001,7 @@
               },
               {
                 "city": "Gävle",
-                "region": "Gavleborg",
+                "region": "Gävleborg",
                 "country": "Sweden",
                 "location": { "lat": 60.6750132, "lng": 17.1467019 },
                 "score": { "enl": 1475, "res": 695 }
@@ -6129,6 +6168,7 @@
               },
               {
                 "city": "Seinäjoki",
+                "region": "Etelä-Pohjanmaa",
                 "country": "Finland",
                 "location": { "lat": 62.7906684, "lng": 22.8398019 },
                 "score": { "enl": 225, "res": 1755 }
@@ -6390,6 +6430,7 @@
               },
               {
                 "city": "Kristiansand",
+                "region": "Sørlandet",
                 "country": "Norway",
                 "location": { "lat": 58.0856276, "lng": 7.931858 },
                 "score": { "enl": 775, "res": 880 }
@@ -6410,6 +6451,7 @@
               },
               {
                 "city": "Porsgrunn",
+                "region": "Østlandet",
                 "country": "Norway",
                 "location": { "lat": 59.103735, "lng": 9.7363538 },
                 "score": { "enl": 0, "res": 1620 }
@@ -6485,6 +6527,7 @@
               },
               {
                 "city": "Oulu",
+                "region": "Pohjois-Pohjanmaa",
                 "country": "Finland",
                 "location": { "lat": 65.0117869, "lng": 25.4701983 },
                 "score": { "enl": 180, "res": 1350 }
@@ -6565,8 +6608,8 @@
                 "score": { "enl": 1485, "res": 0 }
               },
               {
-                "city": "Zurich",
-                "region": "Zurich",
+                "city": "Zürich",
+                "region": "Zürich",
                 "country": "Switzerland",
                 "location": { "lat": 47.3744489, "lng": 8.5410422 },
                 "score": { "enl": 430, "res": 1045 }
@@ -6705,6 +6748,7 @@
               },
               {
                 "city": "Tromsø",
+                "region": "Troms",
                 "country": "Norway",
                 "location": { "lat": 69.6516345, "lng": 18.9558585 },
                 "score": { "enl": 70, "res": 1270 }
@@ -7188,7 +7232,7 @@
               },
               {
                 "city": "Békés",
-                "region": "Southern Great Plain",
+                "region": "Békés",
                 "country": "Hungary",
                 "location": { "lat": 46.7862993, "lng": 20.9820736 },
                 "score": { "enl": 0, "res": 855 }
@@ -7278,6 +7322,7 @@
               },
               {
                 "city": "Farsund",
+                "region": "Sørlandet",
                 "country": "Norway",
                 "location": { "lat": 58.0387373, "lng": 6.5848274 },
                 "score": { "enl": 0, "res": 765 }
@@ -7388,6 +7433,7 @@
               },
               {
                 "city": "Karlstad",
+                "region": "Värmland",
                 "country": "Sweden",
                 "location": { "lat": 59.3809146, "lng": 13.5027631 },
                 "score": { "enl": 0, "res": 675 }
@@ -7499,7 +7545,7 @@
               },
               {
                 "city": "Kecskemét",
-                "region": "Southern Great Plain",
+                "region": "Bács-Kiskun",
                 "country": "Hungary",
                 "location": { "lat": 46.9073883, "lng": 19.6917206 },
                 "score": { "enl": 565, "res": 20 }
@@ -7518,7 +7564,7 @@
                 "score": { "enl": 20, "res": 565 }
               },
               {
-                "city": "Padua",
+                "city": "Padova",
                 "region": "Veneto",
                 "country": "Italy",
                 "location": { "lat": 45.4077172, "lng": 11.8734455 },
@@ -7616,8 +7662,8 @@
                 "score": { "enl": 495, "res": 0 }
               },
               {
-                "city": "Aalborg",
-                "region": "North Jutland",
+                "city": "Ålborg",
+                "region": "Nordjylland",
                 "country": "Denmark",
                 "location": { "lat": 57.0462626, "lng": 9.9215263 },
                 "score": { "enl": 495, "res": 0 }
@@ -7837,6 +7883,7 @@
               },
               {
                 "city": "Pori",
+                "region": "Satakunta",
                 "country": "Finland",
                 "location": { "lat": 61.4866126, "lng": 21.7972071 },
                 "score": { "enl": 45, "res": 315 }
@@ -7898,7 +7945,7 @@
               },
               {
                 "city": "Hudiksvall",
-                "region": "Gavleborg",
+                "region": "Gävleborg",
                 "country": "Sweden",
                 "location": { "lat": 61.7281607, "lng": 17.105575 },
                 "score": { "enl": 0, "res": 360 }
@@ -8107,7 +8154,7 @@
               },
               {
                 "city": "Ørum",
-                "region": "Central Denmark Region",
+                "region": "Midtjylland",
                 "country": "Denmark",
                 "location": { "lat": 56.4804333, "lng": 9.626306 },
                 "score": { "enl": 180, "res": 0 }
@@ -8259,7 +8306,7 @@
               },
               {
                 "city": "Turin",
-                "region": "Piemont",
+                "region": "Piedmont",
                 "country": "Italy",
                 "location": { "lat": 45.0677551, "lng": 7.6824892 },
                 "score": { "enl": 135, "res": 0 }
@@ -8313,7 +8360,7 @@
                 "score": { "enl": 0, "res": 0 }
               },
               {
-                "city": "",
+                "city": "Yangon",
                 "region": "Yangon",
                 "country": "Myanmar",
                 "location": { "lat": 16.7967129, "lng": 96.1609916 },
@@ -8535,7 +8582,7 @@
               },
               {
                 "city": "Naha",
-                "region": "Okinawa",
+                "region": "Okinawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
                 "score": { "enl": 12, "res": 1 }
@@ -8794,6 +8841,7 @@
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 2, "res": 11 }
@@ -8975,7 +9023,7 @@
               },
               {
                 "city": "Tartu",
-                "region": "Tartu",
+                "region": "Tartumaa",
                 "country": "Estonia",
                 "location": { "lat": 58.3779528, "lng": 26.7290023 },
                 "score": { "enl": 6, "res": 7 }
@@ -8996,6 +9044,7 @@
               },
               {
                 "city": "Helsinki",
+                "region": "Uusimaa",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
                 "score": { "enl": 4, "res": 9 }
@@ -9009,6 +9058,7 @@
               },
               {
                 "city": "Turku",
+                "region": "Varsinais-Suomi",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
                 "score": { "enl": 2, "res": 11 }
@@ -9022,18 +9072,21 @@
               },
               {
                 "city": "Kouvola",
+                "region": "Kymenlaakso",
                 "country": "Finland",
                 "location": { "lat": 60.8680928, "lng": 26.7038517 },
                 "score": { "enl": 9, "res": 4 }
               },
               {
                 "city": "Tampere",
+                "region": "Pirkanmaa",
                 "country": "Finland",
                 "location": { "lat": 61.4977929, "lng": 23.7616372 },
                 "score": { "enl": 1, "res": 12 }
               },
               {
                 "city": "Seinäjoki",
+                "region": "Etelä-Pohjanmaa",
                 "country": "Finland",
                 "location": { "lat": 62.7906684, "lng": 22.8398019 },
                 "score": { "enl": 7, "res": 6 }
@@ -9100,6 +9153,7 @@
               },
               {
                 "city": "Oulu",
+                "region": "Pohjois-Pohjanmaa",
                 "country": "Finland",
                 "location": { "lat": 65.0117869, "lng": 25.4701983 },
                 "score": { "enl": 0, "res": 13 }
@@ -9127,6 +9181,7 @@
               },
               {
                 "city": "Kouvola",
+                "region": "Kymenlaakso",
                 "country": "Finland",
                 "location": { "lat": 60.8680928, "lng": 26.7038517 },
                 "score": { "enl": 0, "res": 13 }
@@ -9301,6 +9356,7 @@
               },
               {
                 "city": "Jyväskylä",
+                "region": "Keski-Suomi",
                 "country": "Finland",
                 "location": { "lat": 62.241672, "lng": 25.7495806 },
                 "score": { "enl": 3, "res": 10 }
@@ -9314,6 +9370,7 @@
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 1, "res": 12 }
@@ -9924,6 +9981,7 @@
               },
               {
                 "city": "Kouvola",
+                "region": "Kymenlaakso",
                 "country": "Finland",
                 "location": { "lat": 60.8680928, "lng": 26.7038517 },
                 "score": { "enl": 0, "res": 13 }
@@ -9951,7 +10009,7 @@
               },
               {
                 "city": "Thessaloniki",
-                "region": "Macedonia and Thrace",
+                "region": "Central Macedonia",
                 "country": "Greece",
                 "location": { "lat": 40.6403167, "lng": 22.9352716 },
                 "score": { "enl": 2, "res": 11 }
@@ -9979,6 +10037,7 @@
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 0, "res": 13 }
@@ -10027,6 +10086,7 @@
               },
               {
                 "city": "Oulu",
+                "region": "Pohjois-Pohjanmaa",
                 "country": "Finland",
                 "location": { "lat": 65.0117869, "lng": 25.4701983 },
                 "score": { "enl": 2, "res": 11 }
@@ -10354,6 +10414,7 @@
               },
               {
                 "city": "Turku",
+                "region": "Varsinais-Suomi",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
                 "score": { "enl": 7, "res": 6 }
@@ -10827,6 +10888,7 @@
               },
               {
                 "city": "Puebla",
+                "region": "Puebla",
                 "country": "Mexico",
                 "location": { "lat": 18.833333, "lng": -98 },
                 "score": { "enl": 8, "res": 17 }
@@ -10895,6 +10957,7 @@
             "events": [
               {
                 "city": "Yokohama",
+                "region": "Kanagawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.4503381, "lng": 139.6343802 },
                 "score": { "enl": 192, "res": 90 }
@@ -11194,6 +11257,7 @@
             "events": [
               {
                 "city": "Kobe",
+                "region": "Hyōgo Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.6932379, "lng": 135.1943764 },
                 "score": { "enl": 403, "res": 191 }
@@ -11261,6 +11325,7 @@
               },
               {
                 "city": "Palermo",
+                "region": "Sicily",
                 "country": "Italy",
                 "location": { "lat": 38.1112268, "lng": 13.3524434 },
                 "score": { "enl": 108, "res": 92 }
@@ -11286,6 +11351,7 @@
               },
               {
                 "city": "İzmir",
+                "region": "İzmir",
                 "country": "Türkiye",
                 "location": { "lat": 38.4192537, "lng": 27.128469 },
                 "score": { "enl": 151, "res": 49 }
@@ -11669,6 +11735,7 @@
               },
               {
                 "city": "İstanbul",
+                "region": "İstanbul",
                 "country": "Türkiye",
                 "location": { "lat": 41.006381, "lng": 28.9758715 },
                 "score": { "enl": 2.7, "res": 7.3 }
@@ -11727,26 +11794,29 @@
                 "score": { "enl": 10, "res": 0 }
               },
               {
-                "city": "Kochi",
+                "city": "Kōchi",
+                "region": "Kōchi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.5588482, "lng": 133.5310918 },
                 "score": { "enl": 6.7, "res": 3.3 }
               },
               {
                 "city": "Suwon",
+                "region": "Gyeonggi-do",
                 "country": "South Korea",
                 "location": { "lat": 37.2633325, "lng": 127.0287472 },
                 "score": { "enl": 10, "res": 0 }
               },
               {
                 "city": "Toyama",
+                "region": "Toyama Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.6468015, "lng": 137.2183531 },
                 "score": { "enl": 6.3, "res": 3.8 }
               },
               {
                 "city": "Tsu",
-                "region": "Mie",
+                "region": "Mie Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.7341973, "lng": 136.5153283 },
                 "score": { "enl": 7.5, "res": 2.5 }
@@ -11859,6 +11929,7 @@
               },
               {
                 "city": "Zumpango",
+                "region": "Mexico State",
                 "country": "Mexico",
                 "location": { "lat": 19.8129368, "lng": -99.0818095 },
                 "score": { "enl": 4.4, "res": 5.6 }
@@ -11908,7 +11979,7 @@
             "events": [
               {
                 "city": "Naha",
-                "region": "Okinawa",
+                "region": "Okinawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
                 "score": { "enl": 132.8, "res": 67.3 }
@@ -11932,6 +12003,7 @@
             "events": [
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 86.1, "res": 113.9 }
@@ -12011,7 +12083,7 @@
               },
               {
                 "city": "Matsue",
-                "region": "Shimane",
+                "region": "Shimane Prefecture",
                 "country": "Japan",
                 "location": { "lat": 35.468115, "lng": 133.048768 },
                 "score": { "enl": 3.5, "res": 3 }
@@ -12154,12 +12226,14 @@
               },
               {
                 "city": "Jyväskylä",
+                "region": "Keski-Suomi",
                 "country": "Finland",
                 "location": { "lat": 62.241672, "lng": 25.7495806 },
                 "score": { "enl": 0, "res": 5 }
               },
               {
                 "city": "Thessaloniki",
+                "region": "Central Macedonia",
                 "country": "Greece",
                 "location": { "lat": 40.6403167, "lng": 22.9352716 },
                 "score": { "enl": 0, "res": 6 }
@@ -12172,6 +12246,7 @@
               },
               {
                 "city": "Basel",
+                "region": "Basel-Stadt", 
                 "country": "Switzerland",
                 "location": { "lat": 47.5581077, "lng": 7.5878261 },
                 "score": { "enl": 0.5, "res": 4 }
@@ -12199,12 +12274,14 @@
               },
               {
                 "city": "Gävle",
+                "region": "Gävleborg",
                 "country": "Sweden",
                 "location": { "lat": 60.6750132, "lng": 17.1467019 },
                 "score": { "enl": 1.5, "res": 2 }
               },
               {
                 "city": "Haarlem",
+                "region": "Noord-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.3837058, "lng": 4.6435597 },
                 "score": { "enl": 3, "res": 2.5 }
@@ -12246,6 +12323,7 @@
               },
               {
                 "city": "Stavanger",
+                "region": "Vestlandet",
                 "country": "Norway",
                 "location": { "lat": 58.9699675, "lng": 5.7318101 },
                 "score": { "enl": 1.5, "res": 4.5 }
@@ -12379,6 +12457,7 @@
               },
               {
                 "city": "Cusco",
+                "region": "Cusco",
                 "country": "Peru",
                 "location": { "lat": -13.5170887, "lng": -71.9785356 },
                 "score": { "enl": 2.5, "res": 2.5 }
@@ -12497,6 +12576,7 @@
               },
               {
                 "city": "Rotterdam",
+                "region": "Zuid-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 51.9244424, "lng": 4.47775 },
                 "score": { "enl": 77.1, "res": 122.9 }
@@ -12581,6 +12661,7 @@
               },
               {
                 "city": "Chiclayo",
+                "region": "Lambayeque",
                 "country": "Peru",
                 "location": { "lat": -6.7716146, "lng": -79.8387175 },
                 "score": { "enl": 7, "res": 3.5 }
@@ -12594,6 +12675,7 @@
               },
               {
                 "city": "Iquitos",
+                "region": "Loreto",
                 "country": "Peru",
                 "location": { "lat": -3.749365, "lng": -73.2444145 },
                 "score": { "enl": 9, "res": 0.5 }
@@ -12661,6 +12743,7 @@
             "events": [
               {
                 "city": "Hamilton",
+                "region": "Waikato",
                 "country": "New Zealand",
                 "location": { "lat": -37.7878809, "lng": 175.281788 },
                 "score": { "enl": 4.5, "res": 6 }
@@ -12787,6 +12870,7 @@
               },
               {
                 "city": "Antalya",
+                "region": "Antalya",
                 "country": "Türkiye",
                 "location": { "lat": 36.8865728, "lng": 30.7030242 },
                 "score": { "enl": 0, "res": 12.5 }
@@ -12814,6 +12898,7 @@
               },
               {
                 "city": "Turku",
+                "region": "Varsinais-Suomi",
                 "country": "Finland",
                 "location": { "lat": 60.4515944, "lng": 22.2669983 },
                 "score": { "enl": 0.5, "res": 10 }
@@ -12826,6 +12911,7 @@
               },
               {
                 "city": "Bergen",
+                "region": "Vestland",
                 "country": "Norway",
                 "location": { "lat": 60.3943055, "lng": 5.3259192 },
                 "score": { "enl": 7, "res": 1.5 }
@@ -13015,6 +13101,7 @@
             "events": [
               {
                 "city": "Dunedin",
+                "region": "Otago",
                 "country": "New Zealand",
                 "location": { "lat": -45.8740984, "lng": 170.5035755 },
                 "score": { "enl": 6.5, "res": 4.9 }
@@ -13185,6 +13272,7 @@
               },
               {
                 "city": "Daejeon",
+                "region": "Hoseo",
                 "country": "South Korea",
                 "location": { "lat": 36.3497007, "lng": 127.3849016 },
                 "score": { "enl": 0, "res": 12.5 }
@@ -13278,13 +13366,14 @@
               },
               {
                 "city": "Tampere",
+                "region": "Pirkanmaa",
                 "country": "Finland",
                 "location": { "lat": 61.4977929, "lng": 23.7616372 },
                 "score": { "enl": 0.5, "res": 10 }
               },
               {
                 "city": "Aarhus",
-                "region": "Central Denmark Region",
+                "region": "Midtjylland",
                 "country": "Denmark",
                 "location": { "lat": 56.1496278, "lng": 10.2134046 },
                 "score": { "enl": 3, "res": 7.5 }
@@ -13312,12 +13401,14 @@
               },
               {
                 "city": "Castellón de la Plana",
+                "region": "Comunidad Valenciana",
                 "country": "Spain",
                 "location": { "lat": 39.9860347, "lng": -0.0377354 },
                 "score": { "enl": 3, "res": 7.5 }
               },
               {
                 "city": "Kecskemét",
+                "region": "Bács-Kiskun",
                 "country": "Hungary",
                 "location": { "lat": 46.9073883, "lng": 19.6917206 },
                 "score": { "enl": 0.5, "res": 6.5 }
@@ -13351,6 +13442,7 @@
               },
               {
                 "city": "Västerås",
+                "region": "Västmanland",
                 "country": "Sweden",
                 "location": { "lat": 59.6110992, "lng": 16.5463679 },
                 "score": { "enl": 9, "res": 1.5 }
@@ -13460,7 +13552,8 @@
                 "score": { "enl": 8.4, "res": 4.9 }
               },
               {
-                "city": "Copenhagen",
+                "city": "København",
+                "region": "Hovedstaden",
                 "country": "Denmark",
                 "location": { "lat": 55.6867243, "lng": 12.5700724 },
                 "score": { "enl": 4.9, "res": 7 }
@@ -13772,12 +13865,14 @@
             "events": [
               {
                 "city": "İstanbul",
+                "region": "İstanbul",
                 "country": "Türkiye",
                 "location": { "lat": 41.006381, "lng": 28.9758715 },
                 "score": { "enl": 0.7, "res": 13.3 }
               },
               {
                 "city": "Lahti",
+                "region": "Päijät-Häme",
                 "country": "Finland",
                 "location": { "lat": 60.982628, "lng": 25.6613418 },
                 "score": { "enl": 0, "res": 14 }
@@ -13791,6 +13886,7 @@
               },
               {
                 "city": "Drammen",
+                "region": "Østlandet",
                 "country": "Norway",
                 "location": { "lat": 59.6964936, "lng": 10.175642 },
                 "score": { "enl": 6.3, "res": 4.9 }
@@ -13804,12 +13900,14 @@
               },
               {
                 "city": "Randers",
+                "region": "Midtjylland",
                 "country": "Denmark",
                 "location": { "lat": 56.4617545, "lng": 10.0371476 },
                 "score": { "enl": 7, "res": 4.9 }
               },
               {
                 "city": "Uppsala",
+                "region": "Uppsala",
                 "country": "Sweden",
                 "location": { "lat": 59.8586126, "lng": 17.6387436 },
                 "score": { "enl": 11.9, "res": 1.4 }
@@ -13837,6 +13935,7 @@
               },
               {
                 "city": "Tartu",
+                "region": "Tartumaa",
                 "country": "Estonia",
                 "location": { "lat": 58.3779528, "lng": 26.7290023 },
                 "score": { "enl": 7.8, "res": 7.825 },
@@ -13905,6 +14004,7 @@
               },
               {
                 "city": "Arequipa",
+                "region": "Arequipa",
                 "country": "Peru",
                 "location": { "lat": -16.3988667, "lng": -71.5369607 },
                 "score": { "enl": 9.1, "res": 1.4 },
@@ -13912,6 +14012,7 @@
               },
               {
                 "city": "Chiclayo",
+                "region": "Lambayeque",
                 "country": "Peru",
                 "location": { "lat": -6.7716146, "lng": -79.8387175 },
                 "score": { "enl": 13.3, "res": 1.4 },
@@ -13980,6 +14081,7 @@
               },
               {
                 "city": "Asahikawa",
+                "region": "Hokkaido Prefecture",  
                 "country": "Japan",
                 "location": { "lat": 43.770625, "lng": 142.3649743 },
                 "score": { "enl": 6.3, "res": 5.6 },
@@ -14002,6 +14104,7 @@
               },
               {
                 "city": "Matsuyama",
+                "region": "Ehime Prefecture",
                 "country": "Japan",
                 "location": { "lat": 33.8395188, "lng": 132.7653521 },
                 "score": { "enl": 1.4, "res": 8.4 },
@@ -14009,6 +14112,7 @@
               },
               {
                 "city": "Morioka",
+                "region": "Iwate Prefecture",
                 "country": "Japan",
                 "location": { "lat": 39.7021331, "lng": 141.1545397 },
                 "score": { "enl": 10.5, "res": 6.3 },
@@ -14061,6 +14165,7 @@
               },
               {
                 "city": "Utsunomiya",
+                "region": "Tochigi Prefecture",
                 "country": "Japan",
                 "location": { "lat": 36.5549677, "lng": 139.8828776 },
                 "score": { "enl": 6.275, "res": 3.6 },
@@ -14193,7 +14298,8 @@
                 "score": { "enl": 183.7, "res": 116.3 }
               },
               {
-                "city": "The Hague",
+                "city": "Den Haag",
+                "region": "Zuid-Holland",
                 "country": "Netherlands",
                 "location": { "lat": 52.0799838, "lng": 4.3113461 },
                 "score": { "enl": 132.1, "res": 167.9 }
@@ -14224,8 +14330,9 @@
               },
               {
                 "city": "Niigata",
+                "region": "Niigata Prefecture",
                 "country": "Japan",
-                "location": { "lat": 37.6452283, "lng": 138.7669125 },
+                "location": { "lat": 37.9163757, "lng": 139.0365062 },
                 "score": { "enl": 5, "res": 0 }
               },
               {
@@ -14284,6 +14391,7 @@
               },
               {
                 "city": "Budapest",
+                "region": "Közép-Magyarország",
                 "country": "Hungary",
                 "location": { "lat": 47.4978789, "lng": 19.0402383 },
                 "score": { "enl": 5, "res": 10 }
@@ -14365,7 +14473,7 @@
               },
               {
                 "city": "St. Petersburg",
-                "region": "FL",
+                "region": "Florida",
                 "country": "United States",
                 "location": { "lat": 27.7712264, "lng": -82.6340259 },
                 "score": { "enl": 25, "res": 0 }
@@ -14384,6 +14492,7 @@
             "events": [
               {
                 "city": "Tokyo",
+                "region": "Tokyo",
                 "country": "Japan",
                 "location": { "lat": 35.6768601, "lng": 139.7638947 },
                 "score": { "enl": 5, "res": 0 }
@@ -14397,7 +14506,7 @@
               },
               {
                 "city": "Naha",
-                "region": "Okinawa",
+                "region": "Okinawa Prefecture",
                 "country": "Japan",
                 "location": { "lat": 26.2122345, "lng": 127.6791452 },
                 "score": { "enl": 0, "res": 10 }
@@ -14444,6 +14553,7 @@
               },
               {
                 "city": "Helsinki",
+                "region": "Uusimaa",
                 "country": "Finland",
                 "location": { "lat": 60.1666204, "lng": 24.9435408 },
                 "score": { "enl": 0, "res": 10 }
@@ -14498,6 +14608,7 @@
               },
               {
                 "city": "Rimini",
+                "region": "Emilia-Romagna",
                 "country": "Italy",
                 "location": { "lat": 43.9465433, "lng": 12.630749 },
                 "score": { "enl": 0, "res": 10 }
@@ -14571,16 +14682,14 @@
                 "region": "North Carolina",
                 "country": "United States",
                 "location": { "lat": 35.2272086, "lng": -80.8430827 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Lisbon",
                 "region": "Lisbon",
                 "country": "Portugal",
                 "location": { "lat": 38.7077507, "lng": -9.1365919 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           },
@@ -14592,15 +14701,14 @@
                 "region": "Hong Kong",
                 "country": "China",
                 "location": { "lat": 22.2445518, "lng": 114.2053888 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Zagreb",
+                "region": "Središnja Hrvatska",
                 "country": "Croatia",
                 "location": { "lat": 45.8130967, "lng": 15.9772795 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           },
@@ -14612,15 +14720,13 @@
                 "region": "Telangana",
                 "country": "India",
                 "location": { "lat": 17.360589, "lng": 78.4740613 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Buenos Aires",
                 "country": "Argentina",
                 "location": { "lat": -34.6095579, "lng": -58.3887904 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           }
@@ -14642,16 +14748,14 @@
                 "region": "New South Wales",
                 "country": "Australia",
                 "location": { "lat": -33.8698439, "lng": 151.2082848 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Prague",
                 "region": "Prague",
                 "country": "Czechia",
                 "location": { "lat": 50.0874654, "lng": 14.4212535 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           },
@@ -14659,19 +14763,18 @@
             "date": "2026-05-30",
             "events": [
               {
-                "city": "Kure City",
+                "city": "Kure",
+                "region": "Hiroshima Prefecture",
                 "country": "Japan",
                 "location": { "lat": 34.2411847, "lng": 132.5558799 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Jersey City",
                 "region": "New Jersey",
                 "country": "United States",
                 "location": { "lat": 40.7215682, "lng": -74.047455 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           },
@@ -14683,16 +14786,14 @@
                 "region": "Geneva",
                 "country": "Switzerland",
                 "location": { "lat": 46.2017559, "lng": 6.1466014 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               },
               {
                 "city": "Lima",
                 "region": "Lima",
                 "country": "Peru",
                 "location": { "lat": -12.0459808, "lng": -77.0305912 },
-                "score": { "enl": null, "res": null },
-                "winner": ""
+                "score": { "enl": null, "res": null }
               }
             ]
           }
