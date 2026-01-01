@@ -134,7 +134,7 @@ async function loadAnomalies(meta) {
   const resp = await fetch(`./data/anomalies-historical.json?${buildParam}`);
   if (!resp.ok) {
     console.error('Failed to load anomalies-historical.json:', resp.status);
-    return [];
+    return { flat: [], countries: {} };
   }
 
   const grouped = await resp.json();
@@ -142,12 +142,12 @@ async function loadAnomalies(meta) {
   // New format: { organizeBy: 'series', series: { [seriesName]: { [typeName]: { [dateStr]: events[] } } } }
   if (!grouped || typeof grouped !== 'object' || typeof grouped.series !== 'object') {
     console.error('Unexpected anomalies-historical.json format: expected { series: { ... } }');
-    return [];
+    return { flat: [], countries: {} };
   }
 
   if (typeof grouped.locations !== 'object' || grouped.locations === null) {
     console.error('Unexpected anomalies-historical.json format: expected top-level { locations: { ... } }');
-    return [];
+    return { flat: [], countries: {} };
   }
 
   const locations = grouped.locations;
@@ -199,7 +199,7 @@ async function loadAnomalies(meta) {
     showDataWarning(missingLocations);
   }
 
-  return flat;
+  return { flat, countries: grouped.countries || {} };
 }
 async function loadBuildMeta() {
   try {
@@ -233,7 +233,7 @@ async function loadBuildMeta() {
     }
   });
 
-  const anomalies = await loadAnomalies(meta);
+  const { flat: anomalies, countries: countriesMeta } = await loadAnomalies(meta);
   const msPerDay = 1000 * 60 * 60 * 24;
   const nowMs = Date.now();
 
@@ -421,11 +421,14 @@ async function loadBuildMeta() {
 
       if (mostRecentYear !== null) lastMostRecentYear = mostRecentYear;
     });
-  // Populate country filter
+  // Populate country filter (display flag if present, but keep value as the plain country name)
   if (countrySel) {
     const countries = [...countrySet].sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
     countries.forEach(c => {
-      countrySel.insertAdjacentHTML('beforeend', `<option value="${c}">${c}</option>`);
+      const meta = countriesMeta && typeof countriesMeta === 'object' ? countriesMeta[c] : null;
+      const flag = meta && typeof meta === 'object' && meta.flag ? String(meta.flag).trim() : '';
+      const label = flag ? `${flag} ${c}` : c;
+      countrySel.insertAdjacentHTML('beforeend', `<option value="${c}">${label}</option>`);
     });
   }
   // Adjust height based on the number of entries (Option B)

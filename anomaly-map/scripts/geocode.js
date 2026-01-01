@@ -1,40 +1,30 @@
 /**
  * Geocoding Tool for Anomaly Events
- * 
- * This script manages geographic coordinates for Ingress anomaly events. It geocodes
- * location data using OpenStreetMap's Nominatim API and maintains a persistent cache
- * to minimize API calls. Supports special handling for Ingress score-region S2 cells.
- * 
+ *
+ * This script manages the top-level `locations` map in anomalies-historical.json for Ingress anomaly events.
+ * It geocodes location keys using OpenStreetMap's Nominatim API and supports Ingress S2 cell names.
+ *
  * USAGE:
  *   node geocode.js [arguments]
- * 
+ *
  * MODES (mutually exclusive, runs first match):
- *   (default)        Main geocoding - adds coordinates to events missing them
- *   refresh-cache      Re-validate all cache entries against Nominatim
- *   audit-cache      Report unused cache entries (read-only)
- *   missing-cache    Report events with coordinates not in cache
- * 
- * MODIFIERS (combine with any mode):
- *   update           Enable file writes (default is DRY-RUN preview only)
- *   verify           Compare existing coordinates against cache/Nominatim
- *   override         Force re-geocode ALL events (even those with coordinates)
- * 
+ *   (default)  Add missing locations (adds entries to top-level locations)
+ *   refresh    Re-validate all locations entries against Nominatim
+ *
+ * MODIFIERS:
+ *   update               Enable file writes (default is DRY-RUN preview only)
+ *
  * EXAMPLES:
- *   node geocode.js                      # Preview what would be geocoded
- *   node geocode.js update               # Geocode missing coordinates and save
- *   node geocode.js verify               # Check existing coordinates for problems
- *   node geocode.js verify update        # Fix coordinate mismatches
- *   node geocode.js refresh-cache update # Re-validate entire cache
- *   node geocode.js audit-cache          # Find unused cache entries
- *   node geocode.js missing-cache        # Find events missing from cache
- *   node geocode.js update override      # Force re-geocode everything (slow!)
- * 
+ *   node geocode.js                 # Preview what would be geocoded (dry-run)
+ *   node geocode.js update          # Geocode missing locations and save
+ *   node geocode.js refresh         # Preview re-geocode of all locations
+ *   node geocode.js refresh update  # Update locations with mismatches >150m
+ *
  * NOTES:
  *   - Without 'update', runs in DRY-RUN mode (no files modified)
  *   - Respects Nominatim rate limit (1 request/second)
- *   - Cache keys format: "Country, Region, City"
+ *   - Updates and manages the top-level "locations" map in anomalies-historical.json
  *   - Supports Ingress S2 cell names (e.g., "AF01-ALPHA-00") via local calculation
- *   - Reports coordinate mismatches >150m during verification
  */
 
 import fs from 'fs';
@@ -43,35 +33,16 @@ import fetch from 'node-fetch';
 
 // Paths
 const dataPath = path.resolve('./anomaly-map/data/anomalies-historical.json');
-const cachePath = path.resolve('./anomaly-map/data/cities-cache.json');
 
 // Parse command-line arguments
 const args = new Set(process.argv.slice(2).map(a => a.toLowerCase()));
 const doUpdate = args.has('update');
-const doOverride = args.has('override');
-const doVerify = args.has('verify') || doOverride;
-const doRefreshCache = args.has('refresh-cache') 
-const doUnusedCache = args.has('audit-cache');
-const doMissingCache = args.has('missing-cache');
+const doRefreshLocations = args.has('refresh');
 
 console.log(
   `Mode: ${doUpdate ? 'UPDATE' : 'DRY-RUN'}` +
-    `${doRefreshCache ? ' + REFRESH-CACHE' : ''}` +
-    `${doUnusedCache ? ' + UNUSED-CACHE' : ''}` +
-    `${doMissingCache ? ' + MISSING-CACHE' : ''}` +
-    `${doVerify ? ' + VERIFY' : ''}` +
-    `${doOverride ? ' + OVERRIDE' : ''}`
+    `${doRefreshLocations ? ' + REFRESH' : ''}`
 );
-
-if (doRefreshCache && (doVerify || doOverride)) {
-  console.warn('Note: refreshCache mode ignores verify/override flags and only validates the cache.');
-}
-
-// Load cache
-let cache = {};
-if (fs.existsSync(cachePath)) {
-  cache = JSON.parse(fs.readFileSync(cachePath, 'utf-8'));
-}
 
 // ============================================================================
 // Utilities
@@ -104,17 +75,19 @@ function coordDiffMeters(a, b) {
 }
 
 // ============================================================================
-// Cache Key Management
+// Locations Key Management
 // ============================================================================
 
-function makeEventCacheKey(city, region, country) {
+// Keys match the existing locations layout: "Country, Region, City".
+// Missing parts are represented as empty strings between commas.
+function makeLocationKey(city, region, country) {
   const ctry = (country ?? '').toString().trim();
   const reg = (region ?? '').toString().trim();
   const cty = (city ?? '').toString().trim();
   return `${ctry}, ${reg}, ${cty}`;
 }
 
-function splitCacheKey(key) {
+function splitLocationKey(key) {
   const parts = key.split(',').map(s => s.trim());
   return {
     country: parts[0] ?? '',
@@ -276,46 +249,73 @@ function cellNameToLatLng(cellName) {
 // Geocoding
 // ============================================================================
 
-async function geocode(city, region, country) {
-  const key = makeEventCacheKey(city, region, country);
-  if (!key || key === ', , ') return null;
-
-  if (cache[key]) return cache[key];
-
-  // Fast-path for Ingress cells
+async function geocode(city, region, country, verbose = false) {
+  // Fast-path for Ingress cells (city field)
   if (city && isIngressCellName(city)) {
     const ll = cellNameToLatLng(city);
-    if (ll) {
-      const coords = { lat: ll.lat, lng: ll.lng };
-      cache[key] = coords;
-      return coords;
-    }
+    if (ll) return { lat: ll.lat, lng: ll.lng };
   }
 
-  // Geocode via Nominatim
-  const pretty = [city, region, country].filter(Boolean).join(', ');
+  // Build query string in natural order: City, Region, Country
+  // Filter out empty/null/undefined values
+  const queryParts = [city, region, country]
+    .map(s => s ? s.toString().trim() : '')
+    .filter(s => s.length > 0);
   
+  if (queryParts.length === 0) return null;
+  
+  const query = queryParts.join(', ');
+
   try {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(key)}`;
-    const res = await fetch(url);
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
     
-    if (!res.ok) {
-      throw new Error(`HTTP ${res.status}`);
+    if (verbose) {
+      console.log(`\n  → Query: "${query}"`);
+      console.log(`  → URL: ${url}`);
     }
     
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent': 'Ingress-Anomaly-Geocoder/1.0', // Nominatim requires User-Agent
+        //'Accept-Language': 'en' // Prefer English results
+      }
+    });
+
+    if (!res.ok) {
+      console.warn(`  → HTTP ${res.status} ${res.statusText}`);
+      throw new Error(`HTTP ${res.status}`);
+    }
+
     const data = await res.json();
 
+    if (verbose) {
+      console.log(`  → Results: ${data.length} found`);
+      if (data.length > 0) {
+        console.log(`  → Top result: ${data[0].display_name}`);
+        console.log(`  → Coordinates: lat=${data[0].lat}, lng=${data[0].lon}`);
+      }
+    }
+
     if (data.length) {
-      const coords = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lng) };
-      cache[key] = coords;
+      const coords = { 
+        lat: parseFloat(data[0].lat), 
+        lng: parseFloat(data[0].lon),  // Changed from lng to lon!
+        display_name: data[0].display_name
+      };
+      
+      if (verbose) {
+        console.log(`  → Parsed coords: lat=${coords.lat}, lng=${coords.lng}`);
+        console.log(`  → Valid: ${isValidCoord(coords)}`);
+      }
+      
       await sleep(1000); // Nominatim rate limit: 1 req/sec
       return coords;
     }
-    
-    console.warn(`No results for ${pretty}`);
+
+    //console.warn(`  → No results for "${query}"`);
     return null;
   } catch (err) {
-    console.warn(`Geocoding failed for ${pretty}: ${err.message}`);
+    console.warn(`  → Geocoding failed for "${query}": ${err.message}`);
     return null;
   }
 }
@@ -324,15 +324,21 @@ async function geocode(city, region, country) {
 // Data Iteration
 // ============================================================================
 
-function* iterateEvents(anomalies) {
-  for (const series of anomalies) {
-    if (!series?.types) continue;
-    for (const typeEntry of series.types) {
-      if (!typeEntry?.dates) continue;
-      for (const dateEntry of typeEntry.dates) {
-        if (!dateEntry?.events) continue;
-        for (const evt of dateEntry.events) {
-          yield { evt, series, typeEntry, dateEntry };
+function* iterateEvents(grouped) {
+  const seriesObj = grouped?.series;
+  if (!seriesObj || typeof seriesObj !== 'object') return;
+
+  for (const [seriesName, typesObj] of Object.entries(seriesObj)) {
+    if (!typesObj || typeof typesObj !== 'object') continue;
+
+    for (const [typeName, datesObj] of Object.entries(typesObj)) {
+      if (!datesObj || typeof datesObj !== 'object') continue;
+
+      for (const [dateStr, events] of Object.entries(datesObj)) {
+        if (!Array.isArray(events)) continue;
+
+        for (const evt of events) {
+          yield { evt, seriesName, typeName, dateStr };
         }
       }
     }
@@ -340,177 +346,122 @@ function* iterateEvents(anomalies) {
 }
 
 // ============================================================================
-// Formatting
+// Locations Management
 // ============================================================================
 
-function compactLocationAndScore(jsonText) {
-  // location: { lat, lng }
-  jsonText = jsonText.replace(
-    /"location"\s*:\s*\{\s*\n\s*"lat"\s*:\s*([^,\n]+)\s*,\s*\n\s*"lng"\s*:\s*([^\n]+)\s*\n\s*\}(\s*,?)/g,
-    '"location": { "lat": $1, "lng": $2 }$3'
-  );
-
-  // score: { enl, res }
-  jsonText = jsonText.replace(
-    /"score"\s*:\s*\{\s*\n\s*"enl"\s*:\s*([^,\n]+)\s*,\s*\n\s*"res"\s*:\s*([^\n]+)\s*\n\s*\}(\s*,?)/g,
-    '"score": { "enl": $1, "res": $2 }$3'
-  );
-
-  return jsonText;
-}
-
-function formatCitiesCache(cacheObj) {
-  const sorted = Object.fromEntries(
-    Object.entries(cacheObj).sort(([a], [b]) => a.localeCompare(b))
-  );
-
-  let txt = JSON.stringify(sorted, null, 2);
-
-  txt = txt.replace(
-    /(:\s*)\{\s*\n\s*"lat"\s*:\s*([^,\n]+)\s*,\s*\n\s*"lng"\s*:\s*([^\n]+)\s*\n\s*\}/g,
-    '$1{ "lat": $2, "lng": $3 }'
-  );
-
-  return txt;
-}
-
-// ============================================================================
-// Report Functions
-// ============================================================================
-
-async function reportUnusedCacheEntries() {
+async function addMissingLocations() {
   const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-  const used = new Set();
+
+  if (!anomalies || typeof anomalies !== 'object' || typeof anomalies.series !== 'object') {
+    throw new Error('Unexpected anomalies-historical.json format: missing top-level "series"');
+  }
+  if (!anomalies.locations || typeof anomalies.locations !== 'object') {
+    anomalies.locations = {};
+  }
+
+  const locations = anomalies.locations;
+  const needed = new Map(); // key -> { city, region, country, count }
 
   for (const { evt } of iterateEvents(anomalies)) {
     const { city, region, country } = evt;
     if (!country || (!city && !region)) continue;
-    used.add(makeEventCacheKey(city, region, country));
-  }
 
-  const cacheKeys = Object.keys(cache);
-  const unused = cacheKeys
-    .filter(key => !used.has(key))
-    .sort();
+    const key = makeLocationKey(city, region, country);
+    if (!key || key === ', , ') continue;
 
-  console.log('Cache audit complete.');
-  console.log(`Cache entries total:  ${cacheKeys.length}`);
-  console.log(`Cache entries used:   ${used.size}`);
-  console.log(`Cache entries unused: ${unused.length}`);
-
-  const cap = 500;
-  unused.slice(0, cap).forEach(key => console.log(`UNUSED: ${key}`));
-  
-  if (unused.length > cap) {
-    console.log(`... plus ${unused.length - cap} more`);
-  }
-}
-
-async function reportMissingCacheEntries() {
-  const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-  const cacheKeySet = new Set(Object.keys(cache));
-  const missing = new Map();
-
-  for (const { evt } of iterateEvents(anomalies)) {
-    const { city, region, country, location } = evt;
-    
-    if (!country || (!city && !region)) continue;
-
-    const key = makeEventCacheKey(city, region, country);
-    
-    if (!cacheKeySet.has(key) && location?.lat && location?.lng) {
-      if (!missing.has(key)) {
-        missing.set(key, { lat: location.lat, lng: location.lng, count: 1 });
-      } else {
-        missing.get(key).count++;
-      }
+    if (!locations[key]) {
+      const cur = needed.get(key);
+      if (cur) cur.count++;
+      else needed.set(key, { city: city ?? '', region: region ?? '', country: country ?? '', count: 1 });
     }
   }
 
-  const entries = [...missing.entries()]
-    .map(([key, v]) => ({ key, lat: v.lat, lng: v.lng, count: v.count }))
-    .sort((a, b) => b.count - a.count || a.key.localeCompare(b.key));
+  const keys = [...needed.keys()].sort((a, b) => a.localeCompare(b));
 
-  console.log('Missing-cache audit complete.');
-  console.log(`Cache entries total:   ${Object.keys(cache).length}`);
-  console.log(`Missing location keys: ${entries.length}`);
+  console.log(`Missing location keys: ${keys.length}`);
+  if (!keys.length) {
+    console.log('Nothing to do.');
+    return;
+  }
 
-  const cap = 200;
-  entries.slice(0, cap).forEach(e => {
-    console.log(`"${e.key}": { "lat": ${e.lat}, "lng": ${e.lng} }`);
-  });
-  
-  if (entries.length > cap) {
-    console.log(`... plus ${entries.length - cap} more`);
+  let added = 0;
+  let noResult = 0;
+
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    const rowNum = `[${i + 1}/${keys.length}]`;
+    const info = needed.get(key);
+
+    console.log(`${rowNum} Geocoding: ${key} (seen ${info.count}x)`);
+
+    const coords = await geocode(info.city, info.region, info.country, true);
+    if (coords && isValidCoord(coords)) {
+      if (doUpdate) {
+        locations[key] = { lat: coords.lat, lng: coords.lng };
+      }
+      added++;
+      if (coords.display_name) {
+        console.log(`${rowNum} ✅ ${key} ⬅️  ${coords.display_name}`);
+      } else {
+        console.log(`${rowNum} ✅ ${key}`);
+      }
+    } else {
+      noResult++;
+      console.warn(`${rowNum} ❌ ${key}`);
+    }
   }
 
   if (doUpdate) {
-    const reportPath = path.resolve('./anomaly-map/data/missing-cache-report.json');
-    fs.writeFileSync(
-      reportPath,
-      JSON.stringify(
-        { generatedAt: new Date().toISOString(), locations: entries },
-        null,
-        2
-      )
-    );
-    console.log(`Wrote: ${reportPath}`);
+    fs.writeFileSync(dataPath, JSON.stringify(anomalies, null, 2));
+    console.log(`Wrote: ${dataPath}`);
   } else {
-    console.log('Dry-run: no files were written. Add `update` to write missing-cache-report.json');
+    console.log('Dry-run: no files were written. Add `update` to persist changes.');
   }
+
+  console.log('\n' + '='.repeat(70));
+  console.log('Add-missing-locations complete.');
+  console.log(`Mode:                 ${doUpdate ? 'UPDATE' : 'DRY-RUN'}`);
+  console.log(`Missing keys found:   ${keys.length}`);
+  console.log(`Geocode succeeded:    ${added}`);
+  console.log(`No geocode result:    ${noResult}`);
 }
 
-async function refreshCache() {
+async function refreshLocations() {
+  const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+  if (!anomalies || typeof anomalies !== 'object' || typeof anomalies.locations !== 'object') {
+    throw new Error('Unexpected anomalies-historical.json format: missing top-level "locations"');
+  }
+
+  const locations = anomalies.locations;
+  const keys = Object.keys(locations).sort((a, b) => a.localeCompare(b));
+
+  console.log(`Refreshing location entries: ${keys.length}`);
+
   let total = 0;
   let refreshed = 0;
   let noResult = 0;
   let mismatches = 0;
   let updated = 0;
 
-  const keys = Object.keys(cache).sort();
-  console.log(`Refreshing cache entries: ${keys.length}\n`);
-
   for (const key of keys) {
     total++;
     const rowNum = `[${total}/${keys.length}]`;
-    
-    const existing = cache[key];
-    
+
+    const existing = locations[key];
     if (!isValidCoord(existing)) {
-      console.warn(`${rowNum} ⚠️  Skipping invalid cache entry: ${key}`);
+      console.warn(`${rowNum} ⚠️ Skipping invalid location entry: ${key}`);
       continue;
     }
 
-    // Check if this is an Ingress cell
-    const { city } = splitCacheKey(key);
-    let fresh = null;
-    
-    if (city && isIngressCellName(city)) {
-      const ll = cellNameToLatLng(city);
-      if (ll) {
-        fresh = { lat: ll.lat, lng: ll.lng };
-      }
-    } else {
-      try {
-        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(key)}`;
-        const res = await fetch(url);
-        
-        if (res.ok) {
-          const data = await res.json();
-          if (data.length) {
-            fresh = { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lng) };
-          }
-        }
-        
-        await sleep(1000); // Nominatim rate limit: 1 req/sec
-      } catch (err) {
-        console.warn(`${rowNum} ❌ Refresh failed for ${key}: ${err.message}`);
-      }
-    }
+    const { city, region, country } = splitLocationKey(key);
 
-    if (!fresh) {
+    // Compute/fetch a fresh value
+    const fresh = await geocode(city, region, country, total <= 2); // Verbose for first 2 only
+
+    if (!fresh || !isValidCoord(fresh)) {
       noResult++;
-      console.warn(`${rowNum} ❌ No results for ${key}`);
+      console.warn(`${rowNum} ❌ ${key}`);
       continue;
     }
 
@@ -522,160 +473,47 @@ async function refreshCache() {
     if (d > 1) {
       if (d > 150) {
         mismatches++;
-        console.warn(`${rowNum} ⚠️  CACHE mismatch: ${key} (${Math.round(d)}m)`);
-        
+        console.warn(`${rowNum} ⚠️ mismatch: ${key} (${Math.round(d)}m) ⬅️  ${fresh.display_name} https://www.google.com/maps/dir/${existing.lat},${existing.lng}/${fresh.lat},${fresh.lng} { "lat": ${fresh.lat}, "lng": ${fresh.lng} },`);
+
         if (doUpdate) {
-          cache[key] = { lat: fresh.lat, lng: fresh.lng };
+          locations[key] = { lat: fresh.lat, lng: fresh.lng };
           updated++;
         }
       } else {
-        console.log(`${rowNum} 🟡 ${key} → ${Math.round(d)}m difference`);
+        console.log(`${rowNum} 🟡 ${key} → ${Math.round(d)}m ⬅️  ${fresh.display_name} https://www.google.com/maps/dir/${existing.lat},${existing.lng}/${fresh.lat},${fresh.lng} { "lat": ${fresh.lat}, "lng": ${fresh.lng} },`);
       }
     } else {
-      console.log(`${rowNum} ✅ ${key}`);
+      if (fresh.display_name) {
+        console.log(`${rowNum} ✅ ${key} ⬅️  ${fresh.display_name}`);
+      } else {
+        console.log(`${rowNum} ✅ ${key}`);
+      }
     }
   }
 
   if (doUpdate) {
-    const cacheOut = formatCitiesCache(cache);
-    fs.writeFileSync(cachePath, cacheOut);
+    fs.writeFileSync(dataPath, JSON.stringify(anomalies, null, 2));
+    console.log(`\nWrote: ${dataPath}`);
+  } else {
+    console.log('\nDry-run: no files were written. Add `update` to persist changes.');
   }
 
   console.log('\n' + '='.repeat(70));
-  console.log('Cache refresh complete.');
-  console.log(`Mode:                  ${doUpdate ? 'UPDATE' : 'DRY-RUN'} + REFRESH-CACHE`);
-  console.log(`Total cache entries:   ${total}`);
+  console.log('Refresh complete.');
+  console.log(`Mode:                  ${doUpdate ? 'UPDATE' : 'DRY-RUN'} + REFRESH`);
+  console.log(`Total location entries:${total}`);
   console.log(`Geocode succeeded:     ${refreshed}`);
   console.log(`No geocode result:     ${noResult}`);
   console.log(`Discrepancies (>150m): ${mismatches}`);
-  console.log(`Cache entries updated: ${updated}`);
-  
-  if (!doUpdate) {
-    console.log('\nDry-run: no files were written. Add the `update` argument to persist cache changes.');
-  }
-}
-
-async function updateLocations() {
-  const anomalies = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
-
-  let totalEvents = 0;
-  let alreadyHadCoords = 0;
-  let missingCityCountry = 0;
-  let geocoded = 0;
-  let noResult = 0;
-  let wouldUpdate = 0;
-  let updated = 0;
-  let verified = 0;
-  let verifyMismatches = 0;
-
-  for (const { evt, series, typeEntry, dateEntry } of iterateEvents(anomalies)) {
-    totalEvents++;
-
-    const hasCoords = isValidCoord(evt.location);
-    if (hasCoords) alreadyHadCoords++;
-
-    const { city, region, country } = evt;
-
-    if (!country || (!city && !region)) {
-      missingCityCountry++;
-      console.warn(
-        `Missing details: ${typeEntry.type} ${dateEntry.date}: '${city}', '${region}', '${country}'`
-      );
-      continue;
-    }
-
-    const shouldReGeocode = !hasCoords || doOverride;
-
-    if (!shouldReGeocode) {
-      if (doVerify) {
-        const expected = await geocode(city, region, country);
-        if (expected) {
-          verified++;
-          const existing = { lat: evt.location.lat, lng: evt.location.lng };
-          const exp = { lat: expected.lat, lng: expected.lng };
-          const d = coordDiffMeters(existing, exp);
-          
-          if (d > 150) {
-            verifyMismatches++;
-            console.warn(
-              `VERIFY mismatch (${Math.round(d)}m): ${series.series} / ${typeEntry.type} / ${dateEntry.date} — ${city || region}, ${country} ` +
-              `(have ${existing.lat},${existing.lng} expected ${exp.lat},${exp.lng})`
-            );
-          }
-        }
-      }
-      continue;
-    }
-
-    const coords = await geocode(city, region, country);
-    
-    if (coords) {
-      const newLoc = { lat: coords.lat, lng: coords.lng };
-
-      if (hasCoords) {
-        const existing = { lat: evt.location.lat, lng: evt.location.lng };
-        const d = coordDiffMeters(existing, newLoc);
-        
-        if (d > 1) {
-          wouldUpdate++;
-          console.log(
-            `${doUpdate ? 'Updating' : 'Would update'} (${Math.round(d)}m): ${series.series} / ${typeEntry.type} / ${dateEntry.date} — ${city || region}, ${country}`
-          );
-        }
-      } else {
-        wouldUpdate++;
-        console.log(
-          `${doUpdate ? 'Setting' : 'Would set'}: ${series.series} / ${typeEntry.type} / ${dateEntry.date} — ${city || region}, ${country}`
-        );
-      }
-
-      if (doUpdate) {
-        evt.location = newLoc;
-        updated++;
-      }
-
-      geocoded++;
-    } else {
-      noResult++;
-    }
-  }
-
-  if (doUpdate) {
-    let out = JSON.stringify(anomalies, null, 2);
-    out = compactLocationAndScore(out);
-    fs.writeFileSync(dataPath, out);
-
-    const cacheOut = formatCitiesCache(cache);
-    fs.writeFileSync(cachePath, cacheOut);
-  }
-
-  console.log('Geocoding complete.');
-  console.log(`Mode:                    ${doUpdate ? 'UPDATE' : 'DRY-RUN'}${doVerify ? ' + VERIFY' : ''}${doOverride ? ' + OVERRIDE' : ''}`);
-  console.log(`Total events seen:       ${totalEvents}`);
-  console.log(`Already had coordinates: ${alreadyHadCoords}`);
-  console.log(`Missing details:         ${missingCityCountry}`);
-  console.log(`Geocode calls succeeded: ${geocoded}`);
-  console.log(`No geocode result:       ${noResult}`);
-  console.log(`Would update/set:        ${wouldUpdate}`);
-  console.log(`Actually updated:        ${updated}`);
-  console.log(`Verified existing:       ${verified}`);
-  console.log(`Verify mismatches:       ${verifyMismatches}`);
-  
-  if (!doUpdate) {
-    console.log('Dry-run: no files were written. Add the `update` argument to persist changes.');
-  }
+  console.log(`Location entries updated: ${updated}`);
 }
 
 // ============================================================================
 // Main Entry Point
 // ============================================================================
 
-if (doRefreshCache) {
-  refreshCache();
-} else if (doUnusedCache) {
-  reportUnusedCacheEntries();
-} else if (doMissingCache) {
-  reportMissingCacheEntries();
+if (doRefreshLocations) {
+  refreshLocations();
 } else {
-  updateLocations();
+  addMissingLocations();
 }
