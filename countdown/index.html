@@ -18,8 +18,10 @@
   <link rel="stylesheet" href="countdown.css">
   
   <!-- Timezone handling library - must load before countdown.js -->
-  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js" defer></script>
+  <script type="module" src="countdown.js"></script> <!-- defer is implied for module scripts -->
 </head>
+
 <body>
   <header>
     <h1>Ingress Anomaly Countdown</h1>
@@ -40,8 +42,5 @@
       </p>
     </nav>
   </footer>
-
-  <!-- Application logic -->
-  <script src="countdown.js"></script>
 </body>
 </html>

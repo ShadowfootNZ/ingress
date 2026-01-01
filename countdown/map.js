@@ -1,56 +1,16 @@
 /**
  * map.js - Interactive map of upcoming Ingress anomalies
  * Shows L16 recharge range (4000km) for each event location
+ * Refactored to use shared utilities
  */
 
-import { DateTime } from "https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/es6/luxon.min.js";
-
-// Configuration
-const CONFIG = {
-  RECHARGE_RANGE_KM: 4000, // L16 portal recharge range
-  MAP_ZOOM: 3,
-  MAX_MAP_ZOOM: 6,
-  CACHE_VERSION: '1.0.0'
-};
-
-// Cache for series colors
-const seriesColours = {};
-
-/**
- * Generates a stable color for a given series name
- * Uses string hashing to ensure same series always gets same color
- * Avoids blue (190-230°) and green (110-170°) to prevent confusion with factions
- */
-function colourForSeries(series) {
-  if (!seriesColours[series]) {
-    // Generate stable hash from series string
-    let hash = 0;
-    for (let i = 0; i < series.length; i++) {
-      hash = series.charCodeAt(i) + ((hash << 5) - hash);
-    }
-
-    // Map to hue ranges that exclude blue and green
-    // Available ranges: Red/Orange/Yellow (0-110°), Cyan/Teal (170-190°), Purple/Magenta (230-360°)
-    // Total available: 110° + 20° + 130° = 260°
-    const availableRange = 260;
-    const hueOffset = Math.abs(hash) % availableRange;
-    
-    let hue;
-    if (hueOffset < 110) {
-      // Red to yellow range (0-110°) - warm colors
-      hue = hueOffset;
-    } else if (hueOffset < 130) {
-      // Cyan/teal range (170-190°) - between green and blue
-      hue = 170 + (hueOffset - 110);
-    } else {
-      // Purple to magenta range (230-360°) - cool colors
-      hue = 230 + (hueOffset - 130);
-    }
-    
-    seriesColours[series] = `hsl(${hue}, 80%, 55%)`;
-  }
-  return seriesColours[series];
-}
+import {
+  DateTime,
+  CONFIG,
+  escapeHtml,
+  loadAnomalyData,
+  getSeriesColor
+} from './shared-utils.js';
 
 /**
  * Creates a custom marker with specified color
@@ -86,66 +46,18 @@ function drawRechargeCircle(map, lat, lng, radiusKm, colour) {
 }
 
 /**
- * Escapes HTML to prevent XSS in popup content
- */
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-/**
- * Normalizes date string to include time component
- */
-function normalizeDateString(dateStr) {
-  const trimmed = dateStr.trim();
-  return trimmed.includes("T") ? trimmed : `${trimmed}T00:00:00`;
-}
-
-/**
- * Loads and filters upcoming anomaly events
- * Returns only events with valid coordinates that are in the future
+ * Loads and filters upcoming anomaly events with coordinates
+ * Returns only events that have valid location data and are in the future
  */
 async function loadEvents() {
   try {
-    const res = await fetch(`./anomaly-countdown.json?v=${CONFIG.CACHE_VERSION}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    
-    const data = await res.json();
-
-    if (!Array.isArray(data)) {
-      console.error('Invalid data format');
-      return [];
-    }
-
-    // Flatten series structure
-    const events = data.flatMap(seriesObj => {
-      if (!Array.isArray(seriesObj.sites)) {
-        console.warn(`Invalid sites for series ${seriesObj.series}`);
-        return [];
-      }
-      return seriesObj.sites.map(site => ({
-        series: seriesObj.series,
-        ...site
-      }));
-    });
+    // Load all anomaly data using shared utility
+    const anomalies = await loadAnomalyData(false);
 
     // Filter to upcoming events with coordinates
     const now = DateTime.utc();
-    const upcomingWithCoords = events
-      .map(evt => {
-        const dateStr = normalizeDateString(evt.date);
-        const local = DateTime.fromISO(dateStr, { zone: evt.timezone || "UTC" });
-        
-        if (!local.isValid) {
-          console.warn(`Invalid date for ${evt.city}:`, evt.date);
-          return null;
-        }
-        
-        return { ...evt, utcDate: local.toUTC() };
-      })
+    const upcomingWithCoords = anomalies
       .filter(evt => 
-        evt !== null &&
         evt.utcDate &&
         evt.utcDate.toMillis() >= now.toMillis() &&
         evt.location &&
@@ -178,8 +90,8 @@ function buildLegend(events) {
 
   const itemsHtml = seriesList
     .map(series => {
-      const color = colourForSeries(series);
-      const escapedSeries = escapeHtml(series);
+      const color = getSeriesColor(series); // Use shared utility
+      const escapedSeries = escapeHtml(series); // Use shared utility
       return `
         <div class="legend-item">
           <span class="legend-swatch" style="background: ${color};"></span>
@@ -236,18 +148,18 @@ async function initMap() {
   const map = L.map("map", {
     zoomControl: true,
     scrollWheelZoom: true
-  }).setView([lat, lng], CONFIG.MAP_ZOOM);
+  }).setView([lat, lng], CONFIG.MAP_ZOOM || 3);
 
   // Dark base layer
   L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
-    maxZoom: CONFIG.MAX_MAP_ZOOM,
+    maxZoom: CONFIG.MAX_MAP_ZOOM || 6,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
   }).addTo(map);
 
   // Add markers and recharge circles for all upcoming events
   events.forEach(evt => {
     const { lat, lng } = evt.location;
-    const color = colourForSeries(evt.series);
+    const color = getSeriesColor(evt.series); // Use shared utility
     const popupHtml = createPopupHtml(evt);
     
     makeMarker(lat, lng, color, popupHtml).addTo(map);

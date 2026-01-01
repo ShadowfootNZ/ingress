@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
         crossorigin="anonymous">
+  
+  <!-- Load luxon library (needed by shared-utils.js) -->
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js" defer></script>
 </head>
 <body class="map-page">
   <header>
@@ -35,7 +38,7 @@
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
           crossorigin="anonymous"></script>
   
-  <!-- Map application -->
+  <!-- Map application (ES module) -->
   <script type="module" src="map.js"></script>
 </body>
 </html>

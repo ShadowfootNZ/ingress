@@ -1,52 +1,20 @@
-const { DateTime } = luxon;
+/**
+ * countdown.js - Refactored to use shared utilities
+ * Displays upcoming Ingress anomalies with countdown timers
+ */
 
-// Configuration constants
-const CONFIG = {
-  SERIES_CUTOFF_MONTHS: 1,
-  EVENT_DURATION_HOURS: 3,
-  POST_EVENT_DISPLAY_HOURS: 6,
-  CACHE_VERSION: '1.0.0' // Use version instead of timestamp
-};
+import {
+  DateTime,
+  CONFIG,
+  escapeHtml,
+  sanitizeUrl,
+  validateSeriesLogos,
+  loadAnomalyData,
+  filterUpcomingAnomalies
+} from './shared-utils.js';
 
 // Active intervals for cleanup
 let activeIntervals = new Set();
-
-/**
- * Escapes HTML special characters to prevent XSS
- */
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-/**
- * Validates and sanitizes a URL
- */
-function sanitizeUrl(url) {
-  if (!url) return '';
-  try {
-    const parsed = new URL(url);
-    return parsed.href;
-  } catch {
-    return '';
-  }
-}
-
-/**
- * Validates series logo filenames
- */
-function validateSeriesLogos(logos) {
-  if (!Array.isArray(logos)) {
-    console.warn("Expected series-logos to be an array, got:", logos);
-    return [];
-  }
-  
-  return logos.filter(logo =>
-    typeof logo === 'string' &&
-    /^[a-zA-Z0-9-_.]+$/.test(logo)
-  );
-}
 
 /**
  * Clears all active countdown intervals
@@ -54,14 +22,6 @@ function validateSeriesLogos(logos) {
 function clearAllIntervals() {
   activeIntervals.forEach(interval => clearInterval(interval));
   activeIntervals.clear();
-}
-
-/**
- * Normalizes date string to ISO format
- */
-function normalizeDateString(dateStr) {
-  const trimmed = dateStr.trim();
-  return trimmed.includes('T') ? trimmed : `${trimmed}T00:00:00`;
 }
 
 /**
@@ -75,102 +35,18 @@ async function loadAnomalies() {
   clearAllIntervals();
   
   try {
-    const res = await fetch(`anomaly-countdown.json?v=${CONFIG.CACHE_VERSION}`);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
+    // Load data using shared utility
+    const anomalies = await loadAnomalyData(true); // true = include test mode
     
-    if (!Array.isArray(data)) {
-      throw new Error('Invalid anomalies data format');
-    }
-
-    const anomalies = processAnomaliesData(data);
-    renderAnomalies(anomalies, container, errorEl);
+    // Filter to upcoming events using shared utility
+    const upcoming = filterUpcomingAnomalies(anomalies);
+    
+    renderAnomalies(upcoming, container, errorEl);
     
   } catch (err) {
     errorEl.textContent = `Failed to load anomalies: ${err.message}`;
     console.error('Error loading anomalies:', err);
   }
-}
-
-/**
- * Processes raw JSON data into flat anomaly list
- */
-function processAnomaliesData(data) {
-  let anomalies = data.flatMap(seriesObj => {
-    if (!Array.isArray(seriesObj.sites)) {
-      throw new Error(`Invalid sites data for series ${seriesObj.series}`);
-    }
-    return seriesObj.sites.map(site => ({
-      series: seriesObj.series,
-      "series-logos": seriesObj["series-logos"] || [],
-      ...site
-    }));
-  });
-
-  // Add test anomaly if ?test=true
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('test') === 'true') {
-    const nowLocal = DateTime.local();
-    anomalies.push({
-      series: "Local Test",
-      "series-logos": [],
-      date: nowLocal.toISO({ suppressMilliseconds: true }),
-      city: "Test City",
-      country: "Test Country",
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
-    });
-    console.log("✅ Added local test anomaly:", nowLocal.toISO());
-  }
-
-  return anomalies;
-}
-
-/**
- * Filters and sorts anomalies, removing old series
- */
-function filterAndSortAnomalies(anomalies) {
-  const now = DateTime.utc();
-  const cutoff = now.minus({ months: CONFIG.SERIES_CUTOFF_MONTHS });
-  
-  // Build map of latest event per series
-  const seriesLatest = {};
-  
-  anomalies.forEach(a => {
-    if (!a.date || !a.timezone) return;
-    
-    const dateStr = normalizeDateString(a.date);
-    const localDate = DateTime.fromISO(dateStr, { zone: a.timezone });
-    
-    if (!localDate.isValid) return;
-    
-    const utcDate = localDate.toUTC();
-    const key = a.series || "(no series)";
-    
-    if (!seriesLatest[key] || utcDate > seriesLatest[key]) {
-      seriesLatest[key] = utcDate;
-    }
-  });
-
-  // Filter and attach UTC dates
-  return anomalies
-    .map(a => {
-      const dateStr = normalizeDateString(a.date);
-      const localDate = DateTime.fromISO(dateStr, { zone: a.timezone });
-      
-      if (!localDate.isValid) {
-        console.warn(`Invalid DateTime for ${a.city}:`, dateStr, a.timezone, localDate.invalidReason);
-        return null;
-      }
-      
-      return { ...a, utcDate: localDate.toUTC() };
-    })
-    .filter(a => a !== null && a.utcDate)
-    .filter(a => {
-      const key = a.series || "(no series)";
-      const lastUtc = seriesLatest[key];
-      return !lastUtc || lastUtc >= cutoff;
-    })
-    .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
 }
 
 /**
@@ -180,16 +56,14 @@ function renderAnomalies(anomalies, container, errorEl) {
   container.innerHTML = "";
   errorEl.textContent = "";
 
-  const upcoming = filterAndSortAnomalies(anomalies);
-
-  if (!upcoming.length) {
+  if (!anomalies.length) {
     errorEl.textContent = "No upcoming or current anomalies found.";
     return;
   }
 
   let previousSeries = null;
   
-  upcoming.forEach((anomaly, index) => {
+  anomalies.forEach((anomaly, index) => {
     try {
       // Insert series break between different series
       if (index > 0 && anomaly.series !== previousSeries) {
@@ -218,7 +92,7 @@ function createAnomalyCard(a) {
   const hasTime = a.date.includes("T");
   const isPast = eventLocal.startOf('day') < DateTime.now().setZone(a.timezone).startOf('day');
 
-  // Sanitize URLs
+  // Sanitize URLs using shared utility
   const resUrl = sanitizeUrl(a["url-res"]);
   const enlUrl = sanitizeUrl(a["url-enl"]);
   const pageUrl = sanitizeUrl(a.url);
@@ -282,6 +156,7 @@ function buildAnomalyHTML(a, { resUrl, enlUrl, pageUrl, eventLocal, userLocal, h
     ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${cityCountry}</a>`
     : cityCountry;
 
+  // Validate badges using shared utility
   const validBadges = validateSeriesLogos(a["series-logos"]);
   const badgesHTML = validBadges.length
     ? `<div class="series-badges">
