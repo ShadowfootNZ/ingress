@@ -273,7 +273,15 @@ button:disabled {
   }
 
   .controls {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .input-group {
+    width: 100%;
+  }
+  .controls button {
+    flex: 1;
+    min-width: 8em;
   }
 
   .stats {
