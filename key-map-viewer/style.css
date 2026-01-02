@@ -134,11 +134,47 @@ button:disabled {
 }
 .status {
   padding: 0.75em 1em;
-  text-align: center;
   background: rgba(255, 255, 255, 0.05);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--highlight);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  pointer-events: auto;
+}
+.status-text {
+  flex: 1;
+}
+
+.status-close {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.1em;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 0;
+  width: 1.75em;
+  height: 1.75em;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 1.25em;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.status-close:hover {
+  opacity: 1;
+}
+
+.status-close:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--highlight) 60%, transparent);
+  outline-offset: 2px;
+  opacity: 1;
 }
 #map {
   flex: 1;

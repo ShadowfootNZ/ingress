@@ -6,15 +6,31 @@ const STORAGE_KEY = 'ingressKeyData';
 function showStatus(message) {
   const el = document.getElementById('status');
   if (!el) return;
-  el.textContent = message;
-  el.style.display = 'block';
+
+  const textEl = el.querySelector('.status-text');
+  if (textEl) {
+    textEl.textContent = message;
+  } else {
+    // Fallback if the markup is still the old single-div version
+    el.textContent = message;
+  }
+
+  el.style.display = 'flex';
 }
 
 function hideStatus() {
   const el = document.getElementById('status');
   if (!el) return;
+
   el.style.display = 'none';
-  el.textContent = '';
+
+  const textEl = el.querySelector('.status-text');
+  if (textEl) {
+    textEl.textContent = '';
+  } else {
+    // Fallback
+    el.textContent = '';
+  }
 }
 
 function saveKeyDataToStorage(text) {
@@ -165,14 +181,11 @@ function updateStats(keys) {
   const inCapsules = keys
     .filter((key) => key.capsule !== 'None')
     .reduce((sum, key) => sum + key.count, 0);
-  const uniqueCapsules = new Set(
-    keys.map((key) => key.capsule).filter((c) => c !== 'None')
-  ).size;
+  const uniquePortals = new Set(keys.map((key) => key.name)).size;
 
-  document.getElementById('totalPortals').textContent = keys.length;
   document.getElementById('totalKeys').textContent = totalKeys;
+  document.getElementById('uniquePortals').textContent = uniquePortals;
   document.getElementById('inCapsules').textContent = inCapsules;
-  document.getElementById('uniqueCapsules').textContent = uniqueCapsules;
   document.getElementById('stats').style.display = 'flex';
 }
 
@@ -266,4 +279,8 @@ function totalKeys(keys) {
   return keys.reduce((sum, key) => sum + key.count, 0);
 }
 
+document.addEventListener('click', (e) => {
+  const btn = e.target?.closest?.('.status-close');
+  if (btn) hideStatus();
+});
 window.addEventListener('load', startup);
