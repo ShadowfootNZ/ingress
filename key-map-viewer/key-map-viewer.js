@@ -221,6 +221,8 @@ function loadKeys(options = {}) {
     const ta = document.getElementById('keyData');
     if (ta) ta.classList.add('compact');
 
+    document.body.classList.add('loaded');
+
     if (!options.skipSave) {
       saveKeyDataToStorage(input);
     }
@@ -247,6 +249,9 @@ function clearMap() {
   document.getElementById('keyData').value = '';
   const ta = document.getElementById('keyData');
   if (ta) ta.classList.remove('compact');
+
+  document.body.classList.remove('loaded');
+
   clearKeyDataFromStorage();
   hideStatus();
   document.getElementById('stats').style.display = 'none';
