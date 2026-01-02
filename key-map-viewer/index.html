@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingress Key Map Viewer</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <h1>Ingress Key Map Viewer</h1>
+    <p>Paste your key data from Intel (requires Core) to visualise on a map</p>
+  </header>
+
+  <div class="controls">
+    <div class="input-group">
+      <label for="keyData">Paste your key data here:</label>
+      <textarea id="keyData" placeholder="Paste your key list from Intel. Copy from &quot;Portal Keys&quot; and include each portal through its capsule ID. 
+Portal Keys Count Capsule
+[Portal Name](https://intel.ingress.com/intel?z=15&amp;pll=-33.799865,151.292471)
+x3
+3353D7A6"></textarea>
+    </div>
+    <button id="loadBtn" onclick="loadKeys()">Load Keys on Map</button>
+    <button id="clearBtn" onclick="clearMap()" disabled>Clear Map</button>
+  </div>
+
+  <div class="stats" id="stats" style="display: none;">
+    <div class="stat-item">
+      <span class="stat-label">Total Portals:</span>
+      <span class="stat-value" id="totalPortals">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Total Keys:</span>
+      <span class="stat-value" id="totalKeys">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">In Capsules:</span>
+      <span class="stat-value" id="inCapsules">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Unique Capsules:</span>
+      <span class="stat-value" id="uniqueCapsules">0</span>
+    </div>
+  </div>
+
+  <div id="error" class="error" style="display: none;"></div>
+  <div id="status" class="status" style="display: none;"></div>
+
+  <footer class="app-footer">
+    <p>By <a href="https://link.ingress.com/agent/ShadowfootNZ" target="_blank" rel="noopener noreferrer" style="color:#28f428;">@ShadowfootNZ</a></p>
+    <p><a href="https://github.com/ShadowfootNZ/ingress" target="_blank" rel="noopener">Report issue</a></p>
+  </footer>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+          crossorigin="anonymous"></script>
+
+  <script src="./key-map-viewer.js"></script>
+</body>
+</html>
