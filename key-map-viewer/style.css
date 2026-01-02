@@ -277,8 +277,15 @@ button:disabled {
   }
 
   .stats {
-    flex-direction: column;
-    gap: 0.5em;
+    flex-direction: row;     /* undo column */
+    flex-wrap: wrap;
+    gap: 0.4em 1em;          /* row gap, column gap */
+    font-size: 0.85em;
+    justify-content: space-between;
+  }
+
+  .stat-item {
+    width: calc(50% - 0.5em); /* two per row */
   }
   /* When keys are loaded on mobile, keep controls compact */
   body.loaded .controls {
