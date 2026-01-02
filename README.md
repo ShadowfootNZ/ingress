@@ -13,6 +13,7 @@ Data collated from community sources including [Ingress Anomaly Stats](https://l
 
 ## Ingress Key Map Viewer  
 [Visualise your portal keys on an interactive map](https://shadowfootnz.github.io/ingress/key-map-viewer/) by pasting the **Portal Keys** section from Intel Inventory (requires Core). Portals are coloured by key count (using resonator-level colours) and automatically grouped on the map for easy inspection.
+This data is entirely local, with nothign being uploaded anywhere; you'll need to share what you copied from Intel if you want to share your map.
 
 ---
 
