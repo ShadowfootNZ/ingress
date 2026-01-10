@@ -3,7 +3,7 @@
 A collection of web apps supporting the global Ingress community, though sometimes with an Enlightened point-of-view.
 
 ## Ingress Anomaly Countdown
-Track upcoming and active Ingress anomalies with real-time countdowns, local times, and event details.  
+Track upcoming and active Ingress anomalies with real-time countdowns, local times, and event details to +Gamma and 2026Q2.
 [View the Countdown](https://shadowfootnz.github.io/ingress/countdown/). Please let me know of public team sites for these, for the team logo to link to.
 
 ## Ingress Anomaly Map  
