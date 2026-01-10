@@ -65,6 +65,11 @@
   },
   {
     "series": "+Gamma",
+    "series-logos": [
+      "Gamma_bronze.png",
+      "Gamma_silver.png",
+      "Gamma_gold.png"
+    ],
     "sites": [
       {
         "date": "2026-02-28T14:00:00",

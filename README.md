@@ -12,7 +12,7 @@ An interactive global map showing the history of Ingress anomaly sites, coloured
 Data collated from community sources including [Ingress Anomaly Stats](https://linktr.ee/ingressanomalystats).  
 
 ## Ingress Key Map Viewer  
-[Visualise your portal keys on an interactive map](https://shadowfootnz.github.io/ingress/key-map-viewer/) by copying the **Portal Keys** section from Intel Inventory (requires Core). You may have to disable IITC for this to appear.
+[Visualise your portal keys on an interactive map](https://shadowfootnz.github.io/ingress/key-map-viewer/) by copying the **Portal Keys** section from Intel Inventory (requires Core). You may have to disable IITC for this to appear. The main use of this will be identifying which keys to clear out. 
 
 ![Intel Inventory](img/Inventory.webp)
 
