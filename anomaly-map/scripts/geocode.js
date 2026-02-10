@@ -244,7 +244,14 @@ function cellNameToLatLng(cellName) {
   const ll = s2CellCenterLatLng(faceId, targetI, targetJ, 6);
   return ll;
 }
-
+function sortedLocations(locationsObj) {
+  const sorted = {};
+  const keys = Object.keys(locationsObj).sort((a, b) => a.localeCompare(b));
+  for (const key of keys) {
+    sorted[key] = locationsObj[key];
+  }
+  return sorted;
+}
 // ============================================================================
 // Geocoding
 // ============================================================================
@@ -412,6 +419,7 @@ async function addMissingLocations() {
   }
 
   if (doUpdate) {
+    anomalies.locations = sortedLocations(anomalies.locations);
     fs.writeFileSync(dataPath, JSON.stringify(anomalies, null, 2));
     console.log(`Wrote: ${dataPath}`);
   } else {
@@ -492,6 +500,7 @@ async function refreshLocations() {
   }
 
   if (doUpdate) {
+    anomalies.locations = sortedLocations(anomalies.locations);
     fs.writeFileSync(dataPath, JSON.stringify(anomalies, null, 2));
     console.log(`\nWrote: ${dataPath}`);
   } else {
