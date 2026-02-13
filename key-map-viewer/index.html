@@ -23,12 +23,31 @@
 
   <div class="controls">
     <div class="input-group">
+      
       <label for="keyData">Paste your key data here:</label>
       <textarea id="keyData" placeholder="Paste your key list from Intel. Copy from &quot;Portal Keys&quot; and include each portal through its capsule ID. 
 Portal Keys Count Capsule
 [Portal Name](https://intel.ingress.com/intel?z=15&amp;pll=-33.799865,151.292471)
 x3
 3353D7A6"></textarea>
+      <div class="filter-group">
+        <!-- <span>Show:</span> -->
+
+        <label>
+          <input type="radio" name="keyFilter" value="all" checked>
+          All
+        </label>
+
+        <label>
+          <input type="radio" name="keyFilter" value="capsules">
+          Capsules only
+        </label>
+
+        <label>
+          <input type="radio" name="keyFilter" value="inventory">
+          Inventory only
+        </label>
+      </div>
     </div>
     <button id="loadBtn" onclick="loadKeys()">Load Keys on Map</button>
     <button id="clearBtn" onclick="clearMap()" disabled>Clear Map</button>

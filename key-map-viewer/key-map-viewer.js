@@ -1,5 +1,6 @@
 let map = null;
 let markers = [];
+let lastParsedKeys = [];
 
 const STORAGE_KEY = 'ingressKeyData';
 
@@ -69,6 +70,160 @@ function startup() {
     showStatus('Restored previous session from local storage. No data is stored on a server.');
   } else {
     initMap();
+  }
+
+  // Intel Inventory often copies as rich text (HTML) where the portal names are links,
+  // but the plain-text paste drops the hrefs. Convert HTML -> markdown links on paste.
+  const ta = document.getElementById('keyData');
+  if (ta) {
+    ta.addEventListener('paste', (e) => {
+      const html = e.clipboardData?.getData?.('text/html');
+      if (!html) return;
+
+      // If the plain text already has markdown links, leave it alone.
+      const plain = e.clipboardData?.getData?.('text/plain') || '';
+      if (/\[[^\]]+\]\(https?:\/\/intel\.ingress\.com\/intel\?/i.test(plain)) return;
+
+      let converted = '';
+
+      try {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+
+        // Preferred: Intel copies as a table with rows [Portal, Count, Capsule]
+        const rows = Array.from(doc.querySelectorAll('tr'));
+        const items = [];
+
+        for (const tr of rows) {
+          const tds = Array.from(tr.querySelectorAll('td'));
+          if (tds.length < 2) continue;
+
+          const a = tds[0].querySelector('a[href*="intel.ingress.com/intel"]');
+          if (!a) continue;
+
+          const name = (a.textContent || '').trim();
+          const url = (a.getAttribute('href') || '').trim();
+          if (!name || !url) continue;
+
+          const countText = (tds[1]?.textContent || '').trim();
+          const capsuleText = (tds[2]?.textContent || '').trim();
+
+          const count = (/x\d+/i.exec(countText)?.[0] || 'x1');
+          const capsule = capsuleText ? capsuleText : 'None';
+
+          items.push({ name, url, count, capsule });
+        }
+
+        if (items.length) {
+          converted += 'Portal Keys\nCount\nCapsule\n\n';
+          for (const it of items) {
+            converted += `[${it.name}](${it.url})\n${it.count}\n${it.capsule}\n\n`;
+          }
+        } else {
+          // Fallback: Intel sometimes provides links only in HTML, while count/capsule are only in plain text.
+          // Build items from the plain-text structure, then attach URLs from the HTML anchors.
+          const plainLines = plain
+            .split('\n')
+            .map((l) => l.trim())
+            .filter(Boolean);
+
+          const plainItems = [];
+          let inSection = false;
+
+          for (let i = 0; i < plainLines.length; i++) {
+            const line = plainLines[i];
+
+            if (line === 'Portal Keys') {
+              inSection = true;
+              continue;
+            }
+            if (!inSection) continue;
+
+            if (line === 'Count' || line === 'Capsule' || line === '* * *' || line === 'Items') {
+              continue;
+            }
+
+            // Portal name line
+            const name = line;
+
+            // Next non-empty line might be xN
+            const countLine = plainLines[i + 1] || '';
+            let count = 'x1';
+            if (/^x\d+$/i.test(countLine)) {
+              count = countLine;
+              i++;
+            }
+
+            // Next non-empty line might be capsule name (or None)
+            const capsuleLine = plainLines[i + 1] || '';
+            let capsule = 'None';
+            if (capsuleLine && !capsuleLine.startsWith('[') && !/^x\d+$/i.test(capsuleLine)) {
+              capsule = capsuleLine;
+              i++;
+            }
+
+            plainItems.push({ name, count, capsule, url: '' });
+          }
+
+          // Pull anchors from HTML in document order
+          const anchors = Array.from(
+            doc.querySelectorAll('a[href*="intel.ingress.com/intel"]')
+          ).map((a) => ({
+            name: (a.textContent || '').trim(),
+            url: (a.getAttribute('href') || '').trim(),
+          })).filter((a) => a.name && a.url);
+
+          // Attach URLs by exact name match first, then by sequence
+          const used = new Set();
+          for (const item of plainItems) {
+            const idx = anchors.findIndex((a, j) => !used.has(j) && a.name === item.name);
+            if (idx >= 0) {
+              item.url = anchors[idx].url;
+              used.add(idx);
+            }
+          }
+
+          let seq = 0;
+          for (const item of plainItems) {
+            if (item.url) continue;
+            while (seq < anchors.length && used.has(seq)) seq++;
+            if (seq < anchors.length) {
+              item.url = anchors[seq].url;
+              used.add(seq);
+              seq++;
+            }
+          }
+
+          if (plainItems.length) {
+            converted += 'Portal Keys\nCount\nCapsule\n\n';
+            for (const it of plainItems) {
+              if (it.url) {
+                converted += `[${it.name}](${it.url})\n${it.count}\n${it.capsule}\n\n`;
+              } else {
+                // If we couldn't find a URL, keep the record anyway (it just won't map)
+                converted += `${it.name}\n${it.count}\n${it.capsule}\n\n`;
+              }
+            }
+          }
+        }
+      } catch {
+        return; // let default paste happen
+      }
+
+      if (!converted) return;
+
+      e.preventDefault();
+
+      // Insert at cursor position in the textarea
+      const start = ta.selectionStart ?? ta.value.length;
+      const end = ta.selectionEnd ?? ta.value.length;
+      const before = ta.value.slice(0, start);
+      const after = ta.value.slice(end);
+
+      ta.value = before + converted + after;
+
+      const newPos = (before + converted).length;
+      ta.selectionStart = ta.selectionEnd = newPos;
+    });
   }
 }
 
@@ -176,13 +331,55 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function getSelectedFilter() {
+  const el = document.querySelector('input[name="keyFilter"]:checked');
+  return el ? el.value : 'all';
+}
+
+function applyFilter(keys, filter) {
+  if (filter === 'capsules') {
+    return keys.filter((k) => k.capsule !== 'None');
+  }
+  if (filter === 'inventory') {
+    return keys.filter((k) => k.capsule === 'None');
+  }
+  return keys; // all
+}
+
+function renderKeys(keys) {
+  markers.forEach((marker) => marker.remove());
+  markers = [];
+
+  initMap();
+
+  keys.forEach((key) => {
+    if (!isNaN(key.lat) && !isNaN(key.lng)) {
+      const marker = createMarker(key);
+      marker.addTo(map);
+      markers.push(marker);
+    }
+  });
+
+  if (markers.length > 0) {
+    const group = L.featureGroup(markers);
+    map.fitBounds(group.getBounds().pad(0.1));
+  }
+}
+
 function updateStats(keys) {
   const totalKeys = keys.reduce((sum, key) => sum + key.count, 0);
   const inCapsules = keys
     .filter((key) => key.capsule !== 'None')
     .reduce((sum, key) => sum + key.count, 0);
   const uniquePortals = new Set(keys.map((key) => key.name)).size;
-
+  const filter = getSelectedFilter();
+  const inCapsulesItem = document
+    .getElementById('inCapsules')
+    ?.closest('.stat-item');
+  
+  if (inCapsulesItem) {
+    inCapsulesItem.style.display = filter === 'all' ? 'flex' : 'none';
+  }
   document.getElementById('totalKeys').textContent = totalKeys;
   document.getElementById('uniquePortals').textContent = uniquePortals;
   document.getElementById('inCapsules').textContent = inCapsules;
@@ -203,6 +400,7 @@ function loadKeys(options = {}) {
 
   try {
     const keys = parseKeyData(input);
+    lastParsedKeys = keys;
 
     if (keys.length === 0) {
       errorEl.textContent =
@@ -211,25 +409,11 @@ function loadKeys(options = {}) {
       return;
     }
 
-    markers.forEach((marker) => marker.remove());
-    markers = [];
+    const filter = getSelectedFilter();
+    const filteredKeys = applyFilter(keys, filter);
 
-    initMap();
-
-    keys.forEach((key) => {
-      if (!isNaN(key.lat) && !isNaN(key.lng)) {
-        const marker = createMarker(key);
-        marker.addTo(map);
-        markers.push(marker);
-      }
-    });
-
-    if (markers.length > 0) {
-      const group = L.featureGroup(markers);
-      map.fitBounds(group.getBounds().pad(0.1));
-    }
-
-    updateStats(keys);
+    renderKeys(filteredKeys);
+    updateStats(filteredKeys);
     document.getElementById('clearBtn').disabled = false;
     const ta = document.getElementById('keyData');
     if (ta) ta.classList.add('compact');
@@ -245,8 +429,11 @@ function loadKeys(options = {}) {
       hideStatus();
     }
 
+    const filter2 = getSelectedFilter();
+    const filteredKeys2 = applyFilter(lastParsedKeys, filter2);
+
     console.log(
-      `Loaded ${keys.length} portals with ${totalKeys(keys)} total keys`
+      `Loaded ${filteredKeys2.length} portals with ${totalKeys(filteredKeys2)} total keys (${filter2})`
     );
   } catch (err) {
     console.error('Error parsing keys:', err);
@@ -260,6 +447,9 @@ function clearMap() {
   markers = [];
 
   document.getElementById('keyData').value = '';
+  lastParsedKeys = [];
+  const allRadio = document.querySelector('input[name="keyFilter"][value="all"]');
+  if (allRadio) allRadio.checked = true;
   const ta = document.getElementById('keyData');
   if (ta) ta.classList.remove('compact');
 
@@ -282,5 +472,18 @@ function totalKeys(keys) {
 document.addEventListener('click', (e) => {
   const btn = e.target?.closest?.('.status-close');
   if (btn) hideStatus();
+});
+
+document.addEventListener('change', (e) => {
+  const radio = e.target;
+  if (radio && radio.matches && radio.matches('input[name="keyFilter"]')) {
+    // If keys have been loaded already, re-render from cached parse.
+    if (lastParsedKeys && lastParsedKeys.length) {
+      const filter = getSelectedFilter();
+      const filteredKeys = applyFilter(lastParsedKeys, filter);
+      renderKeys(filteredKeys);
+      updateStats(filteredKeys);
+    }
+  }
 });
 window.addEventListener('load', startup);
