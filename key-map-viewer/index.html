@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
@@ -33,19 +32,13 @@ x3
       <div class="filter-group">
         <!-- <span>Show:</span> -->
 
-        <label>
-          <input type="radio" name="keyFilter" value="all" checked>
-          All
-        </label>
-
-        <label>
-          <input type="radio" name="keyFilter" value="capsules">
-          Capsules only
-        </label>
-
-        <label>
-          <input type="radio" name="keyFilter" value="inventory">
-          Inventory only
+        <label class="location-filter">
+          <span>Show:</span>
+          <select id="locationFilter" disabled>
+            <option value="all" selected>All</option>
+            <option value="inventory">Inventory only</option>
+            <option value="capsules">All capsules</option>
+          </select>
         </label>
       </div>
     </div>

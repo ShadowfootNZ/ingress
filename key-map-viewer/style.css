@@ -57,7 +57,7 @@ h1 {
 .filter-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 1em 2em;
+  gap: 1em 1em;
   align-items: center;
   margin-top: 0.5em;
   width: 100%;
