@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ingress Banner Map Viewer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="./map.css">
+
+</head>
+<body>
+<header>
+  <label style="margin-left:12px; font-weight:600;">
+    Banner:
+    <select id="bannerSelect" aria-label="Select banner JSON" style="margin-left:6px;"></select>
+  </label>
+  <strong>Mission Set</strong>
+</header>
+<div id="map" role="region" aria-label="Map of portals"></div>
+<footer id="status">Loading…</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="./map.js"></script>
+</body>
+</html>

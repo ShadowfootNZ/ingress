@@ -1,0 +1,202 @@
+:root {
+  --gap: 12px;            /* space between items */
+  --row-gap: 28px;        /* space between rows */
+  --max-page-width: 1700px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  padding: 20px 16px 60px;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  color: #eee;
+  background-color: #111;
+  max-width: var(--max-page-width);
+}
+header { margin-bottom: 20px; }
+h1 {
+  font-size: 1.25rem;
+  margin: 0 0 6px;
+}
+.hint {
+  color: #555; font-size: .9rem;
+}
+.row {
+  margin-top: var(--row-gap);
+}
+.row-title {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ddd;
+  border-left: 4px solid #444;
+  padding-left: 8px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  justify-content: flex-start;
+}
+figure {
+  margin: 0;
+  padding: 8px;
+}
+a {
+  text-decoration: none; color: inherit;
+}
+img {
+  width: 512px;
+  height: 512px;
+  display: block;
+  /* border: 1px solid #ccc; */
+  object-fit: contain;
+}
+
+/* --- Circular hover overlay (dims outside the circle) --- */
+.thumb {
+  position: relative;
+  display: block;
+  width: 512px;
+  height: 512px;
+}
+.thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(17,17,17,0.9); /* matches page background (#111) */
+  pointer-events: none;             /* ignore mouse */
+  opacity: 0;                       /* hidden by default */
+  transition: opacity .15s ease-out;
+  /* Show the overlay only outside a 256px-radius circle centered on the image */
+  mask: radial-gradient(circle 256px at 50% 50%, transparent 255px, black 256px);
+  -webkit-mask: radial-gradient(circle 256px at 50% 50%, transparent 255px, black 256px);
+}
+figure:hover .thumb::after {
+  opacity: 1;
+}
+figcaption {
+  margin-top: 6px;
+  font-size: .85rem;
+  color: #aaa;
+  text-align: center;
+}
+.empty-note {
+  color: #999;
+  font-style: italic;
+  font-size: .9rem;
+  margin: 6px 0 0 12px;
+}
+footer {
+  margin-top: 32px;
+  color: #888;
+  font-size: .85rem;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+:root {
+  --bg: #111;
+  --tile: #1a1a1d;
+  --text: #e6e6e6;
+  --muted: #aaa;
+  --gap: 10px;
+  --badge-bg: rgba(0,0,0,0.6);
+  --badge-fg: #fff;
+  --tile-min: 320px;   /* minimum tile width suitable for quick review */
+  --tile-max: 512px;   /* tile can grow if there’s room */
+  --hover-preview-size: 480px;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+.wrap { padding: 12px; display: flex; flex-direction: column; gap: var(--gap); }
+#status { margin: 0 2px; color: var(--muted); font-size: 14px; }
+
+/* Vertical list of missions; each mission renders as one horizontal row of portals */
+.missions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.mission-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tiles {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: stretch;
+  -webkit-overflow-scrolling: touch;
+}
+.mission-header {
+  font-weight: 600;
+  color: #ddd;
+  font-size: 14px;
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background: linear-gradient(90deg, rgba(17,17,17,1) 70%, rgba(17,17,17,0));
+  padding-right: 8px;
+}
+
+/* Each tile holds one portal image */
+figure.tile {
+  margin: 0;
+  background: var(--tile);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: min(max(var(--tile-min), 30vw), var(--tile-max));
+}
+a.thumb-link { display: block; text-decoration: none; color: inherit; }
+img.thumb {
+  display: block;
+  width: 100%;
+  height: auto;            /* keep original aspect ratio for inspection */
+}
+.badge {
+  position: absolute; top: 6px; left: 6px;
+  background: var(--badge-bg); color: var(--badge-fg);
+  font-size: 12px; padding: 2px 8px; border-radius: 6px;
+  max-width: calc(100% - 12px);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+figcaption {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #cfcfcf;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Optional delayed hover preview (desktop only) */
+.preview {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  width: var(--hover-preview-size);
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.6);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+}
+.preview img { display: block; width: 100%; height: auto; }
+@media (hover: none) and (pointer: coarse) {
+  /* On touch devices, no hover preview */
+  .preview { display: none !important; }
+}

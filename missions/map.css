@@ -1,0 +1,48 @@
+/* =====================================================================
+   Leaflet map viewer styles (map.html only)
+   ===================================================================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: #111; /* dark background */
+  font-family: system-ui;
+}
+
+header,
+footer {
+  background: #111;
+  color: #eee;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header select {
+  background: #222;
+  color: #eee;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+#map {
+  height: calc(100% - 70px);
+  width: 100%;
+  background: #000; /* dark background for map area */
+}
+
+.leaflet-popup-content-wrapper {
+  background: #222;
+  color: #fff;
+}
+
+.leaflet-popup-tip {
+  background: #222;
+}
+
+.leaflet-control-layers {
+  display: none !important;
+}
