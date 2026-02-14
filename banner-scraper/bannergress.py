@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Bannergress Mission Scraper - Working Version
+Bannergress Mission Scraper - Enhanced Version
 Uses the actual Bannergress API to fetch banner and mission data.
+Includes additional metadata: mission type, duration, length, location, etc.
 """
 
 import json
@@ -17,7 +18,7 @@ class BannergressScraper:
     API endpoint: https://api.bannergress.com/bnrs/{banner_id}
     """
     
-    def __init__(self, url_or_id: str):
+    def __init__(self, url_or_id: str, include_extended_metadata: bool = True):
         if url_or_id.startswith('http'):
             self.banner_id = self._extract_banner_id(url_or_id)
             self.url = url_or_id
@@ -26,6 +27,7 @@ class BannergressScraper:
             self.url = f"https://bannergress.com/banner/{url_or_id}"
         
         self.data = None
+        self.include_extended_metadata = include_extended_metadata
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
@@ -65,6 +67,7 @@ class BannergressScraper:
     def convert_api_response(self, api_data: Dict) -> Dict:
         """
         Convert Bannergress API response to the target mission data format.
+        Includes optional extended metadata fields.
         """
         
         output = {
@@ -76,6 +79,24 @@ class BannergressScraper:
             'fileFormatVersion': 2,
             'missions': []
         }
+        
+        # Add extended banner metadata if requested
+        if self.include_extended_metadata:
+            output['_metadata'] = {
+                'bannerId': api_data.get('id', ''),
+                'bannerWidth': api_data.get('width', 0),
+                'totalLengthMeters': api_data.get('lengthMeters', 0),
+                'startLocation': {
+                    'latitude': api_data.get('startLatitude'),
+                    'longitude': api_data.get('startLongitude'),
+                    'placeId': api_data.get('startPlaceId', ''),
+                    'formattedAddress': api_data.get('formattedAddress', '')
+                },
+                'pictureUrl': api_data.get('picture', ''),
+                'bannerType': api_data.get('type', ''),
+                'numberOfSubmittedMissions': api_data.get('numberOfSubmittedMissions', 0),
+                'numberOfDisabledMissions': api_data.get('numberOfDisabledMissions', 0)
+            }
         
         # The API returns missions as a dict with numeric string keys
         missions_dict = api_data.get('missions', {})
@@ -89,13 +110,25 @@ class BannergressScraper:
             mission = {
                 'missionTitle': mission_api.get('title', ''),
                 'missionDescription': mission_api.get('description', output['missionSetDescription']),
+                'missionType': mission_api.get('type', 'sequential'),  # NEW: sequential or any_order
                 'portals': []
             }
+            
+            # Add extended mission metadata if requested
+            if self.include_extended_metadata:
+                mission['_metadata'] = {
+                    'missionId': mission_api.get('id', ''),
+                    'status': mission_api.get('status', ''),
+                    'averageDurationMilliseconds': mission_api.get('averageDurationMilliseconds', 0),
+                    'lengthMeters': mission_api.get('lengthMeters', 0),
+                    'pictureUrl': mission_api.get('picture', ''),
+                    'lastUpdated': mission_api.get('latestUpdateStatus', '')
+                }
             
             # Get steps (which contain the POIs/portals)
             steps = mission_api.get('steps', [])
             
-            for step in steps:
+            for step_index, step in enumerate(steps):
                 poi = step.get('poi', {})
                 objective = step.get('objective', 'hack')
                 
@@ -113,9 +146,9 @@ class BannergressScraper:
                 portal = {
                     'description': '',
                     'guid': poi.get('id', ''),
-                    'imageUrl': poi.get('picture', ''),
+                    'imageUrl': poi.get('picture', ''),  # Handles missing pictures gracefully
                     'isOrnamented': False,
-                    'isStartPoint': False,
+                    'isStartPoint': step_index == 0,  # First portal is the start point
                     'location': {
                         'latitude': float(poi.get('latitude', 0)),
                         'longitude': float(poi.get('longitude', 0))
@@ -140,7 +173,8 @@ class BannergressScraper:
     def scrape(self) -> Optional[Dict]:
         """Main scraping method"""
         print(f"Banner ID: {self.banner_id}")
-        print(f"URL: {self.url}\n")
+        print(f"URL: {self.url}")
+        print(f"Extended metadata: {'enabled' if self.include_extended_metadata else 'disabled'}\n")
         
         api_data = self.fetch_banner_data()
         
@@ -182,12 +216,35 @@ class BannergressScraper:
         print(f"Banner: {self.data['missionSetName']}")
         print(f"Description: {self.data['missionSetDescription']}")
         print(f"Total Missions: {len(self.data['missions'])}")
+        
+        # Print extended metadata if available
+        if '_metadata' in self.data:
+            meta = self.data['_metadata']
+            print(f"Location: {meta['startLocation']['formattedAddress']}")
+            print(f"Total Length: {meta['totalLengthMeters']}m")
+            print(f"Banner Width: {meta['bannerWidth']} missions")
+        
         print("="*70)
         
         for idx, mission in enumerate(self.data['missions'], 1):
             portals = len(mission['portals'])
+            mission_type = mission.get('missionType', 'unknown')
+            
             print(f"\n  Mission {idx}/{len(self.data['missions'])}: {mission['missionTitle']}")
+            print(f"    Type: {mission_type}")
             print(f"    Portals: {portals}")
+            
+            # Print extended mission metadata if available
+            if '_metadata' in mission:
+                meta = mission['_metadata']
+                length = meta['lengthMeters']
+                duration = meta['averageDurationMilliseconds']
+                if duration > 0:
+                    duration_min = duration / 1000 / 60
+                    print(f"    Length: {length}m | Duration: ~{duration_min:.0f} min")
+                else:
+                    print(f"    Length: {length}m")
+            
             if portals > 0:
                 print(f"    First portal: {mission['portals'][0]['title']}")
                 if portals > 1:
@@ -204,17 +261,28 @@ def main():
         print("Bannergress Mission Scraper")
         print("\nFetches mission data from Bannergress API and converts to JSON format")
         print("\nUsage:")
-        print("  python bannergress_scraper_final.py <url_or_id> [output_file]")
+        print("  python bannergress.py <url_or_id> [output_file] [--no-metadata]")
         print("\nExamples:")
-        print("  python bannergress_scraper_final.py https://bannergress.com/banner/ingressfs-wellington-01-2026-7347")
-        print("  python bannergress_scraper_final.py ingressfs-wellington-01-2026-7347")
-        print("  python bannergress_scraper_final.py ingressfs-wellington-01-2026-7347 output.json")
+        print("  python bannergress.py https://bannergress.com/banner/ingressfs-wellington-01-2026-7347")
+        print("  python bannergress.py ingressfs-wellington-01-2026-7347")
+        print("  python bannergress.py ingressfs-wellington-01-2026-7347 output.json")
+        print("  python bannergress.py ingressfs-wellington-01-2026-7347 --no-metadata")
+        print("\nOptions:")
+        print("  --no-metadata    Exclude extended metadata (type, duration, length, etc.)")
         sys.exit(1)
     
     url_or_id = sys.argv[1]
-    output_file = sys.argv[2] if len(sys.argv) > 2 else None
+    output_file = None
+    include_metadata = True
     
-    scraper = BannergressScraper(url_or_id)
+    # Parse arguments
+    for arg in sys.argv[2:]:
+        if arg == '--no-metadata':
+            include_metadata = False
+        elif not arg.startswith('--'):
+            output_file = arg
+    
+    scraper = BannergressScraper(url_or_id, include_extended_metadata=include_metadata)
     
     try:
         data = scraper.scrape()
