@@ -78,6 +78,7 @@
         "timezone": "America/New_York",
         "url-res": "https://res.blue/group/charlotte-anomaly-2026-charlotte-nc",
         "url-enl": "https://enl.rocks/-scrA",
+        "winner": "enlightened",
         "location": { "lat": 35.2271, "lng": -80.8431 }
       },
       {
@@ -87,6 +88,7 @@
         "timezone": "Europe/Lisbon",
         "url-res": "https://register.lisboa.willbe.blue",
         "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026",
+        "winner": "resistance",
         "location": { "lat": 38.7223, "lng": -9.1393 }
       },
       {
