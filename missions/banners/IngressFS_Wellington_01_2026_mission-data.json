@@ -1,0 +1,835 @@
+{
+  "missionSetName": "#IngressFS Wellington, 01 2026",
+  "missionSetDescription": "Artwork and poetry abounds in the capital. ",
+  "currentMission": 0,
+  "plannedBannerLength": 6,
+  "titleFormat": "T NN-M",
+  "fileFormatVersion": 2,
+  "missions": [
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 1/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "719aa26d33ce4ebb95feeee5384de0d9.16",
+          "imageUrl": "https://lh3.googleusercontent.com/Jaa-Qk2BQxOiS-DHw_DKhgkUu2KV3izxkjrXgr-R0XDIJpimURIifCQH497lDHBzMNpghcagcvuiPq5ndqjIHRu2lU4HshiMRcivCUCUFmZxYw",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.291391,
+            "longitude": 174.782944
+          },
+          "title": "Eye See Wellington.",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "f62fd7005f554065b503218c46fb54f0.16",
+          "imageUrl": "https://lh3.googleusercontent.com/xZqeM-_XaR2JbM-Se9RkHkJ47DXy9lOuOOkAh6UbiY1TsROlPZXWmvSDa_MwDK9CpnsAPE8iVb2B_PQ9JNK4IUF2piUzrZAgGVIgdK7EtKBZ",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.291909,
+            "longitude": 174.784385
+          },
+          "title": "Waitangi Park Graffiti Wall",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "2b627ec3b03231cb86e956a28cde9cb3.16",
+          "imageUrl": "https://lh3.googleusercontent.com/sso80nU8YRavVdyvnZXnsiiXiKvLmaHjtBv8ckLyeZFI5H23XgeO69I14s9bEB0q6KCYymkNnta9NSdnq8GicGqGcTeTAA_ALrbRDSg3Im8",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.292248,
+            "longitude": 174.786082
+          },
+          "title": "Oriental Bay Scenes",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "1692f90bb3b5394ca60b5f321eb90e48.16",
+          "imageUrl": "https://lh3.googleusercontent.com/O_qBZvj5pBANzg9QwO-212JHSuvDeuJZTQfo6YlHHqB3pnyydRczJC5orX1NycVlcNZb2L_RDMxduhoWtRs9cmcRI5igcZszGai4VrYVBHMI",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290644,
+            "longitude": 174.785242
+          },
+          "title": "Croc Shakes & Bikes Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "0a061dc06b7e400a9d16a63edce20569.16",
+          "imageUrl": "https://lh3.googleusercontent.com/l-LKI4t9KOh-kpNLBiezpdk8YbHTvi6-rjwh_XZY7TJ_CbpKQfJgyPn6mVr73Xoct_xIdeR6G4HZkYcTKyI953Dzgmnsjn9xkE3BJxdJsY7k",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290541,
+            "longitude": 174.783856
+          },
+          "title": "James McNeish",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "2dce9b106965475899d2dc55e0038806.16",
+          "imageUrl": "https://lh3.googleusercontent.com/bc6R19AY9grQRHlK2RMpJGvGqktIw34JMCbltMkw6bbhQZplzjOEOgDq4SUIotUIZeij4fG8eea7-RI7rXf0_L7N8SUwDarSo3tDuS1v7YU",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289548,
+            "longitude": 174.783392
+          },
+          "title": "Light Dances",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "ecf9a329553c46228021301e85e70bd5.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 1633844,
+        "lengthMeters": 706,
+        "pictureUrl": "https://lh3.googleusercontent.com/ih9YI0uCNAKKBJuIVI4mrB4Jj3vLH5WfuMOgo2RyX3kyVsSKSQvAXzX0d-6uuSUcQq78ElXrZnrI8Yr5V2NS13_yX0G6UGGJ9A",
+        "lastUpdated": "2026-01-25T01:04:33.617730Z"
+      }
+    },
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 2/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "7e19983b737447b9bac3b1d68ecfa374.16",
+          "imageUrl": "https://lh3.googleusercontent.com/wn2k5UmuOLPdAS-5dHRcmiimLDJiSpmRXfDR66iBCIBbtV0cYMYqdKH22HJOj9q9liFpJu44yO161h-Uv0c9VPKa1M7jIxGSalOfoOtHQSfKtQ",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.289379,
+            "longitude": 174.783075
+          },
+          "title": "Their Heads Bent",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "e293df1857de4ca1b8716cbdc27c06b8.12",
+          "imageUrl": "https://lh3.googleusercontent.com/NpvBRF_lEbJoKgEfcIt1KyXg6wI_eBP26ZVgcBnU2Nncu3h6BA0X9U76akJlgfGVk7D1wv8JEYaLr6bbUWf5eXCw3rvfAjhbI7EzPcbYXYU",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289393,
+            "longitude": 174.782815
+          },
+          "title": "Solace in the Wind",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "c74f7900bce24fa5965017f2bef40d7c.16",
+          "imageUrl": "https://lh3.googleusercontent.com/GKHjdgRi4UL33rKpXY2s6TZmjxXc7vfnuSEk2PaXBStaNCRtRmjV7akO40YAsN3AezKyx0aJ6OG1VGoqReaMr0HubnpDMB5DLTGb4S7PAe0",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289562,
+            "longitude": 174.782325
+          },
+          "title": "I Saw The Maori Jesus",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "8d6211f5363544caa87781545a1735e8.16",
+          "imageUrl": "https://lh3.googleusercontent.com/3QTKruO9CupLX1xVVogl1ip6bvWR-NeRGbaxIjaM8ZNp3tb9TeqbXGkRyE1tVzZftjiejrkwEBG9nAw4MOpG1qGZPXA4XBVFg-e4IpMHzoR_",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289688,
+            "longitude": 174.781413
+          },
+          "title": "Yet I Think, Having Used My Words",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "5a31ee39db764b60977132e6958a4906.16",
+          "imageUrl": "https://lh3.googleusercontent.com/9-svCKyb6iXrUyBYuA73iZ_lvxm1UeJ2HNGudK0Y-kEEowsCcRT5yk915jVXbG7SnbmkgPIA4sDaoOhZV7tqU556QsTBR9D42fOE2jL4q0gx",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289929,
+            "longitude": 174.780804
+          },
+          "title": "Blue Rain",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "c00da38037e3492cb989f432b3f41725.16",
+          "imageUrl": "https://lh3.googleusercontent.com/iuPWv9z2VIe1xcw0loJb-e5nDtBlJqjz_OjkgM-oJmxGlIo_jcKYI_zpN9HIb7zOdipKgSuRKIugFFnDsuCmRS8WLBWH5FL8QtFuDOt8DYM",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289662,
+            "longitude": 174.780585
+          },
+          "title": "I Live at the Edge of the Universe",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "29f7d75645374843b51a7cdd21867429.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 0,
+        "lengthMeters": 237,
+        "pictureUrl": "https://lh3.googleusercontent.com/OPouQo5tJuKiRQWcnwUld99ivhY3gw4HSWZBiHPDj0OoYaE112RBqu575rmDjma09BhcN0bTWMyvasr8lrUP_ml3aKquFVBYUw",
+        "lastUpdated": "2025-12-25T19:35:34.310619Z"
+      }
+    },
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 3/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "e9039753468b4c529d9fb14e81c50771.12",
+          "imageUrl": "https://lh3.googleusercontent.com/9FcSKIXpjJ5zU4S8z-yP6DDEuiTKcmAzrTE5hfrBgjJB18oG3TDLFxe1dpndSuFfhloJiG6Qq4gtlJuCYXuoQg0b5pY_p2uEpwwDYVNo_eGtag",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.288844,
+            "longitude": 174.780053
+          },
+          "title": "Kupe Statue",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "0cf1d8afb440498399920d81774a48ad.16",
+          "imageUrl": "https://lh3.googleusercontent.com/2Xmy2AG3VcB8PO8x0aM2FCnbx6WwmBRnmnQYC72ZZLO1ZL1cWhtrKPYvBXVAzI0zj9IShAJhKyeyJTCg9oQuzNeJsj3i9Cs1-rtBT8uc50E",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.288453,
+            "longitude": 174.779892
+          },
+          "title": "I Love This City",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "4ba4298b57d342a9bee58345003c4bc4.12",
+          "imageUrl": "https://lh3.googleusercontent.com/o2rmmLDtE6nuP8QVcTBJ23Qq_z18H8JoUtJTE9I3JTGZwL90UCyTID6E7yoHf-wNSridIciKUJUJRuBnJ-o8wFNE6BfwjOxIafONsfGGvpFA",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.288255,
+            "longitude": 174.780035
+          },
+          "title": "Reflection",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "b697d7d91b6e4c57ad4e957298add440.12",
+          "imageUrl": "https://lh3.googleusercontent.com/NxR13OWMspYuH2buli-WDVsD3jqj8hHwtrObA8TeP8GoBPUwrUjReVrpYzFSGh1TCLIpgqs5-hX1URfEqN7gThdqWvUwtWlI6RUZ-vPNk60TcA",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.288008,
+            "longitude": 174.778934
+          },
+          "title": "The Albatross",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "523e6f0daeda4a2bb1a22479fbc5c65c.12",
+          "imageUrl": "https://lh3.googleusercontent.com/3B4fbKie4UT7Gzp2W6HkOkVl2I2vX1AH1m_HYTzYKH2Mfnw3Nwd-8KsTmchtIRk2IL8q63PF56Xj4WhfYuXg6O4Xdvic0Fh2xeiF0PC-Asih",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.288736,
+            "longitude": 174.778743
+          },
+          "title": "Driving South with Lucy",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "d163e2d11d7d4e4e890b5a698c308a76.16",
+          "imageUrl": "https://lh3.googleusercontent.com/ib7Q_az-wND7wfIesBfVr_tr36iUsTMAbMN8BShzvPnmB7bG9gf77eU1BOpdeBW-9GlVK6UGTClCwCM7KwJS0GMIKvVrcUTtVMbY4RafIXs",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289093,
+            "longitude": 174.778835
+          },
+          "title": "Nom Fish Sculpture",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "1160e12019ab41bb9c558309411ded03.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 0,
+        "lengthMeters": 290,
+        "pictureUrl": "https://lh3.googleusercontent.com/M9BRnIBRL0_ApXi4J7JcTpftt85BSoXBD8Wcpho-HNwbcMJvN7_7SozdQ4kfg4MeTwYF6elTwuKZUmyqeiRu3SHFstgvRrL9QQ",
+        "lastUpdated": "2025-12-25T19:35:53.050094Z"
+      }
+    },
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 4/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "23862f9528a44895a6f518ad728e1ff4.16",
+          "imageUrl": "https://lh3.googleusercontent.com/50vATnsEmpvTVBFyhrwMDQrzrEDYgj2EJbUgzsksslMezTNUb3Ot8I_B-b-A6DT3iXUm3jpRr9u0b2nHejgeIp499xfLeKmqqodnyw6fWxns",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.289052,
+            "longitude": 174.77913
+          },
+          "title": "And Now As I Grow In Years",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "7d45524bd6ea485eb390837b0931a114.16",
+          "imageUrl": "https://lh3.googleusercontent.com/oYJuT_rtU5fuHPApj5iUslo5A9F87_8VfEHfawN_GRJgI2TgNwWpDuEHiUcYbUWiS371CmPlQfSyP_BapO5UU0s4qwanVyglVofGjjmBGuhR",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289955,
+            "longitude": 174.777442
+          },
+          "title": "Baby on a Seahorse Graffiti",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "4d55158586b94564be01cedd64bb9878.16",
+          "imageUrl": "https://lh3.googleusercontent.com/cB_TiGKV7EOG_2qQctQvLDMn6gJJFxHGs2LSoZNCXuydfrDHWGVJHWxA5vDnRguiyWqNkbq_7G0w1p16QH_qd8SX6eLKcM12Arwn64cVhZA0",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290099,
+            "longitude": 174.777196
+          },
+          "title": "Felix",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "fa8ea322594746ec9ee6accec420aa12.16",
+          "imageUrl": "https://lh3.googleusercontent.com/HlSXVnsPDuPvlL4n9lOEm5i0RkuYSQrRptogOCniyIbsMwwNbtl_sik0cvyY3AxSpmkUYVD44Uv5I5RQ3Pm-yLRz6XzpSmA5Ph6MikfQfNQ",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290075,
+            "longitude": 174.77668
+          },
+          "title": "Where the Wild Things Park",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "67e3361bec8740e78dfaf3097162e267.16",
+          "imageUrl": "https://lh3.googleusercontent.com/5zsbqL03-VIXKpLDW6GganBgetRmXHB1GPXKmJuQZoILMezBrqRQEqwT7C9IW7cmccCzOxTz79rwbdW_bpkyPeelljxMaw_KakGaeDYl-jrS",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.289978,
+            "longitude": 174.776064
+          },
+          "title": "Lombard Lane Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "77568d9b89334ca2b469d592f9f8910d.16",
+          "imageUrl": "https://lh3.googleusercontent.com/AcEEVGM0zZiYokpkD1MbtkAZM_1uXkdNBo0d5wBdyFKwiBjt1Mm5M85U9z14s44I-qKxsmsEshmOS3MveZwAuowiS6AiEyQ3_MZw41q6gIsS",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.28965,
+            "longitude": 174.77601
+          },
+          "title": "Playing For You Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "916c3c6c794d458db4ea87ec6ac4141f.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 0,
+        "lengthMeters": 332,
+        "pictureUrl": "https://lh3.googleusercontent.com/328uN8n3GL1kyUmlmBAH_JHNjB95Gqezr0g4euanpwJhblCBKXaTZw9bcnHz6HeRplhktp8Z8iU7AkYP1UJFvQDg9P1qU0fVkw",
+        "lastUpdated": "2025-12-25T19:35:54.768156Z"
+      }
+    },
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 5/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "db5b0841c6863bb1b908de6e7e834da5.16",
+          "imageUrl": "https://lh3.googleusercontent.com/-lVo4phevoUpZYR59F1tvnTxmTypYPrKVamdJaPl1i8xXVG0B9OiPB676FimuU7hRoqfwzOBgKNudwzsWk4T_oejIDPSyx1s2ouA2s9AyZLRpg",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.29051,
+            "longitude": 174.775366
+          },
+          "title": "Lazy Dog",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "03e771e09eaa454f9cbc3601a5126b46.16",
+          "imageUrl": "https://lh3.googleusercontent.com/K8vrPYCoc3_IVvr2PRVYbTFXpYbyV4-DowmLNhK_Kw4gPHoH8qfO2eM97D4pNCd3iDlJivxw30zzwzd3J0VeVXl3hE_YP_g-ioMiUmgyHtU",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290479,
+            "longitude": 174.774908
+          },
+          "title": "Bird In A Window",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "b50d6399ef5e41729164537ab9d6c09c.16",
+          "imageUrl": "https://lh3.googleusercontent.com/zVWvA7g6PFGAeHezpRwGjt1w1rl5ZPBuY08JzBwPqy46IxZUNA5Bsuj8mC4A1MjPvgKF3xUYbWymr8z5rWhLab8YpZCx_otLUW6RGzfPT6RLkQ",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.290763,
+            "longitude": 174.774919
+          },
+          "title": "Island Gnome",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "98b0694d0b4a3abb96cc5e4b4fbf47bb.16",
+          "imageUrl": "https://lh3.googleusercontent.com/vR5FjfnlRuqI1QyubJQhZ3ztW4mY-qywA8Nrd9y1azG1zpDAcY0tbNzNO8saNsMpc9uEjGzHbhQYcFV9qWq4dXwlT1Z0-J58G19GwBBB9LW5",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.291411,
+            "longitude": 174.775938
+          },
+          "title": "Rainbow Breathing Qilin Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "e4ac4a16c7d14ef2a1e3fb90ed68d4c5.16",
+          "imageUrl": "",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.292358,
+            "longitude": 174.775356
+          },
+          "title": "Flower And Vines Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "f77265fd789c4a6b9abca5e24f0a5bc3.16",
+          "imageUrl": "https://lh3.googleusercontent.com/dbNM8UWkcbURWrBsKlMfC_SU2U9_qGuMU0b5ZWeYAAf5Ph7QQ30jHUchJWOz0_Gy-ogL2Y1JPfov2zt-03h1KbFPjuZYw_yfEmI5p1Otyi2M",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.292401,
+            "longitude": 174.775385
+          },
+          "title": "Wellington Hills Mural",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "bc6d580acfd540e78a6453c9bf8ed433.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 0,
+        "lengthMeters": 303,
+        "pictureUrl": "https://lh3.googleusercontent.com/qnMLYUXCQYaFgcQaNExE2VFoXkZthweCf-jCO5b0S-cN0-kwXz-19WRcgl1ahl_vptC_NaySY4uSx4Efl5ElCaSII8KQrk5b",
+        "lastUpdated": "2025-12-25T19:36:57.517270Z"
+      }
+    },
+    {
+      "missionTitle": "#IngressFS Wellington, 01 2026 6/6",
+      "missionDescription": "Artwork and poetry abounds in the capital. ",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "description": "",
+          "guid": "75fca800b4553a8795e5aa934a2ae439.16",
+          "imageUrl": "https://lh3.googleusercontent.com/cwmSN07b18bxq0uKz4CiL5wI9lGQ-39StXiDPdkmg7USqYir69g2oh-WJwDfJuAukeKFr1kVv9bWkqk2UzKyC70XLvHLLkRmsYXqPqmHgOv_",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -41.292552,
+            "longitude": 174.775558
+          },
+          "title": "Skateboard Dog",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "9ec3a961973d49e18b658ed2659f64e3.16",
+          "imageUrl": "https://lh3.googleusercontent.com/6e5vVGUy9CgX6Epr4_5sT9JqLGsw98KJg2PrzAIgI0xmLgpXH74O7Jh2-zFfi4dPfCd-vFauRhLqdi-NN1eSIddyZMDv_XYGbeKREeFLuGWa",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.293186,
+            "longitude": 174.77625
+          },
+          "title": "Orange Beauty",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "d6798b72992a42f481d6ae15fb034cc7.16",
+          "imageUrl": "https://lh3.googleusercontent.com/T4W-WwIZhDSiFt3v_VDm0CDsLiy2dX2P8MR9b81hgLrGbwhvTaMz9xV9NOBLBxIErEA4P09oQyH_rYTg-zlCHwpv61o0rEE6FexVPk2jhEv3_w",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.293161,
+            "longitude": 174.77658
+          },
+          "title": "Legs",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "34090067787e4e429f6584a75152b3dd.16",
+          "imageUrl": "https://lh3.googleusercontent.com/XSOTrPotn26eWj8XHLBxv4IL2518MCi_ICcxuWbhDuVtMJIaobTHOIdMehNPIilEyC6YAPLiS9q8BYmEJyvOuVfKNYPFEtKPkDPL3uD605mV",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.293165,
+            "longitude": 174.776705
+          },
+          "title": "Colouring In Competition",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "fe5770e7f832477c93c605673d2c8ff5.16",
+          "imageUrl": "https://lh3.googleusercontent.com/m-ikEjCFjd3CW2m5tfYDl6JV7OJYl3kjVGkdTCqJIr1820ajXkT9XfkPjrRDuXiTJ-mWpP1EJ-OLy88HhceCnj5o4cpviFK_fMq-c7bgdqZLOQ",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.292989,
+            "longitude": 174.776803
+          },
+          "title": "Crazy Cat Lady",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "guid": "7d95f3244e7a462b9c4dc5b66af086ff.16",
+          "imageUrl": "https://lh3.googleusercontent.com/YDaCkEHUx-R1hckTSfL-2yBFLg3Z2YBla4n8q7_f9ven_KZiu8vsowWLGBUCyKCyJaXg3HA9NjQ_flDFmaVkJFrmqNPPH-jdqj1nzKRga1tz",
+          "isOrnamented": false,
+          "isStartPoint": false,
+          "location": {
+            "latitude": -41.292331,
+            "longitude": 174.777226
+          },
+          "title": "Tiny Face Graffiti",
+          "type": "PORTAL",
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ],
+      "_metadata": {
+        "missionId": "06eaf5fd1f8742e4954cbb95af621533.1c",
+        "status": "published",
+        "averageDurationMilliseconds": 0,
+        "lengthMeters": 232,
+        "pictureUrl": "https://lh3.googleusercontent.com/o2rDyA1DnnH-UPps0A69TKAGbGVfswJVApHlJ04MkUky_b8cApOiuEs96lhz1SDiPprjhWmymq93ffz6jzRuyDFCnwzpx8vS",
+        "lastUpdated": "2025-12-25T19:36:59.580538Z"
+      }
+    }
+  ],
+  "_metadata": {
+    "bannerId": "ingressfs-wellington-01-2026-7347",
+    "bannerWidth": 6,
+    "totalLengthMeters": 2390,
+    "startLocation": {
+      "latitude": -41.291391,
+      "longitude": 174.782944,
+      "placeId": "wellington-1b42",
+      "formattedAddress": "Wellington, New Zealand"
+    },
+    "pictureUrl": "/bnrs/pictures/7b3a8ad41d01bba4e2e60f779f765416",
+    "bannerType": "sequential",
+    "numberOfSubmittedMissions": 0,
+    "numberOfDisabledMissions": 0
+  }
+}
