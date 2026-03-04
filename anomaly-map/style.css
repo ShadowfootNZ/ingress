@@ -98,7 +98,10 @@ h4 {
   max-height: 400px;
   overflow-y: auto;
   color: #eee;
-  padding-right: 6px; /* avoid scrollbar overlaying text */
+  padding-right: 16px; /* avoid scrollbar overlaying text */
+  margin-bottom: 0;
+  /* padding-bottom: 0; */
+  margin-right: 6px;
 }
 .leaflet-popup-tip {
   background: #111;
@@ -111,6 +114,28 @@ h4 {
 
 .leaflet-popup-content strong {
   font-weight: bold;
+}
+
+/* Popup score proportion bar */
+.score-bar {
+  margin-top: 6px;
+  height: 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.12);
+  display: flex;
+}
+
+.score-bar-seg {
+  height: 100%;
+}
+
+.score-bar-seg.enl {
+  background: var(--enl-green);
+}
+
+.score-bar-seg.res {
+  background: var(--res-blue);
 }
 
 .enl-text {
@@ -185,6 +210,12 @@ h4 {
 .upcoming-text {
   color: var(--upcoming);
   font-weight: 600;
+}
+.evt-info {
+  /* margin-top: 6px; */
+  font-size: 0.9em;
+
+  margin-bottom: 8px;
 }
 
 button {

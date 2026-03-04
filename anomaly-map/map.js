@@ -340,6 +340,35 @@ async function loadBuildMeta() {
     return `rgb(${nr},${ng},${nb})`;
   }
 
+  function scoreProportionBar(enlScore, resScore) {
+    const enl = Number(enlScore);
+    const res = Number(resScore);
+
+    if (Number.isNaN(enl) || Number.isNaN(res)) return '';
+
+    const total = enl + res;
+
+    // Rare case: 0/0 -> show no bar at all
+    if (total <= 0) return '<br>';
+
+    const enlPct = (enl / total) * 100;
+    const resPct = 100 - enlPct;
+
+    // Clamp for safety
+    const enlW = Math.max(0, Math.min(100, enlPct));
+    const resW = Math.max(0, Math.min(100, resPct));
+
+    const enlTitle = `ENL: ${enl.toLocaleString()} (${enlW.toFixed(1)}%)`;
+    const resTitle = `RES: ${res.toLocaleString()} (${resW.toFixed(1)}%)`;
+
+    return `
+      <div class="score-bar">
+        ${enlW > 0 ? `<div class="score-bar-seg enl" title="${enlTitle}" style="width:${enlW}%;"></div>` : ''}
+        ${resW > 0 ? `<div class="score-bar-seg res" title="${resTitle}" style="width:${resW}%;"></div>` : ''}
+      </div>
+    `;
+  }
+
   const seriesSet = new Set();
   const seriesTypeMap = {};
   const countrySet = new Set();
@@ -523,7 +552,7 @@ async function loadBuildMeta() {
             ${events
               .map(
                 (evt) => `
-              <div>
+                 <div>
                 ${(() => {
                   // Colour the series label by the winner, using existing .enl-text / .res-text.
                   // For upcoming, ties, or missing scores, fall back to default styling.
@@ -557,6 +586,11 @@ async function loadBuildMeta() {
 
                   return `<span class="evt-city">${city}</span><br>`;
                 })()}
+                ${
+                  evt.info && evt.info.trim()
+                    ? `<div class="evt-info">${evt.info.trim()}</div>`
+                    : ''
+                }
                 ${(() => {
                   if (isUpcoming(evt.date)) {
                     const today = new Date();
@@ -564,7 +598,7 @@ async function loadBuildMeta() {
                     const diffMs = eventDate - today;
                     const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
                     const countdownUrl = '../countdown/';
-                    return `<span class="upcoming-text"><a href="${countdownUrl}">In ${diffDays} days</a></span>`;
+                    return `<span class="upcoming-text"><a href="${countdownUrl}">In ${diffDays} days</a></span><br>`;
                   }
 
                   // Historical event — show ENL/RES scores
@@ -597,14 +631,9 @@ async function loadBuildMeta() {
                       ? `<span class="res-text"><strong>RES: ${resScore.toLocaleString()}</strong></span>`
                       : `<span>RES: ${resScore.toLocaleString()}</span>`;
 
-                  return `${enlMarkup} — ${resMarkup}`;
+                  const bar = scoreProportionBar(enlScore, resScore);
+                  return `${enlMarkup} — ${resMarkup}${bar}`;
                 })()}<br>
-                ${
-                  evt.info && evt.info.trim()
-                    ? `<div class="evt-info">${evt.info.trim()}</div>`
-                    : ''
-                }
-                <br>
               </div>
             `
               )
