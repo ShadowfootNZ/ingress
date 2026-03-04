@@ -135,6 +135,7 @@
         "city": "Sydney, NSW",
         "country": "Australia",
         "timezone": "Australia/Sydney",
+        "url-enl": "https://enlightened.rocks/anomaly/Sydney26",
         "location": { "lat": -33.8688, "lng": 151.2093 }
       },
       {
@@ -142,6 +143,8 @@
         "city": "Prague",
         "country": "Czechia",
         "timezone": "Europe/Prague",
+        "url-enl": "https://enlightened.rocks/Prague26",
+        "url-res": "https://res.blue/group/prague-megahype",
         "location": { "lat": 50.0755, "lng": 14.4378 }
       },
       {
@@ -149,6 +152,7 @@
         "city": "Kure City",
         "country": "Japan",
         "timezone": "Asia/Tokyo",
+        "url-enl": "https://enlightened.rocks/Kure26",
         "location": { "lat": 34.2480, "lng": 132.5653 }
       },
       {
@@ -156,6 +160,8 @@
         "city": "Jersey City, NJ",
         "country": "USA",
         "timezone": "America/New_York",
+        "url-enl": "enl.rocks/jersey",
+        "url-res": "https://res.blue/group/jersey-city-anomaly-2026",
         "location": { "lat": 40.7178, "lng": -74.0431 }
       },
       {
@@ -163,6 +169,7 @@
         "city": "Geneva",
         "country": "Switzerland",
         "timezone": "Europe/Zurich",
+        "url-enl": "https://enl.rocks/-jAJO",
         "location": { "lat": 46.2044, "lng": 6.1432 }
       },
       {
