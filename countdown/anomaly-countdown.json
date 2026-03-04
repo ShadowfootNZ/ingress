@@ -162,7 +162,7 @@
         "city": "Jersey City, NJ",
         "country": "USA",
         "timezone": "America/New_York",
-        "url-enl": "enl.rocks/jersey",
+        "url-enl": "http://enl.rocks/jersey",
         "url-res": "https://res.blue/group/jersey-city-anomaly-2026",
         "location": { "lat": 40.7178, "lng": -74.0431 }
       },
@@ -172,6 +172,7 @@
         "country": "Switzerland",
         "timezone": "Europe/Zurich",
         "url-enl": "https://enl.rocks/-jAJO",
+        "url-res": "https://res.blue/group/geneva-birthplace-of-ingress",
         "location": { "lat": 46.2044, "lng": 6.1432 }
       },
       {
