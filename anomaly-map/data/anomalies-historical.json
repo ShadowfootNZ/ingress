@@ -93,10 +93,6 @@
       "lat": -42.8825088,
       "lng": 147.3281233
     },
-    "Australia, Tasmania, Sandy Bay": {
-      "lat": -42.897129,
-      "lng": 147.3273528
-    },
     "Australia, Tasmania, ST01-PAPA-11": {
       "lat": -41.068257495867485,
       "lng": 148.57216783687528
@@ -1077,10 +1073,7 @@
       "lat": 37.9755648,
       "lng": 23.7348324
     },
-    "Greece, Central Macedonia, Thessaloniki Municipal Unit": {
-      "lat": 40.6193902,
-      "lng": 22.9598557
-    },
+
     "Greece, Central Macedonia, Thessaloniki": {
       "lat": 40.6403167,
       "lng": 22.9352716
@@ -1256,10 +1249,6 @@
     "Indonesia, Jawa Timur, Surabaya": {
       "lat": -7.2462836,
       "lng": 112.7377674
-    },
-    "Indonesia, Special Region of Yogyakarta, ": {
-      "lat": -7.9778384,
-      "lng": 110.3672257
     },
     "Indonesia, Special Region of Yogyakarta, Yogyakarta": {
       "lat": -7.8012646,
@@ -11558,7 +11547,7 @@
             }
           },
           {
-            "city": "Thessaloniki Municipal Unit",
+            "city": "Thessaloniki",
             "region": "Central Macedonia",
             "country": "Greece",
             "score": {
@@ -12122,6 +12111,7 @@
             }
           },
           {
+            "city": "Yogyakarta",
             "region": "Special Region of Yogyakarta",
             "country": "Indonesia",
             "score": {
@@ -13235,9 +13225,10 @@
             }
           },
           {
-            "city": "Sandy Bay",
+            "city": "Hobart",
             "region": "Tasmania",
             "country": "Australia",
+            "info": "Sandy Bay",
             "score": {
               "enl": 135,
               "res": 755
