@@ -22498,8 +22498,8 @@
             "region": "North Carolina",
             "country": "United States",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 208.5,
+              "res": 91.5
             }
           },
           {
@@ -22507,8 +22507,8 @@
             "region": "Lisbon",
             "country": "Portugal",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 136.1,
+              "res": 163.9
             }
           }
         ],
