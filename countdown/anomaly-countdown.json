@@ -98,6 +98,7 @@
         "timezone": "Asia/Hong_Kong",
         "url-res": "https://www.willbe.blue/anomalies-events/",
         "url-enl": "https://enl.rocks/-m4F1",
+        "winner": "enlightened",
         "location": { "lat": 22.3193, "lng": 114.1694 }
       },
       {
@@ -107,6 +108,7 @@
         "timezone": "Europe/Zagreb",
         "url-res": "https://t.me/+VUSrJFahQE1lMGM0",
         "url-enl": "https://enlightened.rocks/zagreb2026",
+        "winner": "enlightened",
         "location": { "lat": 45.8150, "lng": 15.9819 }
       },
       {

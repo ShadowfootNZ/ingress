@@ -22509,8 +22509,8 @@
             "region": "Hong Kong",
             "country": "China",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 156.0,
+              "res": 144.0
             }
           },
           {
@@ -22518,8 +22518,8 @@
             "region": "Središnja Hrvatska",
             "country": "Croatia",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 179.0,
+              "res": 121.0
             }
           }
         ],
