@@ -118,6 +118,7 @@
         "timezone": "Asia/Kolkata",
         "url-res": "https://res.blue/group/hyderabad-anomaly-hype-chatq1-2026",
         "url-enl": "https://enlightened.rocks/hyderabad2026",
+        "winner": "enlightened",
         "location": { "lat": 17.3850, "lng": 78.4867 }
       },
       {
@@ -127,6 +128,7 @@
         "timezone": "America/Argentina/Buenos_Aires",
         "url-enl": "https://enlightened.rocks/anomaly/BA2026",
         "url-res": "https://buenosaires-res.com/",
+        "winner": "enlightened",
         "location": { "lat": -34.6037, "lng": -58.3816 }
       }
     ]
