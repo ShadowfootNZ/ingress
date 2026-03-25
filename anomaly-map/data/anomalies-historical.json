@@ -22530,16 +22530,16 @@
             "region": "Telangana",
             "country": "India",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 182.2,
+              "res": 117.8
             }
           },
           {
             "city": "Buenos Aires",
             "country": "Argentina",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 153.2,
+              "res": 146.8
             }
           }
         ]
