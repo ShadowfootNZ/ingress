@@ -578,8 +578,8 @@
       "lng": -84.0796144
     },
     "Costa Rica, San Jose Province, San Pedro": {
-      "lat": 9.8755816,
-      "lng": -84.4456946
+      "lat": 9.9283,
+      "lng": -84.0507
     },
     "Croatia, Splitsko-dalmatinska, Split": {
       "lat": 43.5116383,
@@ -1382,9 +1382,9 @@
       "lat": 41.0726,
       "lng": 14.3323
     },
-    "Italy, Province of Pisa, Pisa": {
-      "lat": 43.3442335,
-      "lng": 10.9972085
+    "Italy, Tuscany, Pisa": {
+      "lat": 43.7228,
+      "lng": 10.4017
     },
     "Italy, Sardinia, Cagliari": {
       "lat": 39.2171994,
@@ -19595,7 +19595,7 @@
           },
           {
             "city": "Pisa",
-            "region": "Province of Pisa",
+            "region": "Tuscany",
             "country": "Italy",
             "score": {
               "enl": 0.5,
