@@ -1378,9 +1378,9 @@
       "lat": 45.0677551,
       "lng": 7.6824892
     },
-    "Italy, Province of Caserta, Caserta": {
-      "lat": 45.3894054,
-      "lng": 11.8639837
+    "Italy, Campania, Caserta": {
+      "lat": 41.0726,
+      "lng": 14.3323
     },
     "Italy, Province of Pisa, Pisa": {
       "lat": 43.3442335,
@@ -20893,7 +20893,7 @@
           },
           {
             "city": "Caserta",
-            "region": "Province of Caserta",
+            "region": "Campania",
             "country": "Italy",
             "score": {
               "enl": 7,
