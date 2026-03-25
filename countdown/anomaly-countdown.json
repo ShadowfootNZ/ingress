@@ -1,69 +1,5 @@
 [
   {
-    "series": "+Beta",
-    "series-logos": [
-      "Beta_bronze.png",
-      "Beta_silver.png",
-      "Beta_gold.png"
-    ],
-    "sites": [
-      {
-        "date": "2025-10-18T14:00:00",
-        "winner": "resistance",
-        "city": "Valencia",
-        "country": "Spain",
-        "timezone": "Europe/Madrid",
-        "url-res": "https://anomalyvalencia.com/",
-        "url-enl": "https://enl.rocks/Valencia2025"
-      },
-      {
-        "date": "2025-10-18T14:00:00",
-        "winner": "resistance",
-        "city": "São Paulo",
-        "country": "Brazil",
-        "timezone": "America/Sao_Paulo",
-        "url-res": "https://saopaulo.willbe.blue/",
-        "url-enl": "https://enl.rocks/saopaulo"
-      },
-      {
-        "date": "2025-10-25T14:00:00",
-        "winner": "enlightened",
-        "city": "Wellington",
-        "country": "New Zealand",
-        "timezone": "Pacific/Auckland",
-        "url-res": "https://anomalywellington.com/",
-        "url-enl": "https://enl.rocks/WellingtonQ4"
-      },
-      {
-        "date": "2025-10-25T14:00:00",
-        "winner": "enlightened",
-        "city": "Houston, TX",
-        "country": "USA",
-        "timezone": "America/Chicago",
-        "url-res": "https://anomalysite.blue/houston/",
-        "url-enl": "https://enl.rocks/HoustonQ4"
-      },
-      {
-        "date": "2025-11-15T14:00:00",
-        "winner": "enlightened",
-        "city": "Taoyuan",
-        "country": "Taiwan",
-        "timezone": "Asia/Taipei",
-        "url-res": "https://register.taoyuan.willbe.blue/",
-        "url-enl": "https://enlightened.rocks/TaoyuanQ4"
-      },
-      {
-        "date": "2025-11-15T14:00:00",
-        "winner": "resistance",
-        "city": "The Hague",
-        "country": "Netherlands",
-        "timezone": "Europe/Amsterdam",
-        "url-res": "https://anomalythehague.com/",
-        "url-enl": "https://enlightened.rocks/thehague"
-      }
-    ]
-  },
-  {
     "series": "+Gamma",
     "series-logos": [
       "Gamma_bronze.png",
@@ -134,7 +70,7 @@
     ]
   },
   {
-    "series": "2026Q2",
+    "series": "Orion",
     "sites": [
       {
         "date": "2026-05-16T14:00:00",
@@ -188,6 +124,53 @@
         "timezone": "America/Lima",
         "url-res": "https://t.me/+bJL60rNwnR1lYzAx",
         "location": { "lat": -12.0464, "lng": -77.0428 }
+      }
+    ]
+  },
+  {
+    "series": "2026Q3",
+    "sites": [
+      {
+        "date": "2026-07-18T14:00:00",
+        "city": "Helsinki",
+        "country": "Finland",
+        "timezone": "Europe/Helsinki",
+        "location": { "lat": 60.1699, "lng": 24.9384 }
+      },
+      {
+        "date": "2026-07-18T14:00:00",
+        "city": "Bogotá",
+        "country": "Colombia",
+        "timezone": "America/Bogota",
+        "location": { "lat": 4.7110, "lng": -74.0721 }
+      },
+      {
+        "date": "2026-08-22T14:00:00",
+        "city": "Seoul",
+        "country": "South Korea",
+        "timezone": "Asia/Seoul",
+        "location": { "lat": 37.5666791, "lng": 126.9782914}
+      },
+      {
+        "date": "2026-08-22T14:00:00",
+        "city": "Paris",
+        "country": "France",
+        "timezone": "Europe/Paris",
+        "location": { "lat": 48.8566, "lng": 2.3522 }
+      },
+      {
+        "date": "2026-09-19T14:00:00",
+        "city": "Singapore",
+        "country": "Singapore",
+        "timezone": "Asia/Singapore",
+        "location": { "lat": 1.3521, "lng": 103.8198 }
+      },
+      {
+        "date": "2026-09-19T14:00:00",
+        "city": "Denver, CO",
+        "country": "USA",
+        "timezone": "America/Denver",
+        "location": { "lat": 39.7392, "lng": -104.9903 }
       }
     ]
   }

@@ -22545,7 +22545,7 @@
         ]
       }
     },
-    "2026Q2": {
+    "Orion": {
       "Anomaly": {
         "2026-05-16": [
           {
@@ -22606,6 +22606,69 @@
               "res": null
             }
           }
+        ]
+      }
+    },
+    "2026Q3": {
+      "Anomaly": {
+        "2026-07-18" : [
+          {
+            "city": "Helsinki",
+            "region": "Uusimaa",
+            "country": "Finland",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          },
+          {
+            "city": "Bogotá",
+            "region": "Distrito Capital",
+            "country": "Colombia",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          }
+        ],
+        "2026-08-22": [
+          {
+            "city": "Seoul",
+            "region": "Seoul metropolitan area",
+            "country": "South Korea",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          },
+          {
+            "city": "Paris",
+            "region": "Île-de-France",
+            "country": "France",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          }
+        ],
+        "2026-09-19": [
+          {
+            "city": "Singapore",
+              "country": "Singapore",
+              "score": {
+                "enl": null,
+                "res": null
+              }
+            },
+            {
+              "city": "Denver",
+              "region": "Colorado",
+              "country": "United States",
+              "score": {
+                "enl": null,
+                "res": null
+              }
+            }
         ]
       }
     }
