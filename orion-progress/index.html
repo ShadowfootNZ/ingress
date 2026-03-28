@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ingress Orion progress tracker</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; margin: 0; flex-direction: column;
+    }
+    /* Default green Ingress glow */
+    .card {
+      background: #111;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 1em rgba(40,244,40,0.5);
+      border: 2px solid #1f1f1f;
+    }
+
+    /* Tier overlays: combine green base with accent rim */
+    .card.bronze {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(212,112,66,0.5) inset;
+      border-color: #D47042;
+    }
+
+    .card.silver {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(210,212,214,0.5) inset;
+      border-color: #D2D4D6;
+    }
+
+    .card.gold {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(232,165,0,0.5) inset;
+      border-color: #E8A500;
+    }
+
+    .card.platinum {
+      box-shadow:
+        0 0 1em rgba(40,244,40,0.5),
+        0 0 4em rgba(180,220,255,0.55) inset;
+      border-color: #B4DCFF;
+    }
+
+    input {
+      width: 10em; font-size: 1.1em;
+      height: 2.6em;
+      box-sizing: border-box;
+      padding: 0 0.6em;
+      margin: 0.5em 0;
+      border-radius: 6px; border: none; text-align: center;
+    }
+    button {
+      background: #28f428; color: #000; border: none;
+      height: 2.6em;
+      box-sizing: border-box;
+      padding: 0 1.2em;
+      font-weight: 600; border-radius: 6px;
+      cursor: pointer; margin-top: 0.5em;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .result { margin-top: 1em; text-align: left; }
+    .accent { color: #28f428; }
+    .warn { color: #ff0028; }
+
+    .result ul { list-style: none; padding: 0; margin: 0; }
+    .result li { display: flex; align-items: center; gap: 0.6em; margin: 0.4em 0; }
+    .tier-label { display: flex; align-items: center; gap: 0.4em; flex-wrap: wrap; }
+    .result img.target-icon { width: 64px; height: auto; display: inline-block; }
+    .warn { white-space: nowrap; color: #ff0028; }
+
+    .info-link { font-size: 1em; margin-top: 0.25em; color: #9ba1ff; }
+    .info-link a { color: inherit; text-decoration: underline; }
+
+    .checkmark {
+      color: #28f428;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-left: 0.2em;
+      vertical-align: middle;
+    }
+
+    /* Agent badge bottom right of card */
+    .agent-badge {
+      position: absolute;
+      right: 0.2em;
+      bottom: 0.2em;
+      color: #28f428;
+      font-size: 0.9em;
+      padding: 0.4em 0.5em;
+      text-decoration: none;
+      font-family: inherit;
+      z-index: 2;
+    }
+    .agent-badge a {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" style="position:relative;">
+    <h1>Ingress Orion</h1>
+    <h2>Future bounty calculator</h2>
+    <p>Daily bounties: <span class="accent">80 tokens/day</span></p>
+    <p>Days available: <span class="accent" id="daysRemaining">—</span>
+      (<span id="startDateSection">starts <span class="accent" id="startDateDisplay">—</span>,</span>
+      ends <span class="accent" id="endDateDisplay">—</span>)</p>
+    <p>Remaining bounty tokens available: <span class="accent" id="remainingTokens">—</span></p>
+    <input type="number" id="score" placeholder="Current tokens" min="0" step="10">
+    <button onclick="calculate()">Calculate</button>
+    <div class="result" id="result"></div>
+    <div class="result" id="reminders"></div>
+    <p class="info-link">See <a href="https://ingress.com/news/2026-orion" target="_blank" rel="noopener noreferrer">Orion Anomaly Season - Overview</a> for other sources.</p>
+    <div class="agent-badge"><a href="https://link.ingress.com/agent/ShadowfootNZ" target="_blank" rel="noopener noreferrer" style="color:#28f428;">@ShadowfootNZ</a></div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'ingress-orion-last-score';
+    const tiers = { bronze: 5000, silver: 8000, gold: 15000, platinum: 25000 };
+    const startDate = new Date('2026-04-07T00:00:00');
+    const endDate = new Date('2026-06-30T23:59:59');
+    const TOKENS_PER_DAILY_BOUNTY = 10;
+    const TOKENS_PER_MILESTONE = 20;
+    const DAILY_BOUNTIES_PER_DAY = 4;
+    const MILESTONES_PER_DAY = 2;
+    const TOKENS_PER_DAY = (DAILY_BOUNTIES_PER_DAY * TOKENS_PER_DAILY_BOUNTY) + (MILESTONES_PER_DAY * TOKENS_PER_MILESTONE);
+    const REMINDER_EVENTS = [
+      {
+        label: (date) => `${date.toLocaleString(undefined, { month: 'long' })} First Saturday`,
+        date: new Date('2026-04-04T00:00:00'),
+        bonus: 2500,
+        hideAfterDays: 1
+      },
+      {
+        label: (date) => `${date.toLocaleString(undefined, { month: 'long' })} First Saturday`,
+        date: new Date('2026-05-02T00:00:00'),
+        bonus: 2500,
+        hideAfterDays: 1
+      },
+      {
+        label: (date) => `${date.toLocaleString(undefined, { month: 'long' })} First Saturday`,
+        date: new Date('2026-06-06T00:00:00'),
+        bonus: 2500,
+        hideAfterDays: 1
+      },
+      {
+        label: () => 'Sakura Blossom Festival',
+        date: new Date('2026-04-01T00:00:00'),
+        bonus: 2500,
+        hideAfterDays: 999
+      },
+      {
+        label: () => 'Summer Solstice 2026',
+        date: new Date('2026-06-21T00:00:00'),
+        bonus: 2500,
+        hideAfterDays: 999
+      }
+    ];
+
+    function renderReminders(today) {
+      const msPerDay = 1000 * 60 * 60 * 24;
+      const reminders = REMINDER_EVENTS.filter((event) => {
+        const hideAfter = new Date(event.date.getTime() + (event.hideAfterDays * msPerDay));
+        return today <= hideAfter;
+      });
+
+      if (reminders.length === 0) {
+        document.getElementById('reminders').innerHTML = '';
+        return;
+      }
+
+      const items = reminders.map((event) => {
+        const label = event.label(event.date);
+        return `<li><span class="accent">${label}</span>: <span class="accent">${event.bonus.toLocaleString()}</span> Orion Tokens.</li>`;
+      }).join('');
+
+      document.getElementById('reminders').innerHTML = `<h3>Reminders</h3><ul>${items}</ul>`;
+    }
+
+    function formatDate(d) {
+      const opts = { day: '2-digit', month: 'short', year: 'numeric' };
+      return d.toLocaleDateString(undefined, opts);
+    }
+
+    const icons = {
+      bronze: 'bronze.png',
+      silver: 'silver.png',
+      gold: 'gold.png',
+      platinum: 'platinum.png'
+    };
+
+    function calculate() {
+      const inputEl = document.getElementById('score');
+      const rawValue = inputEl.value.trim();
+      if (rawValue === '') {
+        localStorage.removeItem(STORAGE_KEY);
+      } else {
+        localStorage.setItem(STORAGE_KEY, rawValue);
+      }
+      const score = Math.max(0, parseInt(rawValue, 10) || 0);
+
+      const today = new Date();
+      const msPerDay = 1000 * 60 * 60 * 24;
+
+      function daysBetweenInclusiveUTC(start, end) {
+        const startUTC = Date.UTC(start.getFullYear(), start.getMonth(), start.getDate());
+        const endUTC = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
+        return Math.max(0, Math.floor((endUTC - startUTC) / msPerDay) + 1);
+      }
+
+      function daysRemainingFromTodayUTC(today, end) {
+        const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+        const endUTC = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
+        return Math.max(0, Math.floor((endUTC - todayUTC) / msPerDay));
+      }
+
+      const eventHasStarted = today >= startDate;
+
+      const daysLeft = eventHasStarted
+        ? daysRemainingFromTodayUTC(today, endDate)
+        : daysBetweenInclusiveUTC(startDate, endDate);
+      const startSection = document.getElementById('startDateSection');
+      startSection.style.display = eventHasStarted ? 'none' : 'inline';
+      const availableTokens = daysLeft * TOKENS_PER_DAY;
+      document.getElementById('daysRemaining').textContent = daysLeft;
+      document.getElementById('remainingTokens').textContent = availableTokens;
+      document.getElementById('startDateDisplay').textContent = formatDate(startDate);
+      document.getElementById('endDateDisplay').textContent = formatDate(endDate);
+      // renderReminders(today);
+
+      let html = `<h3>Targets</h3><ul>`;
+
+      for (const [tier, value] of Object.entries(tiers)) {
+        const tokensNeeded = value - score;
+        if (tokensNeeded <= 0) {
+          html += `<li><img class="target-icon" src="${encodeURI(icons[tier])}" alt="${tier} icon"><div class="tier-label">${tier.toUpperCase()} (${value}): <span class="checkmark">&#10003;</span></div></li>`;
+        } else {
+          const daysNeeded = Math.ceil(tokensNeeded / TOKENS_PER_DAY);
+          const daysClass = daysNeeded > daysLeft ? ' class="warn"' : '';
+          html += `<li><img class="target-icon" src="${encodeURI(icons[tier])}" alt="${tier} icon"><div class="tier-label">${tier.toUpperCase()} (${value}): <span class="warn">${tokensNeeded}</span> tokens short <span${daysClass}>(${daysNeeded} days)</span></div></li>`;
+        }
+      }
+
+      html += `</ul>`;
+      const cardEl = document.querySelector('.card');
+      cardEl.classList.remove('bronze','silver','gold','platinum');
+
+      if (score >= tiers.platinum) {
+        cardEl.classList.add('platinum');
+      } else if (score >= tiers.gold) {
+        cardEl.classList.add('gold');
+      } else if (score >= tiers.silver) {
+        cardEl.classList.add('silver');
+      } else if (score >= tiers.bronze) {
+        cardEl.classList.add('bronze');
+      }
+
+      document.getElementById('result').innerHTML = html;
+    }
+
+    const scoreInput = document.getElementById('score');
+    scoreInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        calculate();
+      }
+    });
+
+    scoreInput.addEventListener('input', calculate);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored !== null) {
+        document.getElementById('score').value = stored;
+      }
+      calculate();
+    });
+  </script>
+</body>
+</html>
