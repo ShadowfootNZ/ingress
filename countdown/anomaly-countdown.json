@@ -71,6 +71,12 @@
   },
   {
     "series": "Orion",
+    "series-logos": [
+      "Orion_bronze.png",
+      "Orion_silver.png",
+      "Orion_gold.png",
+      "Orion_platinum.png"
+    ],
     "sites": [
       {
         "date": "2026-05-16T14:00:00",
