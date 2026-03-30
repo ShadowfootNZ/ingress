@@ -141,6 +141,7 @@
         "city": "Helsinki",
         "country": "Finland",
         "timezone": "Europe/Helsinki",
+        "url=enl": "https://t.me/+XMdWDSlBcrowMDY0",
         "location": { "lat": 60.1699, "lng": 24.9384 }
       },
       {
@@ -155,6 +156,7 @@
         "city": "Seoul",
         "country": "South Korea",
         "timezone": "Asia/Seoul",
+        "url-res": "https://linktr.ee/resistancekorea",
         "location": { "lat": 37.5666791, "lng": 126.9782914}
       },
       {
