@@ -18,6 +18,17 @@
 <body>
 
 <div id="map"></div>
+
+<!-- April Fools: Machina Takeover -->
+<div id="machina-overlay" style="display:none">
+  <div id="machina-banner">
+    <div id="machina-title">⚠ MACHINA INCURSION DETECTED ⚠</div>
+    <div id="machina-msg">THE MACHINA HAVE CORRUPTED ANOMALY RECORDS.<br>ALL FACTIONS HAVE BEEN ASSIMILATED.</div>
+    <div id="machina-sub">Initiating countermeasures… <span id="machina-countdown">13</span>s</div>
+    <button id="machina-dismiss">DISMISS [AGENT OVERRIDE]</button>
+  </div>
+</div>
+
 <div id="info-panel">
   <h3>Ingress Anomaly Map</h3>
   <button id="info-minimise">-</button>
@@ -81,5 +92,161 @@
   boot();
 </script>
 <div id="build-footer"></div>
+
+<script>
+// April Fools: Machina Takeover — active only on April 1st (local time)
+(function() {
+  const now = new Date();
+  const isAprilFools = now.getMonth() === 3 && now.getDate() === 1;
+  if (!isAprilFools) return;
+
+  // Inject Machina CSS
+  const style = document.createElement('style');
+  style.textContent = `
+    #machina-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.88);
+      animation: machina-fade-in 0.6s ease;
+    }
+    @keyframes machina-fade-in {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    #machina-banner {
+      background: #0a0000;
+      border: 2px solid #ff0028;
+      border-radius: 10px;
+      padding: 32px 40px;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: 0 0 40px #ff002888, 0 0 80px #ff002844;
+      font-family: 'Courier New', monospace;
+      color: #ff0028;
+    }
+    #machina-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+      animation: machina-glitch 2.4s infinite;
+    }
+    @keyframes machina-glitch {
+      0%,94%,100% { text-shadow: 0 0 8px #ff0028, 0 0 20px #ff002888; transform: none; }
+      95% { text-shadow: 3px 0 8px #ff0028, -3px 0 6px #00c4ff; transform: skewX(-4deg); }
+      97% { text-shadow: -2px 0 6px #ff0028, 2px 0 4px #ff0028; transform: skewX(2deg); }
+    }
+    #machina-msg {
+      font-size: 0.9em;
+      color: #cc0020;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      letter-spacing: 0.04em;
+    }
+    #machina-sub {
+      font-size: 0.8em;
+      color: #ff4455;
+      margin-bottom: 24px;
+      opacity: 0.85;
+    }
+    #machina-countdown {
+      font-weight: bold;
+      color: #ff0028;
+    }
+    #machina-dismiss {
+      background: transparent;
+      border: 1px solid #ff0028;
+      color: #ff0028;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82em;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      letter-spacing: 0.1em;
+      transition: background 0.2s, color 0.2s;
+    }
+    #machina-dismiss:hover {
+      background: #ff002822;
+      color: #fff;
+    }
+
+    /* Machina-ify the info panel */
+    body.machina-active #info-panel {
+      border: 1px solid #ff002888;
+      box-shadow: 0 0 16px #ff002866;
+    }
+    body.machina-active #info-panel h3,
+    body.machina-active #info-panel label {
+      color: #ff0028 !important;
+    }
+    body.machina-active #info-panel a,
+    body.machina-active .leaflet-popup a {
+      color: #ff6677 !important;
+    }
+    body.machina-active #info-panel h3::before {
+      content: '☣ ';
+    }
+    body.machina-active .leaflet-popup-content-wrapper {
+      box-shadow: 0 0 12px rgba(255,0,40,0.7);
+    }
+    body.machina-active #series-filter option[data-year-break="true"] {
+      border-top-color: #ff002888;
+    }
+    body.machina-active #build-footer {
+      color: #ff0028;
+      border-color: #ff002855;
+    }
+  `;
+  document.head.appendChild(style);
+
+  document.body.classList.add('machina-active');
+
+  // Countdown auto-dismiss
+  const countdownEl = document.getElementById('machina-countdown');
+  let remaining = 13;
+  const tick = setInterval(() => {
+    remaining--;
+    if (countdownEl) countdownEl.textContent = remaining;
+    if (remaining <= 0) {
+      clearInterval(tick);
+      dismiss();
+    }
+  }, 1000);
+
+  function dismiss() {
+    clearInterval(tick);
+    const overlay = document.getElementById('machina-overlay');
+    if (overlay) {
+      overlay.style.transition = 'opacity 0.5s';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 500);
+    }
+  }
+
+  document.getElementById('machina-dismiss').addEventListener('click', dismiss);
+
+  // Override the CSS variables for Machina colours (affects dot rendering)
+  document.documentElement.style.setProperty('--enl-green', '#ff0028');
+  document.documentElement.style.setProperty('--res-blue',  '#ff0028');
+  document.documentElement.style.setProperty('--tie-teal',  '#cc0020');
+  document.documentElement.style.setProperty('--upcoming',  '#ff4455');
+
+  // Override the page title
+  document.title = 'MACHINA INCURSION MAP — ' + document.title;
+
+  // Override the h3 panel heading after DOM is ready
+  window.addEventListener('DOMContentLoaded', () => {
+    const h3 = document.querySelector('#info-panel h3');
+    if (h3) h3.textContent = 'MACHINA Incursion Map';
+  });
+  // If DOMContentLoaded already fired (script is at bottom)
+  const h3 = document.querySelector('#info-panel h3');
+  if (h3) h3.textContent = 'MACHINA Incursion Map';
+})();
+</script>
+
 </body>
 </html>
