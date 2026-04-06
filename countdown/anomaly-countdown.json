@@ -142,6 +142,7 @@
         "country": "Finland",
         "timezone": "Europe/Helsinki",
         "url-enl": "https://t.me/+XMdWDSlBcrowMDY0",
+        "url-res": "https://res.blue/group/helsinki-hype-chat",
         "location": { "lat": 60.1699, "lng": 24.9384 }
       },
       {
@@ -164,6 +165,7 @@
         "city": "Paris",
         "country": "France",
         "timezone": "Europe/Paris",
+        "url-res": "https://res.blue/group/paris-hype-chat",
         "location": { "lat": 48.8566, "lng": 2.3522 }
       },
       {
@@ -171,6 +173,7 @@
         "city": "Singapore",
         "country": "Singapore",
         "timezone": "Asia/Singapore",
+        "url-res": "https://t.me/+vZtAUPpRYwk3Mzll",
         "location": { "lat": 1.3521, "lng": 103.8198 }
       },
       {
