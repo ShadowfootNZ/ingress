@@ -183,6 +183,7 @@
         "city": "Denver, CO",
         "country": "USA",
         "timezone": "America/Denver",
+        "url-enl": "https://enl.rocks/-FrbS",
         "location": { "lat": 39.7392, "lng": -104.9903 }
       }
     ]
