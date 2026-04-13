@@ -128,6 +128,7 @@
         "city": "Lima",
         "country": "Peru",
         "timezone": "America/Lima",
+        "url-enl": "https://enl.rocks/-tV9x",
         "url-res": "https://t.me/+bJL60rNwnR1lYzAx",
         "location": { "lat": -12.0464, "lng": -77.0428 }
       }
@@ -165,6 +166,7 @@
         "city": "Paris",
         "country": "France",
         "timezone": "Europe/Paris",
+        "url-enl": "https://enl.rocks/-C5SF",
         "url-res": "https://res.blue/group/paris-hype-chat",
         "location": { "lat": 48.8566, "lng": 2.3522 }
       },
