@@ -22,3 +22,9 @@ build/
 .env
 .env.local
 auth.json
+
+# Local mission data — contents are excluded, folders are kept via .gitkeep
+missions/images/*
+!missions/images/.gitkeep
+missions/banners/*
+!missions/banners/.gitkeep
