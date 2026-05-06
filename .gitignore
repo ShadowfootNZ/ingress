@@ -25,6 +25,6 @@ auth.json
 
 # Local mission data — contents are excluded, folders are kept via .gitkeep
 missions/images/*
-!missions/images/.gitkeep
+!missions/images/about.txt
 missions/banners/*
-!missions/banners/.gitkeep
+!missions/banners/about.txt

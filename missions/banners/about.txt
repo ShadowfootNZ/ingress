@@ -1,0 +1,48 @@
+Banner JSON files go here.
+
+Files are exported from the Ultimate Mission Maker IITC plugin and used by
+portal-images-local.html and banner-map.html. Name files to identify the event, e.g.:
+
+  IngressFS Wellington 03 2026.json
+
+JSON structure (fileFormatVersion 2):
+
+{
+  "missionSetName": "Town Centre",
+  "missionSetDescription": "Explore the town",
+  "currentMission": 0,
+  "plannedBannerLength": 6,
+  "titleFormat": "T NN-M",
+  "fileFormatVersion": 2,
+  "missions": [
+    {
+      "missionTitle": "Town Centre 1",
+      "missionDescription": "Explore the town",
+      "missionType": "sequential",
+      "portals": [
+        {
+          "title": "Portal Name",
+          "description": "",
+          "guid": "13ada7c360f24e29a5865d3ee59c8eea.16",
+          "imageUrl": "https://lh3.googleusercontent.com/...",
+          "type": "PORTAL",
+          "isOrnamented": false,
+          "isStartPoint": true,
+          "location": {
+            "latitude": -40.876152,
+            "longitude": 175.063556
+          },
+          "objective": {
+            "type": "HACK_PORTAL",
+            "passphrase_params": {
+              "question": "",
+              "_single_passphrase": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
+This folder is excluded from git. Add files locally as needed.

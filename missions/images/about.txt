@@ -1,0 +1,24 @@
+Proposed mission badge images go here.
+
+Used by mission-image-review.html to compare candidate images side by side
+before finalising a mission set.
+
+Naming convention:
+
+  {prefix} {mission}-{candidate}.{ext}
+
+  prefix     — identifies the event, e.g. "IFS 03-2026"
+  mission    — mission row number, e.g. 1, 2, 3
+  candidate  — candidate image number within that mission, e.g. 1, 2, 3
+  ext        — jpg, png, gif, or webp
+
+Examples:
+
+  IFS 03-2026 1-1.jpg   (mission 1, first candidate)
+  IFS 03-2026 1-2.jpg   (mission 1, second candidate)
+  IFS 03-2026 2-1.jpg   (mission 2, first candidate)
+
+All files with the same prefix are grouped together in the review page.
+Multiple prefixes can coexist in this folder and will appear as separate groups.
+
+This folder is excluded from git. Add files locally as needed.
