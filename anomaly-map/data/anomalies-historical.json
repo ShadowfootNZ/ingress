@@ -578,8 +578,8 @@
       "lng": -84.0796144
     },
     "Costa Rica, San Jose Province, San Pedro": {
-      "lat": 9.8755816,
-      "lng": -84.4456946
+      "lat": 9.9283,
+      "lng": -84.0507
     },
     "Croatia, Splitsko-dalmatinska, Split": {
       "lat": 43.5116383,
@@ -1378,13 +1378,13 @@
       "lat": 45.0677551,
       "lng": 7.6824892
     },
-    "Italy, Province of Caserta, Caserta": {
-      "lat": 45.3894054,
-      "lng": 11.8639837
+    "Italy, Campania, Caserta": {
+      "lat": 41.0726,
+      "lng": 14.3323
     },
-    "Italy, Province of Pisa, Pisa": {
-      "lat": 43.3442335,
-      "lng": 10.9972085
+    "Italy, Tuscany, Pisa": {
+      "lat": 43.7228,
+      "lng": 10.4017
     },
     "Italy, Sardinia, Cagliari": {
       "lat": 39.2171994,
@@ -19595,7 +19595,7 @@
           },
           {
             "city": "Pisa",
-            "region": "Province of Pisa",
+            "region": "Tuscany",
             "country": "Italy",
             "score": {
               "enl": 0.5,
@@ -20893,7 +20893,7 @@
           },
           {
             "city": "Caserta",
-            "region": "Province of Caserta",
+            "region": "Campania",
             "country": "Italy",
             "score": {
               "enl": 7,
@@ -22509,8 +22509,8 @@
             "region": "Hong Kong",
             "country": "China",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 156.0,
+              "res": 144.0
             }
           },
           {
@@ -22518,9 +22518,10 @@
             "region": "Središnja Hrvatska",
             "country": "Croatia",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 179.0,
+              "res": 121.0
             }
+            
           }
         ],
         "2026-03-21": [
@@ -22529,22 +22530,22 @@
             "region": "Telangana",
             "country": "India",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 182.2,
+              "res": 117.8
             }
           },
           {
             "city": "Buenos Aires",
             "country": "Argentina",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 153.2,
+              "res": 146.8
             }
           }
         ]
       }
     },
-    "2026Q2": {
+    "Orion": {
       "Anomaly": {
         "2026-05-16": [
           {
@@ -22605,6 +22606,69 @@
               "res": null
             }
           }
+        ]
+      }
+    },
+    "2026Q3": {
+      "Anomaly": {
+        "2026-07-18" : [
+          {
+            "city": "Helsinki",
+            "region": "Uusimaa",
+            "country": "Finland",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          },
+          {
+            "city": "Bogotá",
+            "region": "Distrito Capital",
+            "country": "Colombia",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          }
+        ],
+        "2026-08-22": [
+          {
+            "city": "Seoul",
+            "region": "Seoul metropolitan area",
+            "country": "South Korea",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          },
+          {
+            "city": "Paris",
+            "region": "Île-de-France",
+            "country": "France",
+            "score": {
+              "enl": null,
+              "res": null
+            }
+          }
+        ],
+        "2026-09-19": [
+          {
+            "city": "Singapore",
+              "country": "Singapore",
+              "score": {
+                "enl": null,
+                "res": null
+              }
+            },
+            {
+              "city": "Denver",
+              "region": "Colorado",
+              "country": "United States",
+              "score": {
+                "enl": null,
+                "res": null
+              }
+            }
         ]
       }
     }

@@ -1,69 +1,5 @@
 [
   {
-    "series": "+Beta",
-    "series-logos": [
-      "Beta_bronze.png",
-      "Beta_silver.png",
-      "Beta_gold.png"
-    ],
-    "sites": [
-      {
-        "date": "2025-10-18T14:00:00",
-        "winner": "resistance",
-        "city": "Valencia",
-        "country": "Spain",
-        "timezone": "Europe/Madrid",
-        "url-res": "https://anomalyvalencia.com/",
-        "url-enl": "https://enl.rocks/Valencia2025"
-      },
-      {
-        "date": "2025-10-18T14:00:00",
-        "winner": "resistance",
-        "city": "São Paulo",
-        "country": "Brazil",
-        "timezone": "America/Sao_Paulo",
-        "url-res": "https://saopaulo.willbe.blue/",
-        "url-enl": "https://enl.rocks/saopaulo"
-      },
-      {
-        "date": "2025-10-25T14:00:00",
-        "winner": "enlightened",
-        "city": "Wellington",
-        "country": "New Zealand",
-        "timezone": "Pacific/Auckland",
-        "url-res": "https://anomalywellington.com/",
-        "url-enl": "https://enl.rocks/WellingtonQ4"
-      },
-      {
-        "date": "2025-10-25T14:00:00",
-        "winner": "enlightened",
-        "city": "Houston, TX",
-        "country": "USA",
-        "timezone": "America/Chicago",
-        "url-res": "https://anomalysite.blue/houston/",
-        "url-enl": "https://enl.rocks/HoustonQ4"
-      },
-      {
-        "date": "2025-11-15T14:00:00",
-        "winner": "enlightened",
-        "city": "Taoyuan",
-        "country": "Taiwan",
-        "timezone": "Asia/Taipei",
-        "url-res": "https://register.taoyuan.willbe.blue/",
-        "url-enl": "https://enlightened.rocks/TaoyuanQ4"
-      },
-      {
-        "date": "2025-11-15T14:00:00",
-        "winner": "resistance",
-        "city": "The Hague",
-        "country": "Netherlands",
-        "timezone": "Europe/Amsterdam",
-        "url-res": "https://anomalythehague.com/",
-        "url-enl": "https://enlightened.rocks/thehague"
-      }
-    ]
-  },
-  {
     "series": "+Gamma",
     "series-logos": [
       "Gamma_bronze.png",
@@ -98,6 +34,7 @@
         "timezone": "Asia/Hong_Kong",
         "url-res": "https://www.willbe.blue/anomalies-events/",
         "url-enl": "https://enl.rocks/-m4F1",
+        "winner": "enlightened",
         "location": { "lat": 22.3193, "lng": 114.1694 }
       },
       {
@@ -107,6 +44,7 @@
         "timezone": "Europe/Zagreb",
         "url-res": "https://t.me/+VUSrJFahQE1lMGM0",
         "url-enl": "https://enlightened.rocks/zagreb2026",
+        "winner": "enlightened",
         "location": { "lat": 45.8150, "lng": 15.9819 }
       },
       {
@@ -116,6 +54,7 @@
         "timezone": "Asia/Kolkata",
         "url-res": "https://res.blue/group/hyderabad-anomaly-hype-chatq1-2026",
         "url-enl": "https://enlightened.rocks/hyderabad2026",
+        "winner": "enlightened",
         "location": { "lat": 17.3850, "lng": 78.4867 }
       },
       {
@@ -125,12 +64,19 @@
         "timezone": "America/Argentina/Buenos_Aires",
         "url-enl": "https://enlightened.rocks/anomaly/BA2026",
         "url-res": "https://buenosaires-res.com/",
+        "winner": "enlightened",
         "location": { "lat": -34.6037, "lng": -58.3816 }
       }
     ]
   },
   {
-    "series": "2026Q2",
+    "series": "Orion",
+    "series-logos": [
+      "Orion_bronze.png",
+      "Orion_silver.png",
+      "Orion_gold.png",
+      "Orion_platinum.png"
+    ],
     "sites": [
       {
         "date": "2026-05-16T14:00:00",
@@ -138,6 +84,7 @@
         "country": "Australia",
         "timezone": "Australia/Sydney",
         "url-enl": "https://enlightened.rocks/anomaly/Sydney26",
+        "url-res": "https://res.blue/group/sydney-anomaly-2026-pre-reg",
         "location": { "lat": -33.8688, "lng": 151.2093 }
       },
       {
@@ -155,6 +102,7 @@
         "country": "Japan",
         "timezone": "Asia/Tokyo",
         "url-enl": "https://enlightened.rocks/Kure26",
+        "url-res": "https://kure.willbe.blue/",
         "location": { "lat": 34.2480, "lng": 132.5653 }
       },
       {
@@ -180,7 +128,64 @@
         "city": "Lima",
         "country": "Peru",
         "timezone": "America/Lima",
+        "url-enl": "https://enl.rocks/-tV9x",
+        "url-res": "https://t.me/+bJL60rNwnR1lYzAx",
         "location": { "lat": -12.0464, "lng": -77.0428 }
+      }
+    ]
+  },
+  {
+    "series": "2026Q3",
+    "sites": [
+      {
+        "date": "2026-07-18T14:00:00",
+        "city": "Helsinki",
+        "country": "Finland",
+        "timezone": "Europe/Helsinki",
+        "url-enl": "https://t.me/+XMdWDSlBcrowMDY0",
+        "url-res": "https://res.blue/group/helsinki-hype-chat",
+        "location": { "lat": 60.1699, "lng": 24.9384 }
+      },
+      {
+        "date": "2026-07-18T14:00:00",
+        "city": "Bogotá",
+        "country": "Colombia",
+        "timezone": "America/Bogota",
+        "url-enl": "https://t.me/+jLnprr21MFFmMjE5",
+        "location": { "lat": 4.7110, "lng": -74.0721 }
+      },
+      {
+        "date": "2026-08-22T14:00:00",
+        "city": "Seoul",
+        "country": "South Korea",
+        "timezone": "Asia/Seoul",
+        "url-res": "https://linktr.ee/resistancekorea",
+        "location": { "lat": 37.5666791, "lng": 126.9782914}
+      },
+      {
+        "date": "2026-08-22T14:00:00",
+        "city": "Paris",
+        "country": "France",
+        "timezone": "Europe/Paris",
+        "url-enl": "https://enl.rocks/-C5SF",
+        "url-res": "https://res.blue/group/paris-hype-chat",
+        "location": { "lat": 48.8566, "lng": 2.3522 }
+      },
+      {
+        "date": "2026-09-19T14:00:00",
+        "city": "Singapore",
+        "country": "Singapore",
+        "timezone": "Asia/Singapore",
+        "url-res": "https://t.me/+vZtAUPpRYwk3Mzll",
+        "location": { "lat": 1.3521, "lng": 103.8198 }
+      },
+      {
+        "date": "2026-09-19T14:00:00",
+        "city": "Denver, CO",
+        "country": "USA",
+        "timezone": "America/Denver",
+        "url-enl": "https://enl.rocks/-FrbS",
+        "location": { "lat": 39.7392, "lng": -104.9903 }
       }
     ]
   }

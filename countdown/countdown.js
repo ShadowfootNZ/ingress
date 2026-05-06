@@ -134,16 +134,29 @@ function createAnomalyCard(a) {
  * Applies appropriate border class based on anomaly state
  */
 function applyBorderClass(element, isActive, winner, isPrep) {
+  let duration = null;
+
   if (isActive) {
     element.classList.add('border-active');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-active-duration')) || 2.3;
   } else if (winner === 'resistance') {
     element.classList.add('border-res');
   } else if (winner === 'enlightened') {
     element.classList.add('border-enl');
   } else if (isPrep) {
     element.classList.add('border-prep');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-prep-duration')) || 7;
   } else {
     element.classList.add('border-default');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-red-duration')) || 3;
+  }
+
+  if (duration !== null) {
+    const offset = -(Math.random() * duration).toFixed(2);
+    element.style.animationDelay = `${offset}s`;
   }
 }
 
