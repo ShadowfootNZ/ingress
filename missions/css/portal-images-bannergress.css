@@ -1,0 +1,6 @@
+/* bannergress-portal-images.css
+   Bannergress-specific overrides on top of portal-images.css */
+
+.controls input[type="text"] {
+  min-width: 420px;
+}

@@ -1,103 +1,52 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mission Images Browser</title>
-<link rel="stylesheet" href="./style.css">
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
-</head>
-<body>
-<div class="wrap">
-  <div class="controls">
-    <label for="fileSelect">Data file:</label>
-    <select id="fileSelect"></select>
-    <button id="downloadAll" type="button">Download all images (zip)</button>
-  </div>
-  <p id="status">Loading…</p>
-  <div id="missions" class="missions" role="list"></div>
-</div>
+// local-portal-images.js
+// Browses portal images for missions stored in local banner JSON files (banners/).
+// Auto-discovers available JSON files, displays each mission's portal images in
+// scrollable rows with hover previews, and supports bulk zip download.
 
-<script>
+import { safeFilename, buildDownloadList, downloadBlob, attachHoverPreview } from './shared.js';
+
 (async () => {
   const status = document.getElementById('status');
   const container = document.getElementById('missions');
   const select = document.getElementById('fileSelect');
-
   const downloadBtn = document.getElementById('downloadAll');
 
   let currentJsonPath = null;
   let currentData = null;
 
-  // All JSON files live under /banners
   const BANNERS_DIR = 'banners';
 
   const normaliseToJsonPath = (value) => {
-    // Accept:
-    // - "abc", "abc.json"
-    // - "banners/abc.json"
-    // - "/missions/banners/abc.json"
-    // - "\\missions\\banners\\abc.json"
     let v = (value || '').trim();
     if (!v) return null;
-
-    // Normalise slashes
     v = v.replace(/\\/g, '/');
-
-    // Strip leading ./
     if (v.startsWith('./')) v = v.slice(2);
-
-    // If the string contains /banners/, keep only from that point
     const idx = v.toLowerCase().lastIndexOf(`/${BANNERS_DIR.toLowerCase()}/`);
-    if (idx !== -1) {
-      v = v.slice(idx + 1); // drop leading '/'
-    }
-
-    // If it starts with '/', drop it
+    if (idx !== -1) v = v.slice(idx + 1);
     if (v.startsWith('/')) v = v.slice(1);
-
-    // If it's now just a filename, prefix banners/
-    if (!v.toLowerCase().startsWith(BANNERS_DIR.toLowerCase() + '/')) {
-      v = `${BANNERS_DIR}/${v}`;
-    }
-
-    // Ensure .json extension
+    if (!v.toLowerCase().startsWith(BANNERS_DIR.toLowerCase() + '/')) v = `${BANNERS_DIR}/${v}`;
     if (!v.toLowerCase().endsWith('.json')) v = `${v}.json`;
-
     return v;
   };
 
   const loadJsonListFromDirectoryListing = async () => {
-    // Tries to fetch a directory listing for /banners and scrape links ending with .json.
-    // This works if your static server exposes directory listings (some do, some don't).
-    const url = `${BANNERS_DIR}/`;
-    const res = await fetch(url, { cache: 'no-store' });
+    const res = await fetch(`${BANNERS_DIR}/`, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
     const text = await res.text();
-
-    // Grab href values from anchor tags and keep *.json
     const hrefs = [];
     const re = /href\s*=\s*"([^"]+)"/gi;
     let m;
-    while ((m = re.exec(text)) !== null) {
-      hrefs.push(m[1]);
-    }
+    while ((m = re.exec(text)) !== null) hrefs.push(m[1]);
 
     const jsonLinks = hrefs
       .map(h => {
-        // Ignore parent dir and querystrings
         const clean = h.split('?')[0].split('#')[0];
-        if (!clean) return null;
-        if (clean === '../' || clean === './' || clean === '/') return null;
+        if (!clean || clean === '../' || clean === './' || clean === '/') return null;
         if (!clean.toLowerCase().endsWith('.json')) return null;
-
-        // If the href is already a path, normalise; if it's just a filename, normalise.
         return normaliseToJsonPath(clean);
       })
       .filter(Boolean);
 
-    // De-duplicate while preserving order
     const seen = new Set();
     const unique = [];
     for (const p of jsonLinks) {
@@ -105,29 +54,19 @@
       seen.add(p);
       unique.push(p);
     }
-
     return unique;
   };
 
   const labelFromPath = (path) => {
-    // path may contain slashes/backslashes and URL encoding; we want basename without .json
     const p = (path || '').toString().replace(/\\/g, '/');
     const baseRaw = p.split('/').filter(Boolean).pop() || '';
-
     let base = baseRaw;
-    try {
-      base = decodeURIComponent(baseRaw);
-    } catch (_) {
-      // If it isn't valid URI encoding, keep it as-is.
-      base = baseRaw;
-    }
-
+    try { base = decodeURIComponent(baseRaw); } catch (_) { base = baseRaw; }
     return base.replace(/\.json$/i, '');
   };
 
   const renderSelect = (paths, selectedPath) => {
     select.innerHTML = '';
-
     if (!paths.length) {
       const opt = document.createElement('option');
       opt.value = '';
@@ -137,10 +76,8 @@
       downloadBtn.disabled = true;
       return;
     }
-
     select.disabled = false;
     downloadBtn.disabled = false;
-
     paths.forEach((path) => {
       const opt = document.createElement('option');
       opt.value = path;
@@ -150,9 +87,7 @@
     });
   };
 
-  const clearMissions = () => {
-    container.innerHTML = '';
-  };
+  const clearMissions = () => { container.innerHTML = ''; };
 
   const renderMissions = (data) => {
     let total = 0;
@@ -178,18 +113,15 @@
 
       portals.forEach((p, pi) => {
         total++;
+        const title = p.title || 'Untitled';
 
         const fig = document.createElement('figure');
         fig.className = 'tile';
 
-        // Badge: "m-p"
         const badge = document.createElement('div');
         badge.className = 'badge';
-        const title = p.title || 'Untitled';
-        const label = `${mi + 1}-${pi + 1}`;
-        badge.textContent = label;
+        badge.textContent = `${mi + 1}-${pi + 1}`;
 
-        // Click: open full-size in a new tab
         const a = document.createElement('a');
         a.className = 'thumb-link';
         a.href = p.imageUrl;
@@ -206,48 +138,8 @@
         fig.appendChild(a);
         fig.appendChild(badge);
 
-        // Optional hover with delay (desktop): show larger preview near cursor
-        let hoverTimer = null;
-        let previewEl = null;
-        const showPreview = (evt) => {
-          // Avoid duplicate
-          if (previewEl) return;
-          previewEl = document.createElement('div');
-          previewEl.className = 'preview';
-          const big = document.createElement('img');
-          big.src = p.imageUrl;
-          big.alt = title;
-          previewEl.appendChild(big);
-          document.body.appendChild(previewEl);
-          positionPreview(evt, previewEl);
-        };
-        const hidePreview = () => {
-          if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-          if (previewEl) { previewEl.remove(); previewEl = null; }
-        };
-        const positionPreview = (evt, el) => {
-          const pad = 16;
-          let x = evt.clientX + pad;
-          let y = evt.clientY + pad;
-          const rect = el.getBoundingClientRect();
-          if (x + rect.width > window.innerWidth - pad) x = evt.clientX - rect.width - pad;
-          if (y + rect.height > window.innerHeight - pad) y = window.innerHeight - rect.height - pad;
-          el.style.left = x + 'px';
-          el.style.top = y + 'px';
-        };
+        attachHoverPreview(fig, p.imageUrl, title);
 
-        fig.addEventListener('mouseenter', (evt) => {
-          if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            hoverTimer = setTimeout(() => showPreview(evt), 550); // ~0.55s delay
-          }
-        });
-        fig.addEventListener('mousemove', (evt) => {
-          if (previewEl) positionPreview(evt, previewEl);
-        });
-        fig.addEventListener('mouseleave', hidePreview);
-        fig.addEventListener('click', hidePreview);
-
-        // Caption: title and optional description
         const cap = document.createElement('figcaption');
         const desc = (p.description || '').trim();
         cap.innerHTML = desc
@@ -261,11 +153,9 @@
       frag.appendChild(row);
     });
 
-    if (total === 0) {
-      status.textContent = 'No images found.';
-    } else {
-      status.textContent = `Loaded ${total} images across ${data.missions.length} missions. Scroll down; each row scrolls sideways.`;
-    }
+    status.textContent = total === 0
+      ? 'No images found.'
+      : `Loaded ${total} images across ${data.missions.length} missions. Scroll down; each row scrolls sideways.`;
 
     container.appendChild(frag);
   };
@@ -274,79 +164,21 @@
     status.style.color = '';
     status.textContent = 'Loading…';
     clearMissions();
-
     const res = await fetch(jsonPath, { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     if (!data || !Array.isArray(data.missions)) throw new Error('Missing missions[]');
-
     currentJsonPath = jsonPath;
     currentData = data;
-
     renderMissions(data);
   };
 
-  const safeFilename = (name) => {
-    // Remove characters that are illegal or annoying on common filesystems
-    return (name || 'image')
-      .toString()
-      .replace(/\s+/g, ' ')
-      .trim()
-      .replace(/[\\/:*?"<>|]/g, '-')
-      .replace(/\s*-\s*/g, '-')
-      .replace(/-+/g, '-')
-      .trim();
-  };
-
-  const guessExtensionFromUrl = (url) => {
-    try {
-      const u = new URL(url, window.location.href);
-      const path = u.pathname;
-      const m = path.match(/\.([a-zA-Z0-9]{2,5})$/);
-      if (m) return m[1].toLowerCase();
-    } catch (_) {
-      // ignore
-    }
-    return 'jpg';
-  };
-
-  const buildDownloadList = (data) => {
-    const items = [];
-    data.missions.forEach((m, mi) => {
-      const portals = (m.portals || []).filter(p => p && p.imageUrl);
-      portals.forEach((p, pi) => {
-        const badge = `${mi + 1}-${pi + 1}`;
-        const title = p.title || 'Untitled';
-        const ext = guessExtensionFromUrl(p.imageUrl);
-        const filename = `${badge} ${safeFilename(title)}.${ext}`;
-        items.push({ filename, url: p.imageUrl });
-      });
-    });
-    return items;
-  };
-
-  const downloadBlob = (filename, blob) => {
-    const a = document.createElement('a');
-    const objUrl = URL.createObjectURL(blob);
-    a.href = objUrl;
-    a.download = filename;
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      URL.revokeObjectURL(objUrl);
-      a.remove();
-    }, 1000);
-  };
-
   try {
-    // Discover available JSON files in /banners (directory listing).
     let paths = [];
     try {
       paths = await loadJsonListFromDirectoryListing();
     } catch (err) {
       console.error('Could not discover banner JSON files from directory listing.', err);
-      paths = [];
     }
 
     if (!paths.length) {
@@ -356,11 +188,8 @@
 
     const defaultPath = paths[0];
     renderSelect(paths, defaultPath);
-
-    // Load initial
     await loadAndRender(defaultPath);
 
-    // Change handler
     select.addEventListener('change', async () => {
       try {
         const nextPath = normaliseToJsonPath(select.value);
@@ -385,22 +214,16 @@
         status.style.color = '';
 
         const zip = new window.JSZip();
-
-        // Name zip based on selected json
         const zipBase = labelFromPath(currentJsonPath || 'images');
-
-        let ok = 0;
-        let fail = 0;
+        let ok = 0, fail = 0;
 
         for (let i = 0; i < list.length; i++) {
           const item = list[i];
           status.textContent = `Downloading ${i + 1}/${list.length}… (${ok} ok, ${fail} failed)`;
-
           try {
             const res = await fetch(item.url, { cache: 'no-store' });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const blob = await res.blob();
-            zip.file(item.filename, blob);
+            zip.file(item.filename, await res.blob());
             ok++;
           } catch (e) {
             console.warn('Failed to fetch', item.url, e);
@@ -409,10 +232,7 @@
         }
 
         status.textContent = `Building zip… (${ok} ok, ${fail} failed)`;
-
-        const zipBlob = await zip.generateAsync({ type: 'blob' });
-        downloadBlob(`${safeFilename(zipBase)}.zip`, zipBlob);
-
+        downloadBlob(`${safeFilename(zipBase)}.zip`, await zip.generateAsync({ type: 'blob' }));
         status.textContent = `Downloaded zip. (${ok} ok, ${fail} failed)`;
       } catch (err) {
         console.error(err);
@@ -429,6 +249,3 @@
     status.style.color = 'tomato';
   }
 })();
-</script>
-</body>
-</html>

@@ -1,11 +1,16 @@
 <!doctype html>
+<!-- banner-map.html
+     Leaflet-based map viewer for local banner JSON files (banners/).
+     Displays portals as colour-coded circle markers — one colour per mission —
+     draws sequential mission paths as polylines, and shows a colour legend.
+     A dropdown lets you switch between available banners. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <title>Ingress Banner Map Viewer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<link rel="stylesheet" href="./map.css">
+<link rel="stylesheet" href="./css/map.css">
 
 </head>
 <body>
@@ -14,12 +19,13 @@
     Banner:
     <select id="bannerSelect" aria-label="Select banner JSON" style="margin-left:6px;"></select>
   </label>
+  <button id="downloadKmlBtn" type="button" disabled>Download KML</button>
   <strong>Mission Set</strong>
 </header>
 <div id="map" role="region" aria-label="Map of portals"></div>
 <footer id="status">Loading…</footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="./map.js"></script>
+<script src="./js/banner-map.js"></script>
 </body>
 </html>

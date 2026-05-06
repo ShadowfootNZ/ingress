@@ -1,5 +1,9 @@
-// GeoJSON data is loaded dynamically from ./banners
+// map.js
+// Drives the Leaflet map in banner-map.html. Discovers banner JSON files in ./banners/,
+// converts them to GeoJSON portal features, renders colour-coded markers (one colour
+// per mission), draws sequential mission path polylines, and maintains a colour legend.
 let data = null;
+let currentBannerJson = null;
 
 const map = L.map('map').setView([-41.2924,174.7787], 14);
 
@@ -155,6 +159,7 @@ function fitToLayer(layer) {
 const statusEl = document.getElementById('status');
 const bannerSelect = document.getElementById('bannerSelect');
 const missionSetEl = document.querySelector('header strong');
+const downloadKmlBtn = document.getElementById('downloadKmlBtn');
 
 function setStatus(msg) {
   if (statusEl) statusEl.textContent = msg;
@@ -415,10 +420,113 @@ async function loadBannerByFileName(fileNameOrHref) {
       : []
   };
 
+  currentBannerJson = json;
+  if (downloadKmlBtn) downloadKmlBtn.disabled = false;
+
   const geo = bannerToGeoJson(json);
   replaceGeoJsonLayer(geo, display, extraMeta);
   // Draw sequential mission paths (per-mission setting)
   rebuildMissionLinesFromBannerJson(json);
+}
+
+// KML export — mirrors json-to-kml.js but runs client-side using the same
+// MISSION_COLOURS palette so exported colours match the map display.
+
+function kmlColor(rgb, alpha = 'FF') {
+  const m = rgb.replace('#', '').match(/([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2})/);
+  if (!m) return alpha + 'FFFFFF';
+  const [, r, g, b] = m;
+  return (alpha + b + g + r).toUpperCase();
+}
+
+function kmlStyleBlock(idx, rgb) {
+  const solid = kmlColor(rgb, 'FF');
+  const semi  = kmlColor(rgb, 'CC');
+  return `
+  <Style id="m${idx}-point">
+    <IconStyle>
+      <color>${solid}</color><scale>0.3</scale>
+      <Icon><href>https://www.gstatic.com/mapspro/images/stock/959-wht-circle-blank.png</href></Icon>
+    </IconStyle>
+    <LabelStyle><scale>0.0</scale></LabelStyle>
+  </Style>
+  <Style id="m${idx}-line">
+    <LineStyle><color>${semi}</color><width>3</width></LineStyle>
+  </Style>`;
+}
+
+function kmlPointPlacemark(p, styleId) {
+  const lat = p?.location?.latitude;
+  const lon = p?.location?.longitude;
+  if (typeof lat !== 'number' || typeof lon !== 'number') return '';
+  const name = escapeHtml(p.title || 'Untitled');
+  const descParts = [];
+  if (p.imageUrl) descParts.push(`<img src="${escapeHtml(p.imageUrl)}" width="240"/>`);
+  if (p.guid)     descParts.push(`<p><b>GUID:</b> ${escapeHtml(p.guid)}</p>`);
+  const desc = descParts.length ? `<description><![CDATA[${descParts.join('')}]]></description>` : '';
+  return `
+  <Placemark>
+    <name>${name}</name>${desc}
+    <styleUrl>#${styleId}</styleUrl>
+    <Point><coordinates>${lon},${lat},0</coordinates></Point>
+  </Placemark>`;
+}
+
+function kmlLinePlacemark(coords, name, styleId) {
+  if (coords.length < 2) return '';
+  const path = coords.map(({ lon, lat }) => `${lon},${lat},0`).join(' ');
+  return `
+  <Placemark>
+    <name>${escapeHtml(name)}</name>
+    <styleUrl>#${styleId}</styleUrl>
+    <LineString><tessellate>1</tessellate><coordinates>${path}</coordinates></LineString>
+  </Placemark>`;
+}
+
+function buildKml(json) {
+  const docName = escapeHtml(json.missionSetName || 'Mission Set');
+  const docDesc = escapeHtml(json.missionSetDescription || '');
+  const missions = Array.isArray(json.missions) ? json.missions : [];
+
+  let styles = '';
+  missions.forEach((_, i) => { styles += kmlStyleBlock(i, MISSION_COLOURS[i % MISSION_COLOURS.length]); });
+
+  let placemarks = '';
+  missions.forEach((m, i) => {
+    const portals = Array.isArray(m.portals) ? m.portals : [];
+    const title = m.missionTitle || `Mission ${String(i + 1).padStart(2, '0')}`;
+    placemarks += portals.map(p => kmlPointPlacemark(p, `m${i}-point`)).join('');
+    const coords = portals
+      .map(p => {
+        const lat = p?.location?.latitude, lon = p?.location?.longitude;
+        return (typeof lat === 'number' && typeof lon === 'number') ? { lat, lon } : null;
+      })
+      .filter(Boolean);
+    placemarks += kmlLinePlacemark(coords, `${title} — Route`, `m${i}-line`);
+  });
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>${docName}</name><description>${docDesc}</description>
+    ${styles}
+    <Folder><name>All Missions</name>${placemarks}</Folder>
+  </Document>
+</kml>`;
+}
+
+if (downloadKmlBtn) {
+  downloadKmlBtn.addEventListener('click', () => {
+    if (!currentBannerJson) return;
+    const kml = buildKml(currentBannerJson);
+    const blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(currentBannerJson.missionSetName || 'banner').replace(/[^\w\- ]/g, '_')}.kml`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
 }
 
 // Initialise: build dropdown from ./banners and load the first JSON.

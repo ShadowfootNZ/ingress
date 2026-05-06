@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- portal-images-local.html
+     Browses portal images for missions stored in local banner JSON files (banners/).
+     Auto-discovers available JSON files from the directory listing, then displays
+     each mission's portal images in scrollable per-mission rows. Supports hover
+     preview on desktop and bulk zip download of all portal images. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mission Images Browser</title>
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/portal-images.css">
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="controls">
+    <label for="fileSelect">Data file:</label>
+    <select id="fileSelect"></select>
+    <button id="downloadAll" type="button">Download all images (zip)</button>
+  </div>
+  <p id="status">Loading…</p>
+  <div id="missions" class="missions" role="list"></div>
+</div>
+
+<script type="module" src="./js/portal-images-local.js"></script>
+</body>
+</html>

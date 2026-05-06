@@ -1,5 +1,5 @@
 /* =====================================================================
-   Leaflet map viewer styles (map.html only)
+   Leaflet map viewer styles (banner-map.html only)
    ===================================================================== */
 
 html, body {
@@ -20,12 +20,23 @@ footer {
   flex-wrap: wrap;
 }
 
-header select {
+header select,
+header button {
   background: #222;
   color: #eee;
   border: 1px solid #444;
   border-radius: 6px;
-  padding: 4px 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+header button:hover:not(:disabled) {
+  background: #2a2a2a;
+}
+
+header button:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 #map {

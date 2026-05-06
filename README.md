@@ -19,6 +19,10 @@ Data collated from community sources including [Ingress Anomaly Stats](https://l
 Portals are coloured by key count (using resonator-level colours) and automatically grouped on the map for easy inspection.
 This data is entirely local, with nothing being uploaded anywhere; you'll need to share what you copied from Intel if you want to share your map.
 
+## Mission Planning Tools
+
+The [`missions/`](missions/) folder contains a set of local tools for planning and reviewing Ingress banner missions, events. See the [missions README](missions/README.md) for details.
+
 ---
 
 ### Feedback and Contributions

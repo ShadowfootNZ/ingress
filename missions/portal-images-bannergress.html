@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- portal-images-bannergress.html
+     Fetches a banner from the Bannergress API by URL and displays its portal images
+     grouped into scrollable per-mission rows. Supports hover preview on desktop
+     and bulk zip download of all portal images. -->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mission Images Browser</title>
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/portal-images.css">
+<link rel="stylesheet" href="./css/portal-images-bannergress.css">
+<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="controls">
+    <label for="jsonUrl">Bannergress URL:</label>
+    <input type="text" id="jsonUrl" placeholder="https://bannergress.com/banner/..." />
+    <button id="loadBtn" type="button">Load</button>
+    <button id="downloadPortals" type="button">Download portal images (zip)</button>
+    <button id="downloadMissions" type="button">Download mission images (zip)</button>
+  </div>
+  <p id="status"></p>
+  <div id="missions" class="missions" role="list"></div>
+</div>
+
+<script type="module" src="./js/portal-images-bannergress.js"></script>
+</body>
+</html>
