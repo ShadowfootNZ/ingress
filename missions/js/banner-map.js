@@ -160,6 +160,8 @@ const statusEl = document.getElementById('status');
 const bannerSelect = document.getElementById('bannerSelect');
 const missionSetEl = document.querySelector('header strong');
 const downloadKmlBtn = document.getElementById('downloadKmlBtn');
+const loadJsonBtn = document.getElementById('loadJsonBtn');
+const loadJsonInput = document.getElementById('loadJsonInput');
 
 function setStatus(msg) {
   if (statusEl) statusEl.textContent = msg;
@@ -397,23 +399,13 @@ function replaceGeoJsonLayer(geojson, label, extraMeta) {
   }
 }
 
-async function loadBannerByFileName(fileNameOrHref) {
-  const display = displayNameFromFile(fileNameOrHref);
-  setStatus(`Loading ${display}…`);
-  // Reset lines for this load
-  try { missionLinesLayer.clearLayers(); } catch (e) {}
-
-  const url = bannerUrlFromHref(fileNameOrHref);
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
-
-  const json = await res.json();
+function processBannerJson(json, displayName) {
   if (!isBannerFormatV2(json)) {
     throw new Error('JSON is not a banner file (expected an object with a missions array).');
   }
 
   const extraMeta = {
-    missionSetName: json && json.missionSetName ? String(json.missionSetName) : null,
+    missionSetName: json.missionSetName ? String(json.missionSetName) : null,
     missionCount: Array.isArray(json.missions) ? json.missions.length : null,
     missionTitles: Array.isArray(json.missions)
       ? json.missions.map((m, idx) => (m && m.missionTitle) ? String(m.missionTitle) : `Mission ${idx + 1}`)
@@ -424,9 +416,21 @@ async function loadBannerByFileName(fileNameOrHref) {
   if (downloadKmlBtn) downloadKmlBtn.disabled = false;
 
   const geo = bannerToGeoJson(json);
-  replaceGeoJsonLayer(geo, display, extraMeta);
-  // Draw sequential mission paths (per-mission setting)
+  replaceGeoJsonLayer(geo, displayName, extraMeta);
   rebuildMissionLinesFromBannerJson(json);
+}
+
+async function loadBannerByFileName(fileNameOrHref) {
+  const display = displayNameFromFile(fileNameOrHref);
+  setStatus(`Loading ${display}…`);
+  try { missionLinesLayer.clearLayers(); } catch (e) {}
+
+  const url = bannerUrlFromHref(fileNameOrHref);
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Failed to load ${url}`);
+
+  const json = await res.json();
+  processBannerJson(json, display);
 }
 
 // KML export — mirrors json-to-kml.js but runs client-side using the same
@@ -513,6 +517,27 @@ function buildKml(json) {
     <Folder><name>All Missions</name>${placemarks}</Folder>
   </Document>
 </kml>`;
+}
+
+if (loadJsonBtn && loadJsonInput) {
+  loadJsonBtn.addEventListener('click', () => loadJsonInput.click());
+  loadJsonInput.addEventListener('change', () => {
+    const file = loadJsonInput.files[0];
+    if (!file) return;
+    loadJsonInput.value = '';
+    const displayName = file.name.replace(/\.json$/i, '');
+    setStatus(`Loading ${displayName}…`);
+    const reader = new FileReader();
+    reader.onload = e => {
+      try {
+        const json = JSON.parse(e.target.result);
+        processBannerJson(json, displayName);
+      } catch (err) {
+        setStatus('Failed to load file: ' + (err.message || err));
+      }
+    };
+    reader.readAsText(file);
+  });
 }
 
 if (downloadKmlBtn) {
