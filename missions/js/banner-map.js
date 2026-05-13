@@ -26,6 +26,7 @@ const MISSION_COLOURS = [
 
 let currentMissionCount = 0;
 let legendControl = null;
+const missionLineMap = new Map();
 
 function colourForMission(missionNumber) {
   const idx = (Number(missionNumber) - 1);
@@ -38,20 +39,19 @@ function ensureLegend() {
   legendControl = L.control({ position: 'topright' });
   legendControl.onAdd = function () {
     const div = L.DomUtil.create('div', 'mission-legend');
-    div.style.background = 'rgba(17,17,17,0.85)';
-    div.style.color = '#eee';
-    div.style.padding = '8px 10px';
-    div.style.border = '1px solid rgba(255,255,255,0.15)';
-    div.style.borderRadius = '8px';
-    div.style.fontFamily = 'system-ui';
-    div.style.fontSize = '12px';
-    div.style.lineHeight = '1.25';
-    div.style.maxHeight = '50vh';
-    div.style.overflow = 'auto';
-    div.innerHTML = '<div style="font-weight:700; margin-bottom:6px;">Missions</div><div id="legendBody">(none)</div>';
-    // Prevent map drag/scroll when interacting with legend
+    div.innerHTML = '<div class="mission-legend-title">Missions</div><div id="legendBody">(none)</div>';
     L.DomEvent.disableClickPropagation(div);
     L.DomEvent.disableScrollPropagation(div);
+
+    let hoveredMission = null;
+    div.addEventListener('mouseover', e => {
+      const row = e.target.closest('[data-mission]');
+      if (!row) return;
+      const n = Number(row.dataset.mission);
+      if (n !== hoveredMission) { hoveredMission = n; highlightMission(n); }
+    });
+    div.addEventListener('mouseleave', () => { hoveredMission = null; clearHighlight(); });
+
     return div;
   };
   legendControl.addTo(map);
@@ -74,8 +74,8 @@ function updateLegend(missionCount, missionTitles) {
   for (let i = 1; i <= currentMissionCount; i++) {
     const c = colourForMission(i);
     rows.push(
-      `<div style="display:flex; align-items:center; gap:8px; margin:2px 0;">` +
-      `<span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${c}; border:1px solid rgba(255,255,255,0.35);"></span>` +
+      `<div class="legend-row" data-mission="${i}">` +
+      `<span class="mission-swatch" style="background:${c};"></span>` +
       `<span>${escapeHtml((titles[i - 1] || `Mission ${i}`))}</span>` +
       `</div>`
     );
@@ -115,13 +115,12 @@ function onEachFeature(feature, layer) {
   // Optional portal image
   if (imageUrl && /^https?:\/\//i.test(imageUrl)) {
     html +=
-      '<div style="margin-top:6px;">' +
-      '<img ' +
-        'src="' + escapeHtml(imageUrl) + '" ' +
-        'alt="' + escapeHtml(title) + '" ' +
-        'loading="lazy" ' +
-        'referrerpolicy="no-referrer" ' +
-        'style="display:block; max-width:240px; width:100%; height:auto; border-radius:8px; border:1px solid rgba(255,255,255,0.15);"' +
+      '<div class="popup-portal-img-wrap">' +
+      '<img class="popup-portal-img"' +
+        ' src="' + escapeHtml(imageUrl) + '"' +
+        ' alt="' + escapeHtml(title) + '"' +
+        ' loading="lazy"' +
+        ' referrerpolicy="no-referrer"' +
       '>' +
       '</div>';
   }
@@ -133,9 +132,9 @@ function onEachFeature(feature, layer) {
         const c = colourForMission(mp.n);
         const t = mp.title || `Mission ${mp.n}`;
         return (
-          '<div style="display:flex; align-items:center; gap:6px; margin-top:4px;">' +
-          `<span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${c}; border:1px solid rgba(255,255,255,0.35);"></span>` +
-          '<span style="font-size:12px;">' + escapeHtml(t) + '</span>' +
+          '<div class="popup-mission-row">' +
+          `<span class="mission-swatch" style="background:${c};"></span>` +
+          '<span class="popup-mission-label">' + escapeHtml(t) + '</span>' +
           '</div>'
         );
       });
@@ -157,73 +156,52 @@ function fitToLayer(layer) {
   }
 }
 const statusEl = document.getElementById('status');
-const bannerSelect = document.getElementById('bannerSelect');
-const missionSetEl = document.querySelector('header strong');
+const missionSetEl = document.getElementById('missionSetName');
 const downloadKmlBtn = document.getElementById('downloadKmlBtn');
 const loadJsonBtn = document.getElementById('loadJsonBtn');
 const loadJsonInput = document.getElementById('loadJsonInput');
+const bannergressUrlInput = document.getElementById('bannergressUrl');
+const loadBannergressBtn = document.getElementById('loadBannergressBtn');
 
 function setStatus(msg) {
   if (statusEl) statusEl.textContent = msg;
 }
 
-// Decode a filename for display (spaces instead of %20, etc.)
-function displayNameFromFile(fileName) {
-  const base = String(fileName).split('/').pop();
-  const noExt = base.replace(/\.json$/i, '');
-  try {
-    return decodeURIComponent(noExt);
-  } catch {
-    return noExt;
-  }
+function extractBannerId(url) {
+  const clean = String(url).split('?')[0].split('#')[0].replace(/\/$/, '');
+  if (clean.includes('/banner/')) return clean.split('/banner/').pop().split('/')[0];
+  return clean.split('/').pop();
 }
 
-// Attempt to list JSON files in ./banners by parsing the directory listing HTML.
-async function listBannerFiles() {
-  const res = await fetch('./banners/', { cache: 'no-store' });
-  if (!res.ok) throw new Error('Cannot fetch ./banners/');
-  const html = await res.text();
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  const links = Array.from(doc.querySelectorAll('a'))
-    .map(a => a.getAttribute('href'))
-    .filter(Boolean)
-    .filter(h => h.toLowerCase().endsWith('.json'))
-    .filter(h => !h.startsWith('../'))
-    // strip query/hash
-    .map(h => h.split('#')[0].split('?')[0]);
+async function loadFromBannergressUrl(url) {
+  const bannerId = extractBannerId(url);
+  if (!bannerId) throw new Error('Could not extract banner ID from URL.');
+  setStatus('Fetching from Bannergress…');
+  try { missionLinesLayer.clearLayers(); } catch (e) {}
 
-  // De-dupe and normalise
-  const uniq = Array.from(new Set(links))
-    .map(h => h.replace(/^\.\//, ''))
-    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
+  const apiUrl = `https://api.bannergress.com/bnrs/${bannerId}`;
+  const res = await fetch(apiUrl, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`Bannergress API returned HTTP ${res.status}`);
+  const bData = await res.json();
 
-  return uniq;
-}
+  const json = {
+    missionSetName: bData.title || bannerId,
+    fileFormatVersion: 2,
+    missions: Object.values(bData.missions || {})
+      .sort((a, b) => (a.listOrder ?? 0) - (b.listOrder ?? 0))
+      .map(m => ({
+        missionTitle: m.title || '',
+        missionType: 'sequential',
+        portals: (m.steps || []).filter(s => s.poi).map(s => ({
+          title: s.poi.title || '',
+          imageUrl: s.poi.picture || '',
+          guid: s.poi.id || '',
+          location: { latitude: s.poi.latitude, longitude: s.poi.longitude }
+        }))
+      }))
+  };
 
-function populateBannerSelect(files) {
-  bannerSelect.innerHTML = '';
-  for (const f of files) {
-    const opt = document.createElement('option');
-    opt.value = f;
-    opt.textContent = displayNameFromFile(f);
-    bannerSelect.appendChild(opt);
-  }
-}
-
-function bannerUrlFromHref(href) {
-  const raw = String(href || '').trim();
-  const cleaned = raw
-    .split('#')[0]
-    .split('?')[0]
-    .replace(/^\.\//, '');
-
-  // If the directory listing returns absolute paths or includes folders, trust it as a relative/absolute URL.
-  if (cleaned.includes('/')) {
-    return new URL(cleaned, location.href).toString();
-  }
-
-  // Otherwise treat it as a file within ./banners/
-  return new URL('./banners/' + cleaned, location.href).toString();
+  processBannerJson(json, json.missionSetName);
 }
 
 function isBannerFormatV2(obj) {
@@ -236,8 +214,41 @@ function isBannerFormatV2(obj) {
   );
 }
 
+function highlightMission(missionNumber) {
+  gj.eachLayer(layer => {
+    const missions = layer.feature?.properties?.missions || [];
+    const multi = missions.length > 1;
+    if (missions.includes(missionNumber)) {
+      layer.setStyle({ fillOpacity: 1, opacity: 1, weight: 1 });
+      layer.setRadius(10);
+      layer.bringToFront();
+    } else {
+      layer.setStyle({ fillOpacity: 0.7, opacity: 0.7 });
+      layer.setRadius(multi ? 7 : 5);
+    }
+  });
+  missionLineMap.forEach((line, mNum) => {
+    if (mNum === missionNumber) {
+      line.setStyle({ weight: 5, opacity: 1 });
+      line.bringToFront();
+    } else {
+      line.setStyle({ weight: 1, opacity: 0.7 });
+    }
+  });
+}
+
+function clearHighlight() {
+  gj.eachLayer(layer => {
+    const missions = layer.feature?.properties?.missions || [];
+    const multi = missions.length > 1;
+    layer.setStyle({ weight: multi ? 2 : 1, color: '#ffffff', opacity: 0.9, fillOpacity: 0.9 });
+    layer.setRadius(multi ? 7 : 5);
+  });
+  missionLineMap.forEach(line => line.setStyle({ weight: 3, opacity: 0.85 }));
+}
+
 function rebuildMissionLinesFromBannerJson(bannerJson) {
-  // Clear previous lines
+  missionLineMap.clear();
   try { missionLinesLayer.clearLayers(); } catch (e) {}
 
   const missions = (bannerJson && Array.isArray(bannerJson.missions)) ? bannerJson.missions : [];
@@ -271,6 +282,7 @@ function rebuildMissionLinesFromBannerJson(bannerJson) {
     });
 
     line.bindPopup('<strong>' + escapeHtml(title) + '</strong><br><small>Sequential path</small>');
+    missionLineMap.set(mi + 1, line);
     missionLinesLayer.addLayer(line);
   }
 
@@ -420,19 +432,6 @@ function processBannerJson(json, displayName) {
   rebuildMissionLinesFromBannerJson(json);
 }
 
-async function loadBannerByFileName(fileNameOrHref) {
-  const display = displayNameFromFile(fileNameOrHref);
-  setStatus(`Loading ${display}…`);
-  try { missionLinesLayer.clearLayers(); } catch (e) {}
-
-  const url = bannerUrlFromHref(fileNameOrHref);
-  const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to load ${url}`);
-
-  const json = await res.json();
-  processBannerJson(json, display);
-}
-
 // KML export — mirrors json-to-kml.js but runs client-side using the same
 // MISSION_COLOURS palette so exported colours match the map display.
 
@@ -540,6 +539,22 @@ if (loadJsonBtn && loadJsonInput) {
   });
 }
 
+if (loadBannergressBtn && bannergressUrlInput) {
+  const doLoad = async () => {
+    const url = bannergressUrlInput.value.trim();
+    if (!url) { setStatus('Please enter a Bannergress URL.'); return; }
+    try {
+      await loadFromBannergressUrl(url);
+    } catch (err) {
+      console.error(err);
+      setStatus('Failed to load from Bannergress: ' + (err.message || err));
+    }
+  };
+  loadBannergressBtn.addEventListener('click', doLoad);
+  bannergressUrlInput.addEventListener('keydown', e => { if (e.key === 'Enter') doLoad(); });
+  bannergressUrlInput.addEventListener('blur', () => { if (bannergressUrlInput.value.trim()) doLoad(); });
+}
+
 if (downloadKmlBtn) {
   downloadKmlBtn.addEventListener('click', () => {
     if (!currentBannerJson) return;
@@ -554,33 +569,7 @@ if (downloadKmlBtn) {
   });
 }
 
-// Initialise: build dropdown from ./banners and load the first JSON.
-(async () => {
-  try {
-    const files = await listBannerFiles();
-    if (!files.length) {
-      setStatus('No JSON files found in ./banners');
-      return;
-    }
-    populateBannerSelect(files);
-    await loadBannerByFileName(files[0]);
-
-    if (bannerSelect) {
-      bannerSelect.addEventListener('change', async () => {
-        try {
-          await loadBannerByFileName(bannerSelect.value);
-        } catch (e) {
-          console.error(e);
-          setStatus(String(e && e.message ? e.message : e));
-        }
-      });
-    }
-  } catch (e) {
-    console.error(e);
-    // Directory listing may not be available (depends on server). Offer file picker fallback.
-    setStatus('Could not load banner data. Check the console and confirm the JSON files are reachable under ./banners/.');
-  }
-})();
+setStatus('Load a local JSON file or enter a Bannergress URL above.');
 
 // simple escape for popup
 function escapeHtml(s) {

@@ -20,6 +20,7 @@ footer {
   flex-wrap: wrap;
 }
 
+header input[type="text"],
 header select,
 header button {
   background: #222;
@@ -28,6 +29,10 @@ header button {
   border-radius: 6px;
   padding: 4px 8px;
   cursor: pointer;
+}
+
+#bannergressUrl {
+  width: 280px;
 }
 
 header button:hover:not(:disabled) {
@@ -56,4 +61,71 @@ header button:disabled {
 
 .leaflet-control-layers {
   display: none !important;
+}
+
+.mission-legend {
+  background: rgba(17,17,17,0.85);
+  color: #eee;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  font-family: system-ui;
+  font-size: 12px;
+  line-height: 1.25;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+.mission-legend-title {
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 2px 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.legend-row:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Shared colour swatch — used in legend rows and portal popups */
+.mission-swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+/* Portal popup */
+.popup-mission-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.popup-mission-label {
+  font-size: 12px;
+}
+
+.popup-portal-img-wrap {
+  margin-top: 6px;
+}
+
+.popup-portal-img {
+  display: block;
+  max-width: 240px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
 }
