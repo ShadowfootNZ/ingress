@@ -187,19 +187,23 @@ function buildAnomalyHTML(a, { resUrl, enlUrl, pageUrl, eventLocal, userLocal, h
          <span class="tz-label">(${DateTime.local().zoneName})</span></div>`
     : `<div class="local-time">${eventLocal.toLocaleString(DateTime.DATE_FULL)}</div>`;
 
-  const resLogoHTML = resUrl 
-    ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer">
-         <img src="${resUrl.endsWith('.webp') ? resUrl : '../img/resistance.webp'}" 
+  const resLogoHTML = resUrl
+    ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer" class="faction-logo-wrapper" data-tooltip="${escapeHtml(resUrl)}">
+         <img src="${resUrl.endsWith('.webp') ? resUrl : '../img/resistance.webp'}"
               alt="Resistance Logo" class="faction-logo">
-       </a>` 
-    : "";
+       </a>`
+    : `<span class="faction-logo-wrapper" data-tooltip="Resistance team link missing — can you share it?">
+         <img src="../img/resistance.webp" alt="Resistance Logo" class="faction-logo faction-logo-missing">
+       </span>`;
 
-  const enlLogoHTML = enlUrl 
-    ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer">
-         <img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}" 
+  const enlLogoHTML = enlUrl
+    ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer" class="faction-logo-wrapper" data-tooltip="${escapeHtml(enlUrl)}">
+         <img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}"
               alt="Enlightened Logo" class="faction-logo">
-       </a>` 
-    : "";
+       </a>`
+    : `<span class="faction-logo-wrapper" data-tooltip="Enlightened team link missing — can you share it?">
+         <img src="../img/enlightened.webp" alt="Enlightened Logo" class="faction-logo faction-logo-missing">
+       </span>`;
 
   const countdownId = `cd-${a.series.replace(/[^a-zA-Z0-9_-]+/g,'')}-${a.city.replace(/[^a-zA-Z0-9_-]+/g,'')}`;
 

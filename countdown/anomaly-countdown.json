@@ -1,75 +1,5 @@
 [
   {
-    "series": "+Gamma",
-    "series-logos": [
-      "Gamma_bronze.png",
-      "Gamma_silver.png",
-      "Gamma_gold.png"
-    ],
-    "sites": [
-      {
-        "date": "2026-02-28T14:00:00",
-        "city": "Charlotte, NC",
-        "country": "USA",
-        "timezone": "America/New_York",
-        "url-res": "https://res.blue/group/charlotte-anomaly-2026-charlotte-nc",
-        "url-enl": "https://enl.rocks/-scrA",
-        "winner": "enlightened",
-        "location": { "lat": 35.2271, "lng": -80.8431 }
-      },
-      {
-        "date": "2026-02-28T14:00:00",
-        "city": "Lisbon",
-        "country": "Portugal",
-        "timezone": "Europe/Lisbon",
-        "url-res": "https://register.lisboa.willbe.blue",
-        "url-enl": "https://enlightened.rocks/anomaly/Lisboa2026",
-        "winner": "resistance",
-        "location": { "lat": 38.7223, "lng": -9.1393 }
-      },
-      {
-        "date": "2026-03-14T14:00:00",
-        "city": "Hong Kong",
-        "country": "China",
-        "timezone": "Asia/Hong_Kong",
-        "url-res": "https://www.willbe.blue/anomalies-events/",
-        "url-enl": "https://enl.rocks/-m4F1",
-        "winner": "enlightened",
-        "location": { "lat": 22.3193, "lng": 114.1694 }
-      },
-      {
-        "date": "2026-03-14T14:00:00",
-        "city": "Zagreb",
-        "country": "Croatia",
-        "timezone": "Europe/Zagreb",
-        "url-res": "https://t.me/+VUSrJFahQE1lMGM0",
-        "url-enl": "https://enlightened.rocks/zagreb2026",
-        "winner": "enlightened",
-        "location": { "lat": 45.8150, "lng": 15.9819 }
-      },
-      {
-        "date": "2026-03-21T14:00:00",
-        "city": "Hyderabad, Telangana",
-        "country": "India",
-        "timezone": "Asia/Kolkata",
-        "url-res": "https://res.blue/group/hyderabad-anomaly-hype-chatq1-2026",
-        "url-enl": "https://enlightened.rocks/hyderabad2026",
-        "winner": "enlightened",
-        "location": { "lat": 17.3850, "lng": 78.4867 }
-      },
-      {
-        "date": "2026-03-21T14:00:00",
-        "city": "Buenos Aires",
-        "country": "Argentina",
-        "timezone": "America/Argentina/Buenos_Aires",
-        "url-enl": "https://enlightened.rocks/anomaly/BA2026",
-        "url-res": "https://buenosaires-res.com/",
-        "winner": "enlightened",
-        "location": { "lat": -34.6037, "lng": -58.3816 }
-      }
-    ]
-  },
-  {
     "series": "Orion",
     "series-logos": [
       "Orion_bronze.png",
@@ -85,6 +15,7 @@
         "timezone": "Australia/Sydney",
         "url-enl": "https://enlightened.rocks/anomaly/Sydney26",
         "url-res": "https://res.blue/group/sydney-anomaly-2026-pre-reg",
+        "winner": "enlightened",
         "location": { "lat": -33.8688, "lng": 151.2093 }
       },
       {
@@ -94,6 +25,7 @@
         "timezone": "Europe/Prague",
         "url-enl": "https://enlightened.rocks/Prague26",
         "url-res": "https://res.blue/group/prague-megahype",
+        "winner": "resistance",
         "location": { "lat": 50.0755, "lng": 14.4378 }
       },
       {
@@ -135,7 +67,7 @@
     ]
   },
   {
-    "series": "2026Q3",
+    "series": "Apollo",
     "sites": [
       {
         "date": "2026-07-18T14:00:00",
@@ -152,6 +84,7 @@
         "country": "Colombia",
         "timezone": "America/Bogota",
         "url-enl": "https://t.me/+jLnprr21MFFmMjE5",
+        "url-res": "https://register.bogota.willbe.blue/",
         "location": { "lat": 4.7110, "lng": -74.0721 }
       },
       {

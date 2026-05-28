@@ -22553,8 +22553,8 @@
             "region": "New South Wales",
             "country": "Australia",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 190.1,
+              "res": 89.9
             }
           },
           {
@@ -22562,8 +22562,8 @@
             "region": "Prague",
             "country": "Czechia",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 89.1,
+              "res": 190.9
             }
           }
         ],
@@ -22609,7 +22609,7 @@
         ]
       }
     },
-    "2026Q3": {
+    "Apollo": {
       "Anomaly": {
         "2026-07-18" : [
           {
