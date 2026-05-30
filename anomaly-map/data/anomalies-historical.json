@@ -22582,8 +22582,8 @@
             "region": "New Jersey",
             "country": "United States",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 176.6,
+              "res": 103.4
             }
           }
         ],
