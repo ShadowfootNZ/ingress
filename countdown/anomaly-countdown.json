@@ -1,11 +1,16 @@
 [
   {
     "series": "Orion",
+    "series-results": "https://ingress.com/news/2026-orion-results",
+    "series-details": "https://ingress.com/news/2026-orion-anomalysites",
     "series-logos": [
       "Orion_bronze.png",
       "Orion_silver.png",
       "Orion_gold.png",
       "Orion_platinum.png"
+    ],
+    "anomaly-badges": [
+      "Orion.png"
     ],
     "sites": [
       {

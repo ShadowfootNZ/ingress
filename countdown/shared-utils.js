@@ -93,6 +93,9 @@ async function loadAnomalyData(includeTest = false) {
       return seriesObj.sites.map(site => ({
         series: seriesObj.series,
         "series-logos": seriesObj["series-logos"] || [],
+        "series-results": seriesObj["series-results"] || "",
+        "series-details": seriesObj["series-details"] || "",
+        "anomaly-badges": seriesObj["anomaly-badges"] || [],
         ...site
       }));
     });
