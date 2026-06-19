@@ -139,14 +139,13 @@ function createAnomalyCard(a) {
     ? a.utcDate.plus({ hours: CONFIG.EVENT_DURATION_HOURS }) 
     : a.utcDate.endOf('day');
   const isActive = hasTime && now >= a.utcDate && now <= eventEnd;
-  const isPrep = !isActive && !!resUrl && !!enlUrl;
 
   // Create card element
   const anomalyEl = document.createElement("div");
   anomalyEl.className = "anomaly";
-  
+
   // Apply border styling
-  applyBorderClass(anomalyEl, isActive, winner, isPrep);
+  applyBorderClass(anomalyEl, isActive, winner, resUrl, enlUrl);
 
   // Build HTML content
   anomalyEl.innerHTML = buildAnomalyHTML(a, {
@@ -169,7 +168,7 @@ function createAnomalyCard(a) {
 /**
  * Applies appropriate border class based on anomaly state
  */
-function applyBorderClass(element, isActive, winner, isPrep) {
+function applyBorderClass(element, isActive, winner, resUrl, enlUrl) {
   let duration = null;
 
   if (isActive) {
@@ -180,10 +179,18 @@ function applyBorderClass(element, isActive, winner, isPrep) {
     element.classList.add('border-res');
   } else if (winner === 'enlightened') {
     element.classList.add('border-enl');
-  } else if (isPrep) {
-    element.classList.add('border-prep');
+  } else if (resUrl && enlUrl) {
+    element.classList.add('border-prep-both');
     duration = parseFloat(getComputedStyle(document.documentElement)
       .getPropertyValue('--pulse-prep-duration')) || 7;
+  } else if (resUrl) {
+    element.classList.add('border-prep-res');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-res-duration')) || 4;
+  } else if (enlUrl) {
+    element.classList.add('border-prep-enl');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-enl-duration')) || 4;
   } else {
     element.classList.add('border-default');
     duration = parseFloat(getComputedStyle(document.documentElement)

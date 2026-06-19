@@ -9,7 +9,9 @@
   
   /* Animation timing */
   --pulse-active-duration: 2.3s;
-  --pulse-prep-duration: 7s;
+  --pulse-prep-duration: 9s;
+  --pulse-res-duration: 9s;
+  --pulse-enl-duration: 9s;
   --pulse-red-duration: 3s;
 }
 
@@ -223,7 +225,7 @@ a:hover {
 
 /* Border States */
 .anomaly.border-default {
-  box-shadow: 0 0 12px color-mix(in srgb, var(--machina-red) 60%, transparent);
+  animation: redPulse var(--pulse-red-duration) ease-in-out infinite;
 }
 
 .anomaly.border-res {
@@ -234,12 +236,16 @@ a:hover {
   box-shadow: 0 0 20px var(--enl-green);
 }
 
-.anomaly.border-redpulse {
-  animation: redPulse var(--pulse-red-duration) ease-in-out infinite;
+.anomaly.border-prep-both {
+  animation: prepBothPulse var(--pulse-prep-duration) ease-in-out infinite;
 }
 
-.anomaly.border-prep {
-  animation: prepPulse var(--pulse-prep-duration) ease-in-out infinite;
+.anomaly.border-prep-res {
+  animation: prepResPulse var(--pulse-res-duration) ease-in-out infinite;
+}
+
+.anomaly.border-prep-enl {
+  animation: prepEnlPulse var(--pulse-enl-duration) ease-in-out infinite;
 }
 
 .anomaly.border-active {
@@ -320,16 +326,40 @@ a:hover {
   75%      { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%, transparent); }
 }
 
-@keyframes prepPulse {
-  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
-  12%  { box-shadow: 0 0 5px transparent; }
-  25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green) 70%, transparent); }
-  37%  { box-shadow: 0 0 5px transparent; }
-  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
-  62%  { box-shadow: 0 0 5px transparent; }
-  75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue) 70%, transparent); }
-  87%  { box-shadow: 0 0 5px transparent; }
-  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral) 70%, transparent); }
+@keyframes prepBothPulse {
+  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  12%  { box-shadow: 0 0  5px transparent; }
+  25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue)    80%, transparent); }
+  37%  { box-shadow: 0 0  5px transparent; }
+  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  62%  { box-shadow: 0 0  5px transparent; }
+  75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green)   80%, transparent); }
+  87%  { box-shadow: 0 0  5px transparent; }
+  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+}
+
+@keyframes prepResPulse {
+  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  12%  { box-shadow: 0 0  5px transparent; }
+  25%  { box-shadow: 0 0 25px color-mix(in srgb, var(--res-blue)    80%, transparent); }
+  37%  { box-shadow: 0 0  5px transparent; }
+  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  62%  { box-shadow: 0 0  5px transparent; }
+  75%  { box-shadow: 0 0 18px color-mix(in srgb, var(--machina-red) 65%, transparent); }
+  87%  { box-shadow: 0 0  5px transparent; }
+  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+}
+
+@keyframes prepEnlPulse {
+  0%   { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  12%  { box-shadow: 0 0  5px transparent; }
+  25%  { box-shadow: 0 0 18px color-mix(in srgb, var(--machina-red) 65%, transparent); }
+  37%  { box-shadow: 0 0  5px transparent; }
+  50%  { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
+  62%  { box-shadow: 0 0  5px transparent; }
+  75%  { box-shadow: 0 0 25px color-mix(in srgb, var(--enl-green)   80%, transparent); }
+  87%  { box-shadow: 0 0  5px transparent; }
+  100% { box-shadow: 0 0 15px color-mix(in srgb, var(--neutral)     55%, transparent); }
 }
 
 @keyframes redPulse {
