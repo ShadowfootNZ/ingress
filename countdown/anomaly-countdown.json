@@ -49,7 +49,7 @@
         "location": { "lat": 40.7178, "lng": -74.0431 }
       },
       {
-        "date": "2026-06-13T14:00:00",
+        "date": "2026-06-20T14:00:00",
         "city": "Geneva",
         "country": "Switzerland",
         "timezone": "Europe/Zurich",
@@ -58,7 +58,7 @@
         "location": { "lat": 46.2044, "lng": 6.1432 }
       },
       {
-        "date": "2026-06-13T14:00:00",
+        "date": "2026-06-20T14:00:00",
         "city": "Lima",
         "country": "Peru",
         "timezone": "America/Lima",
