@@ -217,6 +217,10 @@ a:hover {
   color: var(--machina-red);
 }
 
+.countdown a {
+  color: inherit;
+}
+
 /* Border States */
 .anomaly.border-default {
   box-shadow: 0 0 12px color-mix(in srgb, var(--machina-red) 60%, transparent);
@@ -256,6 +260,22 @@ a:hover {
   color: var(--machina-red);
   text-align: center;
   margin-top: 2em;
+}
+
+/* Series Heading */
+.series-heading {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-size: 1.8em;
+  color: var(--neutral);
+  margin: 0.2em 0 0;
+}
+
+.series-heading a {
+  color: inherit;
 }
 
 /* Series Break */

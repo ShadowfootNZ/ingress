@@ -65,11 +65,13 @@ function renderAnomalies(anomalies, container, errorEl) {
   
   anomalies.forEach((anomaly, index) => {
     try {
-      // Insert series break between different series
-      if (index > 0 && anomaly.series !== previousSeries) {
-        const hr = document.createElement('div');
-        hr.className = 'series-break';
-        container.appendChild(hr);
+      if (anomaly.series !== previousSeries) {
+        if (index > 0) {
+          const hr = document.createElement('div');
+          hr.className = 'series-break';
+          container.appendChild(hr);
+        }
+        container.appendChild(createSeriesHeading(anomaly));
       }
       previousSeries = anomaly.series;
 
@@ -80,6 +82,40 @@ function renderAnomalies(anomalies, container, errorEl) {
       console.error(`Error rendering anomaly ${anomaly.city}:`, err);
     }
   });
+}
+
+/**
+ * Creates the h2 series heading for a group of anomaly cards
+ */
+function createSeriesHeading(anomaly) {
+  const heading = document.createElement('h2');
+  heading.className = 'series-heading';
+
+  const detailsUrl = sanitizeUrl(anomaly["series-details"]);
+  const nameEl = document.createElement(detailsUrl ? 'a' : 'span');
+  if (detailsUrl) {
+    nameEl.href = detailsUrl;
+    nameEl.target = '_blank';
+    nameEl.rel = 'noopener noreferrer';
+  }
+  nameEl.textContent = anomaly.series;
+  heading.appendChild(nameEl);
+
+  const validLogos = validateSeriesLogos(anomaly["series-logos"]);
+  if (validLogos.length) {
+    const badgesEl = document.createElement('div');
+    badgesEl.className = 'series-badges';
+    validLogos.forEach(name => {
+      const img = document.createElement('img');
+      img.src = `img/${name}`;
+      img.alt = `${anomaly.series} badge`;
+      img.className = 'series-badge';
+      badgesEl.appendChild(img);
+    });
+    heading.appendChild(badgesEl);
+  }
+
+  return heading;
 }
 
 /**
@@ -122,7 +158,7 @@ function createAnomalyCard(a) {
   const startPassed = now >= a.utcDate;
   
   if (startPassed) {
-    displayWinner(countdownEl, winner);
+    displayWinner(countdownEl, winner, sanitizeUrl(a["series-results"]));
   } else {
     setupCountdown(countdownEl, a.utcDate, isActive);
   }
@@ -169,8 +205,7 @@ function buildAnomalyHTML(a, { resUrl, enlUrl, pageUrl, eventLocal, userLocal, h
     ? `<a href="${pageUrl}" target="_blank" rel="noopener noreferrer">${cityCountry}</a>`
     : cityCountry;
 
-  // Validate badges using shared utility
-  const validBadges = validateSeriesLogos(a["series-logos"]);
+  const validBadges = validateSeriesLogos(a["anomaly-badges"]);
   const badgesHTML = validBadges.length
     ? `<div class="series-badges">
          ${validBadges.map(name => 
@@ -225,11 +260,21 @@ function buildAnomalyHTML(a, { resUrl, enlUrl, pageUrl, eventLocal, userLocal, h
 }
 
 /**
- * Displays winner text in countdown element
+ * Displays winner text in countdown element, linked to results page if available
  */
-function displayWinner(element, winner) {
+function displayWinner(element, winner, resultsUrl) {
   if (winner === 'resistance' || winner === 'enlightened') {
-    element.textContent = winner.toUpperCase();
+    const label = winner.toUpperCase();
+    if (resultsUrl) {
+      const a = document.createElement('a');
+      a.href = resultsUrl;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.textContent = label;
+      element.appendChild(a);
+    } else {
+      element.textContent = label;
+    }
     element.classList.add(winner === 'resistance' ? 'res' : 'enl');
   }
 }
