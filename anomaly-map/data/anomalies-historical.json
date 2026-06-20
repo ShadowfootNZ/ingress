@@ -22602,8 +22602,8 @@
             "region": "Lima",
             "country": "Peru",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 156,
+              "res": 124
             }
           }
         ]
