@@ -22593,8 +22593,8 @@
             "region": "Geneva",
             "country": "Switzerland",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 111,
+              "res": 169
             }
           },
           {
