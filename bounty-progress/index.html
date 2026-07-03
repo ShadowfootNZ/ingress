@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingress Bounty Bonus Progress</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="card" id="progressCard">
+    <h1 id="campaignTitle">Ingress Bounty Bonus Progress</h1>
+    <h2 id="campaignSubtitle">Daily bounty bonus calculator</h2>
+
+    <p>Daily bounty bonus: <span class="accent" id="dailyRate">-</span></p>
+    <p>
+      Days available:
+      <span class="accent" id="daysRemaining">-</span>
+      (<span id="startDateSection">starts <span class="accent" id="startDateDisplay">-</span>, </span>ends <span class="accent" id="endDateDisplay">-</span>)
+    </p>
+    <p>Remaining bounty bonus tokens available: <span class="accent" id="remainingTokens">-</span> after today</p>
+
+    <div class="score-row">
+      <input type="number" id="score" placeholder="Current tokens" min="0" step="10">
+      <button type="button" id="calculateButton">Calculate</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+    <p class="info-link" id="infoLink"></p>
+    <div class="agent-badge"><a href="https://link.ingress.com/agent/ShadowfootNZ" target="_blank" rel="noopener noreferrer">@ShadowfootNZ</a></div>
+  </main>
+
+  <script src="campaigns.js"></script>
+  <script src="app.js"></script>
+  <script src="../analytics.js"></script>
+</body>
+</html>
