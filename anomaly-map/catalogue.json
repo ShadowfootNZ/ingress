@@ -2,7 +2,7 @@
   "slug": "ingress-anomaly-map",
   "title": "Ingress Anomaly Map",
   "summary": "Interactive map of historical Ingress anomaly event outcomes worldwide.",
-  "description": "Browse the history of Ingress anomaly sites on an interactive map, colour-coded and sized by faction outcome and recency, with series and country filters.",
+  "description": "Browse the history of Ingress anomaly sites on an interactive map, colour-coded by faction outcome and and sized by recency, with series and country filters.",
   "appUrl": "https://apps.shadowfoot.com/ingress-anomaly-map/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress", 
   "status": "active",
