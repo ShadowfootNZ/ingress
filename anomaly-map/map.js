@@ -598,7 +598,10 @@ async function loadBuildMeta() {
                     const diffMs = eventDate - today;
                     const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
                     const dayLabel = diffDays === 1 ? 'day' : 'days';
-                    const countdownUrl = '../countdown/';
+                    // Default targets the custom domain (../ingress-countdown/).
+                    // On GitHub Pages / local the apps are plain folders, so downgrade there.
+                    const plainLayout = !/\/ingress-[^/]+\//.test(location.pathname);
+                    const countdownUrl = plainLayout ? '../countdown/' : '../ingress-countdown/';
                     return `<span class="upcoming-text"><a href="${countdownUrl}">In ${diffDays} ${dayLabel}</a></span><br>`;
                   }
 

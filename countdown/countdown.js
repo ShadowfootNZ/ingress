@@ -231,16 +231,16 @@ function buildAnomalyHTML(a, { resUrl, enlUrl, pageUrl, eventLocal, userLocal, h
 
   const resLogoHTML = resUrl
     ? `<a href="${resUrl}" target="_blank" rel="noopener noreferrer" class="faction-logo-wrapper" data-tooltip="${escapeHtml(resUrl)}">
-         <img src="${resUrl.endsWith('.webp') ? resUrl : '../img/resistance.webp'}"
+         <img src="${resUrl.endsWith('.webp') ? resUrl : 'img/resistance.webp'}"
               alt="Resistance Logo" class="faction-logo">
        </a>`
     : `<span class="faction-logo-wrapper" data-tooltip="Resistance team link missing — can you share it?">
-         <img src="img/resistance.webp" alt="Resistance Logo" class="faction-logo faction-logo-missing">
+         <img src="../img/resistance.webp" alt="Resistance Logo" class="faction-logo faction-logo-missing">
        </span>`;
 
   const enlLogoHTML = enlUrl
     ? `<a href="${enlUrl}" target="_blank" rel="noopener noreferrer" class="faction-logo-wrapper" data-tooltip="${escapeHtml(enlUrl)}">
-         <img src="${enlUrl.endsWith('.webp') ? enlUrl : '../img/enlightened.webp'}"
+         <img src="${enlUrl.endsWith('.webp') ? enlUrl : 'img/enlightened.webp'}"
               alt="Enlightened Logo" class="faction-logo">
        </a>`
     : `<span class="faction-logo-wrapper" data-tooltip="Enlightened team link missing — can you share it?">
