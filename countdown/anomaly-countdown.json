@@ -77,6 +77,16 @@
   },
   {
     "series": "Apollo",
+    "series-results": "",
+    "series-details": "https://ingress.com/news/2026-apollo-anomalysites",
+    "series-logos": [
+      "apollo-bronze.webp",
+      "apollo-silver.webp",
+      "apollo-gold.webp"
+    ],
+    "anomaly-badges": [
+      "Apollo.png"
+    ],
     "sites": [
       {
         "date": "2026-07-18T14:00:00",
