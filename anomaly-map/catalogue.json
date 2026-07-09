@@ -4,10 +4,13 @@
   "summary": "Interactive map of historical Ingress anomaly event outcomes worldwide.",
   "description": "Browse the history of Ingress anomaly sites on an interactive map, colour-coded by faction outcome and and sized by recency, with series and country filters.",
   "appUrl": "https://apps.shadowfoot.com/ingress-anomaly-map/",
-  "repoUrl": "https://github.com/ShadowfootNZ/ingress", 
+  "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
   "thumbnailPath": "docs/thumbnail.jpg",
   "keyImagePath": "docs/anomalies.jpg",
   "imagePaths": ["docs/Brazil.jpg", "docs/Slovalia.jpg", "docs/Lisbon.jpg"],
-  "tags": ["ingress", "map", "history"]
+  "tags": ["ingress", "map", "anomaly"],
+  "status": "active",
+  "entryPoint": "index.html"
+
 }

@@ -2,9 +2,9 @@
   "slug": "ingress-key-map-viewer",
   "title": "Ingress Key Map Viewer",
   "summary": "Visualise your Ingress portal keys on an interactive map by pasting Intel Inventory data.",
-  "description": "Paste the Portal Keys section from Intel Inventory to see your keys plotted and grouped on a map, coloured by key count, entirely client-side.",
+  "description": "Paste the Portal Keys section from Intel Inventory to see your keys plotted and grouped on a map, coloured by key count, entirely client-side. The best use of is identifying keys to recycle or pass on to someone else.",
   "appUrl": "https://shadowfootnz.github.io/ingress/key-map-viewer/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
-  "tags": ["ingress", "map", "intel"]
+  "tags": ["ingress", "map", "inventory"]
 }

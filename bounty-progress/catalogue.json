@@ -9,5 +9,5 @@
   "thumbnailPath": "docs/thumbnail.jpg",
   "keyImagePath": "docs/countdown.jpg",
   "imagePaths": ["docs/closeup.jpg", "docs/recharge.jpg"],
-  "tags": ["ingress", "calculator", "campaign"]
+  "tags": ["ingress", "calculator"]
 }
