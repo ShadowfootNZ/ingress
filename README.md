@@ -15,7 +15,7 @@ Track upcoming and active Ingress anomalies with real-time countdowns, local tim
 ## Ingress Anomaly Map  
 
 An interactive global map showing the history of Ingress anomaly sites, coloured and sized by outcome and recency.  
-[View the Anomaly Map](hhttps://apps.shadowfoot.com/ingress-anomaly-map/)  
+[View the Anomaly Map](https://apps.shadowfoot.com/ingress-anomaly-map/)  
 Data collated from community sources including [Ingress Anomaly Stats](https://linktr.ee/ingressanomalystats).  
 
 ## Ingress Key Map Viewer  
