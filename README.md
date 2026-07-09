@@ -5,12 +5,7 @@ A collection of web apps supporting the global Ingress community, though sometim
 ## Ingress Bounty Bonus Progress
 
 Calculate where you are with bounty bonus tokens for the current quarterly campaign.
-[Check progress](https://shadowfootnz.github.io/ingress/bounty-progress/).
-
-## Orion Progress
-
-Calculate where you are with Orion Tokens from Daily Bounties and whether additional sources will be needed to reach medal tiers.
-[Check progress](https://shadowfootnz.github.io/ingress/orion-progress/).
+[Check progress](https://apps.shadowfoot.com/ingress-bounty-progress/).
 
 ## Ingress Anomaly Countdown
 
