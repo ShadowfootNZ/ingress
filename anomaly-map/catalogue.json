@@ -8,7 +8,7 @@
   "status": "active",
   "thumbnailPath": "docs/thumbnail.jpg",
   "keyImagePath": "docs/anomalies.jpg",
-  "imagePaths": ["docs/Brazil.jpg", "docs/Slovalia.jpg", "docs/Lisbon.jpg"],
+  "imagePaths": ["docs/Brazil.jpg", "docs/Slovakia.jpg", "docs/Lisbon.jpg"],
   "tags": ["ingress", "map", "anomaly"],
   "status": "active",
   "entryPoint": "index.html"

@@ -7,7 +7,7 @@
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
   "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/countdown.jpg",
-  "imagePaths": ["docs/closeup.jpg", "docs/recharge.jpg"],
+  "keyImagePath": "docs/screenshot.jpg",
+  "imagePaths": [],
   "tags": ["ingress", "calculator"]
 }
