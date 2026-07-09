@@ -1,4 +1,4 @@
-name: Deploy bounty-progress
+name: Deploy static apps
 
 on:
   push:
@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - 'bounty-progress/**'
+      - 'countdown/**'
+      - 'anomaly-map/**'
       - '.github/workflows/deploy.yml'
       - 'scripts/deploy.sh'
   workflow_dispatch:
@@ -13,23 +15,28 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - app: bounty-progress
+            remote_subdir: ingress-bounty-progress
+          - app: countdown
+            remote_subdir: ingress-countdown
+          - app: anomaly-map
+            remote_subdir: ingress-anomaly-map
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H "${{ secrets.SSH_HOST }}" >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Deploy site
+      - name: Deploy ${{ matrix.app }}
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PORT: ${{ secrets.SSH_PORT }}
           REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          APP_NAME: ${{ matrix.app }}
+          REMOTE_SUBDIR: ${{ matrix.remote_subdir }}
         run: bash scripts/deploy.sh
