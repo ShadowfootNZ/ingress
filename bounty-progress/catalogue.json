@@ -1,0 +1,10 @@
+{
+  "slug": "ingress-bounty-progress",
+  "title": "Ingress Bounty Bonus Progress",
+  "summary": "Calculator for tracking progress toward quarterly Ingress Bounty Bonus token campaigns.",
+  "description": "Enter your current bounty bonus tokens to see your daily rate and whether you'll reach the campaign target before it ends.",
+  "appUrl": "https://shadowfootnz.github.io/ingress/bounty-progress/",
+  "repoUrl": "https://github.com/ShadowfootNZ/ingress",
+  "status": "active",
+  "tags": ["ingress", "calculator", "campaign"]
+}

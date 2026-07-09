@@ -1,7 +1,6 @@
-// map.js
-// Drives the Leaflet map in banner-map.html. Discovers banner JSON files in ./banners/,
-// converts them to GeoJSON portal features, renders colour-coded markers (one colour
-// per mission), draws sequential mission path polylines, and maintains a colour legend.
+// Drives the Leaflet map in banner-map.html. Loads an uploaded banner JSON file or
+// fetches a Bannergress banner URL, converts it to GeoJSON portal features, renders
+// colour-coded markers and sequential mission paths, and maintains a colour legend.
 let data = null;
 let currentBannerJson = null;
 

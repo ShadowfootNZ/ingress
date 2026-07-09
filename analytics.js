@@ -26,8 +26,12 @@
     || 'root';
   // ────────────────────────────────────────────────────────
 
-  // Don't track if running locally
-  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+  function isLocalOrPrivateHost(hostname) {
+    return /^(localhost|127\.0\.0\.1|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
+  }
+
+  // Don't track local development or LAN device testing.
+  if (isLocalOrPrivateHost(location.hostname)) return;
 
   const payload = {
     app_id:         APP_ID,
