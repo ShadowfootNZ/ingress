@@ -6,5 +6,7 @@
   "appUrl": "https://shadowfootnz.github.io/ingress/bounty-progress/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
+  "thumbnailPath": "docs/thumbnail.jpg",
+  "keyImagePath": "docs/screenshot.jpg",
   "tags": ["ingress", "calculator", "campaign"]
 }
