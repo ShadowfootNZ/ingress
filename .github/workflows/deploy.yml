@@ -25,6 +25,8 @@ jobs:
             remote_subdir: ingress-countdown
           - app: anomaly-map
             remote_subdir: ingress-anomaly-map
+          - app: key-map-viewer
+            remote_subdir: ingress-key-map-viewer
 
     steps:
       - name: Check out repository
