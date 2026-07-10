@@ -6,5 +6,8 @@
   "appUrl": "https://shadowfootnz.github.io/ingress/key-map-viewer/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
+  "thumbnailPath": "docs/thumbnail.jpg",
+  "keyImagePath": "docs/kay-map-viewer.jpg",
+  "imagePaths": ["docs/commute.jpg", "docs/cluster.jpg", "docs/details.jpg"],
   "tags": ["ingress", "map", "inventory"]
 }
