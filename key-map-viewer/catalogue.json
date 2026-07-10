@@ -7,7 +7,7 @@
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
   "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/kay-map-viewer.jpg",
+  "keyImagePath": "docs/key-map-viewer.jpg",
   "imagePaths": ["docs/commute.jpg", "docs/cluster.jpg", "docs/details.jpg"],
   "tags": ["ingress", "map", "inventory"]
 }
