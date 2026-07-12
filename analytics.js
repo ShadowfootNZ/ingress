@@ -25,25 +25,34 @@
     || 'root';
   // ────────────────────────────────────────────────────────
 
-  // Don't track if running locally
-  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+  function isLocalOrPrivateHost(hostname) {
+    return /^(localhost|127\.0\.0\.1|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(hostname);
+  }
 
-  const payload = {
-    app_id:         APP_ID,
-    referrer:       document.referrer || '',
-    viewport_width: window.innerWidth || null,
-  };
+  const enabled = !isLocalOrPrivateHost(location.hostname);
 
-  fetch(ENDPOINT, {
-    method:   'POST',
-    headers: {
-      'Content-Type':      'application/json',
-      'X-Analytics-Token': TOKEN,
-    },
-    body:      JSON.stringify(payload),
-    // keepalive ensures the request completes even if the page unloads immediately
-    keepalive: true,
-  }).catch(function () {
-    // Silently swallow errors — analytics should never break the app
-  });
+  function track(event = null) {
+    if (!enabled) return;
+    const payload = {
+      app_id:         APP_ID,
+      referrer:       document.referrer || '',
+      viewport_width: window.innerWidth || null,
+    };
+    if (event) payload.event = event;
+    fetch(ENDPOINT, {
+      method:   'POST',
+      headers: {
+        'Content-Type':      'application/json',
+        'X-Analytics-Token': TOKEN,
+      },
+      body:      JSON.stringify(payload),
+      keepalive: true,
+    }).catch(function () {
+      // Analytics must never break the app.
+    });
+  }
+
+  // Callers pass fixed event names only—never filenames, images, or puzzle contents.
+  globalThis.trackAppFeature = track;
+  track();
 })();
