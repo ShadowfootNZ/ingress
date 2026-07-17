@@ -3,7 +3,7 @@
   "title": "Ingress Anomaly Countdown",
   "summary": "Live countdown for upcoming Ingress anomaly events with faction and location details.",
   "description": "Track the next anomaly event, view its local time and winner details, and follow its progress with animated cards and maps.",
-  "appUrl": "https://shadowfootnz.github.io/ingress/countdown/",
+  "appUrl": "https://apps.shadowfoot.com/ingress-countdown/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
   "thumbnailPath": "docs/thumbnail.jpg",

@@ -12,7 +12,7 @@ if (!DateTime) {
 }
 
 const CONFIG = {
-  SERIES_CUTOFF_MONTHS: 1,
+  SERIES_CUTOFF_DAYS: 14,
   EVENT_DURATION_HOURS: 3,
   POST_EVENT_DISPLAY_HOURS: 6,
   RECHARGE_RANGE_KM: 4000,
@@ -144,13 +144,13 @@ async function loadAnomalyData(includeTest = false) {
  * Filters anomalies to upcoming events, removing old series
  * More efficient single-pass implementation
  */
-function filterUpcomingAnomalies(anomalies, cutoffMonths = CONFIG.SERIES_CUTOFF_MONTHS) {
+function filterUpcomingAnomalies(anomalies, cutoffDays = CONFIG.SERIES_CUTOFF_DAYS) {
   if (!DateTime) {
     throw new Error('Luxon DateTime not available');
   }
   
   const now = DateTime.utc();
-  const cutoff = now.minus({ months: cutoffMonths });
+  const cutoff = now.minus({ days: cutoffDays });
   
   // Build series latest map
   const seriesLatest = new Map();
@@ -164,12 +164,24 @@ function filterUpcomingAnomalies(anomalies, cutoffMonths = CONFIG.SERIES_CUTOFF_
     }
   }
   
-  // Filter based on series cutoff
+  // Find the most recent series overall, so it can stay visible even
+  // past the cutoff if nothing newer has come along to replace it
+  let overallLatestMillis = null;
+  for (const lastUtc of seriesLatest.values()) {
+    const millis = lastUtc.toMillis();
+    if (overallLatestMillis === null || millis > overallLatestMillis) {
+      overallLatestMillis = millis;
+    }
+  }
+  
+  // Filter based on series cutoff, keeping the most recent series regardless of age
   return anomalies
     .filter(a => {
       const key = a.series || "(no series)";
       const lastUtc = seriesLatest.get(key);
-      return !lastUtc || lastUtc >= cutoff;
+      if (!lastUtc) return true;
+      if (lastUtc >= cutoff) return true;
+      return lastUtc.toMillis() === overallLatestMillis;
     })
     .sort((a, b) => a.utcDate.toMillis() - b.utcDate.toMillis());
 }
