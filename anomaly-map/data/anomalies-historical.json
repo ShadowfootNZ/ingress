@@ -22617,8 +22617,8 @@
             "region": "Uusimaa",
             "country": "Finland",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 103.4,
+              "res": 176.6
             }
           },
           {
