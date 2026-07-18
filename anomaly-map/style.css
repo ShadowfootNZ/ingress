@@ -216,6 +216,11 @@ h4 {
   font-size: 0.9em;
 
   margin-bottom: 8px;
+  /* Leaflet measures popup width with white-space:nowrap; opt out so long
+     notes wrap on word breaks instead of widening the popup */
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 40ch;
 }
 
 button {
