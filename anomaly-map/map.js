@@ -549,7 +549,8 @@ async function loadBuildMeta() {
           const intelUrl = `https://intel.ingress.com/intel?ll=${lat},${lng}`;
           const popupContent = `
                 <h3><a target='intel' rel="noopener noreferrer" href="${intelUrl}">${label}</a></h3>
-            ${events
+            ${[...events]
+              .reverse()
               .map(
                 (evt) => `
                  <div>
@@ -643,7 +644,7 @@ async function loadBuildMeta() {
               )
               .join('')}
           `;
-          circle.bindPopup(popupContent);
+          circle.bindPopup(popupContent, { maxWidth: 420 });
         }
 
         circle.addTo(markerLayer);

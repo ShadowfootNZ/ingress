@@ -95,7 +95,7 @@ h4 {
 .leaflet-popup-content {
 
   font-family: system-ui, sans-serif;
-  max-height: 400px;
+  max-height: min(78vh, 560px);
   overflow-y: auto;
   color: #eee;
   padding-right: 16px; /* avoid scrollbar overlaying text */
