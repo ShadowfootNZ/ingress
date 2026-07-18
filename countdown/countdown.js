@@ -40,9 +40,11 @@ async function loadAnomalies() {
     
     // Filter to upcoming events using shared utility
     const upcoming = filterUpcomingAnomalies(anomalies);
-    
+
+    cachedAnomalies = upcoming;
+    renderedSignature = computeStateSignature(upcoming);
     renderAnomalies(upcoming, container, errorEl);
-    
+
   } catch (err) {
     errorEl.textContent = `Failed to load anomalies: ${err.message}`;
     console.error('Error loading anomalies:', err);
@@ -53,6 +55,7 @@ async function loadAnomalies() {
  * Renders all anomalies to the DOM
  */
 function renderAnomalies(anomalies, container, errorEl) {
+  clearAllIntervals();
   container.innerHTML = "";
   errorEl.textContent = "";
 
@@ -139,18 +142,28 @@ function createAnomalyCard(a) {
     ? a.utcDate.plus({ hours: CONFIG.EVENT_DURATION_HOURS }) 
     : a.utcDate.endOf('day');
   const isActive = hasTime && now >= a.utcDate && now <= eventEnd;
+  const hoursUntil = a.utcDate.diff(now, 'hours').hours;
+  const isImminent = hasTime && !isActive && hoursUntil > 0
+    && hoursUntil <= CONFIG.IMMINENT_WINDOW_HOURS;
 
   // Create card element
   const anomalyEl = document.createElement("div");
   anomalyEl.className = "anomaly";
 
   // Apply border styling
-  applyBorderClass(anomalyEl, isActive, winner, resUrl, enlUrl);
+  applyBorderClass(anomalyEl, isActive, isImminent, winner, resUrl, enlUrl);
 
   // Build HTML content
   anomalyEl.innerHTML = buildAnomalyHTML(a, {
     resUrl, enlUrl, pageUrl, eventLocal, userLocal, hasTime, isPast
   });
+
+  if (isActive) {
+    const liveBadge = document.createElement('span');
+    liveBadge.className = 'live-badge';
+    liveBadge.textContent = 'LIVE';
+    anomalyEl.appendChild(liveBadge);
+  }
 
   // Setup countdown if applicable
   const countdownEl = anomalyEl.querySelector('.countdown');
@@ -168,13 +181,13 @@ function createAnomalyCard(a) {
 /**
  * Applies appropriate border class based on anomaly state
  */
-function applyBorderClass(element, isActive, winner, resUrl, enlUrl) {
+function applyBorderClass(element, isActive, isImminent, winner, resUrl, enlUrl) {
   let duration = null;
 
   if (isActive) {
     element.classList.add('border-active');
     duration = parseFloat(getComputedStyle(document.documentElement)
-      .getPropertyValue('--pulse-active-duration')) || 2.3;
+      .getPropertyValue('--pulse-active-duration')) || 2.5;
   } else if (winner === 'resistance') {
     element.classList.add('border-res');
   } else if (winner === 'enlightened') {
@@ -195,6 +208,13 @@ function applyBorderClass(element, isActive, winner, resUrl, enlUrl) {
     element.classList.add('border-default');
     duration = parseFloat(getComputedStyle(document.documentElement)
       .getPropertyValue('--pulse-red-duration')) || 3;
+  }
+
+  // Modifier: <24h to start accelerates whichever prep animation is present
+  if (isImminent) {
+    element.classList.add('imminent');
+    duration = parseFloat(getComputedStyle(document.documentElement)
+      .getPropertyValue('--pulse-imminent-duration')) || 3;
   }
 
   if (duration !== null) {
@@ -319,6 +339,40 @@ function setupCountdown(element, targetDate, isActive) {
   const interval = setInterval(tick, 1000);
   activeIntervals.add(interval);
 }
+
+// Rendered state tracking so cards promote prep → imminent → active
+// without a reload if the page is left open
+let cachedAnomalies = null;
+let renderedSignature = '';
+
+/**
+ * Encodes each anomaly's border state (active/imminent/upcoming/no-time)
+ * so a change can trigger a re-render
+ */
+function computeStateSignature(anomalies) {
+  const now = DateTime.utc();
+  return anomalies.map(a => {
+    if (!a.date.includes("T")) return 'n';
+    const eventEnd = a.utcDate.plus({ hours: CONFIG.EVENT_DURATION_HOURS });
+    if (now >= a.utcDate && now <= eventEnd) return 'a';
+    const hoursUntil = a.utcDate.diff(now, 'hours').hours;
+    if (hoursUntil > 0 && hoursUntil <= CONFIG.IMMINENT_WINDOW_HOURS) return 'i';
+    return 'u';
+  }).join('');
+}
+
+setInterval(() => {
+  if (!cachedAnomalies) return;
+  const signature = computeStateSignature(cachedAnomalies);
+  if (signature !== renderedSignature) {
+    renderedSignature = signature;
+    renderAnomalies(
+      cachedAnomalies,
+      document.getElementById('anomalyList'),
+      document.getElementById('error')
+    );
+  }
+}, 30000);
 
 // Cleanup on page unload
 window.addEventListener('unload', clearAllIntervals);

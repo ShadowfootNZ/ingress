@@ -96,13 +96,13 @@ Each anomaly card gets exactly one CSS class controlling its animated border:
 
 | Class | Meaning |
 |---|---|
-| `border-active` | Event is happening right now |
+| `border-active` | Event is happening right now — blue/green tug-of-war background plus a `LIVE` badge |
 | `border-res` / `border-enl` | Completed; faction winner known |
 | `border-prep-both` | Both faction team links present |
 | `border-prep-res` / `border-prep-enl` | Only one faction link present |
 | `border-default` | No team links (neutral/missing) |
 
-`applyBorderClass()` in `countdown.js` assigns the class and applies a random negative `animation-delay` so cards don't pulse in sync.
+`applyBorderClass()` in `countdown.js` assigns the class and applies a random negative `animation-delay` so cards don't pulse in sync. In addition, cards within `CONFIG.IMMINENT_WINDOW_HOURS` (24h) of start get an `imminent` modifier class alongside their prep/default class, which swaps in an accelerated, brighter version of the same pulse and throbs the countdown text. A 30s interval re-renders when any card crosses a state boundary (prep → imminent → active), so open pages promote without a reload. `?test=true&test-offset=<hours>` shifts the injected test event to preview these states.
 
 ## Anomaly map scripts (Node.js)
 

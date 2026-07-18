@@ -15,6 +15,7 @@ const CONFIG = {
   SERIES_CUTOFF_DAYS: 14,
   EVENT_DURATION_HOURS: 3,
   POST_EVENT_DISPLAY_HOURS: 6,
+  IMMINENT_WINDOW_HOURS: 24,
   RECHARGE_RANGE_KM: 4000,
   CACHE_VERSION: '1.0.0'
 };
@@ -104,14 +105,30 @@ async function loadAnomalyData(includeTest = false) {
     if (includeTest) {
       const urlParams = new URLSearchParams(window.location.search);
       if (urlParams.get('test') === 'true') {
-        const nowLocal = DateTime.local();
+        // Optional ?test-offset=<hours> shifts the test event's start time,
+        // e.g. test-offset=5 previews the imminent (<24h) state
+        const offsetHours = parseFloat(urlParams.get('test-offset')) || 0;
+        const nowLocal = DateTime.local().plus({ hours: offsetHours });
         anomalies.push({
           series: "Local Test",
           "series-logos": [],
           date: nowLocal.toISO({ suppressMilliseconds: true }),
-          city: "Test City",
-          country: "Test Country",
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+          city: "TestNow City",
+          country: "Test Now Country",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          "url-res": "https://www.willbe.blue/",
+          "url-enl": "https://enlightened.rocks/"
+        });
+        const soonLocal = DateTime.local().plus({ hours: 12 + offsetHours });
+        anomalies.push({
+          series: "Local Test",
+          "series-logos": [],
+          date: soonLocal.toISO({ suppressMilliseconds: true }),
+          city: "Test Soon City",
+          country: "Test Soon Country",
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          "url-res": "https://www.willbe.blue/",
+          "url-enl": "https://enlightened.rocks/"
         });
         console.log("✅ Added local test anomaly:", nowLocal.toISO());
       }

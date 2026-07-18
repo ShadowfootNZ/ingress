@@ -8,7 +8,8 @@
   --text-light: #e0e0e0;
   
   /* Animation timing */
-  --pulse-active-duration: 2.3s;
+  --pulse-active-duration: 2s;
+  --pulse-imminent-duration: 4s;
   --pulse-prep-duration: 9s;
   --pulse-res-duration: 9s;
   --pulse-enl-duration: 9s;
@@ -248,8 +249,66 @@ a:hover {
   animation: prepEnlPulse var(--pulse-enl-duration) ease-in-out infinite;
 }
 
+/* Active: faction gradients push back and forth like territory changing hands */
 .anomaly.border-active {
-  animation: activePulse var(--pulse-active-duration) ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--res-blue) 32%, transparent) 0%,
+    transparent 42%,
+    transparent 58%,
+    color-mix(in srgb, var(--enl-green) 32%, transparent) 100%
+  );
+  background-size: 320% 100%;
+  animation:
+    tugSlide var(--pulse-active-duration) ease-in-out infinite,
+    tugGlow var(--pulse-active-duration) ease-in-out infinite;
+}
+
+/* Imminent modifier: <24h to start, same colour story at triple tempo */
+.anomaly.imminent.border-prep-both {
+  animation: imminentBothPulse var(--pulse-imminent-duration) ease-in-out infinite;
+}
+
+.anomaly.imminent.border-prep-res {
+  animation: imminentResPulse var(--pulse-imminent-duration) ease-in-out infinite;
+}
+
+.anomaly.imminent.border-prep-enl {
+  animation: imminentEnlPulse var(--pulse-imminent-duration) ease-in-out infinite;
+}
+
+.anomaly.imminent.border-default {
+  animation-duration: calc(var(--pulse-red-duration) / 2);
+}
+
+.anomaly.imminent .countdown {
+  animation: countdownThrob 1s ease-in-out infinite;
+}
+
+.live-badge {
+  position: absolute;
+  top: -0.7em;
+  right: 1.2em;
+  background: var(--machina-red);
+  color: #fff;
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.35em 0.7em 0.35em 0.55em;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--machina-red) 70%, transparent);
+}
+
+.live-badge::before {
+  content: "";
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 50%;
+  background: #fff;
+  animation: liveBlink 1s ease-in-out infinite;
 }
 
 /* Faction Colors */
@@ -319,11 +378,60 @@ a:hover {
 }
 
 /* Animations */
-@keyframes activePulse {
-  0%, 100% { box-shadow: 0 0 50px color-mix(in srgb, var(--enl-green) 90%, transparent); }
-  25%      { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%, transparent); }
-  50%      { box-shadow: 0 0 50px color-mix(in srgb, var(--res-blue) 90%, transparent); }
-  75%      { box-shadow: 0 0 10px color-mix(in srgb, var(--xf-teal) 70%, transparent); }
+@keyframes tugSlide {
+  0%, 100% { background-position: 0% 0; }
+  50%      { background-position: 100% 0; }
+}
+
+@keyframes tugGlow {
+  0%, 100% { box-shadow: -14px 0 34px -6px color-mix(in srgb, var(--res-blue) 85%, transparent); }
+  50%      { box-shadow:  14px 0 34px -6px color-mix(in srgb, var(--enl-green) 85%, transparent); }
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.25; }
+}
+
+@keyframes countdownThrob {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+@keyframes imminentBothPulse {
+  0%   { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  12%  { box-shadow: 0 0  6px transparent; }
+  25%  { box-shadow: 0 0 38px color-mix(in srgb, var(--res-blue)    95%, transparent); }
+  37%  { box-shadow: 0 0  6px transparent; }
+  50%  { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  62%  { box-shadow: 0 0  6px transparent; }
+  75%  { box-shadow: 0 0 38px color-mix(in srgb, var(--enl-green)   95%, transparent); }
+  87%  { box-shadow: 0 0  6px transparent; }
+  100% { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+}
+
+@keyframes imminentResPulse {
+  0%   { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  12%  { box-shadow: 0 0  6px transparent; }
+  25%  { box-shadow: 0 0 38px color-mix(in srgb, var(--res-blue)    95%, transparent); }
+  37%  { box-shadow: 0 0  6px transparent; }
+  50%  { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  62%  { box-shadow: 0 0  6px transparent; }
+  75%  { box-shadow: 0 0 28px color-mix(in srgb, var(--machina-red) 80%, transparent); }
+  87%  { box-shadow: 0 0  6px transparent; }
+  100% { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+}
+
+@keyframes imminentEnlPulse {
+  0%   { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  12%  { box-shadow: 0 0  6px transparent; }
+  25%  { box-shadow: 0 0 28px color-mix(in srgb, var(--machina-red) 80%, transparent); }
+  37%  { box-shadow: 0 0  6px transparent; }
+  50%  { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
+  62%  { box-shadow: 0 0  6px transparent; }
+  75%  { box-shadow: 0 0 38px color-mix(in srgb, var(--enl-green)   95%, transparent); }
+  87%  { box-shadow: 0 0  6px transparent; }
+  100% { box-shadow: 0 0 20px color-mix(in srgb, var(--neutral)     70%, transparent); }
 }
 
 @keyframes prepBothPulse {

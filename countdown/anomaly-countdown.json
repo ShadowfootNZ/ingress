@@ -29,6 +29,7 @@
         "timezone": "America/Bogota",
         "url-enl": "https://t.me/+jLnprr21MFFmMjE5",
         "url-res": "https://register.bogota.willbe.blue/",
+        "winner": "enlightened",
         "location": { "lat": 4.7110, "lng": -74.0721 }
       },
       {
@@ -37,6 +38,7 @@
         "country": "South Korea",
         "timezone": "Asia/Seoul",
         "url-res": "https://linktr.ee/resistancekorea",
+        "url-enl": "https://enlightened.rocks/Seoul26",
         "location": { "lat": 37.5666791, "lng": 126.9782914}
       },
       {

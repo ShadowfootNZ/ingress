@@ -22626,8 +22626,8 @@
             "region": "Distrito Capital",
             "country": "Colombia",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 157.6,
+              "res": 122.4
             }
           }
         ],
