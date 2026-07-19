@@ -2,7 +2,7 @@
   "slug": "ingress-bounty-progress",
   "title": "Ingress Bounty Bonus Progress",
   "summary": "Check whether your Ingress bounty bonus tokens are on pace to reach the campaign medal tiers.",
-  "description": "Enter your current bounty bonus token count and see your progress toward each medal tier of the active campaign — Bronze, Silver, and Gold — alongside the days remaining and the daily-login bonus tokens still available before it ends. For each tier it shows how many days of daily bonuses would cover the gap and warns when the daily bonus alone can no longer get you there, so you know when extra activity is needed. Campaign dates, tiers, and rates live in a small data file, so the page is reused for each new campaign.",
+  "description": "Enter your current bounty bonus token count and see your progress toward each medal tier of the active campaign — **Bronze**, **Silver**, and **Gold** — alongside the days remaining and the daily-login bonus tokens still available before it ends.\n\n- **Gap coverage** — for each tier, how many days of daily bonuses would cover the remaining gap.\n- **Early warning** — flags when the daily bonus alone can no longer get you there, so you know when extra activity is needed.\n\nCampaign dates, tiers, and rates live in a small data file, so the page is reused for each new campaign.",
   "appUrl": "https://apps.shadowfoot.com/ingress-bounty-progress",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",

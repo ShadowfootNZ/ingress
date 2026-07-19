@@ -2,7 +2,7 @@
   "slug": "ingress-anomaly-map",
   "title": "Ingress Anomaly Map",
   "summary": "An interactive map of every recorded Ingress anomaly outcome worldwide.",
-  "description": "Browse the full history of Ingress anomaly sites on an interactive map, colour-coded by faction outcome and sized by recency, with multi-select series and country filters, optional auto pan-and-zoom to your selection, and per-site popups showing each event and score at that location. Backed by a curated, geocoded dataset covering every anomaly series.",
+  "description": "Browse the full history of Ingress anomaly sites on an interactive map.\n\n- **Colour-coded by faction outcome** and sized by recency.\n- **Multi-select series and country filters**, with optional auto pan-and-zoom to your selection.\n- **Per-site popups** showing each event and score at that location.\n\nBacked by a curated, geocoded dataset covering every anomaly series.",
   "appUrl": "https://apps.shadowfoot.com/ingress-anomaly-map/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
