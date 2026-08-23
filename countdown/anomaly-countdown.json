@@ -39,6 +39,7 @@
         "timezone": "Asia/Seoul",
         "url-res": "https://linktr.ee/resistancekorea",
         "url-enl": "https://enlightened.rocks/Seoul26",
+        "winner": "enlightened",
         "location": { "lat": 37.5666791, "lng": 126.9782914}
       },
       {
@@ -48,6 +49,7 @@
         "timezone": "Europe/Paris",
         "url-enl": "https://enl.rocks/-C5SF",
         "url-res": "https://res.blue/group/paris-hype-chat",
+        "winner": "resistance",
         "location": { "lat": 48.8566, "lng": 2.3522 }
       },
       {

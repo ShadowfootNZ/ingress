@@ -22637,8 +22637,8 @@
             "region": "Seoul metropolitan area",
             "country": "South Korea",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 170.9,
+              "res": 129.1
             }
           },
           {
@@ -22646,8 +22646,8 @@
             "region": "Île-de-France",
             "country": "France",
             "score": {
-              "enl": null,
-              "res": null
+              "enl": 132.6,
+              "res": 147.4
             }
           }
         ],
