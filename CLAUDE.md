@@ -28,7 +28,9 @@ Analytics in `analytics.js` silently skips localhost, so it's safe to develop lo
 
 ## Pre-commit hook
 
-`.git/hooks/pre-commit` auto-regenerates `anomaly-map/data/build-meta.json` (with `build`, `commit`, `data_mtime` fields) and stages it on every commit. This file should never be edited manually.
+`.git/hooks/pre-commit` auto-regenerates `anomaly-map/data/build-meta.json` (with `build`, `commit`, `data_mtime` fields) and stages it on every commit made with a client that runs local git hooks. This file should never be edited manually.
+
+Because some git clients (e.g. Working Copy on iOS) don't run local hooks, the deploy workflow (`.github/workflows/deploy.yml`) regenerates `anomaly-map/data/build-meta.json` itself before deploying — using `git log` against `anomalies-historical.json` for `data_mtime` rather than trusting the committed file — so production is correct regardless of which client made the commit.
 
 ## Key data files
 

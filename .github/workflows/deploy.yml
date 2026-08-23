@@ -31,6 +31,24 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Regenerate anomaly-map build metadata
+        if: matrix.app == 'anomaly-map'
+        run: |
+          OUT="anomaly-map/data/build-meta.json"
+          DATA="anomaly-map/data/anomalies-historical.json"
+          BUILD_UTC="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+          COMMIT_SHORT="$(git rev-parse --short HEAD)"
+          DATA_MTIME="$(date -u -d "$(git log -1 --format=%cd --date=iso-strict -- "$DATA")" +"%Y-%m-%dT%H:%M:%SZ")"
+          cat > "$OUT" <<EOF
+          {
+            "build": "$BUILD_UTC",
+            "commit": "$COMMIT_SHORT",
+            "data_mtime": "$DATA_MTIME"
+          }
+          EOF
 
       - name: Deploy ${{ matrix.app }}
         env:

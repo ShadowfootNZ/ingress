@@ -217,8 +217,14 @@ async function loadBuildMeta() {
   if (buildFooter) {
     const build = meta?.commit ?? meta?.build ?? 'unknown';
     const dataUpdated = meta?.data_mtime ?? meta?.dataUpdated ?? '';
+    // Query param pins the URL to the current data version, so tapping the date
+    // forces a real network navigation (bypassing iOS bfcache) instead of a same-URL reload.
+    const refreshHref = `${location.pathname}?v=${encodeURIComponent(dataUpdated || build || Date.now())}`;
+    const dataLabel = dataUpdated
+      ? ` &nbsp; <span class="muted">Data:</span> <a href="${refreshHref}" style="color:#9ba1ff;">${dataUpdated}</a>`
+      : '';
     buildFooter.innerHTML = `
-      <div><span class="muted">Build:</span> ${build}${dataUpdated ? ` &nbsp; <span class="muted">Data:</span> ${dataUpdated}` : ''}</div>
+      <div><span class="muted">Build:</span> ${build}${dataLabel}</div>
     `;
   }
 
