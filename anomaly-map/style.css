@@ -230,8 +230,8 @@ button {
 }
 #build-footer {
   position: fixed;
-  right: 12px;
-  bottom: 12px;
+  right: 2px;
+  bottom: 20px;
   z-index: 9999;
   background: rgba(10,10,10,0.85);
   color: #9ba1ff;
@@ -241,6 +241,18 @@ button {
   font-size: 12px;
   font-family: system-ui, sans-serif;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 480px) {
+  #build-footer {
+    bottom: 62px;
+    max-width: calc(100vw - 44px);
+  }
+
+  .leaflet-control-attribution {
+    max-width: calc(100vw - 16px);
+    white-space: normal;
+  }
 }
 
 #build-footer .muted {
@@ -255,4 +267,3 @@ button {
     overflow-y: auto;
   }
 }
-

@@ -11,6 +11,7 @@ import {
   loadAnomalyData,
   getSeriesColor
 } from './shared-utils.js';
+import { CARTO_ATTRIBUTION, cartoDarkTileUrl } from './carto-basemap.js';
 
 /**
  * Creates a custom marker with specified color
@@ -151,9 +152,9 @@ async function initMap() {
   }).setView([lat, lng], CONFIG.MAP_ZOOM || 3);
 
   // Dark base layer
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+  L.tileLayer(cartoDarkTileUrl(), {
     maxZoom: CONFIG.MAX_MAP_ZOOM || 6,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    attribution: CARTO_ATTRIBUTION
   }).addTo(map);
 
   // Add markers and recharge circles for all upcoming events

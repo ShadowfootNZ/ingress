@@ -533,6 +533,11 @@ body.map-page {
   outline: none;
 }
 
+.leaflet-control-attribution {
+  max-width: calc(100vw - 16px);
+  white-space: normal;
+}
+
 #info-panel {
   position: fixed;
   bottom: 1.5em;

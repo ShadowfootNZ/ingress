@@ -10,6 +10,8 @@ on:
       - 'anomaly-map/**'
       - '.github/workflows/deploy.yml'
       - 'scripts/deploy.sh'
+      - 'scripts/test-carto-basemaps.mjs'
+      - 'README.md'
   workflow_dispatch:
 
 jobs:
@@ -34,6 +36,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Test CARTO basemap configuration
+        run: node scripts/test-carto-basemaps.mjs
+
       - name: Regenerate anomaly-map build metadata
         if: matrix.app == 'anomaly-map'
         run: |
@@ -49,6 +54,14 @@ jobs:
             "data_mtime": "$DATA_MTIME"
           }
           EOF
+
+      - name: Generate CARTO configuration
+        if: matrix.app == 'anomaly-map' || matrix.app == 'countdown'
+        env:
+          CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
+        run: |
+          : "${CARTO_API_KEY:?Add CARTO_API_KEY to the repository's GitHub Actions secrets}"
+          printf 'globalThis.CARTO_API_KEY = %s;\n' "$(printf '%s' "$CARTO_API_KEY" | jq -Rs .)" > "${{ matrix.app }}/carto-config.js"
 
       - name: Deploy ${{ matrix.app }}
         env:

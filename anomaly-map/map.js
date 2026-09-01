@@ -3,6 +3,8 @@
  * Data sourced from: https://linktr.ee/ingressanomalystats
  * Data originally collated by Breezy: https://linktr.ee/breenzy
  ***************************************************************/
+import { CARTO_ATTRIBUTION, cartoDarkTileUrl } from './carto-basemap.js';
+
 function isUpcoming(dateStr) {
   const d = new Date(dateStr);
   const today = new Date();
@@ -272,8 +274,8 @@ async function loadBuildMeta() {
   L.control.zoom({
     position: 'topright'   // ← moves the zoom buttons
   }).addTo(map);
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+  L.tileLayer(cartoDarkTileUrl(), {
+    attribution: CARTO_ATTRIBUTION,
     subdomains: 'abcd',
     maxZoom: 12,
   }).addTo(map);
