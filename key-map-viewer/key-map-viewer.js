@@ -1,3 +1,5 @@
+import { CARTO_ATTRIBUTION, cartoDarkTileUrl } from './carto-basemap.js';
+
 let map = null;
 let markers = [];
 let lastParsedKeys = [];
@@ -330,12 +332,10 @@ function initMap() {
     map = L.map('map').setView([0, 0], 3);
 
     L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+      cartoDarkTileUrl(),
       {
         maxZoom: 19,
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors ' +
-          '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+        attribution: CARTO_ATTRIBUTION,
       }
     ).addTo(map);
   }
@@ -772,6 +772,9 @@ document.addEventListener('click', (e) => {
   const btn = e.target?.closest?.('.status-close');
   if (btn) hideStatus();
 });
+
+document.getElementById('loadBtn')?.addEventListener('click', () => loadKeys());
+document.getElementById('clearBtn')?.addEventListener('click', clearMap);
 
 document.addEventListener('change', (e) => {
   const t = e.target;

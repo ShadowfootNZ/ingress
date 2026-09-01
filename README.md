@@ -20,13 +20,13 @@ Data collated from community sources including [Ingress Anomaly Stats](https://l
 
 ## CARTO basemap configuration
 
-The anomaly history map and countdown map read the CARTO browser API key from an untracked `carto-config.js` file in each app directory. For local development, create both files with this content, replacing the example value:
+The anomaly history map, countdown map, and key map viewer read the CARTO browser API key from an untracked `carto-config.js` file in each app directory. For local development, create each file with this content, replacing the example value:
 
 ```js
 globalThis.CARTO_API_KEY = "your-carto-api-key";
 ```
 
-The required paths are `anomaly-map/carto-config.js` and `countdown/carto-config.js`. These files are excluded by `.gitignore`. Serve the repository over HTTP as usual; opening ES modules directly with a `file:` URL is not supported by browsers.
+The required paths are `anomaly-map/carto-config.js`, `countdown/carto-config.js`, and `key-map-viewer/carto-config.js`. These files are excluded by `.gitignore`. Serve the repository over HTTP as usual; opening ES modules directly with a `file:` URL is not supported by browsers.
 
 For deployment, add a GitHub Actions repository secret named `CARTO_API_KEY` under **Settings → Secrets and variables → Actions**. The deployment workflow generates the same config file inside each affected app immediately before uploading it. The key is not committed, but it remains visible in browser requests as required for a client-side basemap key.
 

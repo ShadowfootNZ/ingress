@@ -8,6 +8,7 @@ on:
       - 'bounty-progress/**'
       - 'countdown/**'
       - 'anomaly-map/**'
+      - 'key-map-viewer/**'
       - '.github/workflows/deploy.yml'
       - 'scripts/deploy.sh'
       - 'scripts/test-carto-basemaps.mjs'
@@ -56,7 +57,7 @@ jobs:
           EOF
 
       - name: Generate CARTO configuration
-        if: matrix.app == 'anomaly-map' || matrix.app == 'countdown'
+        if: matrix.app == 'anomaly-map' || matrix.app == 'countdown' || matrix.app == 'key-map-viewer'
         env:
           CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
         run: |

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 
-for (const app of ['anomaly-map', 'countdown']) {
+for (const app of ['anomaly-map', 'countdown', 'key-map-viewer']) {
   const { CARTO_ATTRIBUTION, cartoDarkTileUrl } = await import(`../${app}/carto-basemap.js`);
   const url = cartoDarkTileUrl('test key/+');
 

@@ -42,8 +42,8 @@ x3
         </label>
       </div>
     </div>
-    <button id="loadBtn" onclick="loadKeys()">Load Keys on Map</button>
-    <button id="clearBtn" onclick="clearMap()" disabled>Clear Map</button>
+    <button id="loadBtn">Load Keys on Map</button>
+    <button id="clearBtn" disabled>Clear Map</button>
   </div>
 
   <div class="stats" id="stats" style="display: none;">
@@ -78,7 +78,8 @@ x3
           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
           crossorigin="anonymous"></script>
 
-  <script src="./key-map-viewer.js"></script>
+  <script src="carto-config.js"></script>
+  <script type="module" src="./key-map-viewer.js"></script>
   <script src="../analytics.js"></script>
 </body>
 </html>
