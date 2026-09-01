@@ -60,7 +60,7 @@ jobs:
         env:
           CARTO_API_KEY: ${{ secrets.CARTO_API_KEY }}
         run: |
-          : "${CARTO_API_KEY:?Add CARTO_API_KEY to the repository's GitHub Actions secrets}"
+          : "${CARTO_API_KEY:?Add CARTO_API_KEY to the GitHub Actions repository secrets}"
           printf 'globalThis.CARTO_API_KEY = %s;\n' "$(printf '%s' "$CARTO_API_KEY" | jq -Rs .)" > "${{ matrix.app }}/carto-config.js"
 
       - name: Deploy ${{ matrix.app }}
