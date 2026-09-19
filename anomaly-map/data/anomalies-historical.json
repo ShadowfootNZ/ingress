@@ -22656,8 +22656,8 @@
             "city": "Singapore",
               "country": "Singapore",
               "score": {
-                "enl": null,
-                "res": null
+                "enl": 107.2,
+                "res": 192.8
               }
             },
             {
@@ -22665,8 +22665,8 @@
               "region": "Colorado",
               "country": "United States",
               "score": {
-                "enl": null,
-                "res": null
+                "enl": 212.8,
+                "res": 87.2
               }
             }
         ]

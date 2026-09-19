@@ -59,6 +59,7 @@
         "timezone": "Asia/Singapore",
         "url-enl": "https://enlightened.rocks/Singapore26",
         "url-res": "https://t.me/+vZtAUPpRYwk3Mzll",
+        "winner": "resistance",
         "location": { "lat": 1.3521, "lng": 103.8198 }
       },
       {
@@ -68,6 +69,7 @@
         "timezone": "America/Denver",
         "url-enl": "https://enl.rocks/-FrbS",
         "url-res": "https://res.blue/group/denver-anomaly-2026-non-secure",
+        "winner": "enlightened",
         "location": { "lat": 39.7392, "lng": -104.9903 }
       }
     ]
