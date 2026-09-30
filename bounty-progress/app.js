@@ -7,9 +7,11 @@
     card: document.getElementById("progressCard"),
     campaignTitle: document.getElementById("campaignTitle"),
     campaignSubtitle: document.getElementById("campaignSubtitle"),
+    dailySourceLabel: document.getElementById("dailySourceLabel"),
     dailyRate: document.getElementById("dailyRate"),
     daysRemaining: document.getElementById("daysRemaining"),
     remainingTokens: document.getElementById("remainingTokens"),
+    remainingTokenLabel: document.getElementById("remainingTokenLabel"),
     startDateSection: document.getElementById("startDateSection"),
     startDateDisplay: document.getElementById("startDateDisplay"),
     endDateDisplay: document.getElementById("endDateDisplay"),
@@ -63,6 +65,56 @@
     return campaigns[0];
   }
 
+  function removeSavedScore() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // Storage may be unavailable in private browsing or restricted contexts.
+    }
+  }
+
+  function saveScore(rawValue) {
+    if (rawValue === "") {
+      removeSavedScore();
+      return;
+    }
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        campaign: activeCampaign.slug,
+        score: rawValue
+      }));
+    } catch {
+      // The calculator still works when storage is unavailable.
+    }
+  }
+
+  function loadSavedScore(campaign) {
+    let savedValue;
+
+    try {
+      savedValue = localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return "";
+    }
+
+    if (!savedValue) return "";
+
+    try {
+      const saved = JSON.parse(savedValue);
+      const scoreIsValid = typeof saved?.score === "string" || typeof saved?.score === "number";
+
+      if (saved?.campaign === campaign.slug && scoreIsValid) {
+        return String(saved.score);
+      }
+    } catch {
+      // Legacy values were stored as an unscoped score and must not carry over.
+    }
+
+    removeSavedScore();
+    return "";
+  }
+
   function renderIcon(tier) {
     if (!tier.icon) {
       return `<span class="tier-fallback" aria-hidden="true">${escapeHtml(tier.label.slice(0, 2).toUpperCase())}</span>`;
@@ -108,11 +160,7 @@
     if (!activeCampaign) return;
 
     const rawValue = elements.score.value.trim();
-    if (rawValue === "") {
-      localStorage.removeItem(STORAGE_KEY);
-    } else {
-      localStorage.setItem(STORAGE_KEY, rawValue);
-    }
+    saveScore(rawValue);
 
     const score = Math.max(0, parseInt(rawValue, 10) || 0);
     const startDate = parseDate(activeCampaign.startDate, false);
@@ -162,9 +210,12 @@
     activeCampaign = getCurrentCampaign();
     elements.campaignTitle.textContent = activeCampaign.title;
     elements.campaignSubtitle.textContent = activeCampaign.subtitle;
-    elements.dailyRate.textContent = activeCampaign.dailyRateLabel || `${formatNumber(activeCampaign.dailyBonusTokens)} bonus tokens/day`;
+    elements.dailySourceLabel.textContent = activeCampaign.dailySourceLabel || "Daily Bounties";
+    elements.dailyRate.textContent = activeCampaign.dailyRateLabel || `${formatNumber(activeCampaign.dailyBonusTokens)} ${activeCampaign.tokenLabel || "tokens"}/day`;
+    elements.remainingTokenLabel.textContent = activeCampaign.tokenLabel || "tokens";
     elements.score.step = activeCampaign.inputStep || 1;
-    elements.score.value = localStorage.getItem(STORAGE_KEY) || "";
+    elements.score.placeholder = activeCampaign.inputLabel || `Total ${activeCampaign.tokenLabel || "tokens"}`;
+    elements.score.value = loadSavedScore(activeCampaign);
 
     renderInfoLink(activeCampaign);
 
