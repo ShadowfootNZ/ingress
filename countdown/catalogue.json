@@ -3,6 +3,7 @@
   "title": "Ingress Anomaly Countdown",
   "summary": "Live countdowns to upcoming Ingress anomaly events, with faction signup links and results as they happen.",
   "description": "Animated cards count down to each upcoming Ingress anomaly site, shown in both your time and the event's local time, with Resistance and Enlightened team signup links where available.\n\n- **Live status** — card borders advance automatically through prep, imminent, live, and faction-coloured winner states without a page reload.\n- **Companion map** — plots upcoming sites with their L16 recharge range.\n- **Self-maintaining** — series whose events have all passed drop off automatically.",
+  "origin": "I built this because time zones can be challenging. Each anomaly shows its start time in both the viewer's time and the event's local time, with links to the Resistance and Enlightened team sites. The days in the countdown help those intending to travel to plan, and the hours are useful for those watching the score. A few weeks later I added a map of each upcoming site's L16 recharge range for people intending to participate remotely.",
   "appUrl": "https://apps.shadowfoot.com/ingress-countdown/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",

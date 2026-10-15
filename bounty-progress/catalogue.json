@@ -3,6 +3,7 @@
   "title": "Ingress Bounty Bonus Progress",
   "summary": "Check whether your Ingress season tokens are on pace to reach the active campaign’s medal tiers.",
   "description": "Enter your current season token count to see your progress toward each medal tier, the tokens still available from Daily Bounties, and the number of Daily Bounty days needed to close each gap.\n\n- **Gap coverage:** Shows how many days of Daily Bounties would cover the remaining tokens for each tier.\n- **Early warning:** Highlights tiers that cannot be reached through the remaining Daily Bounties alone.\n\nCampaign dates, token rates, medal tiers, labels, images, and source links are supplied by campaign configuration.",
+  "origin": "I originally built a calculator for the +Beta anomaly season to gauge how much the Daily Bounties could add to the tokens I gained through other means. After two more anomaly seasons I converted it so it could be reused for later seasons, instead of creating a new app each time.",
   "appUrl": "https://apps.shadowfoot.com/ingress-bounty-progress",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
