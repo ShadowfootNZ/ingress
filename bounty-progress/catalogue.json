@@ -2,13 +2,46 @@
   "slug": "ingress-bounty-progress",
   "title": "Ingress Bounty Bonus Progress",
   "summary": "Check whether your Ingress season tokens are on pace to reach the active campaign’s medal tiers.",
-  "description": "Enter your current season token count to see your progress toward each medal tier, the tokens still available from Daily Bounties, and the number of Daily Bounty days needed to close each gap.\n\n- **Gap coverage:** Shows how many days of Daily Bounties would cover the remaining tokens for each tier.\n- **Early warning:** Highlights tiers that cannot be reached through the remaining Daily Bounties alone.\n\nCampaign dates, token rates, medal tiers, labels, images, and source links are supplied by campaign configuration.",
-  "origin": "I originally built a calculator for the +Beta anomaly season to gauge how much the Daily Bounties could add to the tokens I gained through other means. After two more anomaly seasons I converted it so it could be reused for later seasons, instead of creating a new app each time.",
+  "tagline": "See whether your medal target is still within reach.",
+  "description": "Enter your current season token count to see your progress towards each medal tier, the tokens still available from Daily Bounties, and the number of bounty days needed to close each gap.",
+  "features": [
+    {
+      "title": "Gap coverage",
+      "description": "Show how many Daily Bounty days would cover the remaining tokens for each medal tier."
+    },
+    {
+      "title": "Early warning",
+      "description": "Identify medal tiers that cannot be reached from the remaining Daily Bounties alone."
+    },
+    {
+      "title": "Campaign configuration",
+      "description": "Campaign dates, token rates, medal thresholds, labels, images and source links come from reusable campaign data."
+    },
+    {
+      "title": "Remembers your total",
+      "description": "Retain the last entered token count in the browser so progress can be checked again later."
+    }
+  ],
+  "origin": {
+    "title": "A bounty estimate that includes the bonuses.",
+    "body": "I built the first version during the +Beta anomaly season after another tracker estimated progress from the number of remaining days alone and did not account for extra token bonuses. I wanted to see how much Daily Bounties could add to tokens gained through other means and whether each medal target was still reachable. After two more anomaly seasons, I made the calculator campaign-driven so it could be reused instead of rebuilding it for every season."
+  },
   "appUrl": "https://apps.shadowfoot.com/ingress-bounty-progress",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
-  "status": "active",
-  "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/screenshot.jpg",
-  "imagePaths": [],
-  "tags": ["ingress", "calculator"]
+  "media": {
+    "thumbnail": {
+      "path": "docs/thumbnail.jpg",
+      "alt": "Ingress Cygnus medal targets and the Daily Bounty days needed to reach them"
+    },
+    "key": {
+      "path": "docs/screenshot.jpg",
+      "alt": "The Ingress Cygnus progress calculator showing remaining tokens and medal targets"
+    },
+    "screenshots": []
+  },
+  "tags": [
+    "ingress",
+    "calculator"
+  ],
+  "status": "active"
 }
