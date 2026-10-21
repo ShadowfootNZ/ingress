@@ -2,14 +2,76 @@
   "slug": "ingress-anomaly-map",
   "title": "Ingress Anomaly Map",
   "summary": "An interactive map of every recorded Ingress anomaly outcome worldwide.",
-  "description": "Browse the full history of Ingress anomaly sites on an interactive map.\n\n- **Colour-coded by faction outcome** and sized by recency.\n- **Multi-select series and country filters**, with optional auto pan-and-zoom to your selection.\n- **Per-site popups** showing each event and score at that location.\n\nBacked by a curated, geocoded dataset covering every anomaly series.",
-  "origin": "This came from my earlier experience with geospatial data, where I learnt how maps could present information so people could understand it. The map highlights how the factions have performed by city and country, and how that has changed over time. The results come from Ingress Anomaly Stats, originally collated by Breezy, and I add new results as each anomaly finishes.",
+  "tagline": "Explore the recorded history of Ingress anomalies worldwide.",
+  "description": "Browse recorded Ingress anomaly sites and results on an interactive world map, with filters for series and country.",
+  "features": [
+    {
+      "title": "Faction outcomes",
+      "description": "Colour sites by faction outcome and size them according to recency."
+    },
+    {
+      "title": "Series and country filters",
+      "description": "Select several anomaly series or countries, with optional automatic framing of the selected sites."
+    },
+    {
+      "title": "Complete site history",
+      "description": "Open a site to see every recorded event and score at that location."
+    },
+    {
+      "title": "Maintained dataset",
+      "description": "Add new anomaly results to the curated and geocoded dataset after each series."
+    }
+  ],
+  "origin": {
+    "title": "Collected history becomes more useful on a map.",
+    "body": "I saw that historical anomaly results had already been collected by the community. From earlier work with geospatial data, I knew a map could make the data easier to understand and reveal how faction performance varied by city, country and time. The results come from Ingress Anomaly Stats, originally collated by Breezy, and I add new results as each anomaly finishes."
+  },
+  "credits": [
+    {
+      "name": "Ingress Anomaly Stats",
+      "role": "Data source",
+      "url": "https://linktr.ee/ingressanomalystats"
+    },
+    {
+      "name": "Breezy",
+      "role": "Original data collation",
+      "url": "https://linktr.ee/breenzy"
+    }
+  ],
   "appUrl": "https://apps.shadowfoot.com/ingress-anomaly-map/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
-  "status": "active",
-  "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/anomalies.jpg",
-  "imagePaths": ["docs/Brazil.jpg", "docs/Slovakia.jpg", "docs/Lisbon.jpg"],
-  "tags": ["ingress", "map", "anomaly"],
-  "entryPoint": "index.html"
+  "entryPoint": "index.html",
+  "media": {
+    "thumbnail": {
+      "path": "docs/thumbnail.jpg",
+      "alt": "World map of recorded Ingress anomaly sites coloured by faction result"
+    },
+    "key": {
+      "path": "docs/anomalies.jpg",
+      "alt": "Interactive world map showing recorded Ingress anomaly outcomes"
+    },
+    "screenshots": [
+      {
+        "path": "docs/Brazil.jpg",
+        "alt": "Anomaly map with faction-coloured markers of different sizes and a selected event result",
+        "caption": "See faction outcomes and recency at a glance"
+      },
+      {
+        "path": "docs/Slovakia.jpg",
+        "alt": "Filtered anomaly map showing selected series, nearby sites and a site result",
+        "caption": "Filter the map by series and country"
+      },
+      {
+        "path": "docs/Lisbon.jpg",
+        "alt": "Site popup listing several anomaly events with Enlightened and Resistance scores",
+        "caption": "Review every recorded event and score for a site"
+      }
+    ]
+  },
+  "tags": [
+    "ingress",
+    "map",
+    "anomaly"
+  ],
+  "status": "active"
 }
