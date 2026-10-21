@@ -2,13 +2,59 @@
   "slug": "ingress-key-map-viewer",
   "title": "Ingress Key Map Viewer",
   "summary": "Plot your Ingress portal keys on an interactive map by pasting your Intel inventory.",
-  "description": "Paste the Portal Keys section of your Intel inventory — tolerant of the export variants different browsers and IITC produce — and every key is plotted and grouped on a map.\n\n- **Colour-coded by key count**, with filters for loose keys, keys in capsules, or a single capsule, and running totals for each.\n- **Private by design** — everything is parsed and rendered client-side, so your inventory never leaves the browser.\n\nMost useful for spotting stacks of duplicate keys to recycle or pass on, and for seeing your key coverage along a regular route.",
-  "origin": "Other inventory apps exist, but they're often aimed at planning activities. I built this to show which portal keys I can get rid of without affecting my play. Like the Anomaly Map, it turns geospatial data into information to make decisions with.",
+  "tagline": "See which portal keys you can safely let go.",
+  "description": "Paste the Portal Keys section of an Intel or IITC inventory export to plot your keys on an interactive map, compare key counts and filter by where they are stored.",
+  "features": [
+    {
+      "title": "Flexible inventory import",
+      "description": "Accept Intel and IITC export variants from different browsers."
+    },
+    {
+      "title": "Key counts at a glance",
+      "description": "Colour-code portals by the number of keys held."
+    },
+    {
+      "title": "Inventory and capsule filters",
+      "description": "Show loose keys, all capsule keys or one selected capsule, with updated totals."
+    },
+    {
+      "title": "Private in the browser",
+      "description": "Parse and display the inventory locally, without sending it to a server."
+    }
+  ],
+  "origin": {
+    "title": "A map for deciding which keys to keep.",
+    "body": "Other inventory apps exist, but many are aimed at planning activities. I wanted to answer a different question: which portal keys can I get rid of without affecting how I play? Plotting the inventory on a map makes duplicate keys, route coverage and gaps easier to recognise."
+  },
   "appUrl": "https://apps.shadowfoot.com/ingress-key-map-viewer/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
   "status": "active",
-  "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/key-map-viewer.jpg",
-  "imagePaths": ["docs/commute.jpg", "docs/cluster.jpg", "docs/details.jpg"],
+  "media": {
+    "thumbnail": {
+      "path": "docs/thumbnail.jpg",
+      "alt": "Map of portal keys plotted around Wellington"
+    },
+    "key": {
+      "path": "docs/key-map-viewer.jpg",
+      "alt": "Ingress Key Map Viewer showing inventory controls, totals and portal keys on a map"
+    },
+    "screenshots": [
+      {
+        "path": "docs/commute.jpg",
+        "alt": "Portal keys distributed along a regular travel route",
+        "caption": "Check key coverage along a regular route"
+      },
+      {
+        "path": "docs/cluster.jpg",
+        "alt": "Cluster of portal keys colour-coded by the number held",
+        "caption": "Spot concentrations and duplicate keys"
+      },
+      {
+        "path": "docs/details.jpg",
+        "alt": "Selected portal showing its key count and capsule identifier",
+        "caption": "Check how many keys you hold and where they are stored"
+      }
+    ]
+  },
   "tags": ["ingress", "map", "inventory"]
 }
