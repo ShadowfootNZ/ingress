@@ -2,13 +2,61 @@
   "slug": "ingress-countdown",
   "title": "Ingress Anomaly Countdown",
   "summary": "Live countdowns to upcoming Ingress anomaly events, with faction signup links and results as they happen.",
-  "description": "Animated cards count down to each upcoming Ingress anomaly site, shown in both your time and the event's local time, with Resistance and Enlightened team signup links where available.\n\n- **Live status** — card borders advance automatically through prep, imminent, live, and faction-coloured winner states without a page reload.\n- **Companion map** — plots upcoming sites with their L16 recharge range.\n- **Self-maintaining** — series whose events have all passed drop off automatically.",
-  "origin": "I built this because time zones can be challenging. Each anomaly shows its start time in both the viewer's time and the event's local time, with links to the Resistance and Enlightened team sites. The days in the countdown help those intending to travel to plan, and the hours are useful for those watching the score. A few weeks later I added a map of each upcoming site's L16 recharge range for people intending to participate remotely.",
+  "tagline": "Anomaly dates, local times and live results in one place.",
+  "description": "Follow upcoming Ingress anomaly sites with live countdowns, event-local times, faction signup links and results as they become available.",
+  "features": [
+    {
+      "title": "Your time and local time",
+      "description": "Show each event in the viewer's time zone and the event's local time."
+    },
+    {
+      "title": "Live status",
+      "description": "Advance cards automatically through preparation, imminent, live and faction-coloured result states."
+    },
+    {
+      "title": "Faction links and results",
+      "description": "Link to Resistance and Enlightened signup sites where available, then link to published results."
+    },
+    {
+      "title": "Companion map",
+      "description": "Plot upcoming sites and their L16 recharge ranges for remote participation planning."
+    },
+    {
+      "title": "Self-maintaining series",
+      "description": "Remove an anomaly series automatically after all its events have passed."
+    }
+  ],
+  "origin": {
+    "title": "A reminder for people who need to plan.",
+    "body": "I built this because time zones can be challenging. Each anomaly shows its start time in both the viewer's time and the event's local time, with links to the Resistance and Enlightened team sites. The days in the countdown help people intending to travel plan ahead, while the hours are useful for those watching the score. A few weeks later I added a map of each upcoming site's L16 recharge range for people intending to participate remotely."
+  },
   "appUrl": "https://apps.shadowfoot.com/ingress-countdown/",
   "repoUrl": "https://github.com/ShadowfootNZ/ingress",
-  "status": "active",
-  "thumbnailPath": "docs/thumbnail.jpg",
-  "keyImagePath": "docs/countdown.jpg",
-  "imagePaths": ["docs/closeup.jpg", "docs/recharge.jpg"],
-  "tags": ["ingress", "anomaly"]
+  "media": {
+    "thumbnail": {
+      "path": "docs/thumbnail.jpg",
+      "alt": "Countdown cards for upcoming Ingress anomaly sites"
+    },
+    "key": {
+      "path": "docs/countdown.jpg",
+      "alt": "Upcoming Ingress anomaly sites with local dates and live countdowns"
+    },
+    "screenshots": [
+      {
+        "path": "docs/closeup.jpg",
+        "alt": "An Ingress anomaly card for Helsinki showing faction links, local time and days remaining",
+        "caption": "Plan with local time and days remaining"
+      },
+      {
+        "path": "docs/recharge.jpg",
+        "alt": "World map of upcoming Ingress anomaly sites with L16 recharge ranges",
+        "caption": "See the remote recharge range for each site"
+      }
+    ]
+  },
+  "tags": [
+    "ingress",
+    "anomaly"
+  ],
+  "status": "active"
 }
